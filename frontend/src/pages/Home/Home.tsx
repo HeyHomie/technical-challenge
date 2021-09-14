@@ -13,15 +13,33 @@ export const Home: React.FunctionComponent = () => {
         setRepositories(res)
       })
       .catch((error) => {
-        throw new Error('Something went wrong');
+        throw new Error('Something went wrong')
       })
   }, [username])
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const value = event.target.value.toLowerCase()
+
+    setRepositories((prevState): any => {
+      let data = [...prevState]
+
+      let filteredArray = data.filter((item) =>
+        item.name.toLowerCase().includes(value)
+      )
+
+      return filteredArray
+    })
+  }
 
   return (
     <main className="main-app">
       <div className="list-container">
         <div className="search-input-container">
-          <input type="text" placeholder="Find a repository..." />
+          <input
+            type="text"
+            placeholder="Find a repository..."
+            onChange={handleChange}
+          />
         </div>
         <ul>
           {repositories.map((repository) => {
