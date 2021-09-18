@@ -1,0 +1,124 @@
+/* Profile */
+.profile {
+  padding-inline: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding-block: 1rem;
+}
+.bio {
+  margin: 0;
+}
+
+.user {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.user p {
+  margin: 0;
+}
+.user img {
+  inline-size: 20%;
+  border-radius: 50%;
+}
+.user span {
+  color: #8b949e;
+  font-weight: bold;
+}
+
+/* Followers */
+.followers span {
+  color: #8b949e;
+}
+
+.followers {
+  display: flex;
+  align-items: center;
+  gap: 0.3125rem;
+  padding-block-end: 1rem;
+  border-bottom: 0.5px solid #21262d;
+}
+.followers .item {
+  display: flex;
+  align-items: center;
+  gap: 0.3125rem;
+}
+
+/* Links */
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.link {
+  display: flex;
+  align-items: center;
+  gap: 0.3125rem;
+}
+.link a {
+  color: inherit;
+}
+.link a:hover {
+  text-decoration: underline;
+}
+.link:not(:first-child) {
+  display: none;
+}
+.link.twitter span::before {
+  content: '@';
+}
+.item:not(:first-child)::before {
+  content: '•';
+  color: #8b949e;
+}
+
+/* widgets */
+.widgets {
+  display: flex;
+  flex-direction: column;
+}
+.widgets img {
+  inline-size: 20%;
+}
+
+/* Responsive */
+@media screen and (min-width: 768px) {
+  .link:not(:first-child) {
+    display: flex;
+  }
+  .user {
+    order: 1;
+  }
+  .profile button {
+    order: 2;
+  }
+  .profile .bio {
+    order: 3;
+  }
+  .followers {
+    order: 4;
+    font-size: 0.9rem;
+  }
+  .links {
+    order: 5;
+  }
+  .widgets {
+    order: 6;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .profile {
+    grid-area: sidebar;
+  }
+  .user {
+    flex-direction: column;
+    align-items: flex-start;
+    font-size: 1.3rem;
+    letter-spacing: 1px;
+  }
+
+  .user img {
+    inline-size: 100%;
+  }
+}

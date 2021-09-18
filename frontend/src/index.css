@@ -1,0 +1,86 @@
+:root {
+  --just-white: #fff;
+  --just-green: #238636;
+  --dark-grey-10: #30363d;
+  --soft-grey-10: #8b949e;
+  --soft-grey-9: #c9d1d9;
+  --bg-dark: #0d1117;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  background-color: var(--bg-dark);
+  color: var(--soft-grey-9);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial,
+    sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
+}
+img {
+  max-inline-size: 100%;
+}
+ul {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+}
+a {
+  text-decoration: none;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0.1px solid transparent;
+  cursor: pointer;
+  padding-block: 0.375rem;
+  gap: 0.3125rem;
+  border-radius: 0.3125rem;
+}
+.is-green {
+  color: var(--just-white);
+  background-color: var(--just-green);
+}
+.is-grey {
+  background-color: var(--dark-grey-10);
+  color: var(--soft-grey-9);
+  /* border-color: var(--soft-grey-10); */
+}
+.btn:active {
+  transform: scale(0.98);
+}
+body::-webkit-scrollbar {
+  inline-size: 0.375rem;
+}
+body::-webkit-scrollbar-track {
+  background-color: var(--dark-grey-10);
+}
+body::-webkit-scrollbar-thumb {
+  background-color: var(--soft-grey-10);
+  border-radius: 20px;
+  block-size: 50px;
+}
+
+/* .wrapper {
+  max-inline-size: 1100px;
+  margin: auto;
+}
+.layout {
+  max-inline-size: 1300px;
+  margin: auto;
+}
+@media screen and (min-width: 768px) {
+  .layout {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    grid-template-rows: 50px 1fr;
+    grid-template-areas: 'header header' 'sidebar main';
+  }
+} */
