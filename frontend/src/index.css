@@ -1,7 +1,10 @@
 :root {
   --just-white: #fff;
   --just-green: #238636;
+  --just-blue: #58a6ff;
   --dark-grey-10: #30363d;
+  --dark-grey-9: #21262d;
+  --dark-grey-8: #484f58;
   --soft-grey-10: #8b949e;
   --soft-grey-9: #c9d1d9;
   --bg-dark: #0d1117;
@@ -76,11 +79,4 @@ body::-webkit-scrollbar-thumb {
   max-inline-size: 1300px;
   margin: auto;
 }
-@media screen and (min-width: 768px) {
-  .layout {
-    display: grid;
-    grid-template-columns: 300px 1fr;
-    grid-template-rows: 50px 1fr;
-    grid-template-areas: 'header header' 'sidebar main';
-  }
-} */
+ */

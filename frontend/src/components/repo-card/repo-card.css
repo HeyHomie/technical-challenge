@@ -1,0 +1,103 @@
+/* Repo */
+.repo {
+  padding-inline: 1.5rem;
+  display: grid;
+  grid-template-columns: 200px 80px;
+  align-items: center;
+  padding-block: 1.5rem;
+  border-bottom: 0.5px solid #21262d;
+  color: var(--soft-grey-10);
+}
+.title a,
+.repo-tags a {
+  color: var(--just-blue);
+}
+.title a:hover {
+  text-decoration: underline;
+}
+.title {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+.title small {
+  display: inline-block;
+  padding-block: 0.25rem;
+  padding-inline: 0.375rem;
+  border-radius: 30px;
+  font-size: 0.7rem;
+  color: #8b949e;
+  border: 0.5px solid #30363d;
+}
+.repo-tags {
+  display: flex;
+  gap: 0.5rem;
+}
+.repo-tags li {
+  padding-inline: 0.5rem;
+  padding-block: 0.3125rem;
+  border-radius: 30px;
+  color: var(--just-blue);
+  font-size: 0.8rem;
+  background-color: rgba(56, 139, 253, 0.15);
+}
+.repo-tags li:hover {
+  background-color: #1f6feb;
+}
+.repo-tags li:hover a {
+  color: #fff;
+}
+.details {
+  display: flex;
+  font-size: 0.8rem;
+  gap: 1rem;
+  margin-block-start: 1rem;
+}
+.language {
+  display: flex;
+  align-items: center;
+}
+
+.details span {
+  text-transform: capitalize;
+}
+.is-TypeScript {
+  color: #2b7489;
+}
+.is-Ruby {
+  color: #701516;
+}
+.is-CSS {
+  color: #563d7c;
+}
+.is-JavaScript {
+  color: #f1e05a;
+}
+.is-HTML {
+  color: #e34c26;
+}
+.is-SCSS {
+  color: #c6538c;
+}
+.is-Dart {
+  color: #00b4ab;
+}
+.is-Java {
+  color: #b07219;
+}
+.is-Elixir {
+  color: #6e4a7e;
+}
+.is-C {
+  color: #178600;
+}
+.repo .title h3 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media screen and (min-width: 320px) {
+  .repo {
+    grid-template-columns: 1fr 80px;
+  }
+}

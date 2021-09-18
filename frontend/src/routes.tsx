@@ -8,8 +8,13 @@ import {
   useParams
 } from 'react-router-dom'
 import Layout from './components/layout/layout'
+import Nav from './components/nav/nav'
+import RepoList from './components/repo-list/repo-list'
+import UserContent from './components/user-content/user-content'
 import UserProfile from './components/user-profile/user-profile'
 import { IUserGithub } from './interfaces/user.interface'
+import { IRepositories } from './interfaces/repositories.interface'
+import Footer from './components/footer/footer'
 
 export const Main: FunctionComponent = () => {
   const initialState: IUserGithub = {
@@ -49,16 +54,41 @@ export const Main: FunctionComponent = () => {
 
   const { username } = useParams<{ username: string }>()
   const [user, setUser] = useState<IUserGithub>(initialState)
-  const [Repos, setRepos] = useState<Array<any>>([])
-  // useEffect(() => {
-  //   Promise.all([fetch(`/api/v1/users?username=${username}`), fetch(`/api/v1/users/${username}/repositories`)]).then(async ([user, repos]) => {
-  //     setUser(await user.json())
-  //     setRepos(await repos.json())
-  //   })
-  // }, [username])
+  const [repos, setRepos] = useState<IRepositories[]>([])
+  const [search, setSearch] = useState<IRepositories[]>([])
+  const [repoSearched, setRepoSearched] = useState<string>('')
+
+  const baseUrl = 'https://api.github.com'
+
+  async function fetchAPI(endPoint: string) {
+    try {
+      const response = await fetch(`${baseUrl}${endPoint}`)
+      const data = await response.json()
+      return data
+    } catch (err: any) {
+      throw new Error(err)
+    }
+  }
+
+  useEffect(() => {
+    Promise.all([
+      fetchAPI(`/users/${username}`)
+        .then(setUser)
+        .catch((err) => console.log(err)),
+      fetchAPI(`/users/${username}/repos`)
+        .then(setRepos)
+        .catch((err) => console.log(err))
+    ])
+  }, [username])
+
   return (
     <Layout>
       <UserProfile user={user} />
+      <Nav total_repos={10} />
+      <UserContent search={repoSearched} setSearch={setRepoSearched}>
+        <RepoList repositories={repos} />
+      </UserContent>
+      <Footer />
     </Layout>
   )
 }

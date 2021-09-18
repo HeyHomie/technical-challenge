@@ -1,0 +1,53 @@
+.nav {
+  position: sticky;
+  inset-block-start: 0;
+  padding-inline: 1.5rem;
+  border-bottom: 0.5px solid var(--dark-grey-9);
+  background-color: var(--bg-dark);
+  padding-block: 0.5rem;
+}
+.nav-icon {
+  display: none;
+}
+
+.nav ul {
+  display: flex;
+  overflow: auto;
+  gap: 1rem;
+}
+.nav li {
+  padding-block: 0.5rem;
+  color: var(--soft-grey-9);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+li.is-active {
+  font-weight: bold;
+  border-bottom: 1px solid #f78166;
+}
+.repo-amount {
+  background-color: rgba(110, 118, 129, 0.4);
+  padding: 3px;
+  border-radius: 50%;
+}
+@media screen and (min-width: 768px) {
+  .nav {
+    grid-area: header;
+    padding-block: 0;
+  }
+  .nav ul {
+    justify-content: center;
+    gap: 2.5rem;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .nav-icon {
+    display: block;
+    color: var(--dark-grey-8);
+  }
+  .nav li.is-active .nav-icon {
+    color: var(--just-white);
+  }
+}
