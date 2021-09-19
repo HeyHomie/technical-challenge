@@ -18,8 +18,11 @@
   color: var(--just-blue);
 }
 @media screen and (min-width: 768px) {
-  .footer {
+  .footer,
+  .footer ul {
+    flex-direction: row;
     grid-area: footer;
+    flex-wrap: wrap;
   }
 }
 

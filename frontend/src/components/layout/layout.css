@@ -6,13 +6,7 @@
   .grid {
     display: grid;
     grid-template-columns: 300px 1fr;
-    grid-template-rows: 50px 1fr 1fr;
+    grid-template-rows: 50px 1fr 80px;
     grid-template-areas: 'header header' 'sidebar main' 'footer footer';
-  }
-}
-
-@media screen and (min-width: 1024px) {
-  .grid {
-    grid-template-rows: 50px 1fr 50px;
   }
 }
