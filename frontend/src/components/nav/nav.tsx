@@ -1,8 +1,8 @@
-import React from 'react'
-import { FiPackage } from 'react-icons/fi'
-import { GoProject, GoRepo } from 'react-icons/go'
-import { BsBook } from 'react-icons/bs'
-import './nav.css'
+import React from "react";
+import { FiPackage } from "react-icons/fi";
+import { GoProject, GoRepo } from "react-icons/go";
+import { BsBook } from "react-icons/bs";
+import "./nav.css";
 
 const Nav: React.FC<{ total_repos: number }> = ({ total_repos }) => {
   return (
@@ -27,7 +27,7 @@ const Nav: React.FC<{ total_repos: number }> = ({ total_repos }) => {
         </li>
       </ul>
     </nav>
-  )
-}
+  );
+};
 
-export default Nav
+export default Nav;

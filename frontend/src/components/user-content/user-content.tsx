@@ -1,13 +1,13 @@
-import React from 'react'
-import { HiOutlineDesktopComputer } from 'react-icons/hi'
-import { IoIosArrowDown } from 'react-icons/io'
-import './user-content.css'
+import React from 'react';
+import { HiOutlineDesktopComputer } from 'react-icons/hi';
+import { IoIosArrowDown } from 'react-icons/io';
+import './user-content.css';
 
 const UserContent: React.FC<any> = ({ state, setState, children }) => {
-  const [search, setSearch] = React.useState<string>('')
+  const [search, setSearch] = React.useState<string>('');
 
   function handleSubmit(event: React.ChangeEvent<HTMLFormElement>) {
-    event.preventDefault()
+    event.preventDefault();
   }
 
   function handleInputChange(event: React.ChangeEvent<HTMLInputElement>) {
@@ -15,15 +15,15 @@ const UserContent: React.FC<any> = ({ state, setState, children }) => {
       handle input change
       and get repositories was do it match with user searched
     */
-    const value = event.currentTarget.value.toLowerCase()
-    setSearch(value)
+    const value = event.currentTarget.value.toLowerCase();
+    setSearch(value);
     setState({
       ...state,
       search: value,
       repos_searched: state.repos.filter((repo: any) =>
         repo.name.toLowerCase().includes(value)
-      )
-    })
+      ),
+    });
   }
 
   return (
@@ -56,17 +56,19 @@ const UserContent: React.FC<any> = ({ state, setState, children }) => {
       </section>
       {children}
     </main>
-  )
-}
+  );
+};
 
-const SearchOptions: React.FC = () => {
-  // still does not work
+const SearchOptions: React.FC<any> = ({ setState, state }) => {
+  //  still does not work
   return (
     <>
-      <button className="btn is-grey">
-        <span>Type</span>
-        <IoIosArrowDown />
-      </button>
+      <div className="menu">
+        <button className="btn is-grey">
+          <span>Type</span>
+          <IoIosArrowDown />
+        </button>
+      </div>
       <button className="btn is-grey">
         <span>Languages</span>
         <IoIosArrowDown />
@@ -76,7 +78,7 @@ const SearchOptions: React.FC = () => {
         <IoIosArrowDown />
       </button>
     </>
-  )
-}
+  );
+};
 
-export default UserContent
+export default UserContent;

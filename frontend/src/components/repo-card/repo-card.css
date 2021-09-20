@@ -95,7 +95,18 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
-
+.topics {
+  display: flex;
+  gap: 0.5rem;
+}
+.topics a {
+  background-color: rgba(56, 139, 253, 0.15);
+  color: var(--just-blue);
+  padding-inline: 0.5rem;
+  padding-block: 0.1875rem;
+  border-radius: 30px;
+  font-size: 0.875rem;
+}
 @media screen and (min-width: 320px) {
   .repo {
     grid-template-columns: 1fr 80px;
