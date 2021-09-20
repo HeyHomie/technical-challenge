@@ -1,20 +1,20 @@
-import React, { useEffect, useState } from "react";
-import { FunctionComponent } from "react";
+import React, { useEffect, useState } from 'react';
+import { FunctionComponent } from 'react';
 import {
   Route,
   BrowserRouter as Router,
   Switch,
   Redirect,
   useParams,
-} from "react-router-dom";
-import Layout from "./components/layout/layout";
-import Nav from "./components/nav/nav";
-import RepoList from "./components/repo-list/repo-list";
-import UserContent from "./components/user-content/user-content";
-import UserProfile from "./components/user-profile/user-profile";
-import { IUserGithub } from "./interfaces/user.interface";
-import { IRepositories } from "./interfaces/repositories.interface";
-import Footer from "./components/footer/footer";
+} from 'react-router-dom';
+import Layout from './components/layout/layout';
+import Nav from './components/nav/nav';
+import RepoList from './components/repo-list/repo-list';
+import UserContent from './components/user-content/user-content';
+import UserProfile from './components/user-profile/user-profile';
+import { IUserGithub } from './interfaces/user.interface';
+import { IRepositories } from './interfaces/repositories.interface';
+import Footer from './components/footer/footer';
 type stateType = {
   repos: IRepositories[];
   repos_searched: IRepositories[];
@@ -22,32 +22,32 @@ type stateType = {
 };
 export const Main: FunctionComponent = () => {
   const initialState: IUserGithub = {
-    login: "",
+    login: '',
     id: 0,
-    node_id: "",
-    avatar_url: "",
-    gravatar_id: "",
-    url: "",
-    html_url: "",
-    followers_url: "",
-    following_url: "",
-    gists_url: "",
-    starred_url: "",
-    subscriptions_url: "",
-    organizations_url: "",
-    repos_url: "",
-    events_url: "",
-    received_events_url: "",
-    type: "",
+    node_id: '',
+    avatar_url: '',
+    gravatar_id: '',
+    url: '',
+    html_url: '',
+    followers_url: '',
+    following_url: '',
+    gists_url: '',
+    starred_url: '',
+    subscriptions_url: '',
+    organizations_url: '',
+    repos_url: '',
+    events_url: '',
+    received_events_url: '',
+    type: '',
     site_admin: false,
     name: null,
     company: null,
-    blog: "",
-    location: "",
+    blog: '',
+    location: '',
     email: null,
     hireable: null,
     bio: null,
-    twitter_username: "",
+    twitter_username: '',
     public_repos: 0,
     public_gists: 0,
     followers: 0,
@@ -62,10 +62,10 @@ export const Main: FunctionComponent = () => {
   const [state, setSate] = useState<stateType>({
     repos: [],
     repos_searched: [],
-    search: "",
+    search: '',
   });
 
-  const baseUrl = "https://api.github.com";
+  const baseUrl = 'https://api.github.com';
 
   async function fetchAPI(endPoint: string) {
     try {
@@ -90,10 +90,12 @@ export const Main: FunctionComponent = () => {
 
   useEffect(() => {
     Promise.all([
-      fetchAPI(`/users/${username}`).then(setUSer),
-      fetchAPI(`/users/${username}/repos?page=${page}`).then((repo) =>
-        setSate({ ...state, repos: repo })
-      ),
+      fetchAPI(`/users/${username}`)
+        .then(setUSer)
+        .catch((e) => console.error(e)),
+      fetchAPI(`/users/${username}/repos?page=${page}`)
+        .then((repo) => setSate({ ...state, repos: repo }))
+        .catch((e) => console.error(e)),
     ]);
   }, [username]);
 

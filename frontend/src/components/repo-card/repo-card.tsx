@@ -1,14 +1,16 @@
-import React from "react";
-import { GoPrimitiveDot } from "react-icons/go";
-import { AiOutlineStar } from "react-icons/ai";
-import { IRepositories } from "../../interfaces/repositories.interface";
-import "./repo-card.css";
+import React from 'react';
+import { GoPrimitiveDot } from 'react-icons/go';
+import { AiOutlineStar } from 'react-icons/ai';
+import { IRepositories } from '../../interfaces/repositories.interface';
+import './repo-card.css';
 
 type TTopics = {
   names: string[];
 };
 
 const RepoCard: React.FC<{ repo: IRepositories }> = ({ repo }) => {
+  /* Try to fetch repo tags but, do it multiple request to api */
+
   // const [topics, setTopics] = React.useState<TTopics>({ names: [] });
   // const user = repo.owner.login;
   // const baseUrl = "https://api.github.com";
@@ -28,7 +30,6 @@ const RepoCard: React.FC<{ repo: IRepositories }> = ({ repo }) => {
 
   // React.useEffect(() => {
   //   getTopics();
-  //   return () => {};
   // }, []);
 
   return (
@@ -80,7 +81,7 @@ const CardHeadline: React.FC<any> = ({ name, isPrivate, url }) => {
           {name}
         </a>
       </h3>
-      <small>{isPrivate ? "private" : "public"}</small>
+      <small>{isPrivate ? 'private' : 'public'}</small>
     </>
   );
 };

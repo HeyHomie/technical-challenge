@@ -47,6 +47,7 @@ const UserContent: React.FC<any> = ({ state, setState, children }) => {
             <SearchOptions />
           </div>
         </form>
+        {/*  */}
         {search.length > 0 && (
           <p>
             {state.repos_searched.length} results for repositories matching with
@@ -59,7 +60,7 @@ const UserContent: React.FC<any> = ({ state, setState, children }) => {
   );
 };
 
-const SearchOptions: React.FC<any> = ({ setState, state }) => {
+const SearchOptions: React.FC<any> = () => {
   //  still does not work
   return (
     <>
