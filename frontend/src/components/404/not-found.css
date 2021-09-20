@@ -1,0 +1,16 @@
+.not-found {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.5rem;
+  align-items: center;
+}
+.not-found a {
+  color: #fff;
+  text-decoration: none;
+  font-family: inherit;
+  padding-block: 1rem;
+  border: 1px solid var(--soft-grey-9);
+  padding-inline: 2rem;
+  border-radius: 0.5rem;
+}

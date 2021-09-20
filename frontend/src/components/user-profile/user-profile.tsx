@@ -1,13 +1,16 @@
-import React from 'react'
-import { AiOutlinePaperClip, AiOutlineStar } from 'react-icons/ai'
-import { BsFillPeopleFill } from 'react-icons/bs'
-import { BiBuildings } from 'react-icons/bi'
-import { GoLocation } from 'react-icons/go'
-import { AiOutlineTwitter } from 'react-icons/ai'
-import { IUserGithub } from '../../interfaces/user.interface'
-import './user-profile.css'
+import React from 'react';
+import { AiOutlinePaperClip, AiOutlineStar } from 'react-icons/ai';
+import { BsFillPeopleFill } from 'react-icons/bs';
+import { BiBuildings } from 'react-icons/bi';
+import { GoLocation } from 'react-icons/go';
+import { AiOutlineTwitter } from 'react-icons/ai';
+import { IUserGithub } from '../../interfaces/user.interface';
+import './user-profile.css';
 
 const UserProfile: React.FC<{ user: IUserGithub }> = ({ user }) => {
+  if (!user) {
+    console.log(user);
+  }
   return (
     <aside className="profile">
       <div className="user">
@@ -38,8 +41,8 @@ const UserProfile: React.FC<{ user: IUserGithub }> = ({ user }) => {
         />
       </div>
     </aside>
-  )
-}
+  );
+};
 
 const ProfileUser: React.FC<any> = ({ avatar, name, login }) => {
   return (
@@ -50,8 +53,8 @@ const ProfileUser: React.FC<any> = ({ avatar, name, login }) => {
         <span>{login}</span>
       </div>
     </>
-  )
-}
+  );
+};
 
 const Followers: React.FC<any> = ({ followers, following }) => {
   return (
@@ -70,8 +73,8 @@ const Followers: React.FC<any> = ({ followers, following }) => {
         <strong>13</strong>
       </div>
     </>
-  )
-}
+  );
+};
 
 const Links: React.FC<any> = ({ tw_username, blog, company, location }) => {
   return (
@@ -105,7 +108,7 @@ const Links: React.FC<any> = ({ tw_username, blog, company, location }) => {
         </div>
       )}
     </>
-  )
-}
+  );
+};
 
-export default UserProfile
+export default UserProfile;

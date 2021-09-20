@@ -15,6 +15,7 @@ import UserProfile from './components/user-profile/user-profile';
 import { IUserGithub } from './interfaces/user.interface';
 import { IRepositories } from './interfaces/repositories.interface';
 import Footer from './components/footer/footer';
+import NotFound from './components/404/404';
 type stateType = {
   repos: IRepositories[];
   repos_searched: IRepositories[];
@@ -74,6 +75,7 @@ export const Main: FunctionComponent = () => {
       return data;
     } catch (e) {
       console.log(e);
+      throw new Error('error to connect api');
     }
   }
   /*
@@ -91,13 +93,20 @@ export const Main: FunctionComponent = () => {
   useEffect(() => {
     Promise.all([
       fetchAPI(`/users/${username}`)
-        .then(setUSer)
-        .catch((e) => console.error(e)),
+        .then((user) => setUSer(user))
+        .catch((e) => console.log(e)),
       fetchAPI(`/users/${username}/repos?page=${page}`)
         .then((repo) => setSate({ ...state, repos: repo }))
-        .catch((e) => console.error(e)),
+        .catch((e) => console.log(e)),
     ]);
   }, [username]);
+
+  console.log(state);
+  console.log(user);
+
+  if (!user.name) {
+    return <NotFound />;
+  }
 
   return (
     <Layout>
