@@ -8,9 +8,6 @@ import { IUserGithub } from '../../interfaces/user.interface';
 import './user-profile.css';
 
 const UserProfile: React.FC<{ user: IUserGithub }> = ({ user }) => {
-  if (!user) {
-    console.log(user);
-  }
   return (
     <aside className="profile">
       <div className="user">

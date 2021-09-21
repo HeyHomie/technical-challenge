@@ -16,6 +16,7 @@ import { IUserGithub } from './interfaces/user.interface';
 import { IRepositories } from './interfaces/repositories.interface';
 import Footer from './components/footer/footer';
 import NotFound from './components/404/404';
+import Loading from './components/loading/loading';
 type stateType = {
   repos: IRepositories[];
   repos_searched: IRepositories[];
@@ -59,7 +60,8 @@ export const Main: FunctionComponent = () => {
 
   const { username } = useParams<{ username: string }>();
   const [user, setUSer] = useState<IUserGithub>(initialState);
-  const [page, setPage] = useState<number>(1);
+  const [isLoadingPage, setLoadingPage] = useState<boolean>(true);
+
   const [state, setSate] = useState<stateType>({
     repos: [],
     repos_searched: [],
@@ -92,21 +94,35 @@ export const Main: FunctionComponent = () => {
 
   useEffect(() => {
     Promise.all([
-      fetchAPI(`/users/${username}`)
-        .then((user) => setUSer(user))
-        .catch((e) => console.log(e)),
-      fetchAPI(`/users/${username}/repos?page=${page}`)
-        .then((repo) => setSate({ ...state, repos: repo }))
-        .catch((e) => console.log(e)),
-    ]);
+      fetchAPI(`/users/${username}`),
+      fetchAPI(`/users/${username}/repos`),
+    ])
+      .then(([user, repos]) => {
+        /*
+          evaluate if response to api not contain properties to use
+          go to user  404  page
+        */
+        if (!user.name && !Array.isArray(repos)) {
+          setLoadingPage(false);
+          return;
+        }
+        setLoadingPage(false);
+        setUSer(user);
+        setSate({
+          ...state,
+          repos,
+        });
+      })
+      .catch((e) => console.log(e));
   }, [username]);
 
-  console.log(state);
-  console.log(user);
-
-  if (!user.name) {
-    return <NotFound />;
-  }
+  /*
+    evaluates if application has finished loading
+    and  state contain correct values render app
+    otherwise go to 404 page
+  */
+  if (isLoadingPage) return <Loading />;
+  if (!user.name && state.repos.length <= 0) return <NotFound />;
 
   return (
     <Layout>
