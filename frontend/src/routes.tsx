@@ -74,7 +74,10 @@ export const Main: FunctionComponent = () => {
     try {
       const response = await fetch(`${baseUrl}${endPoint}`);
       const data = await response.json();
-      return data;
+      return {
+        data,
+        status: response.status,
+      };
     } catch (e) {
       console.log(e);
       throw new Error('error to connect api');
@@ -99,18 +102,17 @@ export const Main: FunctionComponent = () => {
     ])
       .then(([user, repos]) => {
         /*
-          evaluate if response to api not contain properties to use
-          go to user  404  page
+          evaluate to promise response es equal to 200 status code
         */
-        if (!user.name && !Array.isArray(repos)) {
+        if (user.status !== 200 && repos.status !== 200) {
           setLoadingPage(false);
           return;
         }
         setLoadingPage(false);
-        setUSer(user);
+        setUSer(user.data);
         setSate({
           ...state,
-          repos,
+          repos: repos.data,
         });
       })
       .catch((e) => console.log(e));
