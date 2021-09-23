@@ -5,7 +5,7 @@ import {
   Switch,
   Redirect
 } from 'react-router-dom'
-import Main from './Main'
+import Profile from './components/views/Profile/Profile'
 
 import './App.css'
 
@@ -13,7 +13,7 @@ const App: React.FC = () => {
   return (
     <Router>
       <Switch>
-        <Route exact path='/:username' component={Main} />
+        <Route exact path='/:username' component={Profile} />
         <Route path='*'>
           <Redirect to='/yknx4' />
         </Route>
