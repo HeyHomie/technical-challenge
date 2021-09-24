@@ -57,6 +57,7 @@ gem 'faraday_middleware', '~> 1.0'
 
 # Pagination
 # gem 'pagy', '~> 3.11'
+gem 'kaminari', '~> 0.17.0'
 
 # Env Variables
 gem 'figaro', '~> 1.2'
