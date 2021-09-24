@@ -115,6 +115,9 @@ GEM
     i18n (1.8.10)
       concurrent-ruby (~> 1.0)
     jaro_winkler (1.5.4)
+    kaminari (0.17.0)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
     kramdown (2.3.1)
       rexml
     kramdown-parser-gfm (1.1.0)
@@ -139,6 +142,8 @@ GEM
     msgpack (1.4.2)
     multipart-post (2.1.1)
     nio4r (2.5.8)
+    nokogiri (1.12.4-x86_64-darwin)
+      racc (~> 1.4)
     nokogiri (1.12.4-x86_64-linux)
       racc (~> 1.4)
     oj (3.13.3)
@@ -275,6 +280,7 @@ GEM
     zeitwerk (2.4.2)
 
 PLATFORMS
+  x86_64-darwin-20
   x86_64-linux
 
 DEPENDENCIES
@@ -287,6 +293,7 @@ DEPENDENCIES
   faraday (~> 1.0)
   faraday_middleware (~> 1.0)
   figaro (~> 1.2)
+  kaminari (~> 0.17.0)
   listen (~> 3.6)
   lograge (~> 0.11)
   oj (~> 3.13)
