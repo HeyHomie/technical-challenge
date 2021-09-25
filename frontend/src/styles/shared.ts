@@ -7,7 +7,7 @@ export const Wrapper = styled.div`
 
   @media ${device.extraLarge} {
     max-width: 1280px;
-    border: 2px solid red;
+    /* border: 2px solid red; */
     padding: 0 16px;
   }
 `
