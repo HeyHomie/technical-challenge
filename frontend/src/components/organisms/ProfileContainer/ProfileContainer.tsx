@@ -1,11 +1,13 @@
 import React from 'react'
 import { useParams } from 'react-router'
+import RepositoryCard from '../../molecules/RepositoryCard/RepositoryCard'
+import UserInfo from '../../molecules/UserInfo/UserInfo'
+// import { User } from '../../../api/models'
+
 import { Profile } from './styles'
 import { Wrapper } from '../../../styles/shared'
-import RepositoryCard from '../../molecules/RepositoryCard/RepositoryCard'
 
 const ProfileContainer: React.FC = () => {
-  console.log('ProfileContainer')
   const { username } = useParams<{ username: string }>()
   const [user, setUser] = React.useState<any>({})
   const [repos, setRepos] = React.useState<any[]>([])
@@ -37,43 +39,19 @@ const ProfileContainer: React.FC = () => {
         })
     })
 
-    console.log({ userPromise })
-    userPromise
-      .then((data) => {
-        console.log({ data })
+    Promise.all([userPromise, reposPromise])
+      .then(() => {
+        console.log('All promises resolved!')
       })
       .catch((err) => {
-        console.log({ err })
+        console.log(err)
       })
-
-    reposPromise
-      .then((data) => {
-        console.log({ data })
-      })
-      .catch((err) => {
-        console.log({ err })
-      })
-
-    console.log('use effect')
   }, [username])
 
   return (
     <Wrapper>
       <Profile className='ProfileContainer'>
-        <div className='UserInfo'>
-          <img src={user?.avatar_url} alt={user?.name} />
-          <h3>{user?.name}</h3>
-          <p>{user?.login}</p>
-          <button>Follow</button>
-          <p>Bio: {user?.bio}</p>
-          <p>Followers: {user?.followers}</p>
-          <p>Following: {user?.following}</p>
-          <p>stars</p>
-          <p>Company: {user?.company}</p>
-          <p>Location: {user?.location}</p>
-          <p>Blog: {user?.blog}</p>
-          <p>Highlights</p>
-        </div>
+        <UserInfo user={user} />
         <div className='Repos'>
           <h1>Repository list</h1>
           {repos?.length > 0 &&
