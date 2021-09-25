@@ -5,9 +5,10 @@ module Api
     class RepositoriesController < ApplicationController
 
       def index
-        if User.find_by(id: params[:user_id])
-          repositories = Repository.where(user_id: params[:user_id])
-          paginated_repos = paginate('repositories', repositories, params[:page])
+        Repository.reindex
+        if User.find_by(id: search_params[:user_id])
+          repositories = search_repos
+          paginated_repos = paginate('repositories', repositories, search_params[:page])
           render json: paginated_repos
         else
           render json: { error: 'User not found' }, status: :not_found
@@ -16,14 +17,14 @@ module Api
 
       def create
         conn = create_faraday_connection
-        user = User.find_by(id: params[:user_id])
+        user = User.find_by(id: user_params)
 
         if user.present?
           repos = conn.get(
             "https://api.github.com/user/repos?user=#{user[:login]}",
             { per_page: 100, sort: 'updated' }
           ).body
-          db_repos = Repository.where(user_id: params[:user_id]).select(:github_id)
+          db_repos = Repository.where(user_id: user_params).select(:github_id)
 
           repos.each do | repo |
             if db_repos.include?(repo['id'])
@@ -31,7 +32,7 @@ module Api
                 github_id: repo['id'],
                 url: repo['html_url'],
                 name: repo['name'],
-                user_id: params[:user_id],
+                user_id: user_params,
                 fork: repo['fork'],
                 description: repo['description'],
                 language: repo['language'],
@@ -55,6 +56,46 @@ module Api
       def user_params
         params.require(:user_id)
       end
+
+      def search_params
+        params.require(:user_id, :page).permit(:q, :type, :language, :sort)
+      end
+
+      def search_repos
+        # Get sort hash
+        case search_params[:sort]
+        when 'updated'
+          sort = { last_updated: :desc }
+        when 'name'
+          sort = { name: :asc }
+        when 'stars'
+          sort = { stars: :desc }
+        else
+          sort = {_score: :desc}
+        end
+
+        # Create filter hash
+        where = { user_id: search_params[:user_id] }
+        if search_params[:language].present?
+          where[:language] = search_params[:language]
+        elsif search_params[:type].present?
+          if search_params[:type] == 'fork'
+            where[:fork] = true
+          elsif search_params[:type] == 'archived'
+            where[:archived] = true
+          elsif search_params[:type] == 'private'
+            where[:private] = true
+          end
+        end
+
+        Repository.search(
+          search_params[:q] ? search_params[:q] : '*',
+          fields: [:name, :description],
+          where: where,
+          order: sort
+        )
+      end
+
     end
   end
 end
