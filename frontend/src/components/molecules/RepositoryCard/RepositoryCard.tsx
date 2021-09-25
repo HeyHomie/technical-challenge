@@ -2,6 +2,7 @@ import React from 'react'
 import { AiOutlineStar } from 'react-icons/ai'
 import { BiGitRepoForked } from 'react-icons/bi'
 import { FaBalanceScale } from 'react-icons/fa'
+import { Repository } from '../../../api/models'
 
 import {
   RepositoryCardContainer,
@@ -12,50 +13,36 @@ import {
 } from './styles'
 
 interface RepositoryCardProps {
-  description: string
-  forksCount: number
-  language: string
-  license: string
-  name: string
-  pushedAt: string
-  stargazersCount: number
+  repository: Repository
 }
 
-const RepositoryCard: React.FC<RepositoryCardProps> = ({
-  description,
-  forksCount,
-  language,
-  name,
-  pushedAt,
-  license,
-  stargazersCount
-}) => {
+const RepositoryCard: React.FC<RepositoryCardProps> = ({ repository }) => {
   return (
     <RepositoryCardContainer>
-      <SectionOne className='section-one'>{name}</SectionOne>
-      <SectionTwo className='section-two'>{description}</SectionTwo>
+      <SectionOne className='section-one'>{repository?.name}</SectionOne>
+      <SectionTwo className='section-two'>{repository?.description}</SectionTwo>
       <SectionThree className='section-three'>
-        {language?.length > 0 && (
+        {repository?.language?.length > 0 && (
           <DescAndIcon className='language'>
-            <div className='color' /> {language}
+            <div className='color' /> {repository?.language}
           </DescAndIcon>
         )}
-        {stargazersCount > 0 && (
+        {repository?.stargazers_count > 0 && (
           <DescAndIcon>
-            <AiOutlineStar /> {stargazersCount}
+            <AiOutlineStar /> {repository?.stargazers_count}
           </DescAndIcon>
         )}
-        {forksCount > 0 && (
+        {repository?.forks_count > 0 && (
           <DescAndIcon>
-            <BiGitRepoForked /> {forksCount}
+            <BiGitRepoForked /> {repository?.forks_count}
           </DescAndIcon>
         )}
-        {license?.length > 0 && (
+        {repository?.license?.length > 0 && (
           <DescAndIcon className='license'>
-            <FaBalanceScale /> {license}
+            <FaBalanceScale /> {repository?.license}
           </DescAndIcon>
         )}
-        <span>Updated {pushedAt} ago</span>
+        <span>Updated {repository?.pushed_at} ago</span>
       </SectionThree>
     </RepositoryCardContainer>
   )

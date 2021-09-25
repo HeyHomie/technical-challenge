@@ -8,7 +8,6 @@ export const UserInfoContainer = styled.div`
   justify-content: center;
   width: 100%;
   height: min-content;
-  border: 2px solid red;
   color: ${color.grey5};
 
   > .name {
@@ -28,7 +27,6 @@ export const UserPhoto = styled.img`
   width: 270px;
   height: 270px;
   border-radius: 50%;
-  border: 2px solid red;
 `
 
 export const Button = styled.a`
