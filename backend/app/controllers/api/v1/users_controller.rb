@@ -12,13 +12,12 @@ module Api
           f.response :json # decode response bodies as JSON
         end
         user = conn.get("https://api.github.com/user?user=#{user_params}").body
-        repos = conn.get("https://api.github.com/user/repos?user=#{user_params}", { per_page: 100 }).body
         db_user = User.all.find { |u| u.github_id == user['id'] }
         if db_user.nil?
           db_user = User.create({ github_id: user['id'], login: user['login'], url: user['html_url'], name: user['name'],
-                                  email: user['email'], avatar_url: user['avatar_url'], repositories: repos })
+                                  email: user['email'], avatar_url: user['avatar_url']})
         end
-        render json: db_user.as_json.except('repositories')
+        render json: db_user.as_json
       end
 
       private
