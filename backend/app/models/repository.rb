@@ -2,4 +2,5 @@
 
 class Repository < ApplicationRecord
   belongs_to :user
+  searchkick
 end
