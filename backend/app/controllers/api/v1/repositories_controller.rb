@@ -10,48 +10,43 @@ module Api
           paginated_repos = paginate('repositories', repositories, params[:page])
           render json: paginated_repos
         else
-          render json: { error: 'User not found' }, status: 404
+          render json: { error: 'User not found' }, status: :not_found
         end
       end
 
-      # TODO: Prevent duplicate repos
       def create
-        conn = Faraday.new do |f|
-          f.request :authorization, 'Bearer', Figaro.env.GITHUB_TOKEN
-          f.request :json # encode req bodies as JSON
-          f.request :retry # retry transient failures
-          f.response :follow_redirects # follow redirects
-          f.response :json # decode response bodies as JSON
-        end
-
+        conn = create_faraday_connection
         user = User.find_by(id: params[:user_id])
-        if user.present?
 
+        if user.present?
           repos = conn.get(
             "https://api.github.com/user/repos?user=#{user[:login]}",
             { per_page: 100, sort: 'updated' }
           ).body
+          db_repos = Repository.where(user_id: params[:user_id]).select(:github_id)
 
           repos.each do | repo |
-            Repository.create(
-              github_id: repo['id'],
-              url: repo['html_url'],
-              name: repo['name'],
-              user_id: params[:user_id],
-              fork: repo['fork'],
-              description: repo['description'],
-              language: repo['language'],
-              stars: repo['stargazers_count'],
-              forks: repo['forks_count'],
-              license: repo['license'] ? repo['license']['name'] : nil,
-              last_updated: repo['updated_at'],
-              archived: repo['archived'],
-              private: repo['private']
-            )
+            if db_repos.include?(repo['id'])
+              Repository.create(
+                github_id: repo['id'],
+                url: repo['html_url'],
+                name: repo['name'],
+                user_id: params[:user_id],
+                fork: repo['fork'],
+                description: repo['description'],
+                language: repo['language'],
+                stars: repo['stargazers_count'],
+                forks: repo['forks_count'],
+                license: repo['license'] ? repo['license']['name'] : nil,
+                last_updated: repo['updated_at'],
+                archived: repo['archived'],
+                private: repo['private']
+              )
+            end
           end
           render json: { created: 'Repos for user created'}, status: :created
         else
-          render json: { error: 'User not found' }, status: 404
+          render json: { error: 'User not found' }, status: :not_found
         end
       end
 
