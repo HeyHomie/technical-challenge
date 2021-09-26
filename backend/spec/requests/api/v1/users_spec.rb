@@ -12,12 +12,20 @@ RSpec.describe 'Api::V1::Users', type: :request do
       expect(body['login']).to eq('yknx4')
     end
 
-    xit 'get profile for HeyHomie' do
+    it 'get profile for HeyHomie' do
       get api_v1_users_path, params: { username: 'HeyHomie' }
       body = JSON.parse(response.body)
       expect(response).to have_http_status(200)
       expect(body).to have_key('login')
       expect(body['login']).to eq('HeyHomie')
+    end
+
+    it 'get profile for LinkSake' do
+      get api_v1_users_path, params: { username: 'LinkSake' }
+      body = JSON.parse(response.body)
+      expect(response).to have_http_status(200)
+      expect(body).to have_key('login')
+      expect(body['login']).to eq('LinkSake')
     end
   end
 end
