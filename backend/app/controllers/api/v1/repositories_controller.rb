@@ -5,7 +5,6 @@ module Api
     class RepositoriesController < ApplicationController
 
       def index
-        Repository.reindex
         if User.find_by(id: search_params[:user_id])
           repositories = search_repos
           paginated_repos = paginate('repositories', repositories, search_params[:page])
