@@ -1,6 +1,7 @@
 import React from 'react'
 import RepositoryCard from '../../molecules/RepositoryCard/RepositoryCard'
 import UserInfo from '../../molecules/UserInfo/UserInfo'
+import Filters from '../../molecules/Filters/Filters'
 import { Repository, User } from '../../../api/models'
 
 import { Profile } from './styles'
@@ -49,20 +50,7 @@ const ProfileContainer: React.FC<ProfileContainerProps> = ({
               <li>Packages</li>
             </ul>
           </div>
-          <div>
-            <div>
-              <p>Search bar</p>
-              <input
-                type='text'
-                placeholder='Find a repository'
-                onChange={handleOnChange}
-              />
-            </div>
-            <span>Type</span>
-            <span>Language</span>
-            <span>Sort</span>
-            <span>New</span>
-          </div>
+          <Filters onChange={handleOnChange} />
           {!searched
             ? repositories?.length > 0 &&
               repositories.map((repo) => (
