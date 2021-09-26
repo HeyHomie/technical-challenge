@@ -20,7 +20,7 @@ module Api
 
       def get_user_from_github
         conn = create_faraday_connection
-        response = conn.get("https://api.github.com/user?user=#{user_params}")
+        response = conn.get("https://api.github.com/users/#{user_params}")
 
         if response.status == 200
           gh_user = User.create({ 
