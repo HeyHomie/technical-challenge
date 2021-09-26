@@ -4,20 +4,37 @@ module Api
   module V1
     class UsersController < ApplicationController
       def index
-        conn = create_faraday_connection
-        user = conn.get("https://api.github.com/user?user=#{user_params}").body
-        db_user = User.all.find { |u| u.github_id == user['id'] }
-        if db_user.nil?
-          db_user = User.create({ github_id: user['id'], login: user['login'], url: user['html_url'], name: user['name'],
-                                  email: user['email'], avatar_url: user['avatar_url']})
+        user = User.find_by(login: user_params)
+        if user.present?
+          render json: user, status: :ok
+        else
+          get_user_from_github
         end
-        render json: db_user.as_json
       end
 
       private
 
       def user_params
         params.require(:username)
+      end
+
+      def get_user_from_github
+        conn = create_faraday_connection
+        response = conn.get("https://api.github.com/user?user=#{user_params}")
+
+        if response.status == 200
+          gh_user = User.create({ 
+            github_id: response.body['id'], 
+            login: response.body['login'], 
+            url: response.body['html_url'], 
+            name: response.body['name'],
+            email: response.body['email'], 
+            avatar_url: response.body['avatar_url']
+          })
+          render json: gh_user, status: :ok
+        else
+          render json: { error: "Error (#{response.status}) trying to get user data from GitHub: #{response.body['message']} " }, status: response.status
+        end
       end
     end
   end
