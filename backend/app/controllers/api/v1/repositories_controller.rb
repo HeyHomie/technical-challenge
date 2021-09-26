@@ -21,7 +21,7 @@ module Api
 
         if user.present?
           response = conn.get(
-            "https://api.github.com/user/repos?user=#{user[:login]}",
+            "https://api.github.com/users/#{user[:login]}/repos",
             { per_page: 100, sort: 'updated' }
           )
 
@@ -44,7 +44,7 @@ module Api
       end
 
       def search_params
-        params.require(:user_id, :page).permit(:q, :type, :language, :sort)
+        params.permit(:user_id, :page, :q, :type, :language, :sort)
       end
 
       def search_repos
@@ -86,8 +86,8 @@ module Api
         db_repos = Repository.where(user_id: user_id).select(:github_id)
 
         repos.each do | repo |
-          if db_repos.include?(repo['id'])
-            Repository.create(
+          if !db_repos.include?(repo['id'])
+            Repository.create({
               github_id: repo['id'],
               url: repo['html_url'],
               name: repo['name'],
@@ -101,7 +101,7 @@ module Api
               last_updated: repo['updated_at'],
               archived: repo['archived'],
               private: repo['private']
-            )
+            })
           end
         end
       end
