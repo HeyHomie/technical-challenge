@@ -20,32 +20,18 @@ module Api
         user = User.find_by(id: user_params)
 
         if user.present?
-          repos = conn.get(
+          response = conn.get(
             "https://api.github.com/user/repos?user=#{user[:login]}",
             { per_page: 100, sort: 'updated' }
-          ).body
-          db_repos = Repository.where(user_id: user_params).select(:github_id)
+          )
 
-          repos.each do | repo |
-            if db_repos.include?(repo['id'])
-              Repository.create(
-                github_id: repo['id'],
-                url: repo['html_url'],
-                name: repo['name'],
-                user_id: user_params,
-                fork: repo['fork'],
-                description: repo['description'],
-                language: repo['language'],
-                stars: repo['stargazers_count'],
-                forks: repo['forks_count'],
-                license: repo['license'] ? repo['license']['name'] : nil,
-                last_updated: repo['updated_at'],
-                archived: repo['archived'],
-                private: repo['private']
-              )
-            end
+          if response.status == 200
+            create_repositories(response.body, user[:id])
+            render json: { created: 'Repos for user created'}, status: :created
+          else
+            render json: { error: "Error (#{response.status}) trying to get repository data from GitHub: #{response.body['message']} " }, status: response.status
           end
-          render json: { created: 'Repos for user created'}, status: :created
+
         else
           render json: { error: 'User not found' }, status: :not_found
         end
@@ -96,6 +82,29 @@ module Api
         )
       end
 
+      def create_repositories(repos,user_id)
+        db_repos = Repository.where(user_id: user_id).select(:github_id)
+
+        repos.each do | repo |
+          if db_repos.include?(repo['id'])
+            Repository.create(
+              github_id: repo['id'],
+              url: repo['html_url'],
+              name: repo['name'],
+              user_id: user_id,
+              fork: repo['fork'],
+              description: repo['description'],
+              language: repo['language'],
+              stars: repo['stargazers_count'],
+              forks: repo['forks_count'],
+              license: repo['license'] ? repo['license']['name'] : nil,
+              last_updated: repo['updated_at'],
+              archived: repo['archived'],
+              private: repo['private']
+            )
+          end
+        end
+      end
     end
   end
 end
