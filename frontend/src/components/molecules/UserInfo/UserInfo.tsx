@@ -25,7 +25,9 @@ const UserInfo: React.FC<UserInfoProps> = ({ user }) => {
       <UserPhoto src={user?.avatar_url} alt={user?.name} />
       <h2 className='name'>{user?.name}</h2>
       <span className='user-name'>{user?.login}</span>
-      <Button href='https://github.com/login'>Follow</Button>
+      <Button href='https://github.com/login' className='btn-edit'>
+        Edit
+      </Button>
       <p className='biography'>{user?.bio}</p>
       <SectionOne>
         <IconDescription className='followers'>

@@ -5,7 +5,7 @@ import { TextFieldContainer } from './styles'
 interface TextFieldProps {
   placeholder: string
   type: string
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
 }
 
 const TextField: React.FC<TextFieldProps> = ({

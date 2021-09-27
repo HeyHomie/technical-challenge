@@ -1,35 +1,74 @@
 import styled from 'styled-components'
-import { color, fontWeight } from '../../../styles/index'
+import { color, device, fontWeight } from '../../../styles/index'
 
 export const UserInfoContainer = styled.div`
-  align-items: flex-start;
-  color: ${color.grey5};
-  display: flex;
-  flex-direction: column;
-  height: min-content;
-  justify-content: center;
-  width: 100%;
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  grid-template-rows: auto;
+  column-gap: 16px;
+  grid-template-areas:
+    'user-photo name'
+    'user-photo user-name'
+    'btn btn'
+    'bio bio'
+    'section-one section-one'
+    'section-two section-two';
+
+  @media ${device.medium} {
+    align-items: flex-start;
+    color: ${color.grey5};
+    display: flex;
+    flex-direction: column;
+    height: min-content;
+    justify-content: center;
+    width: 100%;
+  }
 
   > .name {
     margin: 0;
     padding-top: 16px;
+    grid-area: name;
+    align-self: flex-end;
+
+    @media ${device.medium} {
+      align-self: flex-start;
+    }
   }
 
   > .user-name {
+    grid-area: user-name;
     color: ${color.grey};
     font-size: 20px;
     font-weight: ${fontWeight.light};
     padding-bottom: 16px;
   }
+
+  > .biography {
+    grid-area: bio;
+    margin-top: 16px;
+
+    @media ${device.medium} {
+      margin-top: 0;
+    }
+  }
 `
 
 export const UserPhoto = styled.img`
   border-radius: 50%;
-  height: 270px;
-  width: 270px;
+  grid-area: user-photo;
+  height: auto;
+  max-width: 100%;
+  margin-bottom: 16px;
+
+  @media ${device.medium} {
+    height: 270px;
+    width: 270px;
+    margin-bottom: 0;
+  }
 `
 
 export const Button = styled.a`
+  grid-area: btn;
   align-items: center;
   background-color: ${color.grey3};
   border-radius: 6px;
@@ -44,6 +83,7 @@ export const Button = styled.a`
 `
 
 export const SectionOne = styled.div`
+  grid-area: section-one;
   align-items: center;
   color: ${color.grey2};
   display: flex;
@@ -90,6 +130,7 @@ export const IconDescription = styled.div`
 `
 
 export const SectionTwo = styled.div`
+  grid-area: section-two;
   border-bottom: 1px solid ${color.grey3};
   padding-bottom: 16px;
   width: 100%;

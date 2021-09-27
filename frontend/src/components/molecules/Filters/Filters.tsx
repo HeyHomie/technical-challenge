@@ -16,18 +16,22 @@ const Filters: React.FC<FiltersProps> = ({ onChange }) => {
         placeholder='Find a repository'
         onChange={onChange}
       />
-      <Button>
-        Type <AiFillCaretDown size={12} />
-      </Button>
-      <Button>
-        Language <AiFillCaretDown size={12} />
-      </Button>
-      <Button>
-        Sort <AiFillCaretDown size={12} />
-      </Button>
-      <SuccessButton>
-        <BiBookBookmark /> New
-      </SuccessButton>
+      <div className='dropdown-container'>
+        <Button>
+          Type <AiFillCaretDown size={12} />
+        </Button>
+        <Button>
+          Language <AiFillCaretDown size={12} />
+        </Button>
+        <Button>
+          Sort <AiFillCaretDown size={12} />
+        </Button>
+      </div>
+      <div className='new-repository'>
+        <SuccessButton>
+          <BiBookBookmark /> New
+        </SuccessButton>
+      </div>
     </FiltersContainer>
   )
 }

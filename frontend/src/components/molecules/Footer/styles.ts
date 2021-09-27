@@ -1,19 +1,26 @@
 import styled from 'styled-components'
-import { color } from '../../../styles/color'
+import { color, device } from '../../../styles'
 
 export const FooterContainer = styled.footer`
   padding: 40px 0;
   border-top: 1px solid ${color.grey3};
 
   > ul {
-    margin: 0;
-    display: flex;
-    padding: 0;
-    justify-content: space-between;
     align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+
+    @media ${device.medium} {
+      justify-content: space-between;
+    }
+
     > li {
-      list-style: none;
       font-size: 12px;
+      list-style: none;
+      margin: 3px;
 
       &.copyright {
         color: ${color.grey};
@@ -30,8 +37,13 @@ export const FooterContainer = styled.footer`
         }
 
         &.logo {
-          margin: 0 24px;
-          color: ${color.grey1};
+          display: none;
+
+          @media ${device.medium} {
+            color: ${color.grey1};
+            display: block;
+            margin: 0 24px;
+          }
 
           &:hover {
             color: ${color.grey2};

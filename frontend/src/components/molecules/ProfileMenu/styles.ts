@@ -5,7 +5,7 @@ export const ProfileMenuContainer = styled.div`
   align-items: center;
   display: flex;
   flex-direction: row;
-  height: 47px;
+  flex-wrap: wrap;
   justify-content: flex-start;
 `
 export const Item = styled.div`

@@ -1,7 +1,8 @@
 import styled from 'styled-components'
-import { color } from '../../../styles/'
+import { color, device } from '../../../styles'
 
 export const TextFieldContainer = styled.input`
+  grid-area: text-field;
   background-color: transparent;
   border-radius: 6px;
   border: 1px solid ${color.grey6};
@@ -11,7 +12,15 @@ export const TextFieldContainer = styled.input`
   height: inherit;
   margin-right: 16px;
   padding: 5px 12px;
-  width: 489px;
+  width: 100%;
+
+  @media ${device.medium} {
+    width: 100%;
+  }
+
+  @media ${device.extraLarge} {
+    width: 489px;
+  }
 
   &:focus {
     border: 1px solid ${color.blue};

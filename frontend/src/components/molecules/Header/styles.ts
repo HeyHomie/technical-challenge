@@ -1,17 +1,23 @@
 import styled from 'styled-components'
-import { color } from '../../../styles'
+import { color, device } from '../../../styles'
 
 export const HeaderContainer = styled.header`
-  font-size: 16px;
-  padding: 8px 0;
-  height: 72px;
-  box-sizing: border-box;
-  background-color: ${color.grey4};
-  > .wrapper {
-    height: 100%;
+  display: none;
+
+  @media ${device.large} {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    font-size: 16px;
+    padding: 8px 0;
+    height: 72px;
+    box-sizing: border-box;
+    background-color: ${color.grey4};
+    > .wrapper {
+      height: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      margin-top: 0;
+    }
   }
 `
 
@@ -24,6 +30,11 @@ export const Menu = styled.ul`
   list-style: none;
   margin: 0;
   padding: 0;
+  display: none;
+
+  @media ${device.large} {
+    display: flex;
+  }
 
   > li {
     margin-right: 16px;
@@ -41,9 +52,14 @@ export const SearchAndLogin = styled.div`
   justify-content: space-between;
   align-items: center;
   height: 100%;
+  width: 100%;
 
   & > * {
     margin-right: 16px;
+  }
+
+  @media ${device.large} {
+    width: auto;
   }
 `
 
@@ -66,4 +82,16 @@ export const HiperlinkOutline = styled(Hiperlink)`
   border-radius: 4px;
   border: 1px solid rgba(110, 118, 129, 0.4);
   padding: 4px 8px;
+`
+export const MobileHeader = styled.div`
+  align-items: center;
+  background-color: ${color.grey4};
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 16px;
+
+  @media ${device.large} {
+    display: none;
+  }
 `
