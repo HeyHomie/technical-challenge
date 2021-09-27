@@ -8,11 +8,18 @@ export const RepositoryCardContainer = styled.div`
 `
 
 export const SectionOne = styled.h3`
-  color: ${color.blue};
   font-size: 20px;
   font-weight: ${fontWeight.semibold};
   height: 30px;
   margin: 0 auto 4px;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  > a {
+    color: ${color.blue};
+  }
 `
 
 export const SectionTwo = styled.div`

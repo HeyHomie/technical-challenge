@@ -3,6 +3,7 @@ import { AiOutlineStar } from 'react-icons/ai'
 import { BiGitRepoForked } from 'react-icons/bi'
 import { FaBalanceScale } from 'react-icons/fa'
 import { Repository } from '../../../api/models'
+import { calculateDaysBetween, calculateDate } from '../../../globals/utils'
 
 import {
   DescAndIcon,
@@ -11,15 +12,25 @@ import {
   SectionThree,
   SectionTwo
 } from './styles'
-
 interface RepositoryCardProps {
   repository: Repository
 }
 
 const RepositoryCard: React.FC<RepositoryCardProps> = ({ repository }) => {
+  const lastUpdated =
+    calculateDaysBetween(repository?.pushed_at) === 0
+      ? 'today'
+      : calculateDaysBetween(repository?.pushed_at) === -1
+        ? 'yesterday'
+        : `${calculateDate(repository?.pushed_at)}`
+
   return (
     <RepositoryCardContainer>
-      <SectionOne className='section-one'>{repository?.name}</SectionOne>
+      <SectionOne className='section-one'>
+        <a href={repository?.html_url} target='_blank' rel='noreferrer'>
+          {repository?.name}
+        </a>
+      </SectionOne>
       <SectionTwo className='section-two'>{repository?.description}</SectionTwo>
       <SectionThree className='section-three'>
         {repository?.language?.length > 0 && (
@@ -42,7 +53,7 @@ const RepositoryCard: React.FC<RepositoryCardProps> = ({ repository }) => {
             <FaBalanceScale /> {repository?.license}
           </DescAndIcon>
         )}
-        <span>Updated {repository?.pushed_at} ago</span>
+        <span>Updated {lastUpdated}</span>
       </SectionThree>
     </RepositoryCardContainer>
   )
