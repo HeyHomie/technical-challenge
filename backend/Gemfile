@@ -78,6 +78,8 @@ gem 'lograge', '~> 0.11'
 # gem 'jsonapi-serializer', '~> 2.2'
 gem 'oj', '~> 3.13'
 
+gem 'graphql'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   # gem 'bullet', '~> 6.1'
