@@ -5,7 +5,7 @@ import {
   Switch,
   Redirect
 } from 'react-router-dom'
-import Profile from './components/views/Profile/Profile'
+import { Profile } from './components/views'
 
 import './App.css'
 

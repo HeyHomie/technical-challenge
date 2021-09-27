@@ -1,9 +1,19 @@
 import React from 'react'
 import { AiOutlineStar } from 'react-icons/ai'
+import { BiBuildings } from 'react-icons/bi'
 import { FaUsers } from 'react-icons/fa'
+import { FiMapPin } from 'react-icons/fi'
+import { GiBreakingChain } from 'react-icons/gi'
 import { User } from '../../../api/models'
 
-import { UserInfoContainer, UserPhoto, Button } from './styles'
+import {
+  Button,
+  IconDescription,
+  SectionOne,
+  SectionTwo,
+  UserInfoContainer,
+  UserPhoto
+} from './styles'
 
 interface UserInfoProps {
   user: User
@@ -17,19 +27,35 @@ const UserInfo: React.FC<UserInfoProps> = ({ user }) => {
       <span className='user-name'>{user?.login}</span>
       <Button href='https://github.com/login'>Follow</Button>
       <p className='biography'>{user?.bio}</p>
-      <div>
-        <p className='followers'>
-          <FaUsers /> {user?.followers} followers -
-        </p>
-        <p>{user?.following} following - </p>
-        <p>
-          <AiOutlineStar /> stars
-        </p>
-      </div>
-      <p className='company'>Company: {user?.company}</p>
-      <p>Location: {user?.location}</p>
-      <p>Blog: {user?.blog}</p>
-      <p>Highlights</p>
+      <SectionOne>
+        <IconDescription className='followers'>
+          <FaUsers /> <span>{user?.followers}</span> followers -
+        </IconDescription>
+        <div>
+          <span>{user?.following}</span> following -
+        </div>
+        <IconDescription>
+          <AiOutlineStar /> <span>stars</span>
+        </IconDescription>
+      </SectionOne>
+      <SectionTwo>
+        {user?.company !== null && user?.company !== '' && (
+          <IconDescription className='company'>
+            <BiBuildings /> <span>{user?.company}</span>
+          </IconDescription>
+        )}
+        {user?.location !== null && user?.location !== '' && (
+          <IconDescription>
+            <FiMapPin /> {user?.location}
+          </IconDescription>
+        )}
+        {user?.blog !== null && user?.blog !== '' && (
+          <IconDescription>
+            <GiBreakingChain />
+            <a href={user?.blog}>{user?.blog}</a>
+          </IconDescription>
+        )}
+      </SectionTwo>
     </UserInfoContainer>
   )
 }

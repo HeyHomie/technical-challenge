@@ -42,6 +42,7 @@ export const SuccessButton = styled(Button)`
   background-color: ${color.green};
   border-color: ${color.green};
   color: ${color.white};
+  margin-left: 16px;
 
   &:hover {
     background-color: ${color.green1};

@@ -1,10 +1,9 @@
 import React from 'react'
-import TextField from '../../atoms/TextField/TextField'
+import { TextField } from '../../atoms'
 import { AiFillCaretDown } from 'react-icons/ai'
 import { BiBookBookmark } from 'react-icons/bi'
 
 import { FiltersContainer, Button, SuccessButton } from './styles'
-
 interface FiltersProps {
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
 }

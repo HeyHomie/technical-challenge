@@ -7,12 +7,12 @@ export const RepositoryCardContainer = styled.div`
   padding: 24px 0;
 `
 
-export const SectionOne = styled.div`
+export const SectionOne = styled.h3`
   color: ${color.blue};
   font-size: 20px;
   font-weight: ${fontWeight.semibold};
-  margin-bottom: 4px;
-  margin: 0;
+  height: 30px;
+  margin: 0 auto 4px;
 `
 
 export const SectionTwo = styled.div`
@@ -22,6 +22,7 @@ export const SectionThree = styled.div`
   align-items: center;
   display: flex;
   font-size: 12px;
+  padding-top: 5px;
 `
 
 export const DescAndIcon = styled.div`
@@ -37,7 +38,7 @@ export const DescAndIcon = styled.div`
   > .color {
     align-self: center;
     content: '';
-    background-color: red;
+    background-color: yellow;
     border-radius: 50%;
     height: 12px;
     margin-right: 7px;

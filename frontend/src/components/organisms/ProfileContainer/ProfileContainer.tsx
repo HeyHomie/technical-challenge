@@ -1,12 +1,9 @@
 import React from 'react'
-import RepositoryCard from '../../molecules/RepositoryCard/RepositoryCard'
-import UserInfo from '../../molecules/UserInfo/UserInfo'
-import Filters from '../../molecules/Filters/Filters'
+import { Filters, ProfileMenu, RepositoryCard, UserInfo } from '../../molecules'
 import { Repository, User } from '../../../api/models'
 
 import { Profile } from './styles'
 import { Wrapper } from '../../../styles/shared'
-
 interface ProfileContainerProps {
   user: User
   repositories: Repository[]
@@ -42,14 +39,7 @@ const ProfileContainer: React.FC<ProfileContainerProps> = ({
       <Profile className='ProfileContainer'>
         <UserInfo user={user} />
         <div className='Repos'>
-          <div>
-            <ul>
-              <li>Overview</li>
-              <li>Repositories</li>
-              <li>Projects</li>
-              <li>Packages</li>
-            </ul>
-          </div>
+          <ProfileMenu repositories={repositories?.length} />
           <Filters onChange={handleOnChange} />
           {!searched
             ? repositories?.length > 0 &&

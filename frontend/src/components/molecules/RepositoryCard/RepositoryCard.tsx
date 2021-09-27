@@ -5,11 +5,11 @@ import { FaBalanceScale } from 'react-icons/fa'
 import { Repository } from '../../../api/models'
 
 import {
+  DescAndIcon,
   RepositoryCardContainer,
   SectionOne,
-  SectionTwo,
   SectionThree,
-  DescAndIcon
+  SectionTwo
 } from './styles'
 
 interface RepositoryCardProps {

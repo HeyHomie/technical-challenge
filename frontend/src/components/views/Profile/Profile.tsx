@@ -1,8 +1,7 @@
 import React from 'react'
 import { useParams } from 'react-router'
-import Header from '../../molecules/Header/Header'
-import Footer from '../../molecules/Footer/Footer'
-import ProfileContainer from '../../organisms/ProfileContainer/ProfileContainer'
+import { Header, Footer } from '../../molecules'
+import { ProfileContainer } from '../../organisms'
 
 const Profile: React.FC = () => {
   const API_HOST = 'https://api.github.com'
