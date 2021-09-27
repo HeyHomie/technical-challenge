@@ -18,7 +18,7 @@ module Api
           db_user = User.create({ github_id: user['id'], login: user['login'], url: user['html_url'], name: user['name'],
                                   email: user['email'], avatar_url: user['avatar_url'], repositories: repos })
         end
-        render json: db_user.as_json.except('repositories')
+        render json: db_user.as_json
       end
 
       private

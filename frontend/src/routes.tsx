@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useLayoutEffect, useState } from 'react'
 import { FunctionComponent } from 'react'
 import {
   Route,
@@ -11,17 +11,17 @@ import {
 export const Main: FunctionComponent = () => {
   const {username} = useParams<{username: string}>()
   const [User, setUser] = useState<any>({})
-  const [Repos, setRepos] = useState<Array<any>>([])
-  useEffect(() => {
-    Promise.all([fetch(`/api/v1/users?username=${username}`), fetch(`/api/v1/users/${username}/repositories`)]).then(async ([user, repos]) => {
+  useLayoutEffect(() => {
+    fetch(`/api/v1/users?username=${username}`).then(async (user) => {
       setUser(await user.json())
-      setRepos(await repos.json())
     })
   }, [username])
+  if (User.repositories === undefined)  return <div>Loading...</div>
+
   return (
     <>
-    <h1>{User.login}</h1>
-    {Repos.map(r => <h2>{r.name}</h2>)}
+    <h1>{User.name}</h1>
+    {User.repositories.map((repo: any) => <h2>{repo.name}</h2>)}
     </>
   )
 }
