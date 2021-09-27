@@ -1,6 +1,6 @@
 module Types
   class QueryType < Types::BaseObject
-    field :all_repositories, [Types::RepositoryType], null: false
+    field :all_users, [Types::UserType], null: false
 
     def all_users
         User.all
