@@ -9,7 +9,7 @@ module Api
           render json: user, status: :ok
         else
           response = GithubUsersService.new().create_user(user_params)
-          render json: response.message, status: response.status
+          render json: response[:message], status: response[:status]
         end
       end
 

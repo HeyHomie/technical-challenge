@@ -11,11 +11,11 @@ module Api
 
           if repositories.empty?
             response = GithubRepositoriesService.new().create_repositories(user)
-            if response.message.lenght > 0
-              paginated_repos = paginate('repositories', response.message, search_params[:page])
-              render json: paginated_repos, status: response.status
+            if response[:status] == 200
+              paginated_repos = paginate('repositories', response[:message], search_params[:page])
+              render json: paginated_repos, status: response[:status]
             else
-              render json: response.message, status: response.status
+              render json: response[:message], status: response[:status]
             end
           else 
             paginated_repos = paginate('repositories', repositories, search_params[:page])
@@ -28,10 +28,6 @@ module Api
       end
 
       private
-
-      def user_params
-        params.require(:user_id)
-      end
 
       def search_params
         params.permit(:user_id, :page, :q, :type, :language, :sort)
