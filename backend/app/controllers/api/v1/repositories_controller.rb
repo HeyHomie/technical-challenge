@@ -5,7 +5,6 @@ module Api
     class RepositoriesController < ApplicationController
 
       def index
-        Repository.reindex
         user = User.find_by(id: search_params[:user_id])
         if user.present?
           repositories = search_repos
