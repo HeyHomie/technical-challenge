@@ -6,30 +6,21 @@ module Api
 
       def index
         Repository.reindex
-        if User.find_by(id: search_params[:user_id])
-          repositories = search_repos
-          paginated_repos = paginate('repositories', repositories, search_params[:page])
-          render json: paginated_repos
-        else
-          render json: { error: 'User not found' }, status: :not_found
-        end
-      end
-
-      def create
-        conn = create_faraday_connection
-        user = User.find_by(id: user_params)
-
+        user = User.find_by(id: search_params[:user_id])
         if user.present?
-          response = conn.get(
-            "https://api.github.com/users/#{user[:login]}/repos",
-            { per_page: 100, sort: 'updated' }
-          )
+          repositories = search_repos
 
-          if response.status == 200
-            create_repositories(response.body, user[:id])
-            render json: { created: 'Repos for user created'}, status: :created
-          else
-            render json: { error: "Error (#{response.status}) trying to get repository data from GitHub: #{response.body['message']} " }, status: response.status
+          if repositories.empty?
+            response = GithubRepositoriesService.new().create_repositories(user)
+            if response.message.lenght > 0
+              paginated_repos = paginate('repositories', response.message, search_params[:page])
+              render json: paginated_repos, status: response.status
+            else
+              render json: response.message, status: response.status
+            end
+          else 
+            paginated_repos = paginate('repositories', repositories, search_params[:page])
+            render json: paginated_repos, status: :ok
           end
 
         else
@@ -80,30 +71,6 @@ module Api
           where: where,
           order: sort
         )
-      end
-
-      def create_repositories(repos,user_id)
-        db_repos = Repository.where(user_id: user_id).select(:github_id)
-
-        repos.each do | repo |
-          if !db_repos.include?(repo['id'])
-            Repository.create({
-              github_id: repo['id'],
-              url: repo['html_url'],
-              name: repo['name'],
-              user_id: user_id,
-              fork: repo['fork'],
-              description: repo['description'],
-              language: repo['language'],
-              stars: repo['stargazers_count'],
-              forks: repo['forks_count'],
-              license: repo['license'] ? repo['license']['name'] : nil,
-              last_updated: repo['updated_at'],
-              archived: repo['archived'],
-              private: repo['private']
-            })
-          end
-        end
       end
     end
   end
