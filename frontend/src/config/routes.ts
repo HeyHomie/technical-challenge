@@ -8,7 +8,7 @@ const routes: IRoute[] = [
     exact: true
   },
   {
-    path: '/repositories',
+    path: '/:user',
     name: 'Repositories',
     component: Repositories,
     exact: true
