@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class GithubUsersService
   def initialize
     @conn = Faraday.new 'https://api.github.com' do |f|
@@ -13,21 +15,21 @@ class GithubUsersService
     response = @conn.get "/users/#{username}"
     if response.status == 200
       user = User.create({
-        github_id: response.body['id'], 
-        login: response.body['login'], 
-        url: response.body['html_url'], 
-        name: response.body['name'],
-        email: response.body['email'], 
-        avatar_url: response.body['avatar_url']
-      })
-      return {
-        message: user, 
+                           github_id: response.body['id'],
+                           login: response.body['login'],
+                           url: response.body['html_url'],
+                           name: response.body['name'],
+                           email: response.body['email'],
+                           avatar_url: response.body['avatar_url']
+                         })
+      {
+        message: user,
         status: 200
       }
     else
-      return { 
-        message: "Error (#{response.status}) trying to get user data from GitHub: #{response.body['message']} " , 
-        status: response.status  
+      {
+        message: "Error (#{response.status}) trying to get user data from GitHub: #{response.body['message']} ",
+        status: response.status
       }
     end
   end
@@ -36,20 +38,20 @@ class GithubUsersService
     response = @conn.get "/users/#{username}"
     if response.status == 200
       updated_user = User.update(user[:id], {
-        login: response.body['login'], 
-        url: response.body['html_url'], 
-        name: response.body['name'],
-        email: response.body['email'], 
-        avatar_url: response.body['avatar_url']
-      })
-      return {
-        message: updated_user, 
+                                   login: response.body['login'],
+                                   url: response.body['html_url'],
+                                   name: response.body['name'],
+                                   email: response.body['email'],
+                                   avatar_url: response.body['avatar_url']
+                                 })
+      {
+        message: updated_user,
         status: 200
       }
     else
-      return { 
-        message: "Error (#{response.status}) trying to get user data from GitHub: #{response.body['message']} " , 
-        status: response.status  
+      {
+        message: "Error (#{response.status}) trying to get user data from GitHub: #{response.body['message']} ",
+        status: response.status
       }
     end
   end

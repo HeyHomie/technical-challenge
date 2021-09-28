@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 class CreateRepositories < ActiveRecord::Migration[6.1]
   def change
     create_table :repositories do |t|
-      t.integer :github_id  
+      t.integer :github_id
       t.string :url
       t.string :name
       t.references :user, null: false, foreign_key: true
