@@ -20,6 +20,8 @@ Metrics/ParameterLists:
   Enabled: false
 Style/ClassAndModuleChildren:
   Enabled: false
+Metrics/AbcSize:
+  Max: 500
 Metrics/BlockLength:
   Exclude:
     - "config/environments/production.rb"

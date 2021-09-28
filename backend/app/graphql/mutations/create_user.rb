@@ -2,18 +2,24 @@
 
 class Mutations::CreateUser < Mutations::BaseMutation
   argument :login, String, required: true
-  argument :github_id, String, required: true
-  argument :url, String, required: true
-  argument :name, String, required: true
-  argument :email, String, required: true
-  argument :avatar_url, String, required: true
 
   field :user, Types::UserType, null: false
   field :errors, [String], null: false
 
-  def resolve(login:, github_id:, url:, name:, email:, avatar_url:)
-    user = User.new(login: login, github_id: github_id, url: url, name: name, email: email,
-                    avatar_url: avatar_url)
+  def resolve(login:)
+    conn = Faraday.new do |f|
+      f.request :authorization, 'Bearer', Figaro.env.GITHUB_TOKEN
+      f.request :json # encode req bodies as JSON
+      f.request :retry # retry transient failures
+      f.response :follow_redirects # follow redirects
+      f.response :json # decode response bodies as JSON
+    end
+    api_user = conn.get("https://api.github.com/users/#{login}").body
+    db_user = User.all.find { |u| u.github_id == api_user['id'] }
+    if db_user.nil?
+      user = User.new(login: api_user['login'], github_id: api_user['id'], url: api_user['html_url'],
+                      name: api_user['name'], email: api_user['email'], avatar_url: api_user['avatar_url'])
+    end
     if user.save
       {
         user: user,
