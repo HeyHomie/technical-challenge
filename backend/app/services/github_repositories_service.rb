@@ -38,17 +38,19 @@ class GithubRepositoriesService
             })
           end
         end
+        
+        created_repos = Repository.where(user_id: user[:id])
 
-        return { created: 'Repos for user created', status: 200 }
+        return { message: created_repos, status: 200 }
       else
         return { 
-          error: "Error (#{response.status}) trying to get repository data 
+          message: "Error (#{response.status}) trying to get repository data 
           from GitHub: #{response.body['message']} ",
           status: response.status
         }
       end
     else
-      return { error: 'User not found', status: 404 }
+      return { message: 'User not found', status: 404 }
     end
   end
 
@@ -76,16 +78,16 @@ class GithubRepositoriesService
           })
         end
 
-        return { created: 'Repos for user created', status: 200 }
+        return { message: 'Updated repos', status: 200 }
       else
         return { 
-          error: "Error (#{response.status}) trying to get repository data 
+          message: "Error (#{response.status}) trying to get repository data 
           from GitHub: #{response.body['message']} ",
           status: response.status
         }
       end
     else
-      return { error: 'User not found', status: 404 }
+      return { message: 'User not found', status: 404 }
     end
   end
 

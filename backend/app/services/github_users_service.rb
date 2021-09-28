@@ -21,12 +21,12 @@ class GithubUsersService
         avatar_url: response.body['avatar_url']
       })
       return {
-        user: user, 
+        message: user, 
         status: 200
       }
     else
       return { 
-        error: "Error (#{response.status}) trying to get user data 
+        message: "Error (#{response.status}) trying to get user data 
         from GitHub: #{response.body['message']} " , 
         status: response.status  
       }
@@ -44,12 +44,12 @@ class GithubUsersService
         avatar_url: response.body['avatar_url']
       })
       return {
-        user: updated_user, 
+        message: updated_user, 
         status: 200
       }
     else
       return { 
-        error: "Error (#{response.status}) trying to get user data 
+        message: "Error (#{response.status}) trying to get user data 
         from GitHub: #{response.body['message']} " , 
         status: response.status  
       }
