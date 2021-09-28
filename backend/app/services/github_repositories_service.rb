@@ -56,13 +56,14 @@ class GithubRepositoriesService
   def update_repositories(user)
     if user.present?
       response = @conn.get(
-        "/users/#{username}/repos",
+        "/users/#{user[:login]}/repos",
         { per_page: 100,sort: 'updated' }
       )
 
       if response.success?
         response.body.each do | repo |
-          Repository.update(repo[:id],{
+          old_repo = Repository.find_by(github_id: repo['id'])
+          old_repo.update({
             url: repo['html_url'],
             name: repo['name'],
             fork: repo['fork'],
