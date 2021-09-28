@@ -1,0 +1,4 @@
+:schedule:
+  update_repositories:
+    cron: '0 * * * *' # Run every hour
+    class: UpdateRepositoriesJob
