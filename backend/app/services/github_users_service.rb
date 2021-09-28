@@ -1,4 +1,4 @@
-class GithubService
+class GithubUsersService
   def initialize
     @conn = Faraday.new 'https://api.github.com' do |f|
       f.request :authorization, 'Bearer', Figaro.env.GITHUB_TOKEN
@@ -55,5 +55,4 @@ class GithubService
       }
     end
   end
-
 end
