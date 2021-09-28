@@ -1,9 +1,11 @@
 module Types
   class QueryType < Types::BaseObject
-    field :all_users, [Types::UserType], null: false
-
-    def all_users
-        User.all
+    field :user, Types::UserType, null: false do
+      argument :login, String, required: true
     end
-end
+
+    def user(login:)
+      User.find_by(login: login)
+    end
+  end
 end

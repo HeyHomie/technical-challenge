@@ -16,6 +16,10 @@ AllCops:
   NewCops: enable
 Metrics/MethodLength:
   Max: 25
+Metrics/ParameterLists:
+  Enabled: false
+Style/ClassAndModuleChildren:
+  Enabled: false
 Metrics/BlockLength:
   Exclude:
     - "config/environments/production.rb"
