@@ -26,8 +26,7 @@ class GithubUsersService
       }
     else
       return { 
-        message: "Error (#{response.status}) trying to get user data 
-        from GitHub: #{response.body['message']} " , 
+        message: "Error (#{response.status}) trying to get user data from GitHub: #{response.body['message']} " , 
         status: response.status  
       }
     end
@@ -49,8 +48,7 @@ class GithubUsersService
       }
     else
       return { 
-        message: "Error (#{response.status}) trying to get user data 
-        from GitHub: #{response.body['message']} " , 
+        message: "Error (#{response.status}) trying to get user data from GitHub: #{response.body['message']} " , 
         status: response.status  
       }
     end

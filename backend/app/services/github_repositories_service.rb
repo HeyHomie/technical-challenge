@@ -9,10 +9,10 @@ class GithubRepositoriesService
     end
   end
 
-  def create_repos(user)
+  def create_repositories(user)
     if user.present?
       response = @conn.get(
-        "/users/#{username}/repos",
+        "/users/#{user[:login]}/repos",
         { per_page: 100,sort: 'updated' }
       )
 
@@ -44,8 +44,7 @@ class GithubRepositoriesService
         return { message: created_repos, status: 200 }
       else
         return { 
-          message: "Error (#{response.status}) trying to get repository data 
-          from GitHub: #{response.body['message']} ",
+          message: "Error (#{response.status}) trying to get repository data from GitHub: #{response.body['message']} ",
           status: response.status
         }
       end
@@ -54,7 +53,7 @@ class GithubRepositoriesService
     end
   end
 
-  def update_repos(user)
+  def update_repositories(user)
     if user.present?
       response = @conn.get(
         "/users/#{username}/repos",
@@ -81,8 +80,7 @@ class GithubRepositoriesService
         return { message: 'Updated repos', status: 200 }
       else
         return { 
-          message: "Error (#{response.status}) trying to get repository data 
-          from GitHub: #{response.body['message']} ",
+          message: "Error (#{response.status}) trying to get repository data from GitHub: #{response.body['message']} ",
           status: response.status
         }
       end
