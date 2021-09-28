@@ -1,16 +1,6 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::API
-  def create_faraday_connection
-    Faraday.new do |f|
-      f.request :authorization, 'Bearer', Figaro.env.GITHUB_TOKEN
-      f.request :json # encode req bodies as JSON
-      f.request :retry # retry transient failures
-      f.response :follow_redirects # follow redirects
-      f.response :json # decode response bodies as JSON
-    end
-  end
-
   def paginate (item_name, item, page)
     per_page = 5
     count = item.count
