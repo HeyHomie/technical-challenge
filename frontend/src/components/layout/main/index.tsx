@@ -1,15 +1,11 @@
-import React, { PropsWithChildren } from 'react'
+import React from 'react'
 import Navbar from 'components/layout/navbar'
 import Footer from 'components/layout/footer'
 
 //Styles
 import * as styles from './styles'
 
-interface HeaderProps {
-  children: any
-}
-
-const Main: React.FC<HeaderProps> = ({ children }) => {
+const Main: React.FC<IProps> = ({ children }) => {
   return (
     <main className={styles.BODY}>
       <Navbar />

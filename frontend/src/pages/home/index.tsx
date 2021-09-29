@@ -1,9 +1,11 @@
 import React, { useLayoutEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { useQueryClient } from 'react-query'
 
 import { useGQLQuery } from 'hooks/useGQL'
 import { allUsers } from 'helpers/queries'
+
+import { Grid } from 'components/layout'
+import { Card, SearchBar } from 'components/UI/'
 
 const Home: React.FC<IPage> = (props) => {
   const [users, setUsers] = React.useState<any>()
@@ -23,15 +25,22 @@ const Home: React.FC<IPage> = (props) => {
     <>
       {users && users.length > 0 ? (
         <>
-          <h1>
+          <SearchBar></SearchBar>
+          <Grid>
             {users.map((user: any) => {
               return (
                 <div key={user.id}>
-                  <Link to={`/${user.login}`}>{user.name}</Link>
+                  <Link to={`/${user.login}`}>
+                    <Card
+                      url={user.login}
+                      nameL={user.name}
+                      image={user.avatarUrl}
+                    />
+                  </Link>
                 </div>
               )
             })}
-          </h1>
+          </Grid>
           <Link to="/MarioDena">Go To Repos</Link>
           <button
             onClick={() => {

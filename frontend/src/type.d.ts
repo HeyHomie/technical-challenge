@@ -1,12 +1,22 @@
 interface IRoute {
-    path: string;
-    name: string;
-    component: any;
-    exact: boolean;
-    component: any;
-    props?: any;
+  path: string
+  name: string
+  component: any
+  exact: boolean
+  component: any
+  props?: any
 }
 
 interface IPage {
-    name: string;
+  name: string
+}
+
+interface IProps {
+  children: any
+}
+
+interface ICard {
+  url: string
+  nameL: string
+  image: string
 }

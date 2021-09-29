@@ -1,12 +1,17 @@
 import React from 'react'
 
+//Styles
+import * as styles from './styles'
+
+//! This component could be refactored into smaller components or at least use a map function for the links
+
 const Footer = () => {
   return (
     <div className="mt-12">
-      <div className="flex flex-col md:flex-row">
-        <div className="md:w-80 md:pr-12">
-          <div className="pb-2 mb-3 border-b-2">
-            <p>Empresa</p>
+      <div className={styles.MAIN}>
+        <div className={styles.LIST_CONTAINER}>
+          <div className={styles.LIST_LINKS}>
+            <p>About us</p>
           </div>
           <div className="pb-2 ">
             <p>Link</p>
@@ -21,9 +26,9 @@ const Footer = () => {
             <p>Link</p>
           </div>
         </div>
-        <div className="pt-3 md:pt-0 md:w-80">
-          <div className="pb-2 mb-3 border-b-2">
-            <p>Empresa</p>
+        <div className={styles.LIST_CONTAINER}>
+          <div className={styles.LIST_LINKS}>
+            <p>Jobs</p>
           </div>
           <div className="pb-2 ">
             <p>Link</p>
@@ -39,7 +44,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className="flex justify-center pt-8">
+      <div className={styles.COPYRIGHT}>
         <p>2021 Homie Todos los derechos reservados</p>
       </div>
     </div>

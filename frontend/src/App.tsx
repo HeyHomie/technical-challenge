@@ -10,7 +10,7 @@ import {
 import routes from 'config/routes'
 
 //Layout
-import Main from 'components/layout/main'
+import { Main } from 'components/layout'
 
 // Client for the GraphQL API using react-query to handle the caching
 const queryClient = new QueryClient()
