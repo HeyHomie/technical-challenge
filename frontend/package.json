@@ -33,8 +33,8 @@
   "proxy": "http://localhost:3000",
   "scripts": {
     "start": "PORT=3001 BROWSER=none ESLINT_NO_DEV_ERRORS=true craco -r @cypress/instrument-cra start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
+    "build": "craco build",
+    "test": "craco test",
     "eject": "react-scripts eject"
   },
   "browserslist": {
