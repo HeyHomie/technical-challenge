@@ -1,14 +1,23 @@
-import React from 'react'
+import React, { useLayoutEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { useQuery, useQueryClient } from 'react-query'
-import { request, gql } from 'graphql-request'
+import { useQueryClient } from 'react-query'
 
-// This should probably be a .env variable but for demonstration purposes I'm just using a hardcoded value
-const endpoint = 'http://localhost:3000/graphql'
+import { useGQLQuery } from 'useGQL'
+import { allUsers } from 'helpers/queries'
 
 const Home: React.FC<IPage> = (props) => {
+  //!This is needed do not remove
   const queryClient = useQueryClient()
-  const { data, error, isLoading } = useUsers()
+
+  const [users, setUsers] = React.useState<any>()
+  const { data, error, isLoading, refetch } = useGQLQuery('allUsers', allUsers)
+
+  useLayoutEffect(() => {
+    if (data) {
+      setUsers(data.allUsers)
+      console.log(users)
+    }
+  }, [data])
 
   if (isLoading) {
     return <div>Loading...</div>
@@ -16,29 +25,28 @@ const Home: React.FC<IPage> = (props) => {
 
   return (
     <>
-      <h1>Home</h1>
-      <Link to="/MarioDena">Go To Repos</Link>
+      {users && (
+        <>
+          <h1>
+            {users.map((user: any) => {
+              return (
+                <div key={user.id}>
+                  <Link to={`/${user.login}`}>{user.name}</Link>
+                </div>
+              )
+            })}
+          </h1>
+          <Link to="/MarioDena">Go To Repos</Link>
+          <button
+            onClick={() => {
+              refetch()
+            }}>
+            Click to Load
+          </button>
+        </>
+      )}
     </>
   )
-}
-
-const useUsers = () => {
-  return useQuery('allUsers', async () => {
-    const {
-      allUsers: { data }
-    } = await request(
-      endpoint,
-      gql`
-        query {
-          allUsers {
-            name
-            login
-          }
-        }
-      `
-    )
-    return data
-  })
 }
 
 export default Home

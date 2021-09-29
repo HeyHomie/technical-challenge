@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# rubocop:disable Metrics/MethodLength
 class Mutations::CreateUser < Mutations::BaseMutation
   argument :login, String, required: true
 
@@ -16,10 +17,12 @@ class Mutations::CreateUser < Mutations::BaseMutation
     end
     api_user = conn.get("https://api.github.com/users/#{login}").body
     db_user = User.all.find { |u| u.github_id == api_user['id'] }
-    if db_user.nil?
-      user = User.new(login: api_user['login'], github_id: api_user['id'], url: api_user['html_url'],
+    user = if db_user.nil?
+             User.new(login: api_user['login'], github_id: api_user['id'], url: api_user['html_url'],
                       name: api_user['name'], email: api_user['email'], avatar_url: api_user['avatar_url'])
-    end
+           else
+             db_user
+           end
     if user.save
       {
         user: user,
@@ -33,3 +36,4 @@ class Mutations::CreateUser < Mutations::BaseMutation
     end
   end
 end
+# rubocop:enable Metrics/MethodLength
