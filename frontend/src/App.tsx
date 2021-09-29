@@ -10,7 +10,7 @@ import {
 import routes from 'config/routes'
 
 //Layout
-import Navbar from 'components/layout/navbar'
+import Main from 'components/layout/main'
 
 // Client for the GraphQL API using react-query to handle the caching
 const queryClient = new QueryClient()
@@ -20,21 +20,22 @@ function App() {
     <>
       <QueryClientProvider client={queryClient}>
         <BrowserRouter>
-          <Navbar />
-          <Switch>
-            {routes.map((route, index) => {
-              return (
-                <Route
-                  key={index}
-                  path={route.path}
-                  exact={route.exact}
-                  render={(props: RouteComponentProps<any>) => {
-                    return <route.component {...props} {...route.props} />
-                  }}
-                />
-              )
-            })}
-          </Switch>
+          <Main>
+            <Switch>
+              {routes.map((route, index) => {
+                return (
+                  <Route
+                    key={index}
+                    path={route.path}
+                    exact={route.exact}
+                    render={(props: RouteComponentProps<any>) => {
+                      return <route.component {...props} {...route.props} />
+                    }}
+                  />
+                )
+              })}
+            </Switch>
+          </Main>
         </BrowserRouter>
         {/* React query tools if this bothers you you can simply delete this line */}
         <ReactQueryDevtools initialIsOpen={false} />

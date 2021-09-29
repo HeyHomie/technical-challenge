@@ -13,6 +13,12 @@ const routes: IRoute[] = [
     component: Repositories,
     exact: true
   }
+  // {
+  //   path: '*',
+  //   name: 'NotFound',
+  //   component: () => <div>Not Found</div>,
+  //   exact: false
+  // }
 ]
 
 export default routes

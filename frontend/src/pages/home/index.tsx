@@ -6,9 +6,6 @@ import { useGQLQuery } from 'hooks/useGQL'
 import { allUsers } from 'helpers/queries'
 
 const Home: React.FC<IPage> = (props) => {
-  //!This is needed do not remove
-  const queryClient = useQueryClient()
-
   const [users, setUsers] = React.useState<any>()
   const { data, error, isLoading, refetch } = useGQLQuery('allUsers', allUsers)
 
