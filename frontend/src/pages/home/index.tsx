@@ -2,7 +2,7 @@ import React, { useLayoutEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useQueryClient } from 'react-query'
 
-import { useGQLQuery } from 'useGQL'
+import { useGQLQuery } from 'hooks/useGQL'
 import { allUsers } from 'helpers/queries'
 
 const Home: React.FC<IPage> = (props) => {
@@ -25,7 +25,7 @@ const Home: React.FC<IPage> = (props) => {
 
   return (
     <>
-      {users && (
+      {users && users.length > 0 ? (
         <>
           <h1>
             {users.map((user: any) => {
@@ -44,6 +44,8 @@ const Home: React.FC<IPage> = (props) => {
             Click to Load
           </button>
         </>
+      ) : (
+        <div>No Users</div>
       )}
     </>
   )

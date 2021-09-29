@@ -1,6 +1,6 @@
 import React, { useEffect, useLayoutEffect } from 'react'
 import { RouteComponentProps, withRouter, Link } from 'react-router-dom'
-import { useGQLMutation } from 'useGQL'
+import { useGQLMutation } from 'hooks/useGQL'
 import { singleUser } from 'helpers/mutations'
 
 const Repositories: React.FC<IPage & RouteComponentProps<any>> = (props) => {
