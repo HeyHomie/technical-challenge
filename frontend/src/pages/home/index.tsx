@@ -15,7 +15,6 @@ const Home: React.FC<IPage> = (props) => {
   useLayoutEffect(() => {
     if (data) {
       setUsers(data.allUsers)
-      console.log(users)
     }
   }, [data])
 

@@ -16,6 +16,8 @@ class Mutations::CreateUser < Mutations::BaseMutation
       f.response :json # decode response bodies as JSON
     end
     api_user = conn.get("https://api.github.com/users/#{login}").body
+    return { user: nil, errors: ['User not found'] } if api_user['message'] == 'Not Found'
+
     db_user = User.all.find { |u| u.github_id == api_user['id'] }
     user = if db_user.nil?
              User.new(login: api_user['login'], github_id: api_user['id'], url: api_user['html_url'],
@@ -23,6 +25,7 @@ class Mutations::CreateUser < Mutations::BaseMutation
            else
              db_user
            end
+
     if user.save
       {
         user: user,

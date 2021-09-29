@@ -9,6 +9,9 @@ import {
 } from 'react-router-dom'
 import routes from 'config/routes'
 
+//Layout
+import Navbar from 'components/layout/navbar'
+
 // Client for the GraphQL API using react-query to handle the caching
 const queryClient = new QueryClient()
 
@@ -17,6 +20,7 @@ function App() {
     <>
       <QueryClientProvider client={queryClient}>
         <BrowserRouter>
+          <Navbar />
           <Switch>
             {routes.map((route, index) => {
               return (
