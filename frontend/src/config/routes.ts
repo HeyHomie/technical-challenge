@@ -1,4 +1,4 @@
-import { Home, Repositories } from 'pages'
+import { Home, NotFound, User } from 'pages'
 
 const routes: IRoute[] = [
   {
@@ -8,17 +8,23 @@ const routes: IRoute[] = [
     exact: true
   },
   {
-    path: '/:user',
-    name: 'Repositories',
-    component: Repositories,
+    path: '/:id/:user',
+    name: 'User',
+    component: User,
     exact: true
+  },
+  {
+    path: '/404',
+    name: 'NotFound',
+    component: NotFound,
+    exact: true
+  },
+  {
+    path: '*',
+    name: 'NotFound',
+    component: NotFound,
+    exact: false
   }
-  // {
-  //   path: '*',
-  //   name: 'NotFound',
-  //   component: () => <div>Not Found</div>,
-  //   exact: false
-  // }
 ]
 
 export default routes

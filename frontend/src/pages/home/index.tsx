@@ -12,14 +12,7 @@ import { Card, Form, Avatar } from 'components/UI/'
 import { Loader } from 'components/UI'
 
 const Home: React.FC<IPage> = (props) => {
-  const [users, setUsers] = React.useState<any>()
   const { data, isLoading, refetch } = useGQLQuery('allUsers', allUsers)
-
-  useLayoutEffect(() => {
-    if (data) {
-      setUsers(data.allUsers)
-    }
-  }, [data])
 
   if (isLoading) {
     return (
@@ -33,13 +26,13 @@ const Home: React.FC<IPage> = (props) => {
   return (
     <>
       <Form action={refetch}></Form>
-      {users && users.length > 0 && (
+      {data && data.allUsers.length > 0 && (
         <>
           <Grid>
-            {users.map((user: any) => {
+            {data.allUsers.map((user: any) => {
               return (
                 <div key={user.id}>
-                  <Link to={`/${user.login}`}>
+                  <Link to={`/${user.id}/${user.login}`}>
                     <Card>
                       <Avatar
                         url={user.login}

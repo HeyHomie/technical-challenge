@@ -43,6 +43,8 @@ module Types
     end
 
     def repository(name:, user_id:)
+      return Repository.where(user_id: user_id) if name == '--all'
+
       Repository.where('lower(name) like ?', '%' + name.downcase + '%').where(user_id: user_id)
     end
   end

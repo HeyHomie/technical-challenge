@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import { useGQLMutation } from 'hooks/useGQL'
-import { singleUser } from 'helpers/mutations'
+import { importUser } from 'helpers/mutations'
 import useDebounce from 'hooks/useDebounce'
 import { Loader } from 'components/UI'
 
 const Form: React.FC<IForm> = ({ action }) => {
   const [loading, setLoading] = useState(false)
   const [queryData, setQueryData] = useState('')
-  const { mutate, status } = useGQLMutation(singleUser, {
+  const { mutate, status } = useGQLMutation(importUser, {
     login: queryData
   })
 

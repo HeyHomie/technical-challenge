@@ -1,14 +1,19 @@
 import { gql } from 'graphql-request'
 
-const singleUser = gql`
+const importUser = gql`
   mutation ($login: String!) {
     createUser(input: { login: $login }) {
       user {
-        name
+        id
         login
+      }
+    }
+    createRepository(input: { login: $login }) {
+      repo {
+        name
       }
     }
   }
 `
 
-export { singleUser }
+export { importUser }

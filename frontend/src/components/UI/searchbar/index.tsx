@@ -1,40 +1,8 @@
-import React, { useEffect } from 'react'
-import useDebounce from 'hooks/useDebounce'
+import React from 'react'
 
-import { useGQLQuery } from 'hooks/useGQL'
-import { filterRepos } from 'helpers/queries'
-
-const SearchBar: React.FC<ISearchBar> = ({
-  updateAction,
-  clearAction,
-  userId
-}) => {
-  const [value, setValue] = React.useState('')
-  useDebounce(
-    () => {
-      refetch()
-    },
-    500,
-    [value]
-  )
-  const {
-    data: repos,
-    isLoading,
-    status,
-    refetch
-  } = useGQLQuery('filterRepos', filterRepos, {
-    name: value,
-    userId: userId
-  })
-
-  useEffect(() => {
-    if (repos) {
-      updateAction(repos.repository)
-    }
-  }, [repos])
-
+const SearchBar: React.FC<ISearchBar> = ({ updateAction }) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setValue(e.target.value)
+    updateAction(e.target.value)
   }
 
   return (

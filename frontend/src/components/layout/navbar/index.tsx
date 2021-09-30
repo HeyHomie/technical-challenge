@@ -9,10 +9,7 @@ const Navbar = () => {
       <div className={styles.GENERAL_CONTAINER}>
         <div className={styles.RIGHT_ITEMS}>
           <div className={styles.MENU_ITEM}>
-            <Link to="/">Developers</Link>
-          </div>
-          <div>
-            <Link to="/repositories">Repositories</Link>
+            <Link to="/">Home</Link>
           </div>
         </div>
       </div>

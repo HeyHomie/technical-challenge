@@ -40,6 +40,4 @@ interface IInfo {
 
 interface ISearchBar {
   updateAction: (value: any) => void
-  clearAction: () => void
-  userId: number
 }

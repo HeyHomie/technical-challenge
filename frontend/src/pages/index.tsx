@@ -1,4 +1,5 @@
 import Home from './home'
-import Repositories from './repositories'
+import User from './user'
+import NotFound from './404'
 
-export { Home, Repositories }
+export { Home, User, NotFound }
