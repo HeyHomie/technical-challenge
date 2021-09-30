@@ -69,7 +69,7 @@ const Form: React.FC<IForm> = ({ action }) => {
                 }}
                 className="flex-shrink-0 bg-gray-500 hover:bg-gray-700 border-gray-500 hover:border-gray-700 text-sm border-4 text-white py-1 px-2 rounded"
                 type="button">
-                Load
+                Import Data
               </button>
             </div>
           </form>

@@ -17,6 +17,11 @@ const allRepos = gql`
   query ($login: String!) {
     user(login: $login) {
       id
+      name
+      login
+      githubId
+      avatarUrl
+      url
       repositories {
         name
         htmlUrl

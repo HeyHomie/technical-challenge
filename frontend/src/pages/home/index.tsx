@@ -23,7 +23,7 @@ const Home: React.FC<IPage> = (props) => {
 
   if (isLoading) {
     return (
-      <div className="m-auto">
+      <div className="m-auto mt-12">
         <Loader />
       </div>
     )
