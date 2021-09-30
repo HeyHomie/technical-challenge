@@ -13,4 +13,29 @@ const allUsers = gql`
   }
 `
 
-export { allUsers }
+const allRepos = gql`
+  query ($login: String!) {
+    user(login: $login) {
+      id
+      repositories {
+        name
+        htmlUrl
+        description
+        fullName
+      }
+    }
+  }
+`
+
+const filterRepos = gql`
+  query ($name: String!, $userId: Integer!) {
+    repository(name: $name, userId: $userId) {
+      name
+      htmlUrl
+      description
+      fullName
+    }
+  }
+`
+
+export { allUsers, allRepos, filterRepos }

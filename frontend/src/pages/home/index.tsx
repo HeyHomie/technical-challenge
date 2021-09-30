@@ -1,11 +1,14 @@
 import React, { useLayoutEffect } from 'react'
+
 import { Link } from 'react-router-dom'
 
+// Queries
 import { useGQLQuery } from 'hooks/useGQL'
 import { allUsers } from 'helpers/queries'
 
+// Components
 import { Grid } from 'components/layout'
-import { Card, SearchBar, Form } from 'components/UI/'
+import { Card, Form } from 'components/UI/'
 import { Loader } from 'components/UI'
 
 const Home: React.FC<IPage> = (props) => {
