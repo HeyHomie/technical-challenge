@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Renders correctly 1`] = `
+<nav
+  className="w-full shadow-sm  py-3 px-1.5 h-16 bg-gray-800 text-white"
+>
+  <div
+    className="flex max-w-screen-2xl m-auto mt-2 justify-between items-center"
+  >
+    <div
+      className="flex items-center px-6"
+    >
+      <div
+        className="pr-6"
+      >
+        <a
+          href="/"
+          onClick={[Function]}
+        >
+          Home
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>
+`;
