@@ -25,6 +25,7 @@ const Home: React.FC<IPage> = (props) => {
     <>
       {users && users.length > 0 ? (
         <>
+          <Form action={refetch}></Form>
           <SearchBar></SearchBar>
           <Grid>
             {users.map((user: any) => {
@@ -41,12 +42,6 @@ const Home: React.FC<IPage> = (props) => {
               )
             })}
           </Grid>
-          <div>
-            <p className="text-center pt-4 text-gray-700">
-              Add a new Developer to the database
-            </p>
-            <Form action={refetch}></Form>
-          </div>
         </>
       ) : (
         <div>

@@ -1,17 +1,27 @@
 import React, { useState, useEffect } from 'react'
 import { useGQLMutation } from 'hooks/useGQL'
 import { singleUser } from 'helpers/mutations'
+import useDebounce from 'hooks/useDebounce'
 
 const Form: React.FC<IForm> = ({ action }) => {
+  const [loading, setLoading] = useState(false)
   const [queryData, setQueryData] = useState('')
   const { mutate, status } = useGQLMutation(singleUser, {
     login: queryData
   })
 
+  useDebounce(
+    () => {
+      action()
+      setLoading(false)
+    },
+    500,
+    [status]
+  )
+
   useEffect(() => {
     if (status === 'success') {
       console.log('running')
-      action()
     }
   }, [status])
 
@@ -26,33 +36,47 @@ const Form: React.FC<IForm> = ({ action }) => {
   ) => {
     e.preventDefault()
     mutate()
+    setLoading(true)
   }
   return (
-    <form
-      onSubmit={(e) => {
-        handleSubmit(e)
-      }}
-      className="w-full mb-6">
-      <div className="flex items-center border-b border-gray-500 py-2">
-        <input
-          className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
-          type="text"
-          placeholder="MarioDena"
-          aria-label="Github Username"
-          onChange={(e) => {
-            handleChange(e)
-          }}
-        />
-        <button
-          onClick={(e) => {
-            handleSubmit(e)
-          }}
-          className="flex-shrink-0 bg-gray-500 hover:bg-gray-700 border-gray-500 hover:border-gray-700 text-sm border-4 text-white py-1 px-2 rounded"
-          type="button">
-          Load
-        </button>
-      </div>
-    </form>
+    <>
+      {loading ? (
+        <div className=" flex justify-center items-center mt-7 mb-7">
+          <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-gray-500"></div>
+        </div>
+      ) : (
+        <>
+          <p className="text-center pt-4 text-gray-700">
+            Add a new Developer to the database
+          </p>
+          <form
+            onSubmit={(e) => {
+              handleSubmit(e)
+            }}
+            className="w-full mb-7">
+            <div className="flex items-center border-b border-gray-500 py-2">
+              <input
+                className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
+                type="text"
+                placeholder="MarioDena"
+                aria-label="Github Username"
+                onChange={(e) => {
+                  handleChange(e)
+                }}
+              />
+              <button
+                onClick={(e) => {
+                  handleSubmit(e)
+                }}
+                className="flex-shrink-0 bg-gray-500 hover:bg-gray-700 border-gray-500 hover:border-gray-700 text-sm border-4 text-white py-1 px-2 rounded"
+                type="button">
+                Load
+              </button>
+            </div>
+          </form>
+        </>
+      )}
+    </>
   )
 }
 
