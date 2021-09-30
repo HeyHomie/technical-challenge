@@ -29,18 +29,23 @@ const Home: React.FC<IPage> = (props) => {
     )
   }
 
+  // ! this check could be cleaner
   return (
     <>
-      {users && users.length > 0 ? (
+      <Form action={refetch}></Form>
+      {users && users.length > 0 && (
         <>
-          <Form action={refetch}></Form>
           <Grid>
             {users.map((user: any) => {
               return (
                 <div key={user.id}>
                   <Link to={`/${user.login}`}>
-                    <Card url={user.login} nameL={user.name}>
-                      <Avatar image={user.avatarUrl} />
+                    <Card>
+                      <Avatar
+                        url={user.login}
+                        nameL={user.name}
+                        image={user.avatarUrl}
+                      />
                     </Card>
                   </Link>
                 </div>
@@ -48,13 +53,6 @@ const Home: React.FC<IPage> = (props) => {
             })}
           </Grid>
         </>
-      ) : (
-        <div>
-          <p className="text-center pt-4 text-gray-700">
-            Add a new Developer to the database
-          </p>
-          <Form action={refetch}></Form>
-        </div>
       )}
     </>
   )

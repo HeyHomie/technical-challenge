@@ -46,8 +46,8 @@ const Repositories: React.FC<IPage & RouteComponentProps<any>> = (props) => {
     <>
       {repos && (
         <>
-          <Card url={user.login} nameL={user.name}>
-            <Avatar image={user.avatarUrl} />
+          <Card>
+            <Avatar url={user.login} nameL={user.name} image={user.avatarUrl} />
           </Card>
           {repos.map((repo: any) => {
             return (

@@ -16,8 +16,7 @@ interface IProps {
 }
 
 interface ICard {
-  url: string
-  nameL: string
+  children: any
 }
 
 interface IForm {
@@ -26,4 +25,6 @@ interface IForm {
 
 interface IAvatar {
   image: string
+  url: string
+  nameL: string
 }
