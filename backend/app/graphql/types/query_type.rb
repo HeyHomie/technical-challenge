@@ -43,7 +43,7 @@ module Types
     end
 
     def repository(name:, user_id:)
-      Repository.where('name like ?', '%' + name + '%').where(user_id: user_id)
+      Repository.where('lower(name) like ?', '%' + name.downcase + '%').where(user_id: user_id)
     end
   end
 end
