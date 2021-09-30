@@ -1,10 +1,38 @@
-import React, { useRef } from 'react'
+import React, { useEffect } from 'react'
+import { useGQLQuery } from 'hooks/useGQL'
+import { filterRepos } from 'helpers/queries'
 
-const SearchBar = () => {
+const SearchBar: React.FC<ISearchBar> = ({
+  updateAction,
+  clearAction,
+  userId
+}) => {
+  const [value, setValue] = React.useState('')
+  const {
+    data: repos,
+    isLoading,
+    status,
+    refetch
+  } = useGQLQuery('filterRepos', filterRepos, {
+    name: value,
+    userId: userId
+  })
+
+  useEffect(() => {
+    if (repos) {
+      updateAction(repos)
+    }
+  }, [repos])
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setValue(e.target.value)
+    refetch()
+  }
+
   return (
-    <div className="pt-2 flex mr-auto text-gray-600">
+    <div className="pt-2 flex mt-6 text-gray-600">
       <input
-        className="border-2 ml-auto border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none"
+        className="border-2 m-auto border-gray-300 bg-white h-10 px-5 rounded-lg text-sm focus:outline-none"
         type="search"
         name="search"
         placeholder="Search"

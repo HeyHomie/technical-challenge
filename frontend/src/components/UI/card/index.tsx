@@ -3,10 +3,12 @@ import React from 'react'
 // Styles
 import * as styles from './styles'
 
-const Card: React.FC<ICard> = ({ children }) => {
+const Card: React.FC<ICard> = ({ children, color }) => {
   return (
-    <div className={styles.MAIN}>
-      <div className="mb-8">{children}</div>
+    <div
+      className={`${styles.CARD} ${color ? 'shadow-none' : ''}`}
+      style={{ backgroundColor: color }}>
+      <div>{children}</div>
     </div>
   )
 }

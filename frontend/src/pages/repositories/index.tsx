@@ -3,11 +3,11 @@ import { useHistory } from 'react-router'
 import { RouteComponentProps, withRouter, Link } from 'react-router-dom'
 
 // Queries
-import { useGQLQuery } from 'hooks/useGQL'
+import { useGQLQuery, useGQLMutation } from 'hooks/useGQL'
 import { allRepos } from 'helpers/queries'
 
 // Components
-import { Loader, Card, Avatar } from 'components/UI'
+import { Loader, Card, Avatar, Info, SearchBar } from 'components/UI'
 
 const Repositories: React.FC<IPage & RouteComponentProps<any>> = (props) => {
   const [user, setUser] = React.useState<any>(null)
@@ -46,15 +46,32 @@ const Repositories: React.FC<IPage & RouteComponentProps<any>> = (props) => {
     <>
       {repos && (
         <>
-          <Card>
-            <Avatar url={user.login} nameL={user.name} image={user.avatarUrl} />
+          <Card color="white">
+            <>
+              <Avatar
+                url={user.login}
+                nameL={user.name}
+                image={user.avatarUrl}
+                light
+              />
+              <SearchBar
+                updateAction={setRepos}
+                clearAction={updateUser}
+                userId={parseInt(user.id)}
+              />
+            </>
           </Card>
           {repos.map((repo: any) => {
             return (
               <div key={repo.id}>
-                <Link to={`/repositories/${user}/${repo.name}`}>
-                  {repo.name} {repo.htmlUrl} {repo.description} {repo.fullName}
-                </Link>
+                <Card>
+                  <Info
+                    title={repo.name}
+                    description={repo.description}
+                    link={repo.htmlUrl}
+                    fullname={repo.fullName}
+                  />
+                </Card>
               </div>
             )
           })}

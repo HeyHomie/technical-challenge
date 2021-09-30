@@ -33,7 +33,7 @@ const allRepos = gql`
 `
 
 const filterRepos = gql`
-  query ($name: String!, $userId: Integer!) {
+  query ($name: String!, $userId: Int!) {
     repository(name: $name, userId: $userId) {
       name
       htmlUrl
