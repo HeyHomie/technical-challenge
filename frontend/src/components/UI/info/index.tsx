@@ -12,9 +12,7 @@ const Info: React.FC<IInfo> = ({ title, description, link, fullname }) => {
         <p className={styles.SECONDARY}>{description}</p>
         <div className="text-right">
           <a href={link}>
-            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-              Visit Repository
-            </button>
+            <button className={styles.BUTTON}>Visit Repository</button>
           </a>
         </div>
       </div>

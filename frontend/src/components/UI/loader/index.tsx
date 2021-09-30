@@ -1,9 +1,12 @@
 import React from 'react'
 
+// Styles
+import * as styles from './styles'
+
 const Loader = () => {
   return (
-    <div className=" flex justify-center items-center mt-7 mb-7">
-      <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-gray-500"></div>
+    <div className={styles.LOADER_CONTAINER}>
+      <div className={styles.LOADER}></div>
     </div>
   )
 }

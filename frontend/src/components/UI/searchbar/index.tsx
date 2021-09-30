@@ -1,17 +1,20 @@
 import React from 'react'
 
+// Styles
+import * as styles from './styles'
+
 const SearchBar: React.FC<ISearchBar> = ({ updateAction }) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     updateAction(e.target.value)
   }
 
   return (
-    <div className="pt-2 flex mt-6 text-gray-600">
+    <div className={styles.INPUT_CONTAINER}>
       <input
         onChange={(e) => {
           handleChange(e)
         }}
-        className="border-2 m-auto border-gray-300 bg-white h-10 px-5 rounded-lg text-sm focus:outline-none"
+        className={styles.INPUT}
         name="search"
         placeholder="Search"
       />

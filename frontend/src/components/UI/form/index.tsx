@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from 'react'
+import useDebounce from 'hooks/useDebounce'
 import { useGQLMutation } from 'hooks/useGQL'
 import { importUser } from 'helpers/mutations'
-import useDebounce from 'hooks/useDebounce'
+
 import { Loader } from 'components/UI'
+
+// Styles
+import * as styles from './styles'
 
 const Form: React.FC<IForm> = ({ action }) => {
   const [loading, setLoading] = useState(false)
@@ -45,17 +49,15 @@ const Form: React.FC<IForm> = ({ action }) => {
         <Loader />
       ) : (
         <>
-          <p className="text-center pt-4 text-gray-700">
-            Add a new Developer to the database
-          </p>
+          <p className={styles.TITLE}>Add a new Developer to the database</p>
           <form
             onSubmit={(e) => {
               handleSubmit(e)
             }}
-            className="w-full mb-7">
-            <div className="flex items-center border-b border-gray-500 py-2">
+            className={styles.FORM}>
+            <div className={styles.CONTAINER}>
               <input
-                className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
+                className={styles.INPUT}
                 type="text"
                 placeholder="MarioDena"
                 aria-label="Github Username"
@@ -67,7 +69,7 @@ const Form: React.FC<IForm> = ({ action }) => {
                 onClick={(e) => {
                   handleSubmit(e)
                 }}
-                className="flex-shrink-0 bg-gray-500 hover:bg-gray-700 border-gray-500 hover:border-gray-700 text-sm border-4 text-white py-1 px-2 rounded"
+                className={styles.BUTTON}
                 type="button">
                 Import Data
               </button>

@@ -76,7 +76,7 @@ const User: React.FC<IPage & RouteComponentProps<any>> = (props) => {
           {data &&
             data.repository.map((repo: any) => {
               return (
-                <div key={repo.id}>
+                <div key={`${repo.id}${repo.name}`}>
                   <Card>
                     <Info
                       title={repo.name}
