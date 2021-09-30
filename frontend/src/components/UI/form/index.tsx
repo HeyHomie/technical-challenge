@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useGQLMutation } from 'hooks/useGQL'
 import { singleUser } from 'helpers/mutations'
 import useDebounce from 'hooks/useDebounce'
+import { Loader } from 'components/UI'
 
 const Form: React.FC<IForm> = ({ action }) => {
   const [loading, setLoading] = useState(false)
@@ -41,9 +42,7 @@ const Form: React.FC<IForm> = ({ action }) => {
   return (
     <>
       {loading ? (
-        <div className=" flex justify-center items-center mt-7 mb-7">
-          <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-gray-500"></div>
-        </div>
+        <Loader />
       ) : (
         <>
           <p className="text-center pt-4 text-gray-700">

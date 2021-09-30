@@ -20,22 +20,30 @@ module Types
       User.find_by(login: login)
     end
 
-    # all repositories
-    field :all_repositories, [Types::RepositoryType], null: false do
-      argument :user_id, Integer, required: true
+    # filter users
+    field :userby, [Types::UserType], null: false do
+      argument :name, String, required: true
     end
 
-    def all_repositories(user_id:)
-      Repository.where(user_id: user_id)
+    def userby(name:)
+      User.where('name like ?', '%' + name + '%')
+    end
+
+    # all repositories
+    field :all_repositories, [Types::RepositoryType], null: false
+
+    def all_repositories
+      Repository.all
     end
 
     # filter repositories
     field :repository, [Types::RepositoryType], null: false do
+      argument :user_id, Integer, required: true
       argument :name, String, required: true
     end
 
-    def repository(name:)
-      Repository.where('name like ?', '%' + name + '%')
+    def repository(name:, user_id:)
+      Repository.where('name like ?', '%' + name + '%').where(user_id: user_id)
     end
   end
 end

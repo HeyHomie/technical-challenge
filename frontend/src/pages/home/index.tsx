@@ -6,6 +6,7 @@ import { allUsers } from 'helpers/queries'
 
 import { Grid } from 'components/layout'
 import { Card, SearchBar, Form } from 'components/UI/'
+import { Loader } from 'components/UI'
 
 const Home: React.FC<IPage> = (props) => {
   const [users, setUsers] = React.useState<any>()
@@ -18,7 +19,11 @@ const Home: React.FC<IPage> = (props) => {
   }, [data])
 
   if (isLoading) {
-    return <div>Loading...</div>
+    return (
+      <div className="m-auto">
+        <Loader />
+      </div>
+    )
   }
 
   return (
@@ -26,7 +31,6 @@ const Home: React.FC<IPage> = (props) => {
       {users && users.length > 0 ? (
         <>
           <Form action={refetch}></Form>
-          <SearchBar></SearchBar>
           <Grid>
             {users.map((user: any) => {
               return (
