@@ -20,3 +20,7 @@ interface ICard {
   nameL: string
   image: string
 }
+
+interface IForm {
+  action: () => void
+}

@@ -5,11 +5,11 @@ import { useGQLQuery } from 'hooks/useGQL'
 import { allUsers } from 'helpers/queries'
 
 import { Grid } from 'components/layout'
-import { Card, SearchBar } from 'components/UI/'
+import { Card, SearchBar, Form } from 'components/UI/'
 
 const Home: React.FC<IPage> = (props) => {
   const [users, setUsers] = React.useState<any>()
-  const { data, error, isLoading, refetch } = useGQLQuery('allUsers', allUsers)
+  const { data, isLoading, refetch } = useGQLQuery('allUsers', allUsers)
 
   useLayoutEffect(() => {
     if (data) {
@@ -41,16 +41,20 @@ const Home: React.FC<IPage> = (props) => {
               )
             })}
           </Grid>
-          <Link to="/MarioDena">Go To Repos</Link>
-          <button
-            onClick={() => {
-              refetch()
-            }}>
-            Click to Load
-          </button>
+          <div>
+            <p className="text-center pt-4 text-gray-700">
+              Add a new Developer to the database
+            </p>
+            <Form action={refetch}></Form>
+          </div>
         </>
       ) : (
-        <div>No Users</div>
+        <div>
+          <p className="text-center pt-4 text-gray-700">
+            Add a new Developer to the database
+          </p>
+          <Form action={refetch}></Form>
+        </div>
       )}
     </>
   )
