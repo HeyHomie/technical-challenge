@@ -4,9 +4,10 @@ module Api
   module V1
     class RepositoriesController < ApplicationController
       def index
-        user = User.find_by(id: search_params[:user_id])
+        user = User.find_by(login: search_params[:user_id])
+
         if user.present?
-          repositories = search_repos
+          repositories = search_repos(user[:id])
 
           if repositories.empty?
             response = GithubRepositoriesService.new.create_repositories(user)
@@ -32,7 +33,7 @@ module Api
         params.permit(:user_id, :page, :q, :type, :language, :sort)
       end
 
-      def search_repos
+      def search_repos(user_id)
         # Get sort hash
         sort = case search_params[:sort]
                when 'updated'
@@ -46,7 +47,7 @@ module Api
                end
 
         # Create filter hash
-        where = { user_id: search_params[:user_id] }
+        where = { user_id: user_id }
         if search_params[:language].present?
           where[:language] = search_params[:language]
         elsif search_params[:type].present?
