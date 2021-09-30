@@ -1,23 +1,50 @@
-# Getting Started with Create React App
+# Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+---
 
-## Available Scripts
+This is a simple react App implementation. It connects to a graphql server and manages user and repository data.
 
-In the project directory, you can run:
+## Running the automaton
 
-### `yarn start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Running the project:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+To run the backend of this challenge:
 
-### `yarn test`
+```
+yarn install
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
+yarn start
+```
 
-Types for routes
-Mutation Side effects
+This will run the server on port 3001 you will start with an empty database. But you can add some data in the app.
+
+---
+
+### Features:
+
+- [x] GraphQL
+- [x] Custom Hooks
+- [x] Tailwind
+- [x] Custom Routing Implementation
+- [x] Caching (React query cache)
+- [x] Basic Layout
+- [x] Custom Design
+- [x] Home page to import Github Users and Repositories
+- [x] Compact code (reusable components, small functions etc.)
+- [x] User page to see all repositories
+- [x] Filter via backend for repositories (Search mutation)
+- [x] Animations
+- [x] Basic Repo info Card
+- [x] Suspense / Loader
+- [x] Basic Tests with Jest (Snapshot Tests)
+
+## How to add a user?
+
+After navigating to http://localhost:3001 simply type your username (or anyone) and click Import User and click the button or press Enter.
+
+You can add as many users as you want.
+`
