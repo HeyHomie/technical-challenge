@@ -5,7 +5,7 @@
 This is a simple rails API implementation. It has 2 simple models and serves a single endpoint
 which uses graphQL to query the data.
 
-## Running the automaton
+## Running the backend
 
 ---
 
