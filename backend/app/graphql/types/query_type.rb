@@ -21,10 +21,12 @@ module Types
     end
 
     # all repositories
-    field :all_repositories, [Types::RepositoryType], null: false
+    field :all_repositories, [Types::RepositoryType], null: false do
+      argument :user_id, Integer, required: true
+    end
 
-    def all_repositories
-      Repository.all
+    def all_repositories(user_id:)
+      Repository.where(user_id: user_id)
     end
 
     # filter repositories
