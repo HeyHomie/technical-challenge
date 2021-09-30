@@ -15,10 +15,11 @@ import { Loader, Card, Avatar, Info, SearchBar } from 'components/UI'
 const User: React.FC<IPage & RouteComponentProps<any>> = (props) => {
   const history = useHistory()
   const [value, setValue] = React.useState('--all')
+  const [clearingCache, setClearingCache] = React.useState(true)
   const userID = props.match.params.id
 
   // Filter
-  const { data, isLoading, status, refetch } = useGQLQuery(
+  const { data, isFetching, status, refetch } = useGQLQuery(
     'filterRepos',
     filterRepos,
     {
@@ -30,7 +31,7 @@ const User: React.FC<IPage & RouteComponentProps<any>> = (props) => {
   // Get user
   const {
     data: userData,
-    isLoading: userLoading,
+    isFetching: userLoading,
     status: userStatus
   } = useGQLQuery('getUser', getUser, {
     login: props.match.params.user
@@ -50,7 +51,7 @@ const User: React.FC<IPage & RouteComponentProps<any>> = (props) => {
     history.push('/404')
   }
 
-  if (isLoading || userLoading) {
+  if (isFetching || userLoading) {
     return (
       <div className="m-auto mt-12">
         <Loader />

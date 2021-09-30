@@ -15,6 +15,7 @@
     "@types/react-dom": "^17.0.0",
     "@types/react-router-dom": "^5.1.8",
     "ahooks": "^2.10.5",
+    "animate.css": "^4.1.1",
     "commitizen": "^4.2.3",
     "graphql": "^15.3.0",
     "graphql-request": "^3.1.0",

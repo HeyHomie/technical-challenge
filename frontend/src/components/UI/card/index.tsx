@@ -1,4 +1,5 @@
 import React from 'react'
+import 'animate.css'
 
 // Styles
 import * as styles from './styles'

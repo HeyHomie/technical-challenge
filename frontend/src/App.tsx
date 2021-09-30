@@ -18,8 +18,8 @@ const queryClient = new QueryClient()
 function App() {
   return (
     <>
-      <QueryClientProvider client={queryClient}>
-        <BrowserRouter>
+      <BrowserRouter>
+        <QueryClientProvider client={queryClient}>
           <Main>
             <Switch>
               {routes.map((route, index) => {
@@ -36,10 +36,10 @@ function App() {
               })}
             </Switch>
           </Main>
-        </BrowserRouter>
-        {/* React query tools if this bothers you you can simply delete this line */}
-        <ReactQueryDevtools initialIsOpen={false} />
-      </QueryClientProvider>
+          {/* React query tools if this bothers you you can simply delete this line */}
+          <ReactQueryDevtools initialIsOpen={false} />
+        </QueryClientProvider>
+      </BrowserRouter>
     </>
   )
 }
