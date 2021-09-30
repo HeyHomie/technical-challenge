@@ -8,7 +8,7 @@ import { allUsers } from 'helpers/queries'
 
 // Components
 import { Grid } from 'components/layout'
-import { Card, Form } from 'components/UI/'
+import { Card, Form, Avatar } from 'components/UI/'
 import { Loader } from 'components/UI'
 
 const Home: React.FC<IPage> = (props) => {
@@ -39,11 +39,9 @@ const Home: React.FC<IPage> = (props) => {
               return (
                 <div key={user.id}>
                   <Link to={`/${user.login}`}>
-                    <Card
-                      url={user.login}
-                      nameL={user.name}
-                      image={user.avatarUrl}
-                    />
+                    <Card url={user.login} nameL={user.name}>
+                      <Avatar image={user.avatarUrl} />
+                    </Card>
                   </Link>
                 </div>
               )

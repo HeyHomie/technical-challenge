@@ -18,9 +18,12 @@ interface IProps {
 interface ICard {
   url: string
   nameL: string
-  image: string
 }
 
 interface IForm {
   action: () => void
+}
+
+interface IAvatar {
+  image: string
 }

@@ -7,7 +7,7 @@ import { useGQLQuery } from 'hooks/useGQL'
 import { allRepos } from 'helpers/queries'
 
 // Components
-import { Loader, Card } from 'components/UI'
+import { Loader, Card, Avatar } from 'components/UI'
 
 const Repositories: React.FC<IPage & RouteComponentProps<any>> = (props) => {
   const [user, setUser] = React.useState<any>(null)
@@ -46,10 +46,9 @@ const Repositories: React.FC<IPage & RouteComponentProps<any>> = (props) => {
     <>
       {repos && (
         <>
-          <Card
-            url={user.login}
-            nameL={user.name}
-            image={user.avatarUrl}></Card>
+          <Card url={user.login} nameL={user.name}>
+            <Avatar image={user.avatarUrl} />
+          </Card>
           {repos.map((repo: any) => {
             return (
               <div key={repo.id}>
