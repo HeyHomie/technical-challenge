@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import { FunctionComponent } from 'react'
+import { fetchUser, fetchRepos } from './api/index'
+import { useEffect, useState, FunctionComponent } from 'react'
 import {
   Route,
   BrowserRouter as Router,
@@ -9,19 +9,36 @@ import {
 } from 'react-router-dom'
 
 export const Main: FunctionComponent = () => {
+
   const {username} = useParams<{username: string}>()
   const [User, setUser] = useState<any>({})
-  const [Repos, setRepos] = useState<Array<any>>([])
+  const [Repos, setRepos] = useState<Array<{}>>([])
+
   useEffect(() => {
-    Promise.all([fetch(`/api/v1/users?username=${username}`), fetch(`/api/v1/users/${username}/repositories`)]).then(async ([user, repos]) => {
-      setUser(await user.json())
-      setRepos(await repos.json())
-    })
+    fetchUser(username).then(setUser)
   }, [username])
+
+  useEffect(() => {
+    fetchRepos(username).then(setRepos)
+  }, [User])
+
+  const getRepoList = () => (
+    <>
+      {
+        Repos.map((repo: any) => (
+          <div key={repo.id}>
+            <a href={repo.html_url}>{repo.name} - Stars: {repo.stars}</a>
+          </div>
+        ))
+      }
+    </>
+  )
+
+
   return (
     <>
-    <h1>{User.login}</h1>
-    {Repos.map(r => <h2>{r.name}</h2>)}
+    <h1>{User.name}</h1>
+    { Repos === undefined ? null : getRepoList() }
     </>
   )
 }
