@@ -1,4 +1,5 @@
 import { fetchUser, fetchRepos } from './api/index'
+import { User, Repository } from './interfaces/index'
 import { useEffect, useState, FunctionComponent } from 'react'
 import {
   Route,
@@ -11,8 +12,8 @@ import {
 export const Main: FunctionComponent = () => {
 
   const {username} = useParams<{username: string}>()
-  const [User, setUser] = useState<any>({})
-  const [Repos, setRepos] = useState<Array<{}>>([])
+  const [User, setUser] = useState<User>()
+  const [Repos, setRepos] = useState<Array<Repository>>([])
 
   useEffect(() => {
     fetchUser(username).then(setUser)
@@ -34,13 +35,16 @@ export const Main: FunctionComponent = () => {
     </>
   )
 
-
-  return (
-    <>
-    <h1>{User.name}</h1>
-    { Repos === undefined ? null : getRepoList() }
-    </>
-  )
+  if ( User === undefined || Repos === undefined )  {
+    return <div>Loading...</div>
+  } else {
+    return (
+      <>
+        <h1>{ User?.name }</h1>
+        { getRepoList() }
+      </>
+    )
+  }
 }
 
 export const AppRouter = () => (
