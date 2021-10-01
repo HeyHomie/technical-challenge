@@ -1,0 +1,17 @@
+.ui.secondary.pointing.menu.gh-menu {
+  padding-top: 1em;
+  border-width: thin;
+  padding-left: 20em;
+  border-color: #3e3d3d;
+}
+
+.ui.secondary.pointing.menu .link.active.item.gh-item-active  {
+  border-color: #f78166;
+  
+}:hover{
+  border-color: #f78166;
+}
+
+.ui.secondary.pointing.menu .link.item.gh-item:hover {
+  border-color: #6e7681;
+}
