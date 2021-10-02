@@ -10,7 +10,7 @@ const Navbar = () => (
     <Menu.Item link active className='gh-item-active'>
       <Icon color='grey' name='book' />
       <span>Repositories</span>
-      <Label>0</Label>
+      <Label color='grey'>0</Label>
     </Menu.Item>
     <Menu.Item link className='gh-item'>
       <Icon color='grey' name='trello' />
