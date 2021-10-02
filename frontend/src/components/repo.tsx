@@ -6,7 +6,7 @@ const Title = (name:string, url:string, archived:boolean) => (
     <Header as='a' href={url} target='_blank' className='repo'>
       {name}
     </Header>
-    <Label circular size='small' color='grey'>
+    <Label circular>
       { archived ? 'Archived' : 'Public' }
     </Label>
   </div>

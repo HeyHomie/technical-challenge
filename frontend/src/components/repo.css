@@ -17,6 +17,14 @@ p.forked, p.desc, .details-item span, .details-item i {
   vertical-align: middle;
 }
 
+.title-container .ui.circular.label {
+  color: #8b949e;
+  border: 1px solid;
+  border-color: #8b949e;
+  font-weight: 100 !important;
+  background-color: transparent !important;
+}
+
 .ui.circular.label {
   margin-right: 0.5em;
   min-width: 1em !important;
@@ -25,7 +33,7 @@ p.forked, p.desc, .details-item span, .details-item i {
 
 .ui.header.repo {
   margin: 0;
-  font-size: 2em;
+  font-size: 1.7em;
   font-weight: 600;
   color: #58a6ff;
   padding-right: 0.3em;
