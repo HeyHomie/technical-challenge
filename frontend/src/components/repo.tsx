@@ -1,9 +1,9 @@
 import './repo.css'
 import { Button, Divider, Grid, Header, Icon, Label } from 'semantic-ui-react'
 
-const Title = (name:string, archived:boolean) => (
+const Title = (name:string, url:string, archived:boolean) => (
   <div className='title-container'>
-    <Header as='a' href='/' target='_blank' className='repo'>
+    <Header as='a' href={url} target='_blank' className='repo'>
       {name}
     </Header>
     <Label circular size='small' color='grey'>
@@ -79,13 +79,13 @@ const Repo = ( props:any ) => {
     <div>
       <Grid>
         <Grid.Row>
-          <Grid.Column width={8}>
-            { Title(repo.name, repo.archived) }
+          <Grid.Column width={12}>
+            { Title(repo.name, repo.url, repo.archived) }
             { Forked(repo.fork) }
             { Desc(repo.desc) }
             { Details(repo.last_updated, repo.forks, repo.language, repo.license) }
           </Grid.Column>
-          <Grid.Column width={8} floated='right'>
+          <Grid.Column width={4} floated='right'>
             <Button compact size='small' floated='right'>
               <Icon name='star outline'/>
               <span>Star</span>
