@@ -1,0 +1,35 @@
+p.forked, p.desc, .details-item span, .details-item i {
+  color: #8b949e;
+}
+
+.details-container {
+  display: flex;
+  align-items: baseline;
+}
+
+.details-item {
+  margin-right: 1em;
+}
+
+.title-container {
+  display: flex;
+  align-items: center;
+  vertical-align: middle;
+}
+
+.ui.circular.label {
+  margin-right: 0.5em;
+  min-width: 1em !important;
+  min-height: 1em !important;
+}
+
+.ui.header.repo {
+  font-size: 2em;
+  font-weight: 600;
+  color: #58a6ff;
+  display: inline-block;
+}
+
+.ui.header.repo:hover{
+  text-decoration: underline;
+}
