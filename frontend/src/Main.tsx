@@ -3,7 +3,7 @@ import { useParams } from 'react-router'
 import { useEffect, useState } from 'react'
 import { fetchUser, fetchRepos } from './api'
 import { User, Repository } from './interfaces'
-import {Loader, Repo, Paginator, Profile, Footer, Navbar} from './components'
+import {Loader, Repo, Paginator, Profile, Footer, Navbar, Search} from './components'
 
 
 const RepoList = (repos:Repository[]) => {
@@ -24,6 +24,12 @@ const Main = () => {
 
   const handlePageChange = (page:number) => {
     fetchRepos(username, page).then(( res ) => {
+      handleRepoChange(res)
+    })
+  }
+
+  const handleSearch = (filters:any, page:number ) =>{
+    fetchRepos(username, page, filters).then(( res ) => {
       handleRepoChange(res)
     })
   }
@@ -64,10 +70,11 @@ const Main = () => {
           <div style={{marginTop: '5em'}}>
             <Grid stackable>
               <Grid.Row centered>
-                <Grid.Column width={4}>
+                <Grid.Column width={3}>
                   <Profile user={user} />
                 </Grid.Column>
-                <Grid.Column width={10}>
+                <Grid.Column width={11}>
+                  <Search page={pageInfo?.page} onSearch={handleSearch}/>
                   { RepoList(repos) }
                   <Paginator pageInfo={pageInfo} handleChange={handlePageChange}/>
                 </Grid.Column>

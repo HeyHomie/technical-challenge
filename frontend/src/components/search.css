@@ -1,0 +1,36 @@
+.gh-search {
+  margin-bottom: 1em;
+}
+
+.gh-search .ui.input input {
+  color: #ffffff;
+  border: 1px solid;
+  border-color: #21262d;
+  background-color: #0d1117;
+}:focus {
+  color: #ffffff !important;
+  background-color: #0d1117 !important;
+}
+
+.gh-filters .ui.selection.dropdown {
+  min-width: 8em;
+  max-width: 14em;
+  margin-right: 0.5em;
+}:focus {
+  color: #ffffff !important;
+  background-color: #0d1117 !important;
+}
+
+.gh-filters .ui.selection.dropdown, 
+.gh-filters .ui.selection.dropdown i,  
+.gh-filters .ui.selection.dropdown .divider.text, 
+.gh-filters .ui.active.visible.selection.dropdown .item, 
+.gh-filters .ui.selection.dropdown .divider.default.text,
+.gh-filters .ui.active.visible.selection.dropdown .item span, 
+.gh-filters .ui.active.visible.selection.dropdown .divider.text, 
+.gh-filters .ui.active.visible.selection.dropdown .active.selected.item, 
+.gh-filters .ui.active.visible.selection.dropdown .active.selected.item span {
+  background-color: #21262d;
+}:focus {
+  background-color: #21262d !important;
+}

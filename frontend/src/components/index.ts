@@ -4,6 +4,7 @@ import Profile from './profile'
 import Paginator from './paginator'
 import Footer from './layout/footer'
 import Navbar from './layout/navbar'
+import Search from './search'
 
 export {
   Repo,
@@ -11,5 +12,6 @@ export {
   Profile,
   Footer,
   Navbar,
-  Paginator
+  Paginator,
+  Search
 }
