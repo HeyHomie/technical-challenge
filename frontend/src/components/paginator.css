@@ -1,0 +1,17 @@
+.ui.secondary.pointing.menu.gh-paginator {
+  float: right;
+  margin-top: 1em;
+}
+
+.ui.secondary.pointing.menu.gh-paginator .item {
+  color: #8d97a7 !important;
+}
+
+.ui.secondary.pointing.menu.gh-paginator .item:hover {
+  border-color: #6e7681;
+}
+
+.ui.secondary.pointing.menu.gh-paginator .active.item {
+  border-color: #f78166;
+  color: #ffffff !important;
+}
