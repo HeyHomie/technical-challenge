@@ -41,6 +41,13 @@ ActiveRecord::Schema.define(version: 2021_09_25_000218) do
     t.string "name"
     t.string "email"
     t.string "avatar_url"
+    t.text "bio"
+    t.string "company"
+    t.string "location"
+    t.string "blog"
+    t.string "twitter_username"
+    t.integer "followers"
+    t.integer "following"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

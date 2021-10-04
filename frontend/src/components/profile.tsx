@@ -30,9 +30,7 @@ const Social = (org:string, location:string, email:string, website:string) => (
   <div className='social-container'>
     <p className='social'>
       <Icon name='building outline' />
-      <a href=''>
-        {org}
-      </a>
+      {org}
     </p>
     <p className='social'>
       <Icon name='map marker alternate' />
@@ -46,7 +44,7 @@ const Social = (org:string, location:string, email:string, website:string) => (
     </p>
     <p className='social'>
       <Icon name='chain' />
-      <a href={website}>
+      <a href={website} target='_blank'>
         {website}
       </a>
     </p>
@@ -71,10 +69,10 @@ const Profile = ( props:any ) => {
         Follow
       </Button>
       <p className='bio'>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus id laudantium delectus placeat veniam consectetur est molestiae similique a. Totam ea voluptates ipsum est. Ratione pariatur possimus nam sint commodi?
+        { user.bio }
       </p>
-      { Stats(35,9,38) }
-      { Social('@HeyHomie', 'Mexico', user.email, 'https://ale.world/') }
+      { Stats(user.followers, user.following, 38) }
+      { Social(user.company, user.location, user.email, user.blog) }
     </>
   )
 }

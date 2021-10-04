@@ -20,7 +20,14 @@ class GithubUsersService
                            url: response.body['html_url'],
                            name: response.body['name'],
                            email: response.body['email'],
-                           avatar_url: response.body['avatar_url']
+                           avatar_url: response.body['avatar_url'],
+                           bio: response.body['bio'],
+                           company: response.body['company'],
+                           location: response.body['location'],
+                           blog: response.body['blog'],
+                           followers: response.body['followers'],
+                           following: response.body['following'],
+                           twitter_username: response.body['twitter_username']
                          })
       {
         message: user,
