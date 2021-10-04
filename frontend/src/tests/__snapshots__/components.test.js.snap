@@ -1,0 +1,776 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Components renders footer component correctly 1`] = `
+Array [
+  <div
+    className="ui divider"
+  />,
+  <div
+    className="ui gh-footer menu"
+  >
+    <div
+      className="item"
+      onClick={[Function]}
+    >
+      <i
+        aria-hidden="true"
+        className="grey copyright outline icon"
+        onClick={[Function]}
+      />
+      <span>
+        2021 GitHub, Inc.
+      </span>
+    </div>
+    <a
+      className="item"
+      href="https://docs.github.com/en/github/site-policy/github-terms-of-service"
+      onClick={[Function]}
+      target="_blank"
+    >
+      Terms
+    </a>
+    <a
+      className="item"
+      href="https://docs.github.com/en/github/site-policy/github-privacy-statement"
+      onClick={[Function]}
+      target="_blank"
+    >
+      Privacy
+    </a>
+    <a
+      className="item"
+      href="https://github.com/security"
+      onClick={[Function]}
+      target="_blank"
+    >
+      Secutiry
+    </a>
+    <a
+      className="item"
+      href="https://www.githubstatus.com/"
+      onClick={[Function]}
+      target="_blank"
+    >
+      Status
+    </a>
+    <a
+      className="item"
+      href="https://docs.github.com/"
+      onClick={[Function]}
+      target="_blank"
+    >
+      Docs
+    </a>
+    <a
+      className="item grey"
+      href="https://github.com/"
+      onClick={[Function]}
+      target="_blank"
+    >
+      <i
+        aria-hidden="true"
+        className="grey github big icon"
+        onClick={[Function]}
+      />
+    </a>
+    <a
+      className="item"
+      href="https://support.github.com/?tags=dotcom-footer"
+      onClick={[Function]}
+      target="_blank"
+    >
+      Contact Git Hub
+    </a>
+    <a
+      className="item"
+      href="https://github.com/pricing"
+      onClick={[Function]}
+      target="_blank"
+    >
+      Pricing
+    </a>
+    <a
+      className="item"
+      href="https://docs.github.com/"
+      onClick={[Function]}
+      target="_blank"
+    >
+      API
+    </a>
+    <a
+      className="item"
+      href="https://services.github.com/"
+      onClick={[Function]}
+      target="_blank"
+    >
+      Training
+    </a>
+    <a
+      className="item"
+      href="https://github.blog/"
+      onClick={[Function]}
+      target="_blank"
+    >
+      Blog
+    </a>
+    <a
+      className="item"
+      href="https://github.com/about"
+      onClick={[Function]}
+      target="_blank"
+    >
+      About
+    </a>
+  </div>,
+]
+`;
+
+exports[`Components renders loader component correctly 1`] = `
+<div
+  className="loader"
+>
+  <i
+    aria-hidden="true"
+    className="asterisk massive loading icon"
+    onClick={[Function]}
+  />
+  <h1
+    className="ui header"
+  >
+    Loading...
+  </h1>
+</div>
+`;
+
+exports[`Components renders navbar component correctly 1`] = `
+<div
+  className="ui large pointing secondary top fixed gh-menu menu"
+>
+  <div
+    className="link item gh-item"
+    onClick={[Function]}
+  >
+    <i
+      aria-hidden="true"
+      className="grey newspaper outline icon"
+      onClick={[Function]}
+    />
+    <span>
+      Overview
+    </span>
+  </div>
+  <div
+    className="active link item gh-item-active"
+    onClick={[Function]}
+  >
+    <i
+      aria-hidden="true"
+      className="grey book icon"
+      onClick={[Function]}
+    />
+    <span>
+      Repositories
+    </span>
+    <div
+      className="ui grey label"
+      onClick={[Function]}
+    >
+      1
+    </div>
+  </div>
+  <div
+    className="link item gh-item"
+    onClick={[Function]}
+  >
+    <i
+      aria-hidden="true"
+      className="grey trello icon"
+      onClick={[Function]}
+    />
+    <span>
+      Projects
+    </span>
+  </div>
+  <div
+    className="link item gh-item"
+    onClick={[Function]}
+  >
+    <i
+      aria-hidden="true"
+      className="grey box icon"
+      onClick={[Function]}
+    />
+    <span>
+      Packages
+    </span>
+  </div>
+</div>
+`;
+
+exports[`Components renders paginator component correctly 1`] = `
+<div
+  aria-label="Pagination Navigation"
+  className="ui pagination pointing secondary gh-paginator menu"
+  role="navigation"
+>
+  <a
+    aria-current={false}
+    aria-disabled={false}
+    aria-label="Previous item"
+    className="item"
+    onClick={[Function]}
+    onKeyDown={[Function]}
+    tabIndex={0}
+    type="prevItem"
+    value={1}
+  >
+    ⟨
+  </a>
+  <a
+    aria-current={true}
+    aria-disabled={false}
+    className="active item"
+    onClick={[Function]}
+    onKeyDown={[Function]}
+    tabIndex={0}
+    type="pageItem"
+    value={1}
+  >
+    1
+  </a>
+  <a
+    aria-current={false}
+    aria-disabled={false}
+    aria-label="Next item"
+    className="item"
+    onClick={[Function]}
+    onKeyDown={[Function]}
+    tabIndex={0}
+    type="nextItem"
+    value={1}
+  >
+    ⟩
+  </a>
+</div>
+`;
+
+exports[`Components renders profile component correctly 1`] = `
+Array [
+  <img
+    className="ui medium circular image"
+    src="github.com/testuser"
+  />,
+  <h2
+    className="ui header"
+  >
+    User
+  </h2>,
+  <h3
+    className="ui header"
+  >
+    TestUser
+  </h3>,
+  <button
+    className="ui fluid button"
+    onClick={[Function]}
+  >
+    Follow
+  </button>,
+  <p
+    className="bio"
+  />,
+  <span
+    className="stats"
+  >
+    <i
+      aria-hidden="true"
+      className="users icon"
+      onClick={[Function]}
+    />
+    <span
+      className="number"
+    >
+       0 
+    </span>
+     followers
+  </span>,
+  <span
+    className="stats"
+  >
+     
+    <span
+      className="number"
+    >
+      0
+    </span>
+     following 
+  </span>,
+  <span
+    className="stats"
+  >
+    <i
+      aria-hidden="true"
+      className="star outline icon"
+      onClick={[Function]}
+    />
+    <span
+      className="number"
+    >
+      38
+    </span>
+  </span>,
+  <div
+    className="social-container"
+  >
+    <p
+      className="social"
+    >
+      <i
+        aria-hidden="true"
+        className="mail outline icon"
+        onClick={[Function]}
+      />
+      <a
+        href="mailto:test@user.com"
+      >
+        test@user.com
+      </a>
+    </p>
+  </div>,
+]
+`;
+
+exports[`Components renders repo component correctly 1`] = `
+<div>
+  <div
+    className="ui grid"
+  >
+    <div
+      className="row"
+    >
+      <div
+        className="twelve wide column"
+      >
+        <div
+          className="title-container"
+        >
+          <a
+            className="ui header repo"
+            href="github.com/testuser/testrepo"
+            target="_blank"
+          >
+            testrepo
+          </a>
+          <div
+            className="ui circular label"
+            onClick={[Function]}
+          >
+            Public
+          </div>
+        </div>
+        <div
+          className="details-container"
+        >
+          <div
+            className="details-item"
+          >
+            <i
+              aria-hidden="true"
+              className="fork icon"
+              onClick={[Function]}
+            />
+            <span>
+              1
+            </span>
+          </div>
+          <div
+            className="details-item"
+          >
+            <i
+              aria-hidden="true"
+              className="balance icon"
+              onClick={[Function]}
+            />
+            <span>
+              MIT
+            </span>
+          </div>
+          <div
+            className="details-item"
+          >
+            <span>
+              Updated on 
+              Oct 4
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
+        className="right floated four wide column"
+      >
+        <button
+          className="ui small compact right floated button"
+          onClick={[Function]}
+        >
+          <i
+            aria-hidden="true"
+            className="star outline icon"
+            onClick={[Function]}
+          />
+          <span>
+            Star
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div
+    className="ui divider"
+  />
+</div>
+`;
+
+exports[`Components renders search component correctly 1`] = `
+<div
+  className="gh-search"
+>
+  <div
+    className="ui stackable grid"
+  >
+    <div
+      className="row"
+    >
+      <div
+        className="eight wide column"
+      >
+        <div
+          className="ui fluid input"
+        >
+          <input
+            onChange={[Function]}
+            placeholder="Find a repository..."
+            type="text"
+          />
+        </div>
+      </div>
+      <div
+        className="eight wide column"
+      >
+        <div
+          className="gh-filters"
+        >
+          <div
+            aria-expanded={false}
+            className="ui selection dropdown"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onMouseDown={[Function]}
+            role="listbox"
+            tabIndex={0}
+          >
+            <div
+              aria-atomic={true}
+              aria-live="polite"
+              className="divider default text"
+              role="alert"
+            >
+              Type
+            </div>
+            <i
+              aria-hidden="true"
+              className="dropdown icon"
+              onClick={[Function]}
+            />
+            <div
+              className="menu transition"
+            >
+              <div
+                aria-checked={true}
+                aria-selected={true}
+                className="active selected item"
+                onClick={[Function]}
+                role="option"
+                style={
+                  Object {
+                    "pointerEvents": "all",
+                  }
+                }
+              >
+                <span
+                  className="text"
+                >
+                  All
+                </span>
+              </div>
+              <div
+                aria-checked={false}
+                aria-selected={false}
+                className="item"
+                onClick={[Function]}
+                role="option"
+                style={
+                  Object {
+                    "pointerEvents": "all",
+                  }
+                }
+              >
+                <span
+                  className="text"
+                >
+                  Forks
+                </span>
+              </div>
+              <div
+                aria-checked={false}
+                aria-selected={false}
+                className="item"
+                onClick={[Function]}
+                role="option"
+                style={
+                  Object {
+                    "pointerEvents": "all",
+                  }
+                }
+              >
+                <span
+                  className="text"
+                >
+                  Archived
+                </span>
+              </div>
+            </div>
+          </div>
+          <div
+            aria-expanded={false}
+            className="ui selection dropdown"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onMouseDown={[Function]}
+            role="listbox"
+            tabIndex={0}
+          >
+            <div
+              aria-atomic={true}
+              aria-live="polite"
+              className="divider default text"
+              role="alert"
+            >
+              Language
+            </div>
+            <i
+              aria-hidden="true"
+              className="dropdown icon"
+              onClick={[Function]}
+            />
+            <div
+              className="menu transition"
+            >
+              <div
+                aria-checked={true}
+                aria-selected={true}
+                className="active selected item"
+                onClick={[Function]}
+                role="option"
+                style={
+                  Object {
+                    "pointerEvents": "all",
+                  }
+                }
+              >
+                <span
+                  className="text"
+                >
+                  All
+                </span>
+              </div>
+              <div
+                aria-checked={false}
+                aria-selected={false}
+                className="item"
+                onClick={[Function]}
+                role="option"
+                style={
+                  Object {
+                    "pointerEvents": "all",
+                  }
+                }
+              >
+                <span
+                  className="text"
+                >
+                  HTML
+                </span>
+              </div>
+              <div
+                aria-checked={false}
+                aria-selected={false}
+                className="item"
+                onClick={[Function]}
+                role="option"
+                style={
+                  Object {
+                    "pointerEvents": "all",
+                  }
+                }
+              >
+                <span
+                  className="text"
+                >
+                  TypeScript
+                </span>
+              </div>
+              <div
+                aria-checked={false}
+                aria-selected={false}
+                className="item"
+                onClick={[Function]}
+                role="option"
+                style={
+                  Object {
+                    "pointerEvents": "all",
+                  }
+                }
+              >
+                <span
+                  className="text"
+                >
+                  JavaScript
+                </span>
+              </div>
+              <div
+                aria-checked={false}
+                aria-selected={false}
+                className="item"
+                onClick={[Function]}
+                role="option"
+                style={
+                  Object {
+                    "pointerEvents": "all",
+                  }
+                }
+              >
+                <span
+                  className="text"
+                >
+                  Ruby
+                </span>
+              </div>
+              <div
+                aria-checked={false}
+                aria-selected={false}
+                className="item"
+                onClick={[Function]}
+                role="option"
+                style={
+                  Object {
+                    "pointerEvents": "all",
+                  }
+                }
+              >
+                <span
+                  className="text"
+                >
+                  CSS
+                </span>
+              </div>
+            </div>
+          </div>
+          <div
+            aria-expanded={false}
+            className="ui selection dropdown"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onMouseDown={[Function]}
+            role="listbox"
+            tabIndex={0}
+          >
+            <div
+              aria-atomic={true}
+              aria-live="polite"
+              className="divider default text"
+              role="alert"
+            >
+              Sort
+            </div>
+            <i
+              aria-hidden="true"
+              className="dropdown icon"
+              onClick={[Function]}
+            />
+            <div
+              className="menu transition"
+            >
+              <div
+                aria-checked={true}
+                aria-selected={true}
+                className="active selected item"
+                onClick={[Function]}
+                role="option"
+                style={
+                  Object {
+                    "pointerEvents": "all",
+                  }
+                }
+              >
+                <span
+                  className="text"
+                >
+                  Last updated
+                </span>
+              </div>
+              <div
+                aria-checked={false}
+                aria-selected={false}
+                className="item"
+                onClick={[Function]}
+                role="option"
+                style={
+                  Object {
+                    "pointerEvents": "all",
+                  }
+                }
+              >
+                <span
+                  className="text"
+                >
+                  Name
+                </span>
+              </div>
+              <div
+                aria-checked={false}
+                aria-selected={false}
+                className="item"
+                onClick={[Function]}
+                role="option"
+                style={
+                  Object {
+                    "pointerEvents": "all",
+                  }
+                }
+              >
+                <span
+                  className="text"
+                >
+                  Stars
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="ui divider"
+  />
+</div>
+`;
