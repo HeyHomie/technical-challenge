@@ -60,7 +60,7 @@ const Profile = ( props:any ) => {
   
   return (
     <>
-      <Image src={user.avatar_url} size='medium' circular />
+      <Image circular size='medium' src={user.avatar_url}/>
       <Header as="h2">
         { user.name }
       </Header>
