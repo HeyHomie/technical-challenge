@@ -33,7 +33,7 @@ p.forked, p.desc, .details-item span, .details-item i {
 
 .ui.header.repo {
   margin: 0;
-  font-size: 1.7em;
+  font-size: 1.7 em;
   font-weight: 600;
   color: #58a6ff;
   padding-right: 0.3em;

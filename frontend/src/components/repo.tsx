@@ -16,7 +16,7 @@ const Forked = (fork:boolean) => {
   if (fork) {
     return (
       <p className='forked'> 
-        Forked form /parent/
+        Forked form another repository
       </p>
     )
   } else {
@@ -38,7 +38,10 @@ const Desc = (desc?:string) => {
 
 const Details = (last_updated:string, forks:number, lang?:string, lic?:string ) => {
 
-  let formatted_date = new Date(last_updated).toLocaleDateString(
+  const GitHubColors = require("github-colors");
+  const gh_info = GitHubColors.get(lang);
+  
+  const formatted_date = new Date(last_updated).toLocaleDateString(
     'en-US', 
     {day: 'numeric', month: 'short'}
   )  
@@ -48,7 +51,7 @@ const Details = (last_updated:string, forks:number, lang?:string, lic?:string ) 
       { lang ? (
         <div className='details-item'>
           {/* TODO: Get color of languaje */}
-          <Label circular color='red'/>
+          <Label circular style={{backgroundColor: gh_info.color}}/>
           <span>{lang}</span>
         </div>
       ) : null }
