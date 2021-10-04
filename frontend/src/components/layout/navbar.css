@@ -15,3 +15,10 @@
 .ui.secondary.pointing.menu .link.item.gh-item:hover {
   border-color: #6e7681;
 }
+
+@media screen and (max-width: 767px) {
+  .ui.secondary.pointing.menu.gh-menu {
+    padding-left: 0;
+    font-size: 0.95em;
+  }
+}
