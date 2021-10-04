@@ -28,6 +28,12 @@ const Main = () => {
     })
   }
 
+  const handleSearch = (filters:any, page:number ) =>{
+    fetchRepos(username, page, filters).then(( res ) => {
+      handleRepoChange(res)
+    })
+  }
+
   const handleRepoChange = ( res:any ) => {
     setRepos(res.repositories)
     setPageInfo({
@@ -68,7 +74,7 @@ const Main = () => {
                   <Profile user={user} />
                 </Grid.Column>
                 <Grid.Column width={11}>
-                  <Search/>
+                  <Search page={pageInfo?.page} onSearch={handleSearch}/>
                   { RepoList(repos) }
                   <Paginator pageInfo={pageInfo} handleChange={handlePageChange}/>
                 </Grid.Column>

@@ -1,7 +1,8 @@
 import './search.css'
+import { useEffect, useState } from 'react'
 import { Divider, Dropdown, Grid, Input } from 'semantic-ui-react'
 
-const Filters = ( props:any ) => {
+const Filters = ( handleTypeChange:any, handleLangChange:any, handleOrderChange:any ) => {
 
   const types = [
     {key: '' , value: '', text: 'All'},
@@ -23,10 +24,6 @@ const Filters = ( props:any ) => {
     {key: 'name' , value: 'name', text: 'Name'},
     {key: 'stars' , value: 'stars', text: 'Stars'},
   ]
-
-  const handleTypeChange = (e:any, data:any) => {}
-  const handleLangChange = (e:any, data:any) => {}
-  const handleOrderChange = (e:any, data:any) => {}
 
   return (
     <div className='gh-filters'>
@@ -54,15 +51,40 @@ const Filters = ( props:any ) => {
 
 const Search = ( props:any ) => {
 
+  const [filters, setFilters] = useState<any>()
+
+  const handleTypeChange = (e:any, data:any) => {
+    setFilters({...filters, type: data.value})
+  }
+  const handleLangChange = (e:any, data:any) => {
+    setFilters({...filters, language: data.value})
+  }
+  const handleOrderChange = (e:any, data:any) => {
+    setFilters({...filters, sort: data.value})
+  }
+
+  const handleQueryChange = (e:any) => {
+    setFilters({...filters, query: e.target.value})
+  }
+
+  useEffect(() => {
+    let page = props.page ? props.page : 1
+    const delay = setTimeout(() => {
+      props?.onSearch(filters, page)
+    } , 2000)
+
+    return () => clearTimeout(delay)
+  }, [filters])
+
   return (
     <div className='gh-search'>
       <Grid stackable>
         <Grid.Row>
           <Grid.Column width={8}>
-            <Input fluid placeholder='Find a repository...' />
+            <Input fluid placeholder='Find a repository...' onChange={handleQueryChange}/>
           </Grid.Column>
           <Grid.Column width={8}>
-          { Filters(props) }
+          { Filters(handleTypeChange, handleLangChange, handleOrderChange) }
           </Grid.Column>
         </Grid.Row>
       </Grid>
