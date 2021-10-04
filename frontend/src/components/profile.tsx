@@ -1,5 +1,5 @@
 import './profile.css'
-import { Button, Divider, Header, Icon, Image } from 'semantic-ui-react'
+import { Button, Header, Icon, Image } from 'semantic-ui-react'
 
 const Stats = (followers:number, following:number, stars:number) => (
   <>
@@ -75,7 +75,6 @@ const Profile = ( props:any ) => {
       </p>
       { Stats(35,9,38) }
       { Social('@HeyHomie', 'Mexico', user.email, 'https://ale.world/') }
-      <Divider />
     </>
   )
 }

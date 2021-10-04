@@ -1,8 +1,8 @@
 .ui.secondary.pointing.menu.gh-menu {
-  padding-top: 1em;
   border-width: thin;
   padding-left: 20em;
   border-color: #3e3d3d;
+  background-color: #0d1117;
 }
 
 .ui.secondary.pointing.menu .link.active.item.gh-item-active  {

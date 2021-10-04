@@ -8,7 +8,7 @@ import {Loader, Repo, Profile, Footer, Navbar} from './components'
 
 const RepoList = (repos:Repository[]) => {
   return repos.map( (repo:any) => (
-    <div className={repo.id}>
+    <div key={repo.id}>
       <Repo repo={repo}/>
     </div>
   ))
@@ -19,6 +19,7 @@ const Main = () => {
   const {username} = useParams<{username: string}>()
 
   const [user, setUser] = useState<User>()
+  const [count, setCount] = useState<number>(0)
   const [repos, setRepos] = useState<Array<Repository>>([])
 
   useEffect(() => {
@@ -26,7 +27,11 @@ const Main = () => {
   }, [username])
 
   useEffect(() => {
-    fetchRepos(username).then(setRepos)
+    fetchRepos(username).then(( res ) => {
+      setRepos(res.repositories)
+      setCount(res.total_count)
+      document.title = `${username} (${user?.name}) / Repositories`
+    })
   }, [user])
   
   if (user === undefined) {
@@ -38,17 +43,19 @@ const Main = () => {
   } else {
     return (
       <div className='content'>
-        <Navbar />
-          <Grid>
-            <Grid.Row centered>
-              <Grid.Column width={4}>
-                <Profile user={user} />
-              </Grid.Column>
-              <Grid.Column width={10}>
-                { RepoList(repos) }
-              </Grid.Column>
-            </Grid.Row>
-          </Grid>
+        <Navbar count={count}/>
+          <div style={{marginTop: '5em'}}>
+            <Grid stackable>
+              <Grid.Row centered>
+                <Grid.Column width={4}>
+                  <Profile user={user} />
+                </Grid.Column>
+                <Grid.Column width={10}>
+                  { RepoList(repos) }
+                </Grid.Column>
+              </Grid.Row>
+            </Grid>
+          </div>
         <Footer />
       </div>
     )
