@@ -26,28 +26,44 @@ const Stats = (followers:number, following:number, stars:number) => (
   </>
 )
 
-const Social = (org:string, location:string, email:string, website:string) => (
+const Social = (org?:string, location?:string, email?:string, website?:string, twitter?:string) => (
   <div className='social-container'>
+  { org ? (
     <p className='social'>
       <Icon name='building outline' />
       {org}
     </p>
+  ) : null }
+  { location ? (
     <p className='social'>
       <Icon name='map marker alternate' />
       {location}
     </p>
+  ) : null }
+  { email ? (
     <p className='social'>
       <Icon name='mail outline' />
       <a href={'mailto:' + email}>
         {email}
       </a>
     </p>
+  ) : null }
+  { website ? (
     <p className='social'>
       <Icon name='chain' />
       <a href={website} target='_blank'>
         {website}
       </a>
     </p>
+  ) : null }
+  { twitter ? (
+    <p className='social'>
+      <Icon name='twitter' />
+      <a href={ 'https://twitter.com/' + twitter} target='_blank'>
+        {'@' + twitter}
+      </a>
+    </p>
+  ) : null }
   </div>
 )
 
@@ -72,7 +88,7 @@ const Profile = ( props:any ) => {
         { user.bio }
       </p>
       { Stats(user.followers, user.following, 38) }
-      { Social(user.company, user.location, user.email, user.blog) }
+      { Social(user.company, user.location, user.email, user.blog, user.twitter_username) }
     </>
   )
 }
