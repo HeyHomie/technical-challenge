@@ -27,14 +27,16 @@ const Main = () => {
   }, [username])
 
   useEffect(() => {
-    fetchRepos(username).then(( res ) => {
-      setRepos(res.repositories)
-      setCount(res.total_count)
-      document.title = `${username} (${user?.name}) / Repositories`
-    })
+    if (user) {
+      fetchRepos(username).then(( res ) => {
+        setRepos(res.repositories)
+        setCount(res.total_count)
+        document.title = `${username} (${user?.name}) / Repositories`
+      })
+    }
   }, [user])
   
-  if (user === undefined) {
+  if (user === undefined || repos.length === 0) {
     return (
       <div className='content'>
         <Loader />
