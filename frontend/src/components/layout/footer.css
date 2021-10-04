@@ -1,0 +1,16 @@
+span {
+  color: #767676 !important;
+}
+
+.ui.menu.gh-footer {
+  width: 100%;
+  display: flex;
+  padding-top: 1em;
+  padding-bottom: 2em;
+  align-items: justify;
+  justify-content: center;
+  max-width: 100% !important;
+  background-color: #0d1117 !important;
+}.item {
+  color: #58a6ff !important;
+}

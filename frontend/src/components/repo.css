@@ -1,0 +1,45 @@
+p.forked, p.desc, .details-item span, .details-item i {
+  color: #8b949e;
+}
+
+.details-container {
+  display: flex;
+  align-items: baseline;
+}
+
+.details-item {
+  margin-right: 1em;
+}
+
+.title-container {
+  display: flex;
+  align-items: center;
+  vertical-align: middle;
+}
+
+.title-container .ui.circular.label {
+  color: #8b949e;
+  border: 1px solid;
+  border-color: #8b949e;
+  font-weight: 100 !important;
+  background-color: transparent !important;
+}
+
+.ui.circular.label {
+  margin-right: 0.5em;
+  min-width: 1em !important;
+  min-height: 1em !important;
+}
+
+.ui.header.repo {
+  margin: 0;
+  font-size: 1.7 em;
+  font-weight: 600;
+  color: #58a6ff;
+  padding-right: 0.3em;
+  display: inline-block;
+}
+
+.ui.header.repo:hover{
+  text-decoration: underline;
+}

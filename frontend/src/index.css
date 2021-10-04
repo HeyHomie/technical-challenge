@@ -1,0 +1,18 @@
+* {
+  background-color: #0d1117;
+  border-color: #ffffff;
+  color: #ffffff;
+}
+
+.content {
+  height: 100vh;
+}
+
+.ui.button {
+  color: #ffffff !important;
+  background-color: #21262d !important;
+}
+
+.ui.button span, .ui.button i {
+  background-color: transparent !important;
+}
