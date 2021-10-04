@@ -22,6 +22,12 @@ const Main = () => {
   const [pageInfo, setPageInfo] = useState<any>()
   const [repos, setRepos] = useState<Array<Repository>>([])
 
+  const handlePageChange = (page:number) => {
+    fetchRepos(username, page).then(( res ) => {
+      handleRepoChange(res)
+    })
+  }
+
   const handleRepoChange = ( res:any ) => {
     setRepos(res.repositories)
     setPageInfo({
@@ -29,22 +35,6 @@ const Main = () => {
       perPage: res.per_page,
       totalCount: res.total_count,
       totalPages: res.total_pages
-    })
-  }
-
-  const handlePageChange = (goToPage:any) => {
-    let page
-
-    if (goToPage == '⟩') {
-      page = pageInfo.page + 1
-    } else if (goToPage == '⟨') {
-      page = pageInfo.page - 1
-    } else {
-      page = parseInt(goToPage)
-    }
-
-    fetchRepos(username, page).then(( res ) => {
-      handleRepoChange(res)
     })
   }
 
@@ -79,12 +69,7 @@ const Main = () => {
                 </Grid.Column>
                 <Grid.Column width={10}>
                   { RepoList(repos) }
-                  <Paginator 
-                    activePage={pageInfo?.activePage} 
-                    totalPages={pageInfo?.totalPages} 
-                    onPageChange={ (e:any) => {
-                      handlePageChange(e.target.innerText)
-                    }}/>
+                  <Paginator pageInfo={pageInfo} handleChange={handlePageChange}/>
                 </Grid.Column>
               </Grid.Row>
             </Grid>
