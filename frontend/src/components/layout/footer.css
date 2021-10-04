@@ -1,4 +1,4 @@
-span {
+.gh-footer span {
   color: #767676 !important;
 }
 
@@ -13,4 +13,10 @@ span {
   background-color: #0d1117 !important;
 }.item {
   color: #58a6ff !important;
+}
+
+@media screen and (max-width: 767px) {
+  .ui.menu.gh-footer {
+    display: none !important;
+  }
 }

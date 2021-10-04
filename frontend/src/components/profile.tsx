@@ -1,5 +1,5 @@
 import './profile.css'
-import { Button, Divider, Header, Icon, Image } from 'semantic-ui-react'
+import { Button, Header, Icon, Image } from 'semantic-ui-react'
 
 const Stats = (followers:number, following:number, stars:number) => (
   <>
@@ -26,30 +26,44 @@ const Stats = (followers:number, following:number, stars:number) => (
   </>
 )
 
-const Social = (org:string, location:string, email:string, website:string) => (
+const Social = (org?:string, location?:string, email?:string, website?:string, twitter?:string) => (
   <div className='social-container'>
+  { org ? (
     <p className='social'>
       <Icon name='building outline' />
-      <a href=''>
-        {org}
-      </a>
+      {org}
     </p>
+  ) : null }
+  { location ? (
     <p className='social'>
       <Icon name='map marker alternate' />
       {location}
     </p>
+  ) : null }
+  { email ? (
     <p className='social'>
       <Icon name='mail outline' />
       <a href={'mailto:' + email}>
         {email}
       </a>
     </p>
+  ) : null }
+  { website ? (
     <p className='social'>
       <Icon name='chain' />
-      <a href={website}>
+      <a href={website} target='_blank'>
         {website}
       </a>
     </p>
+  ) : null }
+  { twitter ? (
+    <p className='social'>
+      <Icon name='twitter' />
+      <a href={ 'https://twitter.com/' + twitter} target='_blank'>
+        {'@' + twitter}
+      </a>
+    </p>
+  ) : null }
   </div>
 )
 
@@ -60,7 +74,7 @@ const Profile = ( props:any ) => {
   
   return (
     <>
-      <Image src={user.avatar_url} size='medium' circular />
+      <Image circular size='medium' src={user.avatar_url}/>
       <Header as="h2">
         { user.name }
       </Header>
@@ -71,11 +85,10 @@ const Profile = ( props:any ) => {
         Follow
       </Button>
       <p className='bio'>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus id laudantium delectus placeat veniam consectetur est molestiae similique a. Totam ea voluptates ipsum est. Ratione pariatur possimus nam sint commodi?
+        { user.bio }
       </p>
-      { Stats(35,9,38) }
-      { Social('@HeyHomie', 'Mexico', user.email, 'https://ale.world/') }
-      <Divider />
+      { Stats(user.followers, user.following, 38) }
+      { Social(user.company, user.location, user.email, user.blog, user.twitter_username) }
     </>
   )
 }

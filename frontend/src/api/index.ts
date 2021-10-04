@@ -5,8 +5,7 @@ const fetchUser = async (username:string) => {
 
 const fetchRepos = async (username:string) => {
   const response = await fetch(`/api/v1/users/${username}/repositories`)
-  const body = await response.json()
-  return body.repositories
+  return response.json()
 }
 
 export {  fetchUser, fetchRepos }

@@ -6,6 +6,13 @@ interface User {
   name: string,
   email: string,
   avatar_url: string,
+  bio: string,
+  company: string,
+  location: string,
+  blog: string,
+  twitter_username: string,
+  followers: number,
+  following: number,
   created_at: string,
   updated_at: string
 }

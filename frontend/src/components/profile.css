@@ -33,7 +33,7 @@ i, span.stats {
 }
 
 span.stats.number {
-  color: #ffffff;
+  color: #ffffff !important;
 }
 
 .social-container {

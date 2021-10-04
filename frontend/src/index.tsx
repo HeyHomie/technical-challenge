@@ -1,12 +1,12 @@
 import './index.css'
-import App from './App'
 import React from 'react'
 import ReactDOM from 'react-dom'
+import AppRouter from './routes'
 import 'semantic-ui-css/semantic.min.css'
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <AppRouter />
   </React.StrictMode>,
   document.getElementById('root')
 )
