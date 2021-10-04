@@ -27,6 +27,7 @@
 .gh-filters .ui.active.visible.selection.dropdown .item, 
 .gh-filters .ui.selection.dropdown .divider.default.text,
 .gh-filters .ui.active.visible.selection.dropdown .item span, 
+.gh-filters .ui.active.visible.selection.dropdown .divider.text, 
 .gh-filters .ui.active.visible.selection.dropdown .active.selected.item, 
 .gh-filters .ui.active.visible.selection.dropdown .active.selected.item span {
   background-color: #21262d;
