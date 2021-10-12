@@ -1,0 +1,14 @@
+.tag {
+  color: var(--color-link);
+  padding: 0.25rem 0.75rem;
+  background: var(--color-background-accent);
+  border-radius: 2.3rem;
+  font: var(--small-text-3);
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.tag:hover {
+  background: var(--color-background-tag);
+  color: white;
+}
