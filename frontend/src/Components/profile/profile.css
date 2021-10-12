@@ -1,0 +1,32 @@
+.profile {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.profile__buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.profile__buttons .btn {
+  flex: 1;
+}
+
+.profile__buttons {
+  order: 1;
+}
+
+/* secondary */
+.profile__details .biography {
+  font: var(--paragraph-text);
+  color: var(--color-white);
+  margin-bottom: 1rem;
+}
+
+@media screen and (min-width: 768px) {
+  .profile__buttons {
+    order: 0;
+  }
+}

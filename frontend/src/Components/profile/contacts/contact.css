@@ -1,0 +1,27 @@
+.contacts {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.contacts__item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font: var(--paragraph-text);
+  color: var(--color-grey);
+}
+
+.contacts__item [class^='icon-'] {
+  color: var(--color-grey);
+}
+
+.contacts__link {
+  color: var(--color-grey);
+  text-decoration: none;
+}
+
+.contacts__link:hover {
+  color: var(--color-link);
+  text-decoration: underline;
+}
