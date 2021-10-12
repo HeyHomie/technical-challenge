@@ -1,0 +1,49 @@
+.navigation {
+  border-bottom: 1px solid var(--color-border);
+  height: 100%;
+}
+
+.navigation__list {
+  justify-content: center;
+  display: flex;
+  height: 100%;
+  gap: 0.5rem;
+}
+
+.navigation__icon {
+  display: none;
+  color: var(--color-grey);
+}
+
+.navigation__item {
+  cursor: pointer;
+  display: flex;
+
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0;
+  color: var(--color-white);
+  font: var(--small-text);
+  border-bottom: 2px solid var(--color-background);
+}
+
+.navigation__item.navigation__item--active {
+  border-bottom: 2px solid var(--color-border-navigation);
+}
+
+.navigation__repositories {
+  display: inline-block;
+  background: var(--color-background-button);
+  border-radius: 2rem;
+  padding: 3px 6px;
+}
+
+@media screen and (min-width: 768px) {
+  .navigation__icon {
+    display: block;
+  }
+
+  .navigation__list {
+    gap: 1rem;
+  }
+}
