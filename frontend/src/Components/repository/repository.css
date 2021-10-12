@@ -1,0 +1,74 @@
+.repository {
+  display: flex;
+  justify-content: space-between;
+
+  align-items: flex-start;
+  padding: 1.5rem 0;
+  gap: 1rem;
+  flex-direction: column;
+
+  border-top: 1px solid var(--color-border-grey);
+}
+
+.repository__content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.repository__header {
+  display: flex;
+  gap: 1rem;
+}
+
+.repository__name {
+  color: var(--color-link);
+  font: var(--large-text-bold2);
+  text-decoration: none;
+}
+
+.repository__name:hover {
+  text-decoration: underline;
+}
+
+.repository__tag {
+  font: var(--small-text-3);
+  padding: 0.15rem 0.4rem;
+  border: 1px solid var(--color-border);
+  border-radius: 1rem;
+  color: var(--color-grey);
+
+  display: flex;
+  align-items: center;
+}
+.repository__description {
+  font: var(--small-text-2);
+  color: var(--color-grey);
+}
+
+.repository__actions {
+  flex-shrink: 0;
+}
+
+.repository__tags {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.repository__details {
+  font: var(--small-text-5);
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  color: var(--color-grey);
+}
+
+@media screen and (min-width: 768px) {
+  .repository {
+    flex-direction: row;
+    align-items: center;
+  }
+  .repository__description p {
+    max-width: 70%;
+  }
+}

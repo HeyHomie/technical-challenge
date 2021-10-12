@@ -1,0 +1,52 @@
+.linkDetails {
+  display: flex;
+  gap: 0.2rem;
+  align-items: center;
+}
+.linkDetail-text {
+  font: var(--small-text-5);
+}
+
+.dot {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+}
+
+.dot--HTML {
+  color: #e34c26;
+}
+
+.dot--CSS {
+  color: #563d7c;
+}
+
+.dot--JavaScript {
+  color: #f1e05a;
+}
+.dot--SCSS {
+  color: #c6538c;
+}
+
+.dot--TypeScript {
+  color: #2b7489;
+}
+.dot--Ruby {
+  color: #701516;
+}
+
+.dot--Dart {
+  color: #00b4ab;
+}
+
+.dot--Java {
+  color: #b07219;
+}
+
+.dot--Elixir {
+  color: #6e4a7e;
+}
+
+.dot--C {
+  color: #178600;
+}
