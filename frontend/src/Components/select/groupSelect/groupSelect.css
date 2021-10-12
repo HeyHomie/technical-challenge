@@ -1,0 +1,21 @@
+.groupSelect {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.groupSelect .select {
+  flex: 1;
+}
+
+@media screen and (min-width: 768) {
+  .groupSelect {
+    flex-direction: row;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .groupSelect {
+    flex-direction: row;
+  }
+}

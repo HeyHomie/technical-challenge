@@ -1,0 +1,8 @@
+.select {
+  border-radius: 0.5rem;
+  background-color: var(--color-background-button);
+  border: 1px solid var(--border--button);
+  padding: 0.5rem 0.5rem;
+  color: var(--color-white);
+  position: relative;
+}
