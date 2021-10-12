@@ -1,0 +1,63 @@
+:root {
+  --color-background: #0d1117;
+  --color-background-button: #21262d;
+  --border--button: #f0f6fc1a;
+  --color-border: #21262d;
+  --color-grey: #8b949e;
+  --color-white: #c9d1d9;
+  --color-link: #58a6ff;
+  --color-background-tag: #1f6feb;
+  --color-blue: #1f6feb;
+  --color-background-accent: #15223a;
+  --color-darkblue: #0c2d6b;
+  --border-focus: #1f6feb;
+  --color-background-green: #238636;
+  --color-btn-hover: #2ea043;
+  --color-border-grey: #30363d;
+  --color-border-navigation: #f78166;
+  --font: Inter;
+  --small-text: 400 1rem/1rem var(--font);
+  --small-text-2: 400 0.9rem/1.5rem var(--font);
+  --small-text-3: 400 0.7rem/1rem var(--font);
+  --small-text-4: 400 0.91rem/1rem var(--font);
+  --small-text-5: 400 0.72rem/1rem var(--font);
+  --large-text-bold: 600 1.625rem/2rem var(--font);
+  --large-text-light: 200 1.25rem/1.5rem var(--font);
+  --button-text: 500 1rem/1.5rem var(--font);
+  --paragraph-text: 400 1rem/1.5rem var(--font);
+  --paragraph-text-small: 400 0.85rem/1rem var(--font);
+  --large-text-bold2: 600 1.25rem/1.5rem var(--font);
+}
+
+body {
+  margin: 0;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+figure {
+  margin: 0;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-grey);
+}
+
+button {
+  all: unset;
+}
+
+input {
+  all: unset;
+}

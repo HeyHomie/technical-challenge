@@ -1,10 +1,21 @@
-import React from 'react'
-import './App.css'
-import { AppRouter } from './routes'
+import {
+  Route,
+  BrowserRouter as Router,
+  Switch,
+  Redirect
+} from 'react-router-dom'
 
+import Main from './Components/Main'
 
-function App () {
-  return <AppRouter />
-}
+const App = () =>(
+  <Router>
+  <Switch>
+    <Route exact path='/:username' component={Main} />
+    <Route path='*'>
+      <Redirect to='/davidmariolc' />
+    </Route>
+  </Switch>
+</Router>
+)
 
 export default App
