@@ -1,0 +1,92 @@
+.application {
+  max-width: 1300px;
+  margin: auto;
+  height: 100vh;
+}
+
+.navbar {
+  position: sticky;
+  top: 0;
+  background: var(--color-background);
+  z-index: 2;
+}
+
+.aside {
+  padding: 1.5rem 1.25rem;
+}
+
+.main {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+@media screen and (min-width: 768px) {
+  .application {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    grid-template-rows: 48px 1fr min-content;
+    grid-template-areas: 'navbar navbar' 'aside main' 'footer footer';
+  }
+  .navbar {
+    grid-area: navbar;
+  }
+
+  .aside {
+    grid-area: aside;
+    padding: 1.5rem 0.8rem;
+  }
+
+  .main {
+    grid-area: main;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: min-content min-content 1fr;
+    grid-template-areas: 'search search' 'groupSelects groupSelects' 'repositories repositories';
+  }
+
+  .main .search {
+    grid-area: search;
+  }
+
+  .main .groupSelect {
+    grid-area: groupSelects;
+  }
+
+  .main .repositories {
+    grid-area: repositories;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .application {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    grid-template-rows: 48px 1fr min-content;
+    grid-template-areas: 'navbar navbar' 'aside main' 'footer footer';
+  }
+
+  .navbar {
+    grid-area: navbar;
+  }
+
+  .aside {
+    grid-area: aside;
+    padding: 1.5rem 0.8rem;
+  }
+
+  .main {
+    grid-area: main;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: 'search groupSelects' 'repositories repositories';
+    grid-template-rows: min-content;
+  }
+
+  .main .repositories {
+    grid-area: repositories;
+  }
+
+  .footer {
+    grid-area: footer;
+  }
+}
