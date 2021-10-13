@@ -37,25 +37,6 @@
     grid-area: aside;
     padding: 1.5rem 0.8rem;
   }
-
-  .main {
-    grid-area: main;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: min-content min-content 1fr;
-    grid-template-areas: 'search search' 'groupSelects groupSelects' 'repositories repositories';
-  }
-
-  .main .search {
-    grid-area: search;
-  }
-
-  .main .groupSelect {
-    grid-area: groupSelects;
-  }
-
-  .main .repositories {
-    grid-area: repositories;
-  }
 }
 
 @media screen and (min-width: 1200px) {
@@ -78,12 +59,19 @@
   .main {
     grid-area: main;
     grid-template-columns: 1fr 1fr;
-    grid-template-areas: 'search groupSelects' 'repositories repositories';
+    grid-template-areas:
+      'search groupSelects'
+      'repositories repositories'
+      'pagination pagination';
     grid-template-rows: min-content;
   }
 
   .main .repositories {
     grid-area: repositories;
+  }
+
+  .main .pagination {
+    grid-area: pagination;
   }
 
   .footer {
