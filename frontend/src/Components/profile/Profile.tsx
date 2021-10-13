@@ -11,7 +11,7 @@ import InformationLink from './information/informationLink/InformationLink';
 import Contact from './contacts/Contact'
 import ContactLink from './contacts/contactLink/ContactLink';
 
-import {IUser} from '../../interfaces/user.interfaces';
+import {IUser} from '../../interfaces/user.interface';
 
 interface Props{
   user:IUser

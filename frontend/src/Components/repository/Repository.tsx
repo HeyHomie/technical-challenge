@@ -6,7 +6,7 @@ import {TiStarOutline} from 'react-icons/ti'
 import {GoPrimitiveDot} from 'react-icons/go'
 import {AiOutlineStar} from 'react-icons/ai'
 import {FaBalanceScale} from 'react-icons/fa';
-import { IOwner,Ilicense } from "../../interfaces/repository.interfaces";
+import { IOwner,Ilicense } from "../../interfaces/repository.interface";
 import {formatDate} from '../../utils/formatDate'
 import {formatStars} from '../../utils/formatStars';
 

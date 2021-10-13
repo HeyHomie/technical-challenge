@@ -1,6 +1,6 @@
 import './repositories.css';
 import Repository from '../repository/Repository';
-import {IRepository} from '../../interfaces/repository.interfaces';
+import {IRepository} from '../../interfaces/repository.interface';
 
 interface Props{
   repositories:IRepository[]
