@@ -12,12 +12,18 @@ import Footer from './footer/Footer';
 import Loading from './loading/Loading';
 import {IUser} from '../interfaces/user.interface'
 import { IRepository } from '../interfaces/repository.interface';
+import Pagination from './pagination/Pagination';
+import Button from './common/button/Button';
+import {BiBookBookmark} from 'react-icons/bi'
+
 
 
 const Main = () => {
 
   const {username} = useParams<{username:string}>();
+
   const [loading,setLoading] = useState<Boolean>(true);
+  
   const [user, setUser] = useState<IUser>({
     avatar_url: '',
     bio: '',
@@ -55,17 +61,38 @@ const Main = () => {
   );
   
   const [repositories,setRepositories] =useState<IRepository[]>([]);
-  const [repositoriesSearch,setRepositoriesSearch] = useState<IRepository[]>([]);
-  const [valueSearch,setValueSearch] = useState<string>('');
   
+  const [valueSearch,setValueSearch] = useState<string>('');
+
+  const [totalPage,setTotalPage] = useState<number>(1);
+  
+  const [currentPage,setCurrentPage] = useState<number>(1);
+
+  const [valueSelect,setValueSelect] = useState<string>('pushed'); 
+
+
   
   useEffect(() => {
+    
     const fetchApi = async () => {
-      const {user,repositories,userExist} = await fetchGithubApi(username);
+    
+      const numberItemByPage:number = 5; 
+      
+      const args = {
+        username,
+        numberItemByPage,
+        currentPage,
+        valueSelect
+      }
+      
+      const {user,repositories,userExist} = await fetchGithubApi(args);
+      
+      const totalPage = Math.ceil(user.public_repos/numberItemByPage);
       
       if(userExist){
         setLoading(false);
         setUser(user);
+        setTotalPage(totalPage)
         setRepositories(repositories)
       }else{
         setLoading(false);
@@ -75,35 +102,46 @@ const Main = () => {
   
     fetchApi()
     
-  }, [username])
+  }, [username,currentPage,valueSelect])
   
   
-    if(loading) return (<Loading/>)
-  
+  if(loading) return (<Loading/>)
+
+
+  /**
+   * method that filter by name 
+   */
+  const listRepositories = repositories.filter(
+    (repo: any) => repo.name.toLowerCase().indexOf(valueSearch) !== -1
+  );
+
+ 
+
     return (
       <div className="application">
         <aside className="aside">
             <Profile user={user}/>
         </aside>
         <nav className="navbar">
-            <Navigation total_repositories={repositories.length}/>
+            <Navigation total_repositories={user.public_repos}/>
         </nav>
         <main className="main">
           <Search 
             valueSearch={valueSearch}
             setValueSearch={setValueSearch}
-            repositories={repositories}
-            setRepositoriesSearch={setRepositoriesSearch}
+         
           />
           <GroupSelect>
-            <Select  defaultValue='Type' options={['All','Fork']}/>
-            <Select  defaultValue='Languages' options={['All','TypeScript','JavaScript','HTML']}/>
-            <Select  defaultValue='Sort' options={['Last updated','Name','Stars']}/>
+            <Select setValueSelect={setValueSelect}  defaultValue={valueSelect} options={[
+              {value:'full_name',name:'Name'},
+              {value:'pushed',name:'Last updated'}
+              ]}/>
+            <Button size="medium" icon={BiBookBookmark} value="New" color='green'/>
            </GroupSelect>
-          <Repositories
-           repositories={repositoriesSearch.length> 0 ? repositoriesSearch:repositories} />
-            
-        </main>
+           <Repositories repositories={listRepositories} />
+             <Pagination currentPage={currentPage} totalPage={totalPage} setCurrentPage={setCurrentPage}/>
+           
+        </main>  
         <Footer/>
       </div>
     )
