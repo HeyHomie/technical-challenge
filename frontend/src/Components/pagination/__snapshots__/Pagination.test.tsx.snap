@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render Pagination correctly 1`] = `
+<div
+  className="pagination"
+>
+  <button
+    className="btn btn--medium "
+    onClick={[Function]}
+  >
+    Previous
+  </button>
+  <p
+    className="pagination__numbers"
+  >
+    0
+    -
+    0
+  </p>
+  <button
+    className="btn btn--medium btn--disabled"
+    onClick={[Function]}
+  >
+    Next
+  </button>
+</div>
+`;
