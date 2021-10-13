@@ -1,20 +1,24 @@
 import "./select.css"
 
 interface Props {
+  setValueSelect:(value:string)=>void;
   defaultValue:string;
-  options:Array<string>;
+  options:{value:string,name:string}[];
 }
 
-const Select = ({defaultValue, options}:Props) => {
+const Select = ({setValueSelect,defaultValue, options}:Props) => {
   
+  const handleChange = (e:any) => {
+    setValueSelect(e.target.value)
+  }
   
   return (
-   <select className="select">
-     <option value={defaultValue}>{defaultValue}</option>
+   <select value={defaultValue} onChange={handleChange} className="select">
+
      {
        
        options.map((option,index)=>(
-        <option key={index} value={option}>{option}</option>
+        <option key={index} value={option.value}>{option.name}</option>
        ))
      }
     
