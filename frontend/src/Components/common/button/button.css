@@ -32,3 +32,25 @@
   padding: 0.4rem 0.5rem;
   font: var(--small-text-4);
 }
+
+.btn--disabled {
+  background: transparent;
+  color: var(--color-grey);
+  border: 1px solid var(--color-border);
+}
+
+.btn--disabled:hover {
+  border: 1px solid var(--color-border);
+  cursor: not-allowed;
+}
+.btn--disabled:active {
+  transform: scale(1);
+}
+
+.btn--green {
+  background-color: var(--color-background-green);
+}
+
+.btn-green:hover {
+  background-color: var(--color-btn-hover);
+}
