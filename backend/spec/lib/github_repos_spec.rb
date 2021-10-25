@@ -3,7 +3,7 @@
 require 'rails_helper'
 require 'faraday'
 
-describe GithubRepos do
+describe Github::Repos do
   context '.fetch_from_user' do
     it 'GETs a list of repos from the user\'s account' do
       user_name = 'dhh'
@@ -30,7 +30,7 @@ describe GithubRepos do
       )
       allow(::Faraday).to receive(:get).and_return(response)
 
-      repos = GithubRepos.fetch_from_user(user_name)
+      repos = Github::Repos.fetch_from_user(user_name)
       expect(repos.count).to eq(1)
     end
 
@@ -43,7 +43,7 @@ describe GithubRepos do
       allow(response).to receive(:body).and_return([].to_json)
       allow(::Faraday).to receive(:get).and_return(response)
 
-      expect { GithubRepos.fetch_from_user(user_name) }.to raise_error(GithubRepos::UnableToFetchRepos)
+      expect { Github::Repos.fetch_from_user(user_name) }.to raise_error(Github::Repos::UnableToFetchRepos)
     end
   end
 end
