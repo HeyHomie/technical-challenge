@@ -5,7 +5,7 @@ module Api
     class UsersController < ApplicationController
       def index
         conn = Faraday.new do |f|
-          f.request :authorization, 'Bearer', Figaro.env.GITHUB_TOKEN
+          f.request :authorization, 'Bearer', ENV['GITHUB_TOKEN']
           f.request :json # encode req bodies as JSON
           f.request :retry # retry transient failures
           f.response :follow_redirects # follow redirects
