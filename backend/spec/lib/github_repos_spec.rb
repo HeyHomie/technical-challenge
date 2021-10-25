@@ -14,17 +14,17 @@ describe Github::Repos do
       allow(response).to receive(:body).and_return(
         [
           {
-            id: 1234567,
-            node_id: "ABCdOeFghI9jkMNqweryNTI1MDMyNDc=",
-            name: "activerecord-sqlserver-adapter",
+            id: 1_234_567,
+            node_id: 'ABCdOeFghI9jkMNqweryNTI1MDMyNDc=',
+            name: 'activerecord-sqlserver-adapter',
             private: false,
             owner: {
-              login: "dhh",
-              id: 98765432,
-              node_id: "QWE6RTYuioIyNDgyNjc1",
-              type: "User",
+              login: 'dhh',
+              id: 98_765_432,
+              node_id: 'QWE6RTYuioIyNDgyNjc1',
+              type: 'User',
             },
-            description: "SQL Server Adapter For Rails",
+            description: 'SQL Server Adapter For Rails',
           },
         ].to_json
       )
