@@ -3,28 +3,20 @@
 module Api
   module V1
     class UsersController < ApplicationController
-      def index
-        conn = Faraday.new do |f|
-          f.request :authorization, 'Bearer', ENV['GITHUB_TOKEN']
-          f.request :json # encode req bodies as JSON
-          f.request :retry # retry transient failures
-          f.response :follow_redirects # follow redirects
-          f.response :json # decode response bodies as JSON
+      def show
+        github_user = ::Github::FetchUserService.new(params: params[:user_id]).execute!
+        user = User.find_by(github_id: github_user[:id]) || User.new
+
+        if user.new_record?
+          service = User::CreateService.new(user: user, params: github_user)
+          service.execute!
         end
-        user = conn.get("https://api.github.com/user?user=#{user_params}").body
-        repos = conn.get("https://api.github.com/user/repos?user=#{user_params}", { per_page: 100 }).body
-        db_user = User.all.find { |u| u.github_id == user['id'] }
-        if db_user.nil?
-          db_user = User.create({ github_id: user['id'], login: user['login'], url: user['html_url'], name: user['name'],
-                                  email: user['email'], avatar_url: user['avatar_url'], repositories: repos })
-        end
-        render json: db_user.as_json.except('repositories')
+
+        render json: user, except: :repositories
       end
 
-      private
-
-      def user_params
-        params.require(:username)
+      def unprocessable_entity
+        render json: { errors: @user.errors }, status: __method__
       end
     end
   end
