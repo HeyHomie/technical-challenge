@@ -1,8 +1,19 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
+  NoUserFound = Class.new(StandardError)
+
   validates :login, uniqueness: true
   validates :github_id, uniqueness: true, allow_nil: true
+
+  def self.find_or_fetch_from_github(login:)
+    user = find_or_create_by!(login: login)
+    user.refresh_data! if user.github_id.blank?
+    user.refresh_repos_data! if user.repositories.blank?
+    user
+  rescue ::Github::Users::UnableToFetchUser
+    raise NoUserFound
+  end
 
   def refresh_repos_data
     self.repositories = ::Github::Repos.fetch_from_user(login)
