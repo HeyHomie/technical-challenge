@@ -59,10 +59,10 @@ gem 'faraday_middleware', '~> 1.0'
 # gem 'discard', '~> 1.2'
 
 # Pagination
-# gem 'pagy', '~> 3.11'
+gem 'pagy', '~> 3.11'
 
 # Env Variables
-gem 'figaro', '~> 1.2'
+# gem 'figaro', '~> 1.2'
 
 # Logging
 gem 'lograge', '~> 0.11'

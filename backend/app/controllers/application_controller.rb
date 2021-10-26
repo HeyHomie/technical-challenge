@@ -1,9 +1,23 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::API
+  include Pagy::Backend
+
   rescue_from ArgumentError, with: :unprocessable_entity
   rescue_from ActiveRecord::RecordNotFound, with: :not_found
   rescue_from ActiveRecord::RecordInvalid, with: :unprocessable_entity
+  rescue_from Pagy::OverflowError, with: :pagination_errors
+  rescue_from Pagy::VariableError, with: :pagination_errors
+
+  after_action { pagy_headers_merge(@pagy) if @pagy }
+
+  private
+
+  def pagination_errors(exception)
+    render json: {
+      errors: [attribute: 'pagination', messages: [description: exception.message]]
+    }, status: :unprocessable_entity
+  end
 
   def unprocessable_entity
     render :nothing, status: __method__

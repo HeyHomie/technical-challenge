@@ -7,7 +7,14 @@ module Api
       before_action :user
 
       def index
-        render json: user.repositories.as_json(only: ALLOWED_FIELDS)
+        repositories = user.repositories.as_json(only: ALLOWED_FIELDS)
+
+        if params[:page].present?
+          @pagy, paginated_repositories = pagy(repositories)
+          render json: paginated_repositories
+        else
+          render json: repositories
+        end
       end
 
       private
