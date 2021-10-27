@@ -15,7 +15,7 @@ RSpec.describe 'Api::V1::Repositories', type: :request do
 
       body = JSON.parse(response.body)
       expect(response).to have_http_status(200)
-      expect(body.size).to eq(2)
+      expect(body['data'].size).to eq(2)
     end
 
     it 'searches with custom params' do

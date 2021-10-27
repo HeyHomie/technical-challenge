@@ -10,8 +10,8 @@ RSpec.describe 'Api::V1::Users', type: :request do
       get api_v1_user_path(user_name)
       body = JSON.parse(response.body)
       expect(response).to have_http_status(200)
-      expect(body).to have_key('login')
-      expect(body['login']).to eq('yknx4')
+      expect(body.dig('data', 'attributes')).to have_key('login')
+      expect(body.dig('data', 'attributes', 'login')).to eq('yknx4')
     end
   end
 end
