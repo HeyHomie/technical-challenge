@@ -3,20 +3,28 @@
 class User < ApplicationRecord
   NoUserFound = Class.new(StandardError)
 
+  has_many :repos, dependent: :destroy
+
   validates :login, uniqueness: true
   validates :github_id, uniqueness: true, allow_nil: true
 
   def self.find_or_fetch_from_github(login:)
     user = find_or_create_by!(login: login)
     user.refresh_data! if user.github_id.blank?
-    user.refresh_repos_data! if user.repositories.blank?
+    user.refresh_repos_data! if user.repos.empty?
     user
   rescue ::Github::Users::UnableToFetchUser
     raise NoUserFound
   end
 
   def refresh_repos_data
-    self.repositories = ::Github::Repos.fetch_from_user(login)
+    self.repos = ::Github::Repos.fetch_from_user(login).map do |repository|
+      Repo.new(
+        github_id: repository.fetch(:id),
+        name: repository.fetch(:name),
+        data: repository.except(:owner)
+      )
+    end
   end
 
   def refresh_repos_data!
@@ -26,7 +34,6 @@ class User < ApplicationRecord
 
   def refresh_data
     data = ::Github::Users.fetch(login)
-    data.symbolize_keys!
     self.login = data[:login]
     self.github_id = data[:id]
     self.url = data[:url]
