@@ -6,16 +6,22 @@ module Api
       def index
         user = User.find_or_fetch_from_github(login: user_params)
         search_hash = search_params['search']
-        if search_hash.present?
-          fields = JSON.parse(search_hash['fields'])
-          repos = Repo.search(search_hash['query'], fields: fields, where: { user_id: user.id })
-        else
-          repos = Repo.search(where: { user_id: user.id })
-        end
+        repos = if search_hash.present?
+                  Repo.search(
+                    search_hash['query'],
+                    fields: JSON.parse(search_hash['fields']),
+                    where: { user_id: user.id }
+                  )
+                else
+                  Repo.search(where: { user_id: user.id })
+                end
+        response = RepositorySerializer.new(repos).serializable_hash.to_json
 
-        render json: repos.results
-      rescue User::NoUserFound
-        render json: nil, status: :not_found
+        render json: response
+      end
+
+      rescue_from User::NoUserFound do |error|
+        render json: { error: { message: error.message } }, status: :not_found
       end
 
       private
