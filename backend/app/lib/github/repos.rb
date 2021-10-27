@@ -25,7 +25,7 @@ module Github
       def parse_or_fail(response)
         raise UnableToFetchRepos unless response.status == 200
 
-        JSON.parse response.body
+        JSON.parse(response.body).map(&:deep_symbolize_keys!)
       end
     end
   end

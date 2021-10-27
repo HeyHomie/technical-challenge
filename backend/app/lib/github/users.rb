@@ -15,7 +15,7 @@ module Github
       def parse_or_fail(response)
         raise UnableToFetchUser unless response.status == 200
 
-        JSON.parse response.body
+        JSON.parse(response.body).deep_symbolize_keys!
       end
     end
   end
