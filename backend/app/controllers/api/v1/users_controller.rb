@@ -6,12 +6,12 @@ module Api
       def index
         users = User.all
 
-        render json: users.as_json.each { |usr| usr.delete('repositories') }
+        render json: users.as_json.each { |usr| usr.delete('repos') }
       end
 
       def show
         user = User.find_or_fetch_from_github(login: user_params)
-        render json: user.as_json.except(:repositories)
+        render json: user.as_json.except(:repos)
       rescue User::NoUserFound
         render json: nil, status: :not_found
       end
