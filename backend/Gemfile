@@ -75,7 +75,7 @@ gem 'lograge', '~> 0.11'
 # gem 'health_bit', '~> 0.1'
 
 # JSON
-# gem 'jsonapi-serializer', '~> 2.2'
+gem 'jsonapi-serializer', '~> 2.2'
 gem 'oj', '~> 3.13'
 
 group :development, :test do

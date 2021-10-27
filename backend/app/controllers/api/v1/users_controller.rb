@@ -5,15 +5,19 @@ module Api
     class UsersController < ApplicationController
       def index
         users = User.all
-
-        render json: users.as_json.each { |usr| usr.delete('repos') }
+        response = UserSerializer.new(users).serializable_hash.to_json
+        render json: response
       end
 
       def show
         user = User.find_or_fetch_from_github(login: user_params)
-        render json: user.as_json.except(:repos)
-      rescue User::NoUserFound
-        render json: nil, status: :not_found
+        response = UserSerializer.new(user).serializable_hash.to_json
+        render json: response
+      end
+
+      rescue_from User::NoUserFound do |error|
+        # TODO: Serialize Errors in a global rescue
+        render json: { error: { message: error.message } }, status: :not_found
       end
 
       private
