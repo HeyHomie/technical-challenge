@@ -10,7 +10,7 @@ describe User, type: :model do
 
       user.refresh_repos_data!
 
-      expect(user.repositories.count).to eq(1)
+      expect(user.repos.count).to eq(1)
     end
   end
 end

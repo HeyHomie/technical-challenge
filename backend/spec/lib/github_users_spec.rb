@@ -11,7 +11,7 @@ describe Github::Users do
 
       user = Github::Users.fetch(user_name)
 
-      expect(user['login']).to eq('dhh')
+      expect(user[:login]).to eq('dhh')
     end
   end
 end
