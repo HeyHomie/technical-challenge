@@ -26,12 +26,13 @@ class User < ApplicationRecord
 
   def refresh_data
     data = ::Github::Users.fetch(login)
-    self.login = data['login']
-    self.github_id = data['id']
-    self.url = data['url']
-    self.name = data['name']
-    self.email = data['email']
-    self.avatar_url = data['avatar_url']
+    data.symbolize_keys!
+    self.login = data[:login]
+    self.github_id = data[:id]
+    self.url = data[:url]
+    self.name = data[:name]
+    self.email = data[:email]
+    self.avatar_url = data[:avatar_url]
   end
 
   def refresh_data!

@@ -110,6 +110,10 @@ def stub_repos_response_for(user_name)
           login: user_name,
           id: 98_765_432,
           node_id: 'QWE6RTYuioIyNDgyNjc1',
+          url: '',
+          name: user_name,
+          email: '',
+          avatar_url: '',
           type: 'User'
         },
         description: 'SQL Server Adapter For Rails'
@@ -128,8 +132,64 @@ def stub_user_response_for(user_name)
       login: user_name,
       id: 98_765_432,
       node_id: 'QWE6RTYuioIyNDgyNjc1',
+      url: '',
+      name: user_name,
+      email: '',
+      avatar_url: '',
       type: 'User'
     }.to_json
   )
   allow(::Faraday).to receive(:get).and_return(response)
+end
+
+def stub_github_methods_for(user_name)
+  user_response = {
+    login: user_name,
+    id: 98_765_432,
+    node_id: 'QWE6RTYuioIyNDgyNjc1',
+    url: '',
+    name: user_name,
+    email: '',
+    avatar_url: '',
+    type: 'User'
+  }
+  repos_response = [
+    {
+      id: 1_234_567,
+      node_id: 'ABCdOeFghI9jkMNqweryNTI1MDMyNDc=',
+      name: 'activerecord-sqlserver-adapter',
+      private: false,
+      owner: {
+        login: user_name,
+        id: 98_765_432,
+        node_id: 'QWE6RTYuioIyNDgyNjc1',
+        url: '',
+        name: user_name,
+        email: '',
+        avatar_url: '',
+        type: 'User'
+      },
+      description: 'SQL Server Adapter For Rails'
+    }, {
+      id: 1_234_568,
+      node_id: 'ABCdOeFghI9jkMNqweryNTI1MDMyNDd=',
+      name: 'activerecord-postgres-adapter',
+      private: false,
+      owner: {
+        login: user_name.to_s,
+        id: 98_765_432,
+        node_id: 'QWE6RTYuioIyNDgyNjc1',
+        url: '',
+        name: user_name.to_s,
+        email: '',
+        avatar_url: '',
+        type: 'User'
+      },
+      description: 'Postgres Adapter For Rails'
+    }
+  ]
+
+  allow(::Github::Users).to receive(:fetch).and_return(user_response)
+  allow(::Github::Repos).to receive(:fetch).and_return(repos_response)
+  allow(::Github::Repos).to receive(:fetch_from_user).and_return(repos_response)
 end
