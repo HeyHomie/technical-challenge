@@ -92,6 +92,8 @@ group :development, :test do
   gem 'pry-rails', '~> 0.3'
   gem 'rspec-rails', '~> 5.0'
   gem 'dotenv-rails'
+  gem 'shoulda-matchers'
+  gem 'webmock'
   # gem 'simplecov', '~> 0.21', require: false
   # gem 'simplecov-lcov', '~> 0.8', require: false
 end

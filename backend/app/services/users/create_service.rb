@@ -1,4 +1,4 @@
-module User
+module Users
   class CreateService
     def initialize(user:, params:)
       @params = params
@@ -15,12 +15,12 @@ module User
     def buid_attributes
       {
         github_id: params['id'],
-        login: params['login']
-        url: params['html_url']
-        name: params['name']
-        email: params['email']
-        avatar_url: params['avatar_url']
-        repositories: repos
+        login: params['login'],
+        url: params['html_url'],
+        name: params['name'],
+        email: params['email'] || '',
+        avatar_url: params['avatar_url'],
+        repositories: repos.as_json
       }
     end
 

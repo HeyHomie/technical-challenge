@@ -3,12 +3,15 @@
 require 'rails_helper'
 
 RSpec.describe 'Api::V1::Repositories', type: :request do
+  let(:username) { 'HeyHomie' }
+  subject(:request) { get "/api/v1/users/#{ username }/repositories" }
+
+  before { FactoryBot.create(:user) }
+
   describe 'GET /index' do
-    it 'gets repositories for yknx4' do
-      get api_v1_user_repositories_path(user_id: 'yknx4')
-      body = JSON.parse(response.body)
-      expect(response).to have_http_status(200)
-      expect(body.size).to eq(100)
+    it 'returns an OK status' do
+      request
+      expect(response).to have_http_status(:ok)
     end
   end
 end

@@ -1,24 +1,24 @@
-# README
+# Homie Challenge
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Setup
 
-Things you may want to cover:
+Just run the setup script to configure the app:
 
-* Ruby version
+Configure the `GITHUB_TOKEN` var in `.env` file.
 
-* System dependencies
+To migrate database:
 
-* Configuration
+```bash
+  rake db:migrate
+```
 
-* Database creation
+To run the app:
 
-* Database initialization
+```bash
+  bundle exec rails server
+```
 
-* How to run the test suite
+## Environment dependencies
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Ruby 3.0.1
+* PostgreSQL

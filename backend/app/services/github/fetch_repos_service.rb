@@ -1,4 +1,4 @@
-module GitHub
+module Github
   class FetchReposService
     def initialize(params:)
       @params = params
@@ -13,7 +13,7 @@ module GitHub
     attr_reader :params
   
     def repos_endpoint
-      @repos_endpoint ||= "user/repos?user=#{ params }"
+      @repos_endpoint ||= "user/repos?user=#{ params[:login] }"
     end
   
     def client

@@ -2,5 +2,5 @@
 
 class User < ApplicationRecord
 
-  validates :github_id, :login, :url, :name, :email, :avatar_url, :repositories, presence: true
+  validates :login, :url, :name, :avatar_url, presence: true
 end
