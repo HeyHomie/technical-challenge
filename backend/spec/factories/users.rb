@@ -3,7 +3,7 @@
 FactoryBot.define do
   factory :user do
     login { 'MyString' }
-    id { '' }
+    id { rand(99_999_999) }
     url { 'MyString' }
     name { 'MyString' }
     email { 'MyString' }

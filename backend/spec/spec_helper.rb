@@ -176,11 +176,11 @@ def stub_github_methods_for(user_name)
       name: 'activerecord-postgres-adapter',
       private: false,
       owner: {
-        login: user_name.to_s,
+        login: user_name,
         id: 98_765_432,
         node_id: 'QWE6RTYuioIyNDgyNjc1',
         url: '',
-        name: user_name.to_s,
+        name: user_name,
         email: '',
         avatar_url: '',
         type: 'User'
