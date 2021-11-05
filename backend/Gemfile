@@ -14,7 +14,7 @@ gem 'puma', '~> 5.4'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 2.7'
 # Use Redis adapter to run Action Cable in production
-# gem 'redis', '~> 4.4'
+gem 'redis', '~> 4.4'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -32,7 +32,7 @@ gem 'faraday', '~> 1.0'
 gem 'faraday_middleware', '~> 1.0'
 
 # Background Jobs
-# gem 'sidekiq', '~> 6.2', '>= 6.2.1'
+gem 'sidekiq', '~> 6.2', '>= 6.2.1'
 # gem 'sidekiq_alive', '~> 2.1', '>= 2.0.6'
 # gem 'sidekiq-cron', '~> 1.2'
 # gem 'sidekiq-failures', '~> 1.0'
@@ -41,7 +41,7 @@ gem 'faraday_middleware', '~> 1.0'
 # gem 'sidekiq-unique-jobs', '~> 7.1', '>= 7.0.9'
 
 # ElasticSearch
-# gem 'searchkick', '~> 4.4', '>= 4.4.4'
+gem 'searchkick', '~> 4.6', '>= 4.6.1'
 
 # Users
 # gem 'pundit', '~> 2.1'
@@ -77,6 +77,8 @@ gem 'lograge', '~> 0.11'
 # JSON
 # gem 'jsonapi-serializer', '~> 2.2'
 gem 'oj', '~> 3.13'
+# Github gem
+gem 'octokit', '~> 4.21'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -84,12 +86,17 @@ group :development, :test do
   gem 'byebug', '~> 11.1', platforms: %i[mri mingw x64_mingw]
   gem 'cypress-on-rails', '~> 1.11'
   gem 'database_cleaner-active_record', '~> 2.0'
+  gem 'dotenv-rails', '~> 2.7', '>= 2.7.6'
   gem 'factory_bot_rails', '~> 6.2'
   gem 'faker', '~> 2.18'
   gem 'pry-rails', '~> 0.3'
   gem 'rspec-rails', '~> 5.0'
   # gem 'simplecov', '~> 0.21', require: false
   # gem 'simplecov-lcov', '~> 0.8', require: false
+end
+
+group :test do
+  gem 'shoulda-matchers', '~> 5.0'
 end
 
 group :development do

@@ -1,22 +1,21 @@
 test:
   service: Disk
   root: <%= Rails.root.join("tmp/storage") %>
+# local:
+#   service: S3
+#   access_key_id: accessKey1
+#   secret_access_key: verySecretKey1
+#   region: us-east-1
+#   bucket: backend_dev
+#   endpoint: http://localhost:8000
+#   force_path_style: true
 
-local:
-  service: S3
-  access_key_id: accessKey1
-  secret_access_key: verySecretKey1
-  region: us-east-1
-  bucket: backend_dev
-  endpoint: http://localhost:8000
-  force_path_style: true
-
-amazon:
-  service: S3
-  access_key_id: <%= ENV.fetch('AWS_ACCESS_KEY_ID') %>
-  secret_access_key: <%= ENV.fetch('AWS_SECRET_ACCESS_KEY') %>
-  region: <%= ENV.fetch('S3_REGION') %>
-  bucket: <%= ENV.fetch('S3_BUCKET_NAME') %>
+# amazon:
+#   service: S3
+#   access_key_id: <%= ENV.fetch('AWS_ACCESS_KEY_ID') %>
+#   secret_access_key: <%= ENV.fetch('AWS_SECRET_ACCESS_KEY') %>
+#   region: <%= ENV.fetch('S3_REGION') %>
+#   bucket: <%= ENV.fetch('S3_BUCKET_NAME') %>
 # Remember not to checkin your GCS keyfile to a repository
 # google:
 #   service: GCS

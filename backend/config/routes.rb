@@ -4,8 +4,9 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   namespace :api do
     namespace :v1 do
-      resources :users, only: [:index] do
-        resources :repositories, only: [:index]
+      get '/users/search', to: 'users#query', as: 'find_users'
+      resources :users, only: %i[new index show destroy create], param: :username do
+        resources :repositories, only: %i[index show]
       end
     end
   end
