@@ -9,8 +9,8 @@ export const useFetchData: any = () => {
     loading: false,
     data: []
   })
-  useEffect(() => {
-    const fetchData = async (): void => {
+  useEffect((): void => {
+    const fetchData = async (): Promise<any> => {
       try {
         setState({ ...state, loading: true })
         const responseRepos = await fetch(`${apiUrl}/users/${username}/repos`)

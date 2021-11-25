@@ -70,5 +70,11 @@
       "index.tsx"
     ],
     "coverageThreshold": {}
+  },
+  "ts-standard": {
+    "ignore": [
+      "dist",
+      "src/hooks/useFetchData.tsx"
+    ]
   }
 }

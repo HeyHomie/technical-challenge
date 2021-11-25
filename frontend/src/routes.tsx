@@ -5,7 +5,7 @@ import {
   Switch,
   Redirect
 } from 'react-router-dom'
-import { Userpage } from './pages/User/Userpage'
+import { Userpage } from './pages/User'
 
 export const AppRouter = (): JSX.Element => (
   <Router>
