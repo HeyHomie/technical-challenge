@@ -1,5 +1,5 @@
 import React from 'react'
 
 export const Header = (): JSX.Element => {
-  return <div>Header</div>
+  return <h1>Header</h1>
 }

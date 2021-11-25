@@ -1,19 +1,26 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 
+interface State {
+  error: boolean
+  loading: boolean
+  data: any[]
+}
+
 export const useFetchData: any = () => {
   const apiUrl: string = 'https://api.github.com'
   const { username } = useParams<{ username: string }>()
-  const [state, setState] = useState<any>({
+  const [state, setState] = useState<State>({
     error: false,
-    loading: false,
+    loading: true,
     data: []
   })
   useEffect((): void => {
     const fetchData = async (): Promise<any> => {
       try {
-        setState({ ...state, loading: true })
-        const responseRepos = await fetch(`${apiUrl}/users/${username}/repos`)
+        const responseRepos = await fetch(
+          `${apiUrl}/users/${username}/repos?sort=updated`
+        )
         const dataRepos = await responseRepos.json()
         const responseUser = await fetch(`${apiUrl}/users/${username}`)
         const dataUser = await responseUser.json()
