@@ -1,9 +1,13 @@
-import React from 'react'
+import React, { FunctionComponent } from 'react'
 
-export const SearchBar = (): JSX.Element => {
+export const SearchBar: FunctionComponent<any> = ({ handleChange }) => {
   return (
-    <div>
-      <h1>SearchBar</h1>
+    <div className='SearchBar--container'>
+      <input
+        type='text'
+        placeholder='Find a repository'
+        onChange={handleChange}
+      />
     </div>
   )
 }

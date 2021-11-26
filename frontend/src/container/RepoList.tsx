@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, useState } from 'react'
 import { SearchBar } from '../components/SearchBar'
 import { RepoCard } from '../components/RepoCard'
 import { Loading } from '../components/Loading'
@@ -15,6 +15,8 @@ export const RepoList: FunctionComponent<Props> = ({
   loading,
   error
 }) => {
+  const [search, setSearch] = useState<string>('')
+
   if (loading) {
     return <Loading />
   }
@@ -23,15 +25,26 @@ export const RepoList: FunctionComponent<Props> = ({
     return <Error />
   }
 
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
+    const { value } = event.target
+    setSearch(value)
+  }
+
+  console.log(search)
+
   const { data: repoData } = data.find(
     (item: any) => item.type === 'repositories'
   )
-  console.log(repoData[2])
+
+  const filteredRepos: object[] = repoData.filter((item: any) =>
+    item.name.toLowerCase().includes(search.toLowerCase())
+  )
+  console.log(filteredRepos)
 
   return (
     <div className='repoList__container'>
-      <SearchBar />
-      {repoData.map((item: any) => (
+      <SearchBar handleChange={handleChange} />
+      {filteredRepos.map((item: any) => (
         <RepoCard key={item.id} {...item} />
       ))}
     </div>
