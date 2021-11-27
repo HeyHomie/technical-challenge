@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react'
-
+import { UpdatedAtFormated } from '../updatedAtFormated'
 interface Props {
   name: string
   private: boolean
@@ -48,7 +48,7 @@ export const RepoCard: FunctionComponent<Props> = ({
         <p>{language}</p>
         {fork && <a href=''>{forks}</a>}
         {license != null && <p>{license.name}</p>}
-        <p>{updatedAt}</p>
+        <UpdatedAtFormated timeDate={updatedAt} />
       </div>
     </div>
   )
