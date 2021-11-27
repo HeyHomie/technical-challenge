@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useState } from 'react'
 import { SearchBar } from '../components/SearchBar'
 import { RepoCard } from '../components/RepoCard'
-import { Loading } from '../components/Loading'
+import { Miniloader } from '../components/Miniloader'
 import { Error } from '../components/Error'
 
 interface Props {
@@ -18,7 +18,7 @@ export const RepoList: FunctionComponent<Props> = ({
   const [search, setSearch] = useState<string>('')
 
   if (loading) {
-    return <Loading />
+    return <Miniloader />
   }
 
   if (error) {
