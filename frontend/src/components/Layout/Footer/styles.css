@@ -17,6 +17,11 @@
   margin-bottom: 20px;
 }
 
+.Footer__info p {
+  color: var(--font-link-color);
+  font-size: 0.8rem;
+}
+
 .Footer__logo {
   display: flex;
   filter: invert(50%);
