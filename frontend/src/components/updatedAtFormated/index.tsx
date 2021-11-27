@@ -9,13 +9,13 @@ const countdownCalc: (date: string) => string | undefined = (date: string) => {
   const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
   const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))
   if (days > 0) {
-    return `${days} days ago`
+    return `Updated ${days} days ago`
   }
   if (hours > 0) {
-    return `${hours} hours ago`
+    return `Updated ${hours} hours ago`
   }
   if (minutes > 0) {
-    return `${minutes} minutes ago`
+    return `Updated ${minutes} minutes ago`
   }
 }
 

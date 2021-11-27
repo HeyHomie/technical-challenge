@@ -2,7 +2,7 @@
   --bg-color: #0D1117;
   --bg-color-alter: #161B22;
   --font-color: aliceblue;
-  --font-link-color: #335C8B ;
+  --font-link-color: #58A6FF ;
   --divider-color: rgb(70, 70, 70);
 }
 
@@ -17,6 +17,14 @@ html {
 *::after {
   box-sizing: inherit;
   color: var(--font-color);
+}
+
+a{
+  text-decoration: none;
+}
+
+a:hover{
+  text-decoration: underline;
 }
 
 ul,

@@ -1,5 +1,6 @@
 import React, { FunctionComponent } from 'react'
 import { UpdatedAtFormated } from '../updatedAtFormated'
+import './styles.css'
 interface Props {
   name: string
   private: boolean
@@ -12,6 +13,8 @@ interface Props {
   license: any
   updated_at: string
   updatedAt: string
+  html_url: string
+  htmlUrl: string
 }
 
 export const RepoCard: FunctionComponent<Props> = ({
@@ -23,30 +26,33 @@ export const RepoCard: FunctionComponent<Props> = ({
   fork,
   forks,
   license,
-  updated_at: updatedAt
+  updated_at: updatedAt,
+  html_url: htmlUrl
 }) => {
   let id: number = 0
 
   return (
     <div className='RepoCard--container'>
-      <div className='Repocard__header'>
-        <h2>{name}</h2>
-        {!isPrivate && <span>Public</span>}
+      <div className='RepoCard__header'>
+        <a href={htmlUrl}>
+          <h2>{name}</h2>
+        </a>
+        {!isPrivate && <p>Public</p>}
       </div>
 
-      <div className='Repocard__description'>
+      <div className='RepoCard__description'>
         <p>{description}</p>
         {topics.length > 0 &&
           topics.map((item) => (
-            <span key={(id = id + 1)} className='Repocard__description--topics'>
+            <span key={(id = id + 1)} className='RepoCard__description--topics'>
               {item}
             </span>
           ))}
       </div>
 
-      <div className='info'>
-        <p>{language}</p>
-        {fork && <a href=''>{forks}</a>}
+      <div className='RepoCard__info'>
+        {language != null && <p>{language}</p>}
+        {/* {fork && <a href="">{forks}</a>} */} {/* Fetching error */}
         {license != null && <p>{license.name}</p>}
         <UpdatedAtFormated timeDate={updatedAt} />
       </div>
