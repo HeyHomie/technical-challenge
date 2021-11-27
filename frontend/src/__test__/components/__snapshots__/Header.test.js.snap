@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer Snapshot Comprobate UI from the component Header 1`] = `
+<div
+  className="Header--container"
+>
+  <h2
+    className="Header__title"
+  >
+    GitHub
+  </h2>
+  <img
+    alt="Github logo"
+    className="Header__logo"
+    src="https://cdn-icons-png.flaticon.com/512/25/25231.png"
+  />
+</div>
+`;
