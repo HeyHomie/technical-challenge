@@ -1,0 +1,13 @@
+.SearchBar--container{
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.SearchBar--container input {
+  border-radius: 25px;
+  background-color: transparent;
+  padding: 10px;
+  width: 100%;
+}

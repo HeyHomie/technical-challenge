@@ -1,4 +1,5 @@
 import React, { FunctionComponent } from 'react'
+import './styles.css'
 
 export const SearchBar: FunctionComponent<any> = ({ handleChange }) => {
   return (
