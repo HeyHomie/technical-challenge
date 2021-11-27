@@ -6,7 +6,7 @@ export const SearchBar: FunctionComponent<any> = ({ handleChange }) => {
     <div className='SearchBar--container'>
       <input
         type='text'
-        placeholder='Find a repository'
+        placeholder='Find a repository...'
         onChange={handleChange}
       />
     </div>
