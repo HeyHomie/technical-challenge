@@ -5,12 +5,12 @@ interface Props {
   name: string
   private: boolean
   isPrivate: boolean
-  description: string
+  description?: string
   topics: string[]
   language?: string
   fork: boolean
   forks: number
-  license: any
+  license?: any
   updated_at: string
   updatedAt: string
   html_url: string

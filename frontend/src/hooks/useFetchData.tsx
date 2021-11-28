@@ -31,7 +31,7 @@ export const useFetchData: any = () => {
           loading: false,
           data: [
             { type: 'repositories', data: dataRepos },
-            { type: 'user', data: dataUser }
+            { type: 'users', data: dataUser }
           ]
         })
       } catch (err) {
