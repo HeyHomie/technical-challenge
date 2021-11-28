@@ -7,6 +7,7 @@ import {
   Redirect,
   useParams
 } from 'react-router-dom'
+import { Layout } from 'components/common'
 import { getUser, getRepos } from 'api'
 
 export const Main: FunctionComponent = () => {
@@ -26,6 +27,7 @@ export const Main: FunctionComponent = () => {
   if (!User || !Repos) {
     return <div>Loading...</div>
   }
+
   return (
     <>
       <h1>{User.login}</h1>
@@ -38,11 +40,13 @@ export const Main: FunctionComponent = () => {
 
 export const AppRouter = () => (
   <Router>
-    <Switch>
-      <Route exact path="/:username" component={Main} />
-      <Route path="*">
-        <Redirect to="/yknx4" />
-      </Route>
-    </Switch>
+    <Layout>
+      <Switch>
+        <Route exact path="/:username" component={Main} />
+        <Route path="*">
+          <Redirect to="/yknx4" />
+        </Route>
+      </Switch>
+    </Layout>
   </Router>
 )
