@@ -46,3 +46,25 @@
 .ProfileSection__footer p {
   margin-right: 5px;
 }
+
+/* Tablet */
+
+@media (min-width: 768px){
+  .ProfileSection__header--avatar{
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .ProfileSection__header--avatar img{
+    width: 256px;
+    margin-bottom: 20px;
+  }
+}
+
+/* Desktop */
+
+@media (min-width: 1024px) {
+  .ProfileSection__header--avatar img{
+    width: 296px;
+  }
+}

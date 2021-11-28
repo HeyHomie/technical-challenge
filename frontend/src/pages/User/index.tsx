@@ -5,6 +5,7 @@ import { useFetchData } from '../../hooks/useFetchData'
 import { ProfileSection } from '../../components/ProfileSection'
 import { Miniloader } from '../../components/Miniloader'
 import { Error } from '../../components/Error'
+import './styles.css'
 
 export const Userpage = (): JSX.Element => {
   const state = useFetchData()
@@ -20,7 +21,7 @@ export const Userpage = (): JSX.Element => {
   }
 
   return (
-    <div className='body-container'>
+    <div className='User--container body-container'>
       <ProfileSection {...state} />
       {/* <TabBar /> */}
       <RepoList {...state} />

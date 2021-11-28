@@ -23,8 +23,6 @@ export const RepoCard: FunctionComponent<Props> = ({
   description,
   topics,
   language,
-  fork,
-  forks,
   license,
   updated_at: updatedAt,
   html_url: htmlUrl
@@ -41,7 +39,7 @@ export const RepoCard: FunctionComponent<Props> = ({
       </div>
 
       <div className='RepoCard__description'>
-        <p>{description}</p>
+        {description != null && <p>{description}</p>}
         {topics.length > 0 &&
           topics.map((item) => (
             <span key={(id = id + 1)} className='RepoCard__description--topics'>
@@ -52,7 +50,6 @@ export const RepoCard: FunctionComponent<Props> = ({
 
       <div className='RepoCard__info'>
         {language != null && <p>{language}</p>}
-        {/* {fork && <a href="">{forks}</a>} */} {/* Fetching error */}
         {license != null && <p>{license.name}</p>}
         <UpdatedAtFormated timeDate={updatedAt} />
       </div>

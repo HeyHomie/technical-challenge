@@ -1,0 +1,7 @@
+/* Tablet */
+
+@media (min-width: 768px) {
+  .User--container {
+    display: flex;
+  }
+}

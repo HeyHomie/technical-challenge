@@ -75,7 +75,7 @@
   },
   "ts-standard": {
     "ignore": [
-      "dist",
+      "build",
       "src/hooks/useFetchData.tsx",
       "__test__"
     ]
