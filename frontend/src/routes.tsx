@@ -12,12 +12,10 @@ export const AppRouter = (): JSX.Element => (
   <Router>
     <Layout>
       <Switch>
-        <div className='body-container'>
-          <Route exact path='/:username' component={Userpage} />
-          <Route path='*'>
-            <Redirect to='/yknx4' />
-          </Route>
-        </div>
+        <Route exact path='/:username' component={Userpage} />
+        <Route path='*'>
+          <Redirect to='/yknx4' />
+        </Route>
       </Switch>
     </Layout>
   </Router>

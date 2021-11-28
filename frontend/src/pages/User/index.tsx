@@ -20,10 +20,10 @@ export const Userpage = (): JSX.Element => {
   }
 
   return (
-    <>
+    <div className='body-container'>
       <ProfileSection {...state} />
       {/* <TabBar /> */}
       <RepoList {...state} />
-    </>
+    </div>
   )
 }
