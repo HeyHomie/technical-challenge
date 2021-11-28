@@ -3,7 +3,9 @@
   position: relative;
   height: 64px;
   display: flex;
-  margin-bottom: 20px;
+  /* max-width: var(--max-width); */
+  margin: 0 auto 40px;
+  padding: 0 calc((100vw - var(--max-width))/2);
 }
 
 .Header__title{

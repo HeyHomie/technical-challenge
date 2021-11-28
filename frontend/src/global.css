@@ -4,6 +4,7 @@
   --font-color: aliceblue;
   --font-link-color: #58A6FF ;
   --divider-color: rgb(70, 70, 70);
+  --max-width: 1400px;
 }
 
 html {
@@ -53,9 +54,7 @@ body {
   background: var(--bg-color);
   height: 100vh;
   margin: 0 auto;
-  max-width: 1000px;
   overscroll-behavior: none;
-  width: 100%;
 }
 
 #app {
@@ -63,4 +62,9 @@ body {
   overflow-x: hidden;
   min-height: 100vh;
   padding-bottom: 10px;
+}
+
+.body-container {
+  width: var(--max-width);
+  margin: 0 auto;
 }

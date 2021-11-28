@@ -78,8 +78,7 @@ export const ProfileSection: FunctionComponent<Props> = ({ data }) => {
           <a href={followersUrl}>{` ${followers} followers · `} </a>
         </p>
         <p>
-          {' '}
-          <a href={followingUrl}>{` ${following} following · `} </a>{' '}
+          <a href={followingUrl}>{` ${following} following`} </a>{' '}
         </p>
       </section>
     </div>

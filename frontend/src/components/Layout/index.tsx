@@ -4,10 +4,10 @@ import { Footer } from './Footer'
 
 export const Layout: FunctionComponent = ({ children }) => {
   return (
-    <div className='Layout-container'>
+    <>
       <Header />
       {children}
       <Footer />
-    </div>
+    </>
   )
 }
