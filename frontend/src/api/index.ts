@@ -1,6 +1,8 @@
+import { IUser, IRepository } from 'types'
+
 const API_URL = 'https://api.github.com'
 
-export const getUser = async (username: string) => {
+export const getUser = async (username: string): Promise<IUser> => {
   const res = await fetch(`${API_URL}/users/${username}`)
 
   const json = await res.json()
@@ -12,7 +14,7 @@ export const getUser = async (username: string) => {
   return json
 }
 
-export const getRepos = async (username: string) => {
+export const getRepos = async (username: string): Promise<IRepository[]> => {
   const res = await fetch(`${API_URL}/users/${username}/repos`)
   const json = await res.json()
 

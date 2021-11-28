@@ -1,11 +1,12 @@
 import { useEffect, useState, FC } from 'react'
 import { getUser, getRepos } from 'api'
 import { useParams } from 'react-router-dom'
+import { IRepository, IUser } from 'types'
 
 const Home: FC = () => {
   const { username } = useParams<{ username: string }>()
-  const [User, setUser] = useState<any>({})
-  const [Repos, setRepos] = useState<Array<any>>([])
+  const [User, setUser] = useState<IUser>()
+  const [Repos, setRepos] = useState<Array<IRepository>>([])
 
   useEffect(() => {
     Promise.all([getUser(username), getRepos(username)]).then(
