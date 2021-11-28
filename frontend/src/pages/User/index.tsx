@@ -2,7 +2,7 @@ import React from 'react'
 import { RepoList } from '../../container/RepoList'
 import { useFetchData } from '../../hooks/useFetchData'
 // import { TabBar } from '../../components/TabBar'
-import { ProfileSection } from '../../container/ProfileSection'
+import { ProfileSection } from '../../components/ProfileSection'
 import { Miniloader } from '../../components/Miniloader'
 import { Error } from '../../components/Error'
 

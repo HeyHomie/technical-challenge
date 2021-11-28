@@ -1,0 +1,48 @@
+.ProfileSection--container {
+  border-bottom: 1px solid var(--divider-color);
+  margin: 0 20px 20px;
+  padding-bottom: 20px;
+}
+
+/* Header */
+
+.ProfileSection__header {
+  margin-bottom: 20px;
+}
+
+.ProfileSection__header--avatar {
+  margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+}
+
+.ProfileSection__header--avatar div p {
+  color: gray;
+}
+
+.ProfileSection__header--avatar img {
+  width: 18.5%;
+  border-radius: 50%;
+  margin-right: 15px;
+}
+
+/* Body */
+
+.ProfileSection__body {
+  margin-bottom: 10px;
+}
+
+.ProfileSection__body p {
+  margin-bottom: 1px;
+  font-size: 0.9rem;
+}
+
+/* Footer */
+
+.ProfileSection__footer {
+  display: flex;
+}
+
+.ProfileSection__footer p {
+  margin-right: 5px;
+}

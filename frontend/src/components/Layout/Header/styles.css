@@ -3,6 +3,7 @@
   position: relative;
   height: 64px;
   display: flex;
+  margin-bottom: 20px;
 }
 
 .Header__title{

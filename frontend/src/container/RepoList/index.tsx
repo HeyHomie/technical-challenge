@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useState } from 'react'
-import { SearchBar } from '../components/SearchBar'
-import { RepoCard } from '../components/RepoCard'
+import { SearchBar } from '../../components/SearchBar'
+import { RepoCard } from '../../components/RepoCard'
 
 interface Props {
   data: any[]
