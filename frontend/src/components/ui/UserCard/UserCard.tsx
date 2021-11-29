@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import { IUser } from 'types'
-import { Avatar, Button } from 'components/ui'
+import { Avatar } from 'components/ui'
 import {
   LinkIcon,
   PeopleIcon,
@@ -48,7 +48,7 @@ const UserCard: FC<Props> = ({ user }) => {
           <h3 className="text-lg text-secondary">{user.login}</h3>
         </div>
       </div>
-      <Button className="hidden text-sm sm:block">Follow</Button>
+      <button className="hidden text-sm btn sm:block">Follow</button>
       <p className="my-4">{user.bio}</p>
       <div className="text-sm">
         <Social className="hidden mb-3 text-secondary sm:block" />
@@ -71,7 +71,7 @@ const UserCard: FC<Props> = ({ user }) => {
         </p>
       </div>
       <Social className="block my-4 text-secondary sm:hidden" />
-      <Button className="text-sm sm:hidden">Follow</Button>
+      <button className="text-sm btn sm:hidden">Follow</button>
     </div>
   )
 }

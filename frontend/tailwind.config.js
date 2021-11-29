@@ -6,11 +6,13 @@ module.exports = {
     extend: {
       colors: {
         primary: 'var(--primary)',
-        secondary: 'var(--secondary)'
+        secondary: 'var(--secondary)',
+        accent: { br: 'var(--border-color)' }
       },
       textColor: {
         primary: 'var(--text-primary)',
-        secondary: 'var(--text-secondary)'
+        secondary: 'var(--text-secondary)',
+        accent: { fg: 'var(--accent-fg)' }
       }
     }
   },
