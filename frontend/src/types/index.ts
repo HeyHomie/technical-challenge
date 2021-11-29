@@ -29,8 +29,8 @@ export interface IUser {
   public_gists: number
   followers: number
   following: number
-  created_at: Date
-  updated_at: Date
+  created_at: string
+  updated_at: string
 }
 
 export interface IRepository {
@@ -79,9 +79,9 @@ export interface IRepository {
   labels_url: string
   releases_url: string
   deployments_url: string
-  created_at: Date
-  updated_at: Date
-  pushed_at: Date
+  created_at: string
+  updated_at: string
+  pushed_at: string
   git_url: string
   ssh_url: string
   clone_url: string

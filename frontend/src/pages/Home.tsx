@@ -3,6 +3,7 @@ import { getUser, getRepos } from 'api'
 import { useParams } from 'react-router-dom'
 import { IRepository, IUser } from 'types'
 import { UserCard } from 'components/ui'
+import { RepoList } from 'components/repo'
 
 const Home: FC = () => {
   const { username } = useParams<{ username: string }>()
@@ -28,9 +29,7 @@ const Home: FC = () => {
         <UserCard user={User} />
       </aside>
       <div className="w-full">
-        {Repos.map((r) => (
-          <h2 key={r.id}>{r.name}</h2>
-        ))}
+        <RepoList repos={Repos} />
       </div>
     </main>
   )
