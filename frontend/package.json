@@ -5,9 +5,7 @@
   "prettier": "prettier-config-standard",
   "dependencies": {
     "@craco/craco": "^6.4.2",
-    "@testing-library/jest-dom": "^5.11.4",
-    "@testing-library/react": "^11.1.0",
-    "@testing-library/user-event": "^12.1.10",
+    "@primer/octicons-react": "^16.1.1",
     "@types/jest": "^26.0.15",
     "@types/jsonapi-serializer": "^3.6.4",
     "@types/node": "^12.0.0",
@@ -30,7 +28,7 @@
   },
   "proxy": "http://localhost:3000",
   "scripts": {
-    "start": "PORT=3001 BROWSER=none ESLINT_NO_DEV_ERRORS=true craco -r @cypress/instrument-cra start",
+    "start": "PORT=3001 BROWSER=none ESLINT_NO_DEV_ERRORS=true TAILWIND_MODE=watch craco -r @cypress/instrument-cra start",
     "build": "craco build",
     "test": "craco test",
     "eject": "react-scripts eject"
@@ -56,7 +54,10 @@
   "devDependencies": {
     "@cypress/instrument-cra": "^1.4.0",
     "@testing-library/dom": ">=7.21.4",
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^12.1.2",
     "@testing-library/react-hooks": "^7.0.0",
+    "@testing-library/user-event": "^12.1.10",
     "autoprefixer": "^9.8.8",
     "lint-staged": "^10.5.4",
     "nock": "^13.1.0",
