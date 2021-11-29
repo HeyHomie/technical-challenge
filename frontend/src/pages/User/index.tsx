@@ -1,7 +1,6 @@
 import React from 'react'
 import { RepoList } from '../../container/RepoList'
 import { useFetchData } from '../../hooks/useFetchData'
-// import { TabBar } from '../../components/TabBar'
 import { ProfileSection } from '../../components/ProfileSection'
 import { Miniloader } from '../../components/Miniloader'
 import { Error } from '../../components/Error'
@@ -10,7 +9,6 @@ import './styles.css'
 export const Userpage = (): JSX.Element => {
   const state = useFetchData()
   const { loading, error }: { loading: boolean, error: boolean } = state
-  console.log(state)
 
   if (loading) {
     return <Miniloader />
@@ -23,7 +21,6 @@ export const Userpage = (): JSX.Element => {
   return (
     <div className='User--container body-container'>
       <ProfileSection {...state} />
-      {/* <TabBar /> */}
       <RepoList {...state} />
     </div>
   )

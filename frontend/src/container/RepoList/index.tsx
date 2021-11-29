@@ -1,6 +1,7 @@
 import React, { FunctionComponent, useState } from 'react'
 import { SearchBar } from '../../components/SearchBar'
 import { RepoCard } from '../../components/RepoCard'
+import './styles.css'
 
 interface Props {
   data: any[]
@@ -23,7 +24,7 @@ export const RepoList: FunctionComponent<Props> = ({ data }) => {
   )
 
   return (
-    <div className='RepoList__container'>
+    <div className='RepoList--container'>
       <SearchBar handleChange={handleChange} />
       {filteredRepos.map((item: any) => (
         <RepoCard key={item.id} {...item} />

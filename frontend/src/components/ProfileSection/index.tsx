@@ -43,8 +43,6 @@ export const ProfileSection: FunctionComponent<Props> = ({ data }) => {
     twitter_username: twitterUsername
   }: ProfileData = profileData
 
-  console.log(profileData)
-
   return (
     <div className='ProfileSection--container'>
       <section className='ProfileSection__header'>

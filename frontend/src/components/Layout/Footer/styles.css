@@ -4,16 +4,19 @@
   flex-direction: column;
   align-items: center;
   border-top: 1px solid var(--divider-color);
-  margin: 0 40px;
+  margin: 0 auto;
+  max-width: var(--max-width);
 }
 
 .Footer__info {
   margin-top: 20px;
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
   gap: 5px;
+  justify-content: center;
   justify-items: center;
+  align-items: center;
   margin-bottom: 20px;
 }
 
