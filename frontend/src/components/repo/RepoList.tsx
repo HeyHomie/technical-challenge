@@ -6,8 +6,8 @@ type RepoCardProps = {
 }
 const RepoList: FC<RepoCardProps> = ({ repos }) => {
   return (
-    <ul className="divide-y">
-      <li>
+    <ul className="text-sm ">
+      <li className="divide-y divide-accent-br">
         {repos.map((repo) => (
           <RepoCard repo={repo} />
         ))}

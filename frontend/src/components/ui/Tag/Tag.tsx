@@ -6,7 +6,7 @@ type Props = {
 
 const Tag: FC<Props> = ({ children, className = '' }) => (
   <div
-    className={`border border-accent-br rounded-xl w-auto px-2 inline-block text-xs text-secondary ${className}`}>
+    className={`border border-accent-br rounded-xl w-auto px-2 inline-block text-xs ${className}`}>
     {children}
   </div>
 )

@@ -1,6 +1,28 @@
 import { FC } from 'react'
-import { IRepository } from 'types'
+import { IRepository, Language } from 'types'
 import { Tag } from 'components/ui'
+import { LawIcon, StarIcon } from '@primer/octicons-react'
+
+const colors = {
+  [Language.TypeScript]: '#2b7489',
+  [Language.JavaScript]: '#f1e05a',
+  [Language.HTML]: '#e34c26',
+  [Language.CSS]: '#563d7c',
+  [Language.Elixir]: '#6e4a7e',
+  [Language.Java]: '#b07219',
+  [Language.Python]: '#3572A5',
+  [Language.Ruby]: '#701516',
+  [Language.Go]: '#00ADD9',
+  [Language.Rust]: '#dea584',
+  [Language.Swift]: '#ffac45',
+  [Language.Kotlin]: '#f18e33',
+  [Language.C]: '#555555',
+  [Language['C#']]: '#178600',
+  [Language['C++']]: '#f34b7d',
+  [Language.TeX]: '#3D6117',
+  [Language.Shell]: '#89e051',
+  [Language['Objective-C']]: '#438eff'
+}
 
 type RepoCardProps = {
   repo: IRepository
@@ -43,15 +65,49 @@ const RepoCard: FC<RepoCardProps> = ({ repo }) => {
   const updatedAt = convertDate(repo.updated_at)
 
   return (
-    <div className="my-6">
-      <a href={repo.html_url} className="text-accent-fg">
-        {repo.name}
-      </a>
-      <Tag>{repo.private ? 'Private' : 'Public'}</Tag>
-      <p>{repo.description}</p>
-      <p>{repo.language}</p>
-      <p>{repo.license?.name}</p>
-      <p>Updated {updatedAt}</p>
+    <div className="grid grid-cols-6 py-6">
+      <div className="grid col-span-5 gap-2 ">
+        <h3>
+          <a
+            href={repo.html_url}
+            className="mr-2 text-xl font-bold text-accent-fg">
+            {repo.name}
+          </a>
+          <Tag className="text-secondary">
+            {repo.private ? 'Private' : 'Public'}
+          </Tag>
+        </h3>
+        <p className="text-secondary">{repo.description}</p>
+        <div className="flex gap-4 ">
+          {repo.topics.map((topic) => (
+            <Tag className="bg-accent-subtle hover:bg-accent-emphasis text-accent-fg">
+              {topic}
+            </Tag>
+          ))}
+        </div>
+        <div className="inline-flex gap-4 text-secondary">
+          {repo.language ? (
+            <p>
+              <span
+                className="inline-block w-3 h-3 mr-1 rounded-full"
+                style={{ backgroundColor: colors[repo.language] }}></span>
+              {repo.language}
+            </p>
+          ) : null}
+          {repo.license ? (
+            <p>
+              {repo.license?.key === 'mit' ? <LawIcon className="mr-1" /> : ''}
+              {repo.license?.name}
+            </p>
+          ) : null}
+          <p>Updated {updatedAt}</p>
+        </div>
+      </div>
+      <div className="col-span-1">
+        <button className="w-auto btn">
+          <StarIcon className="text-secondary" /> Star
+        </button>
+      </div>
     </div>
   )
 }
