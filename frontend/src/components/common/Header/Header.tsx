@@ -8,7 +8,7 @@ import {
 } from '@primer/octicons-react'
 
 const Header = () => (
-  <header className="h-16 sm:h-[60px] p-4 bg-secondary text-sm text-header">
+  <header className="h-16 sm:h-[60px] p-4 lg:px-8 sm:px-6 bg-secondary text-sm text-header">
     <div className="flex items-center justify-between sm:hidden">
       <ThreeBarsIcon size={24} />
       <MarkGithubIcon size={32} />
