@@ -23,7 +23,7 @@ const Header = () => (
         />
         <ul className="flex gap-4 font-bold">
           <li>
-            <a href="https://github.com/pulls">Pulls</a>
+            <a href="https://github.com/pulls">Pull Requests</a>
           </li>
           <li>
             <a href="https://github.com/issues">Issues</a>
