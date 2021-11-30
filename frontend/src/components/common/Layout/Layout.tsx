@@ -6,7 +6,7 @@ const Layout: FC = ({ children }) => {
     <div className="dark">
       <div className="w-screen min-h-screen text-primary bg-primary">
         <Header />
-        {children}
+        <main className="container mx-auto px-9">{children}</main>
       </div>
     </div>
   )

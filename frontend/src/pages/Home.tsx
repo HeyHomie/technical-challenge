@@ -11,7 +11,7 @@ const Home: FC = () => {
   const [Repos, setRepos] = useState<Array<IRepository>>([])
 
   useEffect(() => {
-    Promise.all([getUser(username), getRepos(username)]).then(
+    Promise.all([getUser(username), getRepos({ username })]).then(
       ([user, repos]) => {
         setUser(user)
         setRepos(repos)
@@ -24,14 +24,14 @@ const Home: FC = () => {
   }
 
   return (
-    <main className="flex flex-col px-4 mt-6 sm:flex-row">
+    <div className="flex flex-col gap-8 px-4 mt-6 sm:flex-row">
       <aside className="w-full sm:max-w-[256px] md:max-w-[296px] mt-4">
         <UserCard user={User} />
       </aside>
       <div className="w-full">
         <RepoList repos={Repos} />
       </div>
-    </main>
+    </div>
   )
 }
 
