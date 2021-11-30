@@ -90,7 +90,7 @@ export interface IRepository {
   size: number
   stargazers_count: number
   watchers_count: number
-  language: string
+  language: Language
   has_issues: boolean
   has_projects: boolean
   has_downloads: boolean
@@ -101,7 +101,7 @@ export interface IRepository {
   archived: boolean
   disabled: boolean
   open_issues_count: number
-  license: Ilicense
+  license: ILicense
   allow_forking: boolean
   forks: number
   open_issues: number
@@ -109,6 +109,7 @@ export interface IRepository {
   default_branch: string
   visibility: string
   owner: IOwner
+  topics: string[]
 }
 
 export interface IOwner {
@@ -132,10 +133,31 @@ export interface IOwner {
   url: string
 }
 
-export interface Ilicense {
+export interface ILicense {
   key: string
   name?: string
   spdx_id: string
   url: string
   node_id: string
+}
+
+export enum Language {
+  TypeScript = 'TypeScript',
+  JavaScript = 'JavaScript',
+  HTML = 'HTML',
+  CSS = 'CSS',
+  Elixir = 'Elixir',
+  Java = 'Java',
+  Python = 'Python',
+  Ruby = 'Ruby',
+  Go = 'Go',
+  Rust = 'Rust',
+  Swift = 'Swift',
+  Kotlin = 'Kotlin',
+  C = 'C',
+  'C#' = 'C#',
+  'C++' = 'C++',
+  TeX = 'TeX',
+  Shell = 'Shell',
+  'Objective-C' = 'Objective-C'
 }

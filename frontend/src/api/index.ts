@@ -14,8 +14,15 @@ export const getUser = async (username: string): Promise<IUser> => {
   return json
 }
 
-export const getRepos = async (username: string): Promise<IRepository[]> => {
-  const res = await fetch(`${API_URL}/users/${username}/repos`)
+export const getRepos = async ({
+  username = '',
+  per_page = 30,
+  page = 1,
+  sort = 'pushed'
+}): Promise<IRepository[]> => {
+  const res = await fetch(
+    `${API_URL}/users/${username}/repos?per_page=${per_page}&page=${page}&sort=${sort}`
+  )
   const json = await res.json()
 
   if (res.status !== 200) {
