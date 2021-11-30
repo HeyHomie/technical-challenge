@@ -66,11 +66,11 @@ const RepoCard: FC<RepoCardProps> = ({ repo }) => {
 
   return (
     <div className="grid grid-cols-6 py-6">
-      <div className="grid col-span-5 gap-2 ">
+      <div className="grid col-span-5 gap-2">
         <h3>
           <a
             href={repo.html_url}
-            className="mr-2 text-xl font-bold text-accent-fg">
+            className="mr-3 text-xl font-bold text-accent-fg hover:underline">
             {repo.name}
           </a>
           <Tag className="text-secondary">
@@ -78,14 +78,14 @@ const RepoCard: FC<RepoCardProps> = ({ repo }) => {
           </Tag>
         </h3>
         <p className="text-secondary">{repo.description}</p>
-        <div className="flex gap-4 ">
+        <div className="flex gap-4 my-2">
           {repo.topics.map((topic) => (
             <Tag className="bg-accent-subtle hover:bg-accent-emphasis text-accent-fg">
               {topic}
             </Tag>
           ))}
         </div>
-        <div className="inline-flex gap-4 text-secondary">
+        <div className="inline-flex gap-4 text-xs text-secondary">
           {repo.language ? (
             <p>
               <span
