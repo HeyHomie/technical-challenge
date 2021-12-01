@@ -18,60 +18,60 @@ type Props = {
 const UserCard: FC<Props> = ({ user }) => {
   const Social: FC<{ className?: string }> = ({ className }) => (
     <div className={className}>
-      <Link to={{ search: '?tab=followers' }}>
+      <a href={`${user.html_url}?tab=followers`}>
         <PeopleIcon size={16} className="mr-2" />
         <span className="font-bold text-primary">{user.followers}</span>{' '}
         followers
-      </Link>{' '}
+      </a>{' '}
       ·{' '}
-      <Link to={{ search: '?tab=following' }}>
+      <a href={`${user.html_url}?tab=following`}>
         <span className="font-bold text-primary">{user.following}</span>{' '}
         following{' '}
-      </Link>
+      </a>
       ·{' '}
-      <Link to={{ search: '?tab=stars' }}>
+      <a href={`${user.html_url}?tab=stars`}>
         <StarIcon size={16} />{' '}
         <span className="font-bold text-primary">38</span>
-      </Link>
+      </a>
     </div>
   )
 
   return (
-    <div className="w-full ">
-      <div className="grid grid-cols-6 sm:grid-cols-1 ">
+    <div className="w-full text-sm text-primary">
+      <div className="flex items-center md:block">
         <Avatar
           src={user.avatar_url}
-          className="relative flex items-center h-auto col-span-1 py-4 mx-3 sm:mx-0 sm:py-0"
+          className="relative inline-block items-center h-auto w-2/12 md:w-full py-4 mr-3 md:mx-0 md:py-0 min-w-[3rem] min-h-[3rem]"
         />
-        <div className="w-full col-start-2 col-end-6 py-4 sm:col-span-1">
+        <div className="inline-block w-10/12 py-4 md:w-full">
           <h2 className="text-2xl font-bold">{user.name}</h2>
           <h3 className="text-lg text-secondary">{user.login}</h3>
         </div>
       </div>
-      <button className="hidden text-sm btn sm:block">Follow</button>
-      <p className="my-4">{user.bio}</p>
-      <div className="text-sm">
-        <Social className="hidden mb-3 text-secondary sm:block" />
+      <button className="hidden btn md:block">Follow</button>
+      <p className="my-4 text-base">{user.bio}</p>
+      <div>
+        <Social className="hidden mb-3 text-secondary md:block" />
 
-        <p>
-          <OrganizationIcon size={16} className="mr-2 text-secondary" />
+        <p className="hidden md:static pt-[5px]">
+          <OrganizationIcon size={16} className="hidden mr-2 text-secondary" />
           {user.company}
         </p>
-        <p>
+        <p className="hidden md:static">
           <LocationIcon size={16} className="mr-2 text-secondary" />
           {user.location}
         </p>
-        <p>
+        <p className="pt-[5px]">
           <MailIcon size={16} className="mr-2 text-secondary" />
-          mail@example.com
+          {user.email || 'mail@example.com'}
         </p>
-        <p>
+        <p className="pt-[5px]">
           <LinkIcon size={16} className="mr-2 text-secondary" />
           {user.blog}
         </p>
       </div>
-      <Social className="block my-4 text-secondary sm:hidden" />
-      <button className="text-sm btn sm:hidden">Follow</button>
+      <Social className="block mt-2 mb-4 md:my-4 text-secondary md:hidden" />
+      <button className="btn md:hidden">Follow</button>
     </div>
   )
 }
