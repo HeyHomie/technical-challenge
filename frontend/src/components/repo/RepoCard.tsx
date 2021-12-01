@@ -80,7 +80,9 @@ const RepoCard: FC<RepoCardProps> = ({ repo }) => {
         <p className="text-secondary">{repo.description}</p>
         <div className="flex gap-4 my-2">
           {repo.topics.map((topic) => (
-            <Tag className="bg-accent-subtle hover:bg-accent-emphasis text-accent-fg">
+            <Tag
+              className="bg-accent-subtle hover:bg-accent-emphasis text-accent-fg"
+              key={topic}>
               {topic}
             </Tag>
           ))}

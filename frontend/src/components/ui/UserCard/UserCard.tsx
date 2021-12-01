@@ -9,7 +9,6 @@ import {
   LocationIcon,
   OrganizationIcon
 } from '@primer/octicons-react'
-import { Link } from 'react-router-dom'
 
 type Props = {
   user: IUser

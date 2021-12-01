@@ -9,12 +9,12 @@ type RepoCardProps = {
 const RepoList: FC<RepoCardProps> = ({ repos }) => {
   return (
     <div className="text-sm">
-      <ul>
-        <li className="divide-y divide-accent-br">
-          {repos.map((repo) => (
+      <ul className="divide-y divide-accent-br">
+        {repos.map((repo) => (
+          <li key={repo.id}>
             <RepoCard repo={repo} />
-          ))}
-        </li>
+          </li>
+        ))}
       </ul>
     </div>
   )
