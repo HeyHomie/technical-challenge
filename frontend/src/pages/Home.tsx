@@ -1,4 +1,4 @@
-import { useState, FC } from 'react'
+import { useState, FC, useEffect } from 'react'
 import { apiFetch } from 'api'
 import { useParams } from 'react-router-dom'
 
@@ -29,6 +29,12 @@ const Home: FC = () => {
     `/users/${username}/repos?q=${repoName}&per_page=${per_page}&page=${page}&sort=${sort}&type=${type}&language=${language}`,
     apiFetch
   )
+
+  useEffect(() => {
+    if (user) {
+      document.title = `${user.login} (${user.name}) / Repositories`
+    }
+  }, [user])
 
   return (
     <div className="flex flex-col min-h-full gap-8 md:mt-6 md:flex-row">
