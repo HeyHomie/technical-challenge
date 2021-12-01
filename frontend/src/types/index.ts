@@ -161,3 +161,8 @@ export enum Language {
   Shell = 'Shell',
   'Objective-C' = 'Objective-C'
 }
+
+export type Option = {
+  label: string
+  value: string
+}
