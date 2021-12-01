@@ -4,7 +4,8 @@ type Props = {
   src: string
   className?: string
 }
-const Avatar: FC<Props> = ({ src, className }) => {
+
+const Avatar: FC<Props> = ({ src, className = '' }) => {
   return (
     <figure className={className}>
       <a href={src}>
