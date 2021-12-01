@@ -11,13 +11,17 @@ module.exports = {
           br: 'var(--border-color)',
           emphasis: 'var(--accent-emphasis)',
           subtle: 'var(--color-accent-subtle)'
+        },
+        neutral: {
+          subtle: 'var(--color-neutral-subtle)'
         }
       },
       textColor: {
         primary: 'var(--text-primary)',
         secondary: 'var(--text-secondary)',
         accent: { fg: 'var(--accent-fg)' },
-        header: 'var(--text-header)'
+        header: 'var(--text-header)',
+        fg: { subtle: 'var(--text-fg-subtle)' }
       }
     }
   },
