@@ -118,7 +118,7 @@ Former Devops Engineer at @gitamv
         </a>
       </div>
       <p
-        class="hidden md:static pt-[5px]"
+        class="hidden md:block pt-[5px]"
       >
         <svg
           aria-hidden="true"
@@ -138,7 +138,7 @@ Former Devops Engineer at @gitamv
         @HeyHomie
       </p>
       <p
-        class="hidden md:static"
+        class="hidden md:block"
       >
         <svg
           aria-hidden="true"

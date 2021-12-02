@@ -51,7 +51,12 @@ exports[`UnderlineNav should be match with snapshot 1`] = `
               fill-rule="evenodd"
             />
           </svg>
-          Repositories
+          Repositories 
+          <div
+            class="border border-accent-br rounded-xl w-auto px-2 inline-block text-xs ml-1 px-[6px] bg-[rgba(110,118,129,0.4)] font-normal leading-[1.125rem]"
+          >
+            190
+          </div>
         </a>
         <a
           class="px-4 py-2 border-b-2 border-transparent cursor-pointer focus:outline-none hover:text-gray-700"
@@ -94,6 +99,11 @@ exports[`UnderlineNav should be match with snapshot 1`] = `
             />
           </svg>
           Packages
+          <div
+            class="border border-accent-br rounded-xl w-auto px-2 inline-block text-xs ml-1 px-[6px] bg-[rgba(110,118,129,0.4)] font-normal leading-[1.125rem]"
+          >
+            3
+          </div>
         </a>
       </ul>
     </nav>

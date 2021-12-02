@@ -3,7 +3,7 @@
 exports[`Header should be match with snapshot 1`] = `
 <DocumentFragment>
   <header
-    class="h-16 md:h-[60px] p-4 lg:px-8 md:px-6 bg-secondary text-sm text-header"
+    class="h-16 md:h-[60px] p-4 lg:px-8 md:px-6 bg-header text-sm text-header"
   >
     <div
       class="flex items-center justify-between md:hidden"
@@ -82,19 +82,19 @@ exports[`Header should be match with snapshot 1`] = `
             fill-rule="evenodd"
           />
         </svg>
-        <div
-          class="flex"
+        <label
+          class="flex border border-white rounded-md border-opacity-30 h-7 min-w-[15.5rem] max-w-[17rem] px-2"
         >
           <input
-            class="input min-w-[15.5rem] max-w-[17rem] w-full"
+            class="box-border w-full h-full py-0 border-none bg-header focus-visible:outline-none"
             placeholder="Search or jump to..."
           />
           <button
-            class="w-auto btn"
+            class="btn w-auto h-auto px-2 py-0 border-white border-opacity-30 bg-header rounded-[4px] my-[3px] text-sm"
           >
             / 
           </button>
-        </div>
+        </label>
         <ul
           class="flex gap-4 font-bold break-words"
         >

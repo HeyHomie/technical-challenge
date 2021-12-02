@@ -27,7 +27,7 @@ exports[`RepoCard should be match with snapshot 1`] = `
         📈 Uptime monitor and status page for Ale Ornelas Figueroa, powered by @upptime
       </p>
       <div
-        class="flex gap-4 my-2"
+        class="flex flex-wrap gap-4 my-2"
       >
         <div
           class="border border-accent-br rounded-xl w-auto px-2 inline-block text-xs bg-accent-subtle hover:bg-accent-emphasis text-accent-fg"
@@ -67,19 +67,19 @@ exports[`RepoCard should be match with snapshot 1`] = `
           MIT License
         </p>
         <p>
-          Updated less than a minute
+          Updated 5 hours ago
         </p>
       </div>
     </div>
     <div
-      class="col-span-1"
+      class="flex flex-col justify-around col-span-1 "
     >
       <button
-        class="w-auto btn"
+        class="absolute flex w-auto my-auto text-xs break-words btn"
       >
         <svg
           aria-hidden="true"
-          class="text-secondary"
+          class="w-3 h-3 mr-1 text-secondary"
           fill="currentColor"
           height="16"
           role="img"
@@ -92,7 +92,10 @@ exports[`RepoCard should be match with snapshot 1`] = `
             fill-rule="evenodd"
           />
         </svg>
-         Star
+         
+        <span>
+          Star
+        </span>
       </button>
     </div>
   </div>
