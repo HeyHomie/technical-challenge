@@ -15,7 +15,7 @@ const Layout: FC = ({ children }) => {
 
   return (
     <div className={isDark ? 'dark ' : 'light'}>
-      <div className="w-screen min-h-screen max-w-[100%] text-primary dark:bg-secondary md:dark:bg-primary ">
+      <div className="w-screen min-h-screen max-w-[100%] text-primary dark:bg-secondary md:dark:bg-primary grid">
         <Header />
         <main
           className="max-w-screen-xl min-h-full px-4 mx-auto md:px-9"

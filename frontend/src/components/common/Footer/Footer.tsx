@@ -8,7 +8,7 @@ const GithubCopyright = () => (
 )
 
 const Footer = () => (
-  <footer className="bottom-0 flex flex-wrap h-[7.25rem] items-center text-center justify-start px-4 text-xs border-t border-accent-br mt-10">
+  <footer className="self-end flex flex-wrap h-[7.25rem] items-center text-center justify-start px-4 text-xs border-t border-accent-br mt-10">
     <div className="hidden w-1/4 md:block">
       <GithubCopyright />
     </div>
