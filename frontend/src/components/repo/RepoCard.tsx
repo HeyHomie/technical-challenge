@@ -98,16 +98,16 @@ const RepoCard: FC<RepoCardProps> = ({ repo }) => {
           ) : null}
           {repo.stargazers_count > 0 ? (
             <p>
-              <span>
+              <a href={`${repo.html_url}/stargazers`}>
                 <StarIcon /> {repo.stargazers_count}
-              </span>
+              </a>
             </p>
           ) : null}
           {repo.forks_count > 0 ? (
             <p>
-              <span>
+              <a href={`${repo.html_url}/network/members`}>
                 <RepoForkedIcon /> {repo.forks_count}
-              </span>
+              </a>
             </p>
           ) : null}
           {repo.license ? (
