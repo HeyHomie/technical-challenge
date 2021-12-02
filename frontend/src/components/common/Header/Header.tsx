@@ -18,8 +18,10 @@ const Header = () => {
     <header className="h-16 md:h-[60px] p-4 lg:px-8 md:px-6 bg-header text-sm text-header">
       <div className="flex items-center justify-between md:hidden">
         <ThreeBarsIcon size={24} />
-        <MarkGithubIcon size={32} />
-        <a href="github.com/notifications">
+        <a href="https://github.com">
+          <MarkGithubIcon size={32} />
+        </a>
+        <a href="https://github.com/notifications">
           <BellIcon size={16} />
         </a>
       </div>
@@ -57,7 +59,9 @@ const Header = () => {
           </ul>
         </div>
         <div className="flex gap-4">
-          <BellIcon size={16} />
+          <a href="https://github.com/notifications">
+            <BellIcon size={16} />
+          </a>
           <div className="flex items-center">
             <PlusIcon size={16} />
             <TriangleDownIcon size={16} />
