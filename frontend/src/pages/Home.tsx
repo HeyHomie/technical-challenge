@@ -1,9 +1,10 @@
 import { useState, FC, useEffect } from 'react'
 import { apiFetch } from 'api'
 import { useParams } from 'react-router-dom'
-
+import filterRepos from 'lib/filterRepos'
 import { UserCard, Spinner } from 'components/ui'
 import { RepoList, SearchRepo } from 'components/repo'
+import { IRepository } from 'types'
 import classNames from 'lib/classNames'
 import { UnderlineNav } from 'components/common'
 import useSWR from 'swr'
@@ -12,12 +13,12 @@ const per_page = 30
 
 const Home: FC = () => {
   const { username } = useParams<{ username: string }>()
-
+  const [filteredRepos, setFilteredRepos] = useState<IRepository[]>([])
   const [page, setPage] = useState(1)
   const [type, setType] = useState('all')
   const [sort, setSort] = useState('updated')
-  const [language, setLanguage] = useState('all')
-  const [repoName, setRepoName] = useState('')
+  const [language, setLanguage] = useState('')
+  const [repoName, setRepoName] = useState('all')
 
   const incrementPage = () => setPage((page) => page + 1)
   const decrementPage = () => setPage((page) => page - 1)
@@ -25,6 +26,7 @@ const Home: FC = () => {
     `/users/${username}`,
     apiFetch
   )
+
   const { data: repos, error: reposError } = useSWR(
     `/users/${username}/repos?q=${repoName}&per_page=${per_page}&page=${page}&sort=${sort}&type=${type}&language=${language}`,
     apiFetch
@@ -35,6 +37,14 @@ const Home: FC = () => {
       document.title = `${user.login} (${user.name}) / Repositories`
     }
   }, [user])
+
+  useEffect(() => {
+    if (repos) {
+      setFilteredRepos(filterRepos({ repos, language, name: repoName }))
+    }
+  }, [repos, language, repoName])
+
+  const Repos = filteredRepos.length ? filteredRepos : repos
 
   return (
     <div className="flex flex-col min-h-full gap-8 md:mt-6 md:flex-row">
@@ -58,7 +68,7 @@ const Home: FC = () => {
           <Spinner />
         ) : (
           <>
-            <RepoList repos={repos} />
+            <RepoList repos={Repos} />
             <div className="flex items-center justify-center my-4 text-accent-fg ">
               <button
                 className={classNames(
@@ -72,7 +82,7 @@ const Home: FC = () => {
               <button
                 className={classNames('btn', 'w-auto rounded-l-none')}
                 onClick={incrementPage}
-                disabled={repos.length < per_page}>
+                disabled={Repos.length < per_page}>
                 Next
               </button>
             </div>
