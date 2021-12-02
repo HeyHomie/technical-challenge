@@ -13,7 +13,7 @@ export const AppRouter = () => (
       <Switch>
         <Route exact path="/:username" component={Home} />
         <Route path="*">
-          <Redirect to="/yknx4" />
+          <Redirect to="/tailwindlabs" />
         </Route>
       </Switch>
     </Layout>
