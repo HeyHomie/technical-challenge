@@ -6,7 +6,7 @@ exports[`Layout should be match with snapshot 1`] = `
     class="dark "
   >
     <div
-      class="w-screen min-h-screen max-w-[100%] text-primary dark:bg-secondary md:dark:bg-primary grid"
+      class="w-screen min-h-screen max-w-[100%] text-primary dark:bg-secondary md:dark:bg-primary "
     >
       <header
         class="h-16 md:h-[60px] p-4 lg:px-8 md:px-6 bg-header text-sm text-header"
