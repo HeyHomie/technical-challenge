@@ -39,7 +39,7 @@ const sortOptions = [
     value: 'stars'
   }
 ]
-const languageOptions: Option[] = []
+const languageOptions: Option[] = [{ label: 'All', value: 'all' }]
 
 for (let key in Language) {
   languageOptions.push({
@@ -70,7 +70,7 @@ const SearchRepo: FC<Props> = ({
   setRepoName
 }) => {
   return (
-    <div className="flex py-4 border-b border-accent-br">
+    <div className="grid py-4 border-b md:flex border-accent-br">
       <input
         className="w-full mr-4 bg-transparent input"
         placeholder="Find a repository..."
@@ -78,30 +78,32 @@ const SearchRepo: FC<Props> = ({
           setRepoName(e.target.value)
         }
       />
-      <Dropdown
-        options={typeOptions}
-        selected={type}
-        className="mr-1"
-        onClick={setType}
-        title="Select type">
-        Type
-      </Dropdown>
-      <Dropdown
-        options={languageOptions}
-        selected={language}
-        className="mr-1"
-        onClick={setLanguage}
-        title="Select language">
-        Language
-      </Dropdown>
-      <Dropdown
-        options={sortOptions}
-        selected={sort}
-        className="mr-1"
-        onClick={setSort}
-        title="Select order">
-        Sort
-      </Dropdown>
+      <div className="flex my-1">
+        <Dropdown
+          options={typeOptions}
+          selected={type}
+          className="mr-1"
+          onClick={setType}
+          title="Select type">
+          Type
+        </Dropdown>
+        <Dropdown
+          options={languageOptions}
+          selected={language}
+          className="mr-1"
+          onClick={setLanguage}
+          title="Select language">
+          Language
+        </Dropdown>
+        <Dropdown
+          options={sortOptions}
+          selected={sort}
+          className="mr-1"
+          onClick={setSort}
+          title="Select order">
+          Sort
+        </Dropdown>
+      </div>
     </div>
   )
 }
