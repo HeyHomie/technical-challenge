@@ -11,7 +11,7 @@ const filterRepos = ({ repos, name, language }: Props) =>
     (repo) =>
       repo.name.toLowerCase().includes(name.toLowerCase()) &&
       (language === 'all' ||
-        repo.language.toLowerCase().includes(language.toLowerCase()))
+        repo.language?.toLowerCase().includes(language.toLowerCase()))
   )
 
 export default filterRepos

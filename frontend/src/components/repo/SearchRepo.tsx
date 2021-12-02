@@ -39,14 +39,13 @@ const sortOptions = [
     value: 'stars'
   }
 ]
-const languageOptions: Option[] = [{ label: 'All', value: 'all' }]
-
-for (let key in Language) {
-  languageOptions.push({
+const languageOptions: Option[] = [
+  { label: 'All', value: 'all' },
+  ...Object.keys(Language).map((key) => ({
     label: key,
     value: key.toLowerCase()
-  })
-}
+  }))
+]
 
 type SetState<T> = React.Dispatch<React.SetStateAction<T>>
 
