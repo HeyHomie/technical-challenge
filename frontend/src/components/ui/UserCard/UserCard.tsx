@@ -52,22 +52,31 @@ const UserCard: FC<Props> = ({ user }) => {
       <div>
         <Social className="hidden mb-3 text-secondary md:block" />
 
-        <p className="hidden md:block pt-[5px]">
-          <OrganizationIcon size={16} className="hidden mr-2 text-secondary" />
-          {user.company}
-        </p>
-        <p className="hidden md:block">
-          <LocationIcon size={16} className="mr-2 text-secondary" />
-          {user.location}
-        </p>
+        {user.company ? (
+          <p className="hidden md:block pt-[5px]">
+            <OrganizationIcon
+              size={16}
+              className="hidden mr-2 text-secondary"
+            />
+            {user.company}
+          </p>
+        ) : null}
+        {user.location ? (
+          <p className="hidden md:block">
+            <LocationIcon size={16} className="mr-2 text-secondary" />
+            {user.location}
+          </p>
+        ) : null}
         <p className="pt-[5px]">
           <MailIcon size={16} className="mr-2 text-secondary" />
           {user.email || 'mail@example.com'}
         </p>
-        <p className="pt-[5px]">
-          <LinkIcon size={16} className="mr-2 text-secondary" />
-          {user.blog}
-        </p>
+        {user.blog ? (
+          <p className="pt-[5px]">
+            <LinkIcon size={16} className="mr-2 text-secondary" />
+            {user.blog}
+          </p>
+        ) : null}
       </div>
       <Social className="block mt-2 mb-4 md:my-4 text-secondary md:hidden" />
       <button className="btn md:hidden">Follow</button>
