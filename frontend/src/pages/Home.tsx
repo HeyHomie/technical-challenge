@@ -52,7 +52,7 @@ const Home: FC = () => {
         {!user ? <Spinner /> : <UserCard user={user} />}
       </aside>
       <div className="w-full">
-        <UnderlineNav />
+        <UnderlineNav repos={repos?.public_repos} />
         <SearchRepo
           {...{
             type,
