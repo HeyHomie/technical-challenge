@@ -34,7 +34,7 @@ const Dropdown: FC<Props> = ({
       leave="transition ease-in duration-75"
       leaveFrom="transform opacity-100 scale-100"
       leaveTo="transform opacity-0 scale-95">
-      <Menu.Items className="absolute grid right-0 w-56 mt-2 origin-top-right rounded-md shadow-lg bg-secondary ring-1 ring-black ring-opacity-5 focus:outline-none text-primary text-xs overflow-y-auto max-h-[500px]">
+      <Menu.Items className="absolute grid md:right-0 left-0 w-56 mt-2  origin-top-right rounded-md shadow-lg bg-secondary ring-1 ring-black ring-opacity-5 focus:outline-none text-primary text-xs overflow-y-auto max-h-[500px]">
         <Menu.Item>
           <span className="block px-4 py-2 text-sm font-bold">{title}</span>
         </Menu.Item>
