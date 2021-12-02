@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { IRepository, Language } from 'types'
 import { Tag } from 'components/ui'
-import { LawIcon, StarIcon } from '@primer/octicons-react'
+import { LawIcon, StarIcon, RepoForkedIcon } from '@primer/octicons-react'
 
 const colors = {
   [Language.TypeScript]: '#2b7489',
@@ -78,7 +78,7 @@ const RepoCard: FC<RepoCardProps> = ({ repo }) => {
           </Tag>
         </h3>
         <p className="text-secondary">{repo.description}</p>
-        <div className="flex gap-4 my-2">
+        <div className="flex flex-wrap gap-4 my-2">
           {repo.topics.map((topic) => (
             <Tag
               className="bg-accent-subtle hover:bg-accent-emphasis text-accent-fg"
@@ -96,18 +96,33 @@ const RepoCard: FC<RepoCardProps> = ({ repo }) => {
               {repo.language}
             </p>
           ) : null}
+          {repo.stargazers_count > 0 ? (
+            <p>
+              <span>
+                <StarIcon /> {repo.stargazers_count}
+              </span>
+            </p>
+          ) : null}
+          {repo.forks_count > 0 ? (
+            <p>
+              <span>
+                <RepoForkedIcon /> {repo.forks_count}
+              </span>
+            </p>
+          ) : null}
           {repo.license ? (
             <p>
               {repo.license?.key === 'mit' ? <LawIcon className="mr-1" /> : ''}
               {repo.license?.name}
             </p>
           ) : null}
+
           <p>Updated {updatedAt}</p>
         </div>
       </div>
-      <div className="col-span-1">
-        <button className="w-auto btn">
-          <StarIcon className="text-secondary" /> Star
+      <div className="flex flex-col justify-around col-span-1 ">
+        <button className="absolute flex w-auto my-auto text-xs break-words btn">
+          <StarIcon className="w-3 h-3 mr-1 text-secondary" /> <span>Star</span>
         </button>
       </div>
     </div>
