@@ -17,8 +17,8 @@ const Home: FC = () => {
   const [page, setPage] = useState(1)
   const [type, setType] = useState('all')
   const [sort, setSort] = useState('updated')
-  const [language, setLanguage] = useState('')
-  const [repoName, setRepoName] = useState('all')
+  const [language, setLanguage] = useState('all')
+  const [repoName, setRepoName] = useState('')
 
   const incrementPage = () => setPage((page) => page + 1)
   const decrementPage = () => setPage((page) => page - 1)
