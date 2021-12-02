@@ -46,6 +46,17 @@ const Home: FC = () => {
 
   const Repos = filteredRepos.length ? filteredRepos : repos
 
+  if (userError || reposError) {
+    return (
+      <h1>
+        Error{' '}
+        {userError
+          ? `User: ${userError?.message}`
+          : `Repositories ${reposError?.message}`}
+      </h1>
+    )
+  }
+
   return (
     <div className="flex flex-col min-h-full gap-8 md:mt-6 md:flex-row">
       <aside className="w-full md:max-w-[296px] md:mt-4">
