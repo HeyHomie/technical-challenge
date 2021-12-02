@@ -7,6 +7,12 @@
   --secondary: #000000;
   --text-primary: #000000;
   --text-secondary: #000000;
+  --header-bg: rgb(36, 41, 47);
+  --text-header: #fff;
+  --border-color: rgba(27,31,36,0.15);
+  --text-footer: rgb(87, 96, 106);
+  --accent-fg: rgb(9, 105, 218);
+  
 }
 
 html {
@@ -31,6 +37,7 @@ html {
   --color-accent-subtle: rgba(56, 139, 253, 0.15);
   --color-neutral-subtle: rgba(110, 118, 129, 0.1);
   --text-fg-subtle: #484f58;
+  --header-bg: var(--secondary);
 }
 
 @media (min-width: 640px) {
@@ -44,6 +51,6 @@ html {
     @apply rounded-md bg-primary text-primary min-h-[28px] focus-visible:ring-1 focus-visible:ring-[#1f6feb] focus-visible:outline-none py-[5px] px-3 text-sm border dark:border-accent-br;
   }
   .btn {
-    @apply w-full rounded-md bg-primary px-4 py-1 dark:bg-[#21262d] border border-secondary dark:border-accent-br dark:hover:border-white dark:hover:bg-[#30363d] dark:disabled:bg-[#0d1117] dark:disabled:text-[rgba(88,166,255,0.5)] dark:disabled:border-accent-br disabled:cursor-not-allowed;
+    @apply w-full text-sm rounded-md bg-[#f3f4f6] disabled:text-blue-700/50 px-3 md:px-4 py-1 dark:bg-[#21262d] border border-accent-br dark:hover:border-white dark:hover:bg-[#30363d] dark:disabled:bg-[#0d1117] dark:disabled:text-[rgba(88,166,255,0.5)] dark:disabled:border-accent-br disabled:cursor-not-allowed;
   }
 }

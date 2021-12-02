@@ -52,11 +52,11 @@ const UserCard: FC<Props> = ({ user }) => {
       <div>
         <Social className="hidden mb-3 text-secondary md:block" />
 
-        <p className="hidden md:static pt-[5px]">
+        <p className="hidden md:block pt-[5px]">
           <OrganizationIcon size={16} className="hidden mr-2 text-secondary" />
           {user.company}
         </p>
-        <p className="hidden md:static">
+        <p className="hidden md:block">
           <LocationIcon size={16} className="mr-2 text-secondary" />
           {user.location}
         </p>

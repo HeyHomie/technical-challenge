@@ -1,12 +1,18 @@
 import { MarkGithubIcon } from '@primer/octicons-react'
 
+const GithubCopyright = () => (
+  <span className="flex items-center justify-center w-full text-footer">
+    <MarkGithubIcon size={24} className="mr-2 text-fg-subtle" />
+    <span className="leading-[1.125rem] align-middle">© 2021 GitHub, Inc.</span>
+  </span>
+)
+
 const Footer = () => (
-  <footer className="bottom-0 flex h-[7.25rem] items-center text-center justify-start px-4 text-xs border-t border-accent-br mt-10">
-    <span className="flex items-center w-1/6 ">
-      <MarkGithubIcon size={24} className="mr-2 text-fg-subtle" />
-      <span className="text-secondary">© 2021 GitHub, Inc.</span>
-    </span>
-    <ul className="flex flex-wrap justify-between w-2/3 text-accent-fg">
+  <footer className="bottom-0 flex flex-wrap h-[7.25rem] items-center text-center justify-start px-4 text-xs border-t border-accent-br mt-10">
+    <div className="hidden w-1/4 md:block">
+      <GithubCopyright />
+    </div>
+    <ul className="flex flex-wrap justify-between w-full gap-x-4 md:w-2/3 text-accent-fg">
       <li>
         <a href="https://docs.github.com/en/github/site-policy/github-terms-of-service">
           Terms
@@ -47,6 +53,9 @@ const Footer = () => (
         <a href="https://github.com/about">About</a>
       </li>
     </ul>
+    <div className="w-full mt-2 mb-10 md:hidden">
+      <GithubCopyright />
+    </div>
   </footer>
 )
 

@@ -7,6 +7,7 @@ module.exports = {
       colors: {
         primary: 'var(--primary)',
         secondary: 'var(--secondary)',
+        header: 'var(--header-bg)',
         accent: {
           br: 'var(--border-color)',
           emphasis: 'var(--accent-emphasis)',
@@ -21,6 +22,7 @@ module.exports = {
         secondary: 'var(--text-secondary)',
         accent: { fg: 'var(--accent-fg)' },
         header: 'var(--text-header)',
+        footer: 'var(--text-footer)',
         fg: { subtle: 'var(--text-fg-subtle)' }
       }
     }

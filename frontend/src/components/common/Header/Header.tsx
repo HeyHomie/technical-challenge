@@ -8,13 +8,14 @@ import {
 } from '@primer/octicons-react'
 import { useHistory } from 'react-router-dom'
 import { useRef } from 'react'
+import classNames from 'lib/classNames'
 
 const Header = () => {
   const history = useHistory()
   const searchRef = useRef<HTMLInputElement>(null)
 
   return (
-    <header className="h-16 md:h-[60px] p-4 lg:px-8 md:px-6 bg-secondary text-sm text-header">
+    <header className="h-16 md:h-[60px] p-4 lg:px-8 md:px-6 bg-header text-sm text-header">
       <div className="flex items-center justify-between md:hidden">
         <ThreeBarsIcon size={24} />
         <MarkGithubIcon size={32} />
@@ -25,18 +26,21 @@ const Header = () => {
       <div className="items-center justify-between hidden md:flex">
         <div className="flex items-center w-full gap-4">
           <MarkGithubIcon size={32} />
-          <div className="flex">
+          <label className="flex border border-white rounded-md border-opacity-30 h-7 min-w-[15.5rem] max-w-[17rem] px-2">
             <input
-              className="input min-w-[15.5rem] max-w-[17rem] w-full"
+              className="box-border w-full h-full py-0 border-none bg-header focus-visible:outline-none"
               placeholder="Search or jump to..."
               ref={searchRef}
             />
             <button
-              className="w-auto btn"
+              className={classNames(
+                'btn',
+                'w-auto h-auto px-2 py-0 border-white border-opacity-30 bg-header rounded-[4px] my-[3px] text-sm'
+              )}
               onClick={() => history.push(searchRef?.current?.value || '/')}>
               /{' '}
             </button>
-          </div>
+          </label>
           <ul className="flex gap-4 font-bold break-words">
             <li>
               <a href="https://github.com/pulls">Pull Requests</a>
