@@ -16,7 +16,7 @@ const Home: FC = () => {
   const [page, setPage] = useState(1)
   const [type, setType] = useState('all')
   const [sort, setSort] = useState('updated')
-  const [language, setLanguage] = useState('')
+  const [language, setLanguage] = useState('all')
   const [repoName, setRepoName] = useState('')
 
   const incrementPage = () => setPage((page) => page + 1)
@@ -61,7 +61,10 @@ const Home: FC = () => {
             <RepoList repos={repos} />
             <div className="flex items-center justify-center my-4 text-accent-fg ">
               <button
-                className={classNames('btn', 'w-auto rounded-r-none')}
+                className={classNames(
+                  'btn',
+                  'w-auto rounded-r-none border-r-0 '
+                )}
                 disabled={page === 1}
                 onClick={decrementPage}>
                 Previous
