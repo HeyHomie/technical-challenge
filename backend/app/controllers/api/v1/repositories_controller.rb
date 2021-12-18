@@ -4,28 +4,36 @@ module Api
   module V1
     class RepositoriesController < ApplicationController
       def index
-        conn = Faraday.new do |f|
-          f.request :authorization, 'Bearer', Figaro.env.GITHUB_TOKEN
-          f.request :json # encode req bodies as JSON
-          f.request :retry # retry transient failures
-          f.response :follow_redirects # follow redirects
-          f.response :json # decode response bodies as JSON
-        end
-        user = conn.get("https://api.github.com/user?user=#{user_params}").body
-        repos = conn.get("https://api.github.com/user/repos?user=#{user_params}",
-                         { per_page: 100, sort: 'updated' }).body
-        db_user = User.all.find { |u| u.github_id == user['id'] }
-        if db_user.nil?
-          db_user = User.create({ github_id: user['id'], login: user['login'], url: user['html_url'], name: user['name'],
-                                  email: user['email'], avatar_url: user['avatar_url'], repositories: repos })
-        end
-        render json: db_user.repositories
+        status_code = 200
+        github_fetch_service = get_service
+
+        github_fetch_service.fetch_all_repos
+
+        status_code = 500 unless github_fetch_service.success?
+        status_code = 404 if status_code == 200 && github_fetch_service.repositories.blank?
+
+        render json: github_fetch_service.repositories, status: status_code
+      end
+
+      def show
+        status_code = 200
+        github_fetch_service = get_service
+
+        repository = github_fetch_service.get_repo(search_params[:id])
+
+        status_code = 500 unless github_fetch_service.success?
+        status_code = 404 if status_code == 200 && repository.blank?
+
+        render json: repository, status: status_code
       end
 
       private
+      def get_service
+        Services::GithubRepoFetch.new(search_params.merge(test: params[:test]))
+      end
 
-      def user_params
-        params.require(:user_id)
+      def search_params
+        params.permit(:user_id, :id)
       end
     end
   end
