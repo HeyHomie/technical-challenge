@@ -2,6 +2,7 @@
 
 class User < ApplicationRecord
   validates_presence_of :login, :name
+  validates_uniqueness_of :login, :name
 
   has_many :repositories
 end
