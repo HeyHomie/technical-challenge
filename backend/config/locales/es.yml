@@ -7,3 +7,7 @@ es:
         format_user_allowed: 'El nombre de usuario no tiene un formato adecuado: Revisar que no tenga caracteres especiales ni espacios, ni que este vacio'
       github_repo_fetch:
         repo_name_not_valid: 'El repositorio no tiene un formato válido; no debe tener espacios ni caractéres especiales'
+        user_not_found: El usuario no fue encontrado
+        username_not_defined: Se debe definir un nombre de usuario
+        format_user_allowed: 'El nombre de usuario no tiene un formato adecuado: Revisar que no tenga caracteres especiales ni espacios, ni que este vacio'
+
