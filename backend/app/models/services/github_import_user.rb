@@ -72,6 +72,8 @@ module Services
 
     def register_user(user_github)
       User.find_or_create_by(
+        github_id: user_github[:id],
+        url: user_github[:html_url],
         login: user_github[:login],
         name: user_github[:name],
         email: user_github[:email],
