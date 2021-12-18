@@ -11,7 +11,6 @@ class Services::GithubRepoFetch
     @client = Octokit::Client.new
     @repositories = []
     @result = {}
-    @test = args[:test]
   end
 
   def fetch_all_repos
