@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+require 'logger'
 
 class RepositoryCreationJob
   include Sidekiq::Worker
@@ -53,9 +54,16 @@ class RepositoryCreationJob
 
   def general_error(e)
     errors << e
+    logger.error(message)
   end
 
   def user_not_found
-    @errors << I18n.t('models.services.github_import_and_fetch.user_not_found')
+    message = I18n.t('models.services.github_import_and_fetch.user_not_found')
+    @errors << message
+    logger.error(message)
+  end
+
+  def logger
+    @logger ||= Logger.new(STDOUT)
   end
 end
