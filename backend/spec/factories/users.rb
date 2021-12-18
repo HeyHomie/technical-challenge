@@ -8,6 +8,6 @@ FactoryBot.define do
     name { 'MyString' }
     email { 'MyString' }
     avatar_url { 'MyString' }
-    repositories { '' }
+    repositories { [] }
   end
 end
