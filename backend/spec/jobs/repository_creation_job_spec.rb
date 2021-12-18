@@ -43,4 +43,20 @@ RSpec.describe RepositoryCreationJob, type: :worker do
       expect(Repository.count).to eq(previous_repos+1)
     end
   end
+
+  context 'when the username is provided but was not register in the db' do
+    subject(:worker) { RepositoryCreationJob.new }
+    let(:username) { 'yknx4' }
+
+    let(:params) { { 'username' => username, 'user_db_id' => 1 } }
+
+    it 'the job is not enqueued and the error of user not found is registered' do
+      previous_jobs = RepositoryCreationJob.jobs.size
+
+      worker.perform(params)
+
+      expect(RepositoryCreationJob.jobs.size).to eq(previous_jobs)
+      expect(worker.errors).to include(I18n.t('models.services.github_import_and_fetch.user_not_found'))
+    end
+  end
 end
