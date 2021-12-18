@@ -2,10 +2,10 @@
 
 FactoryBot.define do
   factory :user do
-    login { 'MyString' }
+    login { Faker::Lorem.characters(number: 10) }
     id { '' }
     url { 'MyString' }
-    name { 'MyString' }
+    name { login }
     email { 'MyString' }
     avatar_url { 'MyString' }
     repositories { [] }
