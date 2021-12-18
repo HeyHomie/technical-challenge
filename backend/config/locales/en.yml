@@ -30,4 +30,11 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  models:
+    services:
+      github_import_user:
+        user_not_found: The user was not found
+        username_not_defined: A username must be defined
+        format_user_allowed: 'The username does not have a suitable format: Check that it does not have special characters or spaces, or that it is empty'
+      github_repo_fetch:
+        repo_name_not_valid: 'The repository name has not valid format; must not have spaces or special characters'
