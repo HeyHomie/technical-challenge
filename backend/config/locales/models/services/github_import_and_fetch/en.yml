@@ -1,7 +1,0 @@
-en:
-  models:
-    services:
-      github_import_and_fetch:
-        user_not_found: 'El usuario no fue encontrado'
-        username_not_defined: 'Se debe definir un nombre de usuario'
-        format_user_allowed: 'El nombre de usuario no tiene un formato adecuado: Revisar que no tenga caracteres especiales ni espacios, ni que este vacio'
