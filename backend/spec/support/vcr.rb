@@ -1,5 +1,4 @@
 require "vcr"
-#=begin
 VCR.configure do |c|
   c.cassette_library_dir = "spec/vcr"
   c.hook_into :webmock
@@ -12,4 +11,3 @@ RSpec.configure do |config|
     VCR.use_cassette(name, options) {example.call}
   end
 end
-#=end
