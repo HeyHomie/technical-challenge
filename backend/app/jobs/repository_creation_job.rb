@@ -3,6 +3,8 @@ require 'logger'
 
 class RepositoryCreationJob
   include Sidekiq::Worker
+
+  attr_reader :errors
   queue_as :high_priority
 
   def perform(params)
@@ -53,7 +55,7 @@ class RepositoryCreationJob
   end
 
   def general_error(e)
-    errors << e
+    @errors << e
     logger.error(message)
   end
 
