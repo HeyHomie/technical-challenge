@@ -5,17 +5,17 @@ RSpec.describe Services::GithubRepoFetch do
       let(:username) { 'yknx4' }
       let(:user) do
         user = FactoryBot.create(:user)
-      
+
         user.update(login: username)
         user
       end
-      
+
       context 'and the user exist' do
         context 'and have repositories related' do
           before do
             user.repositories << FactoryBot.create(:repository)
           end
-          
+
           it 'return a hash with the username, user and repositories' do
             service.fetch_all_repos
             expect(service.success?).to be_truthy
@@ -29,7 +29,7 @@ RSpec.describe Services::GithubRepoFetch do
           let(:service) { Services::GithubRepoFetch.new(user_id: username) }
           before do
             user = FactoryBot.create(:user)
-      
+
             user.update(login: username)
             user
           end
@@ -39,7 +39,7 @@ RSpec.describe Services::GithubRepoFetch do
             expect(service.success?).to be_truthy
             expect(service.result.keys).to be_eql([:username, :repositories, :errors])
             expect(service.result[:repositories]).to be_empty
-          end     
+          end
         end
       end
 
@@ -50,6 +50,7 @@ RSpec.describe Services::GithubRepoFetch do
           service.fetch_all_repos
           expect(service.success?).to be_falsy
           expect(service.result.keys).to be_eql([:username, :repositories, :errors])
+          expect(service.errors.full_messages).to include(I18n.t('models.services.github_repo_fetch.user_not_found'))
         end
       end
     end
@@ -63,7 +64,7 @@ RSpec.describe Services::GithubRepoFetch do
         let(:repository) { FactoryBot.create(:repository) }
         let(:user) do
           user = FactoryBot.create(:user)
-      
+
           user.update(login: username)
           user
         end
@@ -71,10 +72,10 @@ RSpec.describe Services::GithubRepoFetch do
         before do
           user.repositories << repository
         end
-        
+
         it 'return the hash object of the repository' do
           repository = service.get_repo(user.repositories.last.name)
-          
+
           expect(service.success?).to be_truthy
           expect(repository).to be_eql(repository)
         end
@@ -86,7 +87,7 @@ RSpec.describe Services::GithubRepoFetch do
         let(:repository) { FactoryBot.create(:repository) }
         let(:user) do
           user = FactoryBot.create(:user)
-      
+
           user.update(login: username)
           user
         end
@@ -94,10 +95,10 @@ RSpec.describe Services::GithubRepoFetch do
         before do
           user.repositories << repository
         end
-        
+
         it 'return an empty object' do
           repository = service.get_repo(nil)
-          
+
           expect(service.success?).to be_falsy
           expect(repository).to be_empty
           expect(service.errors.full_messages).to include(I18n.t('models.services.github_repo_fetch.repo_name_not_valid'))

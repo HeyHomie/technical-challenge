@@ -65,15 +65,15 @@ class Services::GithubRepoFetch
   end
 
   def username_defined
-    errors.add(:base, I18n.t('models.services.github_import_user.username_not_defined')) if @username.blank?
+    errors.add(:base, I18n.t('models.services.github_repo_fetch.username_not_defined')) if @username.blank?
   end
 
   def format_user_allowed
-    errors.add(:base, I18n.t('models.services.github_import_user.format_user_allowed')) unless @username.match(/\A[a-z\d]*\Z/i)
+    errors.add(:base, I18n.t('models.services.github_repo_fetch.format_user_allowed')) unless @username.match(/\A[a-z\d]*\Z/i)
   end
 
   def user_exists
-    errors.add(:base, I18n.t('models.services.github_import_user.user_not_found')) unless User.exists?(login: username)
+    errors.add(:base, I18n.t('models.services.github_repo_fetch.user_not_found')) unless User.exists?(login: username)
     define_result
 
     self
