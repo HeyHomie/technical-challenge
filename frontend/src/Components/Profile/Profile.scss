@@ -7,6 +7,7 @@ $purple: #8250df;
 .container_aside {
   &-avatar {
     position: relative;
+    z-index: 99;
   }
   &-names {
     margin: 16px 0;
