@@ -1,0 +1,20 @@
+.main-container {
+  max-width: 1280px;
+  margin: 24px auto 0 auto;
+
+  @media screen and (min-width: 768px){
+    display: flex;
+    padding: 0 24px;
+
+    aside {
+      width: 35%;
+    }
+  }
+
+  @media screen and (min-width: 1024px){
+    padding: 0 32px;
+    aside {
+      width: 25%;
+    }
+  }
+}

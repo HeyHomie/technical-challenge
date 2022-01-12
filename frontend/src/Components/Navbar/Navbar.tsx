@@ -26,7 +26,7 @@ const Navbar: React.FC = () => {
           </div>
           <div className='navbar-container__searchbar'>
             <form action='submit'>
-              <input type='text' name='' id='' />
+              <input type='text' placeholder='Search or jump to...' />
               <svg
                 xmlns='http://www.w3.org/2000/svg'
                 width='22'

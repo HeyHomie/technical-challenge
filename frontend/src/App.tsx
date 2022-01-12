@@ -1,12 +1,21 @@
 import * as React from 'react'
-import './App.css'
+import './App.scss'
 import Navbar from './Components/Navbar/Navbar'
+import Profile from './Components/Profile/Profile'
 import { AppRouter } from './routes'
 
 const App: React.FC = (): JSX.Element => {
   return (
     <>
-      <Navbar />
+      <header>
+        <Navbar />
+      </header>
+      <main className='main-container'>
+        <aside>
+          <Profile />
+        </aside>
+        <section>Repository list</section>
+      </main>
       <AppRouter />
     </>
   )

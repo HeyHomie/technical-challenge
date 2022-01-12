@@ -1,0 +1,144 @@
+$borderColor: #d0d7de;
+$black: #24292f;
+$darkGrey: #57606a;
+$lightGrey: #f8f8fa;
+$purple: #8250df;
+
+.container_aside {
+  &-avatar {
+    position: relative;
+  }
+  &-names {
+    margin: 16px 0;
+    &__name {
+      color: $black;
+      font-size: 26px;
+      font-weight: 600;
+      line-height: 1.25;
+      margin: 0;
+      text-transform: capitalize;
+    }
+    &__username {
+      color: $darkGrey;
+      font-size: 20px;
+      font-weight: 300;
+      line-height: 24px;
+      margin: 0;
+    }
+  }
+
+  &-information {
+    &__description {
+      margin-bottom: 16px;
+      span {
+        color: $black;
+        font-size: 16px;
+      }
+    }
+    &__button {
+      margin-bottom: 16px;
+      button {
+        background-color: $lightGrey;
+        border: 1px solid #1b1f2426;
+        border-radius: 6px;
+        color: $black;
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 20px;
+        padding: 5px 16px;
+        width: 100%;
+      }
+    }
+
+    &__follow {
+      display: flex;
+      margin-bottom: 16px;
+
+      &_followers {
+        align-items: center;
+        color: $darkGrey;
+        display: flex;
+        font-size: 14px;
+        flex-direction: row;
+        text-decoration: none;
+
+        span {
+          font-weight: 600;
+          margin: 0 5px;
+        }
+
+        &::after {
+          content: " · ";
+          font-size: 14px;
+          margin: 0 5px;
+        }
+
+        svg {
+          fill: $darkGrey;
+        }
+      }
+
+      &_following {
+        align-items: center;
+        color: $darkGrey;
+        display: flex;
+        flex-direction: row;
+        font-size: 14px;
+        text-decoration: none;
+
+        span {
+          font-weight: 600;
+          margin: 0 5px;
+        }
+      }
+    }
+    &__location {
+      align-items: center;
+      display: flex;
+
+      span {
+        color: $darkGrey;
+        font-size: 14px;
+        margin-left: 5px;
+      }
+              
+      svg {
+        fill: $darkGrey;
+      }
+    }
+  }
+  &-achievements,
+  &-highlights {
+    border-top: 1px solid $borderColor;
+    margin-top: 16px;
+    padding-top: 16px;
+
+    h3 {
+      font-size: 16px;
+      font-weight: 600;
+      margin: 0 0 8px 0;
+    }
+
+    div {
+      align-items: center;
+      display: flex;
+    }
+
+    span {
+      border-radius: 2em;
+      border: 1px solid $purple;
+      color: $purple;
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 18px;
+      margin-left: 5px;
+      padding: 0 7px;
+    }
+            
+    svg {
+      fill: $darkGrey;
+    }
+  }
+}

@@ -1,6 +1,8 @@
-$notificationBlue: #54a3ff;
-$primaryBlack: #292828;
+$borderColor: #57606a;
+$notificationBlue: hsl(212, 100%, 66%);
+$primaryBlack: #24292f;
 $secondaryBlack: #403f3f;
+$lightGrey: #afb8c1;
 $white: #fff;
 
 .navbar {
@@ -10,7 +12,7 @@ $white: #fff;
   font-size: 14px;
   justify-content: space-between;
   line-height: 1.5;
-  padding: 10px 20px 16px 20px;
+  padding: 12px 32px;
 
   &-container {
     align-items: center;
@@ -50,16 +52,19 @@ $white: #fff;
         position: relative;
 
         input {
-          background-color: $secondaryBlack;
-          border: none;
+          background-color: transparent;
+          border: 1px solid $borderColor;
           border-radius: 6px;
-          color: $white;
           font-size: inherit;
           min-height: 26px;
           outline: none;
           padding: 5px 12px;
           width: -webkit-fill-available;
+          &::-webkit-input-placeholder {
+            color: #c2c2c2e5;
+          }
         }
+
 
         svg {
           position: absolute;
@@ -76,6 +81,7 @@ $white: #fff;
     &__listItem {
       align-items: center;
       display: flex;
+      margin: 0;
       padding: 0;
 
       li {
@@ -83,8 +89,10 @@ $white: #fff;
 
         a {
           color: $white;
-          font-weight: bold;
+          font-size: 14px;
+          font-weight: 600;
           text-decoration: none;
+          line-height: 1.5;
           margin-left: 16px;
         }
       }
