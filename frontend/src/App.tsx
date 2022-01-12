@@ -1,9 +1,11 @@
 import * as React from 'react'
 import './App.scss'
-import Filters from './Components/Filters/Filters'
 import Navbar from './Components/Navbar/Navbar'
-import Profile from './Components/Profile/Profile'
 import Tabs from './Components/Tabs/Tabs'
+import Profile from './Components/Profile/Profile'
+import Filters from './Components/Filters/Filters'
+import CardContainer from './Components/CardContainer/CardContainer'
+
 import { AppRouter } from './routes'
 
 const App: React.FC = (): JSX.Element => {
@@ -17,8 +19,9 @@ const App: React.FC = (): JSX.Element => {
         <aside>
           <Profile />
         </aside>
-        <section className='filters'>
+        <section className='main-content'>
           <Filters />
+          <CardContainer />
         </section>
       </main>
       <AppRouter />
