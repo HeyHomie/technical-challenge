@@ -1,5 +1,6 @@
 import * as React from 'react'
 import './App.scss'
+import Filters from './Components/Filters/Filters'
 import Navbar from './Components/Navbar/Navbar'
 import Profile from './Components/Profile/Profile'
 import Tabs from './Components/Tabs/Tabs'
@@ -16,7 +17,9 @@ const App: React.FC = (): JSX.Element => {
         <aside>
           <Profile />
         </aside>
-        <section>Repository list</section>
+        <section className='filters'>
+          <Filters />
+        </section>
       </main>
       <AppRouter />
     </>
