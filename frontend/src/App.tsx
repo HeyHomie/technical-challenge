@@ -11,7 +11,9 @@ const App: React.FC = (): JSX.Element => {
         <Navbar />
       </header>
       <main className='main-container'>
-        <Profile />
+        <aside>
+          <Profile />
+        </aside>
       </main>
       <AppRouter />
     </>

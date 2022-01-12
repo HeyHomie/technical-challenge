@@ -4,8 +4,8 @@ import '../Profile/Profile.scss'
 const Profile: React.FC = () => {
   return (
     <React.StrictMode>
-      <aside className='aside'>
-        <div className='aside-avatar'>
+      <div className='container_aside'>
+        <div className='container_aside-avatar'>
           <a href='/'>
             <img
               src='https://cdn-icons-png.flaticon.com/512/147/147144.png'
@@ -15,21 +15,24 @@ const Profile: React.FC = () => {
             />
           </a>
         </div>
-        <div className='aside-names'>
-          <h1 className='aside-names__name'>Profile Name</h1>
-          <h2 className='aside-names__username'>Profile Username</h2>
+        <div className='container_aside-names'>
+          <h1 className='container_aside-names__name'>Profile Name</h1>
+          <h2 className='container_aside-names__username'>Profile Username</h2>
         </div>
-        <div className='aside-information'>
-          <div className='aside-information__description'>
+        <div className='container_aside-information'>
+          <div className='container_aside-information__description'>
             <span>
               Lorem ipsum dolor sit amet consectetur, adipisicing elit.
             </span>
           </div>
-          <div className='aside-information__button'>
+          <div className='container_aside-information__button'>
             <button>Edit Profile</button>
           </div>
-          <div className='aside-information__follow'>
-            <a className='aside-information__follow_followers' href='/'>
+          <div className='container_aside-information__follow'>
+            <a
+              className='container_aside-information__follow_followers'
+              href='/'
+            >
               <svg
                 aria-hidden='true'
                 height='18'
@@ -46,11 +49,14 @@ const Profile: React.FC = () => {
               </svg>
               <span className=''>14</span> followers
             </a>
-            <a className='aside-information__follow_following' href='/'>
+            <a
+              className='container_container_aside-information__follow_following'
+              href='/'
+            >
               <span className=''>12</span>following
             </a>
           </div>
-          <div className='aside-information__location'>
+          <div className='container_container_aside-information__location'>
             <svg
               className='octicon octicon-location'
               viewBox='0 0 16 16'
@@ -67,7 +73,7 @@ const Profile: React.FC = () => {
             <span>Location, User</span>
           </div>
         </div>
-        <div className='aside-achievements'>
+        <div className='container_aside-achievements'>
           <h3>Achievements</h3>
           <a href='https://archiveprogram.github.com/'>
             <img
@@ -77,7 +83,7 @@ const Profile: React.FC = () => {
             />
           </a>
         </div>
-        <div className='aside-highlights'>
+        <div className='container_aside-highlights'>
           <h3>Highlights</h3>
           <div>
             <svg
@@ -97,7 +103,7 @@ const Profile: React.FC = () => {
             <span>PRO</span>
           </div>
         </div>
-      </aside>
+      </div>
     </React.StrictMode>
   )
 }
