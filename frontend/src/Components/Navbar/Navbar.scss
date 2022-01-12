@@ -1,5 +1,6 @@
-$notificationBlue: #54a3ff;
-$primaryBlack: #292828;
+$borderColor: #57606a;
+$notificationBlue: hsl(212, 100%, 66%);
+$primaryBlack: #24292f;
 $secondaryBlack: #403f3f;
 $white: #fff;
 
@@ -50,8 +51,8 @@ $white: #fff;
         position: relative;
 
         input {
-          background-color: $secondaryBlack;
-          border: none;
+          background-color: transparent;
+          border: 1px solid $borderColor;
           border-radius: 6px;
           color: $white;
           font-size: inherit;

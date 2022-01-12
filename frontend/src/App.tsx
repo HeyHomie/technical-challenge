@@ -14,6 +14,7 @@ const App: React.FC = (): JSX.Element => {
         <aside>
           <Profile />
         </aside>
+        <section>Repository list</section>
       </main>
       <AppRouter />
     </>

@@ -10,8 +10,8 @@ const Profile: React.FC = () => {
             <img
               src='https://cdn-icons-png.flaticon.com/512/147/147144.png'
               alt=''
-              width='260px'
-              height='260px'
+              width='250px'
+              height='250px'
             />
           </a>
         </div>
@@ -50,7 +50,7 @@ const Profile: React.FC = () => {
               <span className=''>14</span> followers
             </a>
             <a
-              className='container_container_aside-information__follow_following'
+              className='container_aside-information__follow_following'
               href='/'
             >
               <span className=''>12</span>following
