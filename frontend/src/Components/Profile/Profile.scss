@@ -73,6 +73,10 @@ $purple: #8250df;
           font-size: 14px;
           margin: 0 5px;
         }
+
+        svg {
+          fill: $darkGrey;
+        }
       }
 
       &_following {
@@ -97,6 +101,10 @@ $purple: #8250df;
         color: $darkGrey;
         font-size: 14px;
         margin-left: 5px;
+      }
+              
+      svg {
+        fill: $darkGrey;
       }
     }
   }
@@ -127,6 +135,10 @@ $purple: #8250df;
       line-height: 18px;
       margin-left: 5px;
       padding: 0 7px;
+    }
+            
+    svg {
+      fill: $darkGrey;
     }
   }
 }

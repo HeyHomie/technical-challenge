@@ -56,7 +56,7 @@ const Profile: React.FC = () => {
               <span className=''>12</span>following
             </a>
           </div>
-          <div className='container_container_aside-information__location'>
+          <div className='container_aside-information__location'>
             <svg
               className='octicon octicon-location'
               viewBox='0 0 16 16'
