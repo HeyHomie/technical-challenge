@@ -17,7 +17,7 @@ const App: React.FC = (): JSX.Element => {
         <aside>
           <Profile />
         </aside>
-        <section>
+        <section className='filters'>
           <Filters />
         </section>
       </main>
