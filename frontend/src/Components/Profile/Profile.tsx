@@ -1,22 +1,32 @@
 import * as React from 'react'
 import '../Profile/Profile.scss'
+import { useState, useEffect } from 'react'
+import axios from 'axios'
 
 const Profile: React.FC = () => {
+  const [data, setData] = useState<any>({})
+
+  useEffect(() => {
+    axios
+      .get('https://api.github.com/users/defunkt')
+      .then(function (response: any) {
+        setData(response.data)
+      })
+      .catch(function (error: string) {
+        console.log(error)
+      })
+  }, [setData])
+
   return (
     <React.StrictMode>
       <div className='container_aside'>
         <div className='container_aside-avatar'>
           <a href='/'>
-            <img
-              src='https://cdn-icons-png.flaticon.com/512/147/147144.png'
-              alt=''
-              width='250px'
-              height='250px'
-            />
+            <img src={data.avatar_url} alt='' width='250px' height='250px' />
           </a>
         </div>
         <div className='container_aside-names'>
-          <h1 className='container_aside-names__name'>Profile Name</h1>
+          <h1 className='container_aside-names__name'>Name</h1>
           <h2 className='container_aside-names__username'>Profile Username</h2>
         </div>
         <div className='container_aside-information'>
