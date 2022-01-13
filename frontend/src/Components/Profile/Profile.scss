@@ -4,10 +4,26 @@ $darkGrey: #57606a;
 $lightGrey: #f8f8fa;
 $purple: #8250df;
 
+.profile-fake__loading {
+  align-items: center;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+
+  p {
+    color: $darkGrey;
+    font-size: 18px;
+    font-weight: bold;
+  }
+}
+
 .container_aside {
   &-avatar {
     position: relative;
     z-index: 99;
+    a,img {
+      border-radius: 50%;
+    }
   }
   &-names {
     margin: 16px 0;
@@ -97,6 +113,7 @@ $purple: #8250df;
     &__location {
       align-items: center;
       display: flex;
+      margin-bottom: 16px;
 
       span {
         color: $darkGrey;
@@ -106,6 +123,36 @@ $purple: #8250df;
               
       svg {
         fill: $darkGrey;
+      }
+    }
+    &__blog {
+      align-items: center;
+      display: flex;
+      margin-bottom: 16px;
+      
+      svg {
+        fill: $darkGrey;
+      }
+
+      a {
+        color: $darkGrey;
+        font-size: 14px;
+        margin-left: 5px;
+        text-decoration: none;
+      }
+    }
+    &__company {
+      align-items: center;
+      display: flex;
+      
+      svg {
+        fill: $darkGrey;
+      }
+
+      span {
+        color: $darkGrey;
+        font-size: 14px;
+        margin-left: 5px;
       }
     }
   }
