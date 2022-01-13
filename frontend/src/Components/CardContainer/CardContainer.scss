@@ -45,6 +45,16 @@ $primary: #57606a;
       }
     }
     &__info {
+      align-items: center;
+      display: flex;
+      margin-top: 5px;
+      a {
+        align-items: center;
+        display: flex;
+        color: $primary;
+        font-size: 12px;
+        text-transform: capitalize;
+      }
       span {
         color: $primary;
         font-size: 12px;

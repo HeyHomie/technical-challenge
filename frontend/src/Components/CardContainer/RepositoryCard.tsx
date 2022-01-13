@@ -7,15 +7,35 @@ const RepositoryCard: React.FC = () => {
       <div className='card-container'>
         <div className='card-container_content'>
           <div className='card-container_content__title'>
-            <h4>Repositories names</h4>
-            <span>Type</span>
+            <h4>Repo Name</h4>
+            <span>Publico</span>
           </div>
           <div className='card-container_content__description'>
-            <span>description</span>
+            <span>Description</span>
           </div>
           <div className='card-container_content__info'>
-            <span>Language</span>
-            <span>Updated on</span>
+            <span>Languaje</span>
+            <span>
+              <a href='/'>
+                <svg
+                  aria-label='fork'
+                  role='img'
+                  height='16'
+                  viewBox='0 0 16 16'
+                  version='1.1'
+                  width='16'
+                  data-view-component='true'
+                  className='octicon octicon-repo-forked'
+                >
+                  <path
+                    fillRule='evenodd'
+                    d='M5 3.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm0 2.122a2.25 2.25 0 10-1.5 0v.878A2.25 2.25 0 005.75 8.5h1.5v2.128a2.251 2.251 0 101.5 0V8.5h1.5a2.25 2.25 0 002.25-2.25v-.878a2.25 2.25 0 10-1.5 0v.878a.75.75 0 01-.75.75h-4.5A.75.75 0 015 6.25v-.878zm3.75 7.378a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm3-8.75a.75.75 0 100-1.5.75.75 0 000 1.5z'
+                  />
+                </svg>
+                Fork
+              </a>
+            </span>
+            <span>Updated at</span>
           </div>
         </div>
         <div className='card-container_options'>
