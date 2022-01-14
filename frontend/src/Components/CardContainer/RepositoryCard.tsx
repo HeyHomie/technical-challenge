@@ -11,6 +11,7 @@ interface RepositoriesInterface {
   name: string
   updatedAt: string
 }
+
 const RepositoryCard: React.FC<RepositoriesInterface> = ({
   name,
   description,

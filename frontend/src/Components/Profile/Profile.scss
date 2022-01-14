@@ -4,10 +4,10 @@ $darkGrey: #57606a;
 $lightGrey: #f8f8fa;
 $purple: #8250df;
 
-.profile-fake__loading {
+.profile__loading {
   align-items: center;
   display: flex;
-  height: 100%;
+  height: 50vh;
   justify-content: center;
 
   p {
