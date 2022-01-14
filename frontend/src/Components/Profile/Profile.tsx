@@ -12,8 +12,10 @@ const Profile: React.FC = () => {
     axios
       .get('https://api.github.com/users/lukas')
       .then(function (response: any) {
-        setData(response.data)
-        setIsLoading(false)
+        if (response.status === 200) {
+          setData(response.data)
+          setIsLoading(false)
+        }
       })
       .catch(function (error: string) {
         console.log(error)
