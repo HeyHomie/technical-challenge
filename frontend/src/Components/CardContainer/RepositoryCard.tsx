@@ -1,13 +1,19 @@
 import * as React from 'react'
 import './CardContainer.scss'
 
-const RepositoryCard: React.FC = () => {
+interface RepositoryCardInterface {
+  name: any
+  key: Number
+}
+
+const RepositoryCard: React.FC<RepositoryCardInterface> = (...props) => {
+  console.log(props)
   return (
     <React.StrictMode>
       <div className='card-container'>
         <div className='card-container_content'>
           <div className='card-container_content__title'>
-            <h4>Repo Name</h4>
+            <h4>{props[0].name}</h4>
             <span>Publico</span>
           </div>
           <div className='card-container_content__description'>
