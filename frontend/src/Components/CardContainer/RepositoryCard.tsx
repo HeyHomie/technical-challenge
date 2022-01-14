@@ -2,8 +2,12 @@ import * as React from 'react'
 import './CardContainer.scss'
 
 interface RepositoryCardInterface {
-  name: any
-  key: Number
+  name: string
+  description: string
+  language: string
+  updated_at: any
+  fork: any
+  forks: Number
 }
 
 const RepositoryCard: React.FC<RepositoryCardInterface> = (...props) => {
@@ -17,31 +21,35 @@ const RepositoryCard: React.FC<RepositoryCardInterface> = (...props) => {
             <span>Publico</span>
           </div>
           <div className='card-container_content__description'>
-            <span>Description</span>
+            <span>{props[0].description}</span>
           </div>
           <div className='card-container_content__info'>
-            <span>Languaje</span>
+            <span>{props[0].language}</span>
             <span>
-              <a href='/'>
-                <svg
-                  aria-label='fork'
-                  role='img'
-                  height='16'
-                  viewBox='0 0 16 16'
-                  version='1.1'
-                  width='16'
-                  data-view-component='true'
-                  className='octicon octicon-repo-forked'
-                >
-                  <path
-                    fillRule='evenodd'
-                    d='M5 3.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm0 2.122a2.25 2.25 0 10-1.5 0v.878A2.25 2.25 0 005.75 8.5h1.5v2.128a2.251 2.251 0 101.5 0V8.5h1.5a2.25 2.25 0 002.25-2.25v-.878a2.25 2.25 0 10-1.5 0v.878a.75.75 0 01-.75.75h-4.5A.75.75 0 015 6.25v-.878zm3.75 7.378a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm3-8.75a.75.75 0 100-1.5.75.75 0 000 1.5z'
-                  />
-                </svg>
-                Fork
-              </a>
+              {props[0].fork === true ? (
+                <a href='/'>
+                  <svg
+                    aria-label='fork'
+                    role='img'
+                    height='16'
+                    viewBox='0 0 16 16'
+                    version='1.1'
+                    width='16'
+                    data-view-component='true'
+                    className='octicon octicon-repo-forked'
+                  >
+                    <path
+                      fillRule='evenodd'
+                      d='M5 3.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm0 2.122a2.25 2.25 0 10-1.5 0v.878A2.25 2.25 0 005.75 8.5h1.5v2.128a2.251 2.251 0 101.5 0V8.5h1.5a2.25 2.25 0 002.25-2.25v-.878a2.25 2.25 0 10-1.5 0v.878a.75.75 0 01-.75.75h-4.5A.75.75 0 015 6.25v-.878zm3.75 7.378a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm3-8.75a.75.75 0 100-1.5.75.75 0 000 1.5z'
+                    />
+                  </svg>
+                  {props[0].forks}
+                </a>
+              ) : (
+                ''
+              )}
             </span>
-            <span>Updated at</span>
+            <span>Updated on {props[0].updated_at}</span>
           </div>
         </div>
         <div className='card-container_options'>

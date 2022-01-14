@@ -21,9 +21,19 @@ const CardContainer: React.FC = () => {
   return (
     <React.StrictMode>
       <div>
-        {Object.entries(repoData).map((repo: any, index: Number) => {
+        {Object.entries(repoData).map((repo: any, index: any) => {
           console.log(repo)
-          return <RepositoryCard key={index} name={repo[1].name} />
+          return (
+            <RepositoryCard
+              key={index}
+              name={repo[1].name}
+              description={repo[1].description}
+              language={repo[1].language}
+              updated_at={repo[1].updated_at}
+              fork={repo[1].fork}
+              forks={repo[1].forks}
+            />
+          )
         })}
       </div>
     </React.StrictMode>
