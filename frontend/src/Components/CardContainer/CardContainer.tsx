@@ -1,42 +1,41 @@
 import * as React from 'react'
-import { useState, useEffect } from 'react'
-import RepositoryCard from './RepositoryCard'
 import axios from 'axios'
+import { useState, useEffect } from 'react'
+import type { AxiosResponse } from 'axios'
+import RepositoryCard from './RepositoryCard'
 
 const CardContainer: React.FC = () => {
-  const [repoData, setRepoData] = useState<any>({})
+  const [repositories, setRepositories] = useState([])
 
   useEffect(() => {
     axios
       .get('https://api.github.com/users/lukas/repos')
-      .then(function (response: any) {
-        console.log(response)
-        setRepoData(response.data)
+      .then(function (response: AxiosResponse) {
+        setRepositories(response.data)
       })
-      .catch(function (error: string) {
+      .catch(function (error: AxiosResponse) {
         console.log(error)
       })
-  }, [setRepoData])
+  }, [setRepositories])
 
   return (
-    <React.StrictMode>
-      <div>
-        {Object.entries(repoData).map((repo: any, index: any) => {
-          console.log(repo)
-          return (
-            <RepositoryCard
-              key={index}
-              name={repo[1].name}
-              description={repo[1].description}
-              language={repo[1].language}
-              updated_at={repo[1].updated_at}
-              fork={repo[1].fork}
-              forks={repo[1].forks}
-            />
-          )
-        })}
-      </div>
-    </React.StrictMode>
+    <div>
+      {repositories.map((repos: any, index: number) => {
+        return (
+          <RepositoryCard
+            description={repos.description}
+            fork={repos.fork}
+            forks={repos.forks}
+            forksUrl={repos.forks_url}
+            key={repos.id}
+            language={repos.language}
+            name={repos.name}
+            isPrivate={repos.private}
+            updatedAt={repos.updated_at}
+          />
+        )
+      })}
+    </div>
   )
 }
 
