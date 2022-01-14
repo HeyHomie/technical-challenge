@@ -11,7 +11,9 @@ const CardContainer: React.FC = () => {
     axios
       .get('https://api.github.com/users/lukas/repos')
       .then(function (response: AxiosResponse) {
-        setRepositories(response.data)
+        if (response.status === 200) {
+          setRepositories(response.data)
+        }
       })
       .catch(function (error: AxiosResponse) {
         console.log(error)
