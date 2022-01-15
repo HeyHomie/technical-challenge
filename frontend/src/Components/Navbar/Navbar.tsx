@@ -5,7 +5,7 @@ const Navbar: React.FC = () => {
   return (
     <>
       <nav className='navbar'>
-        <div className='navbar-container'>
+        <div className='navbar-container navbar-responsive__container'>
           <div className='navbar-container__responsive-icon'>
             <details>
               <summary>

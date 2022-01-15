@@ -14,6 +14,12 @@ $white: #fff;
   line-height: 1.5;
   padding: 12px 32px;
 
+  &-responsive__container {
+    @media screen and (min-width: 768px) {
+      display: none !important;
+    }
+  }
+
   &-container {
     align-items: center;
     display: flex;
