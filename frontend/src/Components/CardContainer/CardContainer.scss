@@ -88,3 +88,25 @@ $primary: #57606a;
     }
   }
 }
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin: 16px 0;
+
+  button {
+    background-color: transparent;
+    border: none;
+    svg path {
+      fill: $primary;
+    }
+  }
+
+  input {
+    border: none;
+    color: $blue;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+  }
+}

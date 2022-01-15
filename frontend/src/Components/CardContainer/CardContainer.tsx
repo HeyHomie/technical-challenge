@@ -62,7 +62,7 @@ const CardContainer: React.FC = () => {
             />
           )
         })}
-      <div>
+      <div className='pagination'>
         <Pagination page={page} setPage={setPage} limitPerPage={limitPerPage} />
       </div>
     </div>
