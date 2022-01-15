@@ -1,16 +1,18 @@
 import * as React from 'react'
-import axios from 'axios'
 import { useState, useEffect } from 'react'
+import { useParams } from 'react-router-dom'
+import axios from 'axios'
 import '../Profile/Profile.scss'
 
 const Profile: React.FC = () => {
   const [profile, setProfile] = useState<any>({})
   const [isLoading, setIsLoading] = useState(false)
+  const { username } = useParams<{ username: string }>()
 
   useEffect(() => {
     setIsLoading(true)
     axios
-      .get('https://api.github.com/users/lukas')
+      .get(`https://api.github.com/users/${username}`)
       .then(function (response) {
         if (response.status === 200) {
           setProfile(response.data)

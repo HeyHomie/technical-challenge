@@ -3,7 +3,7 @@ import * as React from 'react'
 const Dropdown: React.FC = () => {
   return (
     <React.StrictMode>
-      <select name='' id=''>
+      <select name='' id='' defaultValue='Type'>
         <option value='' selected>
           Type
         </option>

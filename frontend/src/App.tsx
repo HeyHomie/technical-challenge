@@ -1,12 +1,8 @@
 import * as React from 'react'
-import './App.scss'
+import { AppRouter } from './routes'
 import Navbar from './Components/Navbar/Navbar'
 import Tabs from './Components/Tabs/Tabs'
-import Profile from './Components/Profile/Profile'
-import Filters from './Components/Filters/Filters'
-import CardContainer from './Components/CardContainer/CardContainer'
-
-import { AppRouter } from './routes'
+import './App.scss'
 
 const App: React.FC = (): JSX.Element => {
   return (
@@ -15,15 +11,6 @@ const App: React.FC = (): JSX.Element => {
         <Navbar />
         <Tabs />
       </header>
-      <main className='main-container'>
-        <aside>
-          <Profile />
-        </aside>
-        <section className='main-content'>
-          <Filters />
-          <CardContainer />
-        </section>
-      </main>
       <AppRouter />
     </>
   )

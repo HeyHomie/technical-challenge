@@ -1,32 +1,27 @@
-import React, { useEffect, useState } from 'react'
-import { FunctionComponent } from 'react'
+import * as React from 'react'
 import {
   Route,
   BrowserRouter as Router,
   Switch,
-  Redirect,
-  useParams
+  Redirect
 } from 'react-router-dom'
+import CardContainer from './Components/CardContainer/CardContainer'
+import Profile from './Components/Profile/Profile'
 
-export const Main: FunctionComponent = () => {
-  const {username} = useParams<{username: string}>()
-  const [User, setUser] = useState<any>({})
-  const [Repos, setRepos] = useState<Array<any>>([])
-  useEffect(() => {
-    Promise.all([fetch(`/api/v1/users?username=${username}`), fetch(`/api/v1/users/${username}/repositories`)]).then(async ([user, repos]) => {
-      setUser(await user.json())
-      setRepos(await repos.json())
-    })
-  }, [username])
+export const Main: React.FC = () => {
   return (
-    <>
-    <h1>{User.login}</h1>
-    {Repos.map(r => <h2>{r.name}</h2>)}
-    </>
+    <main className='main-container'>
+      <aside>
+        <Profile />
+      </aside>
+      <section className='main-content'>
+        <CardContainer />
+      </section>
+    </main>
   )
 }
 
-export const AppRouter = () => (
+export const AppRouter: React.FC = () => (
   <Router>
     <Switch>
       <Route exact path='/:username' component={Main} />
