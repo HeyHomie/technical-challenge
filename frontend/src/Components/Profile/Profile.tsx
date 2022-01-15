@@ -41,10 +41,12 @@ const Profile: React.FC = () => {
                 height='250px'
               />
             </a>
-          </div>
-          <div className='container_aside-names'>
-            <h1 className='container_aside-names__name'>{profile.name}</h1>
-            <h2 className='container_aside-names__username'>{profile.login}</h2>
+            <div className='container_aside-names'>
+              <h1 className='container_aside-names__name'>{profile.name}</h1>
+              <h2 className='container_aside-names__username'>
+                {profile.login}
+              </h2>
+            </div>
           </div>
           <div className='container_aside-information'>
             <div className='container_aside-information__description'>
