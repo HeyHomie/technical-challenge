@@ -14,9 +14,27 @@ $white: #fff;
   line-height: 1.5;
   padding: 12px 32px;
 
+  &-responsive__container {
+    @media screen and (min-width: 768px) {
+      display: none !important;
+    }
+  }
+
   &-container {
     align-items: center;
     display: flex;
+
+    &__responsive-icon {
+      fill: $white;
+
+      summary {
+        font-size: 0;
+      }
+
+      @media screen and (min-width: 768px) {
+        display: none;
+      }
+    }
 
     &__logo {
       a {
@@ -27,8 +45,17 @@ $white: #fff;
 
     &__notifications,
     &__summary {
-      margin-right: 16px;
+      margin-left: 16px;
       fill: $white;
+      @media screen and (max-width: 767px) {
+        margin: 0;
+      }
+    }
+
+    &__summary {
+      @media screen and (max-width:767px) {
+        display: none;
+      }
     }
 
     &__notifications {
@@ -71,7 +98,9 @@ $white: #fff;
           right: 4px;
         }
       }
-
+      @media screen and (max-width: 767px) {
+        display: none;
+      }
       @media screen and (min-width: 768px) {
         max-width: 272px;
         overflow: hidden;
@@ -95,6 +124,9 @@ $white: #fff;
           line-height: 1.5;
           margin-left: 16px;
         }
+      }
+      @media screen and (max-width: 767px) {
+        display: none;
       }
     }
   }

@@ -24,6 +24,18 @@ $purple: #8250df;
     a,img {
       border-radius: 50%;
     }
+
+    @media screen and (max-width: 767px) {
+      align-items: center;
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 16px;
+
+      img {
+        height: 80px;
+        width: 80px;
+      }
+    }
   }
   &-names {
     margin: 16px 0;
