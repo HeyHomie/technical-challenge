@@ -5,16 +5,15 @@ import type { AxiosResponse } from 'axios'
 import axios from 'axios'
 import RepositoryCard from './RepositoryCard'
 import Filters from '../Filters/Filters'
+import Pagination from './Pagination'
 import '../Filters/Filters.scss'
-import Paginate from './Paginate'
 
 const CardContainer: React.FC = () => {
   const [search, setSearch] = useState('')
   const [repositoryList, setRepositoryList] = useState([])
   const { username } = useParams<{ username: string }>()
-  const [page] = useState(1)
+  const [page, setPage] = useState(1)
   const [perPage] = useState(10)
-
   useEffect(() => {
     axios
       .get(`https://api.github.com/users/${username}/repos`)
@@ -40,6 +39,8 @@ const CardContainer: React.FC = () => {
     })
   }, [search, repositoryList])
 
+  const limitPerPage = repositoryList.length / perPage
+
   return (
     <div>
       <Filters value={search} onChange={handleChange} />
@@ -62,7 +63,7 @@ const CardContainer: React.FC = () => {
           )
         })}
       <div>
-        <Paginate />
+        <Pagination page={page} setPage={setPage} limitPerPage={limitPerPage} />
       </div>
     </div>
   )
