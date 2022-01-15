@@ -5,13 +5,15 @@ import type { AxiosResponse } from 'axios'
 import axios from 'axios'
 import RepositoryCard from './RepositoryCard'
 import Filters from '../Filters/Filters'
+import Pagination from './Pagination'
 import '../Filters/Filters.scss'
 
 const CardContainer: React.FC = () => {
   const [search, setSearch] = useState('')
   const [repositoryList, setRepositoryList] = useState([])
   const { username } = useParams<{ username: string }>()
-
+  const [page, setPage] = useState(1)
+  const [perPage] = useState(10)
   useEffect(() => {
     axios
       .get(`https://api.github.com/users/${username}/repos`)
@@ -37,25 +39,32 @@ const CardContainer: React.FC = () => {
     })
   }, [search, repositoryList])
 
+  const limitPerPage = repositoryList.length / perPage
+
   return (
     <div>
       <Filters value={search} onChange={handleChange} />
 
-      {repositories.map((repos: any, index: number) => {
-        return (
-          <RepositoryCard
-            description={repos.description}
-            fork={repos.fork}
-            forks={repos.forks}
-            forksUrl={repos.forks_url}
-            key={repos.id}
-            language={repos.language}
-            name={repos.name}
-            isPrivate={repos.private}
-            updatedAt={repos.updated_at}
-          />
-        )
-      })}
+      {repositories
+        .slice((page - 1) * perPage, (page - 1) * perPage + perPage)
+        .map((repos: any, index: number) => {
+          return (
+            <RepositoryCard
+              description={repos.description}
+              fork={repos.fork}
+              forks={repos.forks}
+              forksUrl={repos.forks_url}
+              key={repos.id}
+              language={repos.language}
+              name={repos.name}
+              isPrivate={repos.private}
+              updatedAt={repos.updated_at}
+            />
+          )
+        })}
+      <div className='pagination'>
+        <Pagination page={page} setPage={setPage} limitPerPage={limitPerPage} />
+      </div>
     </div>
   )
 }
