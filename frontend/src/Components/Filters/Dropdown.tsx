@@ -3,11 +3,10 @@ import * as React from 'react'
 const Dropdown: React.FC = () => {
   return (
     <React.StrictMode>
-      <select name='' id='' defaultValue='Type'>
-        <option value='' selected>
+      <select name='select' id='select' defaultValue='Filter'>
+        <option value='type' selected>
           Type
         </option>
-        <option value=''>Javascript</option>
       </select>
     </React.StrictMode>
   )
