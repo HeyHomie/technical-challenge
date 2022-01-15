@@ -6,11 +6,14 @@ import axios from 'axios'
 import RepositoryCard from './RepositoryCard'
 import Filters from '../Filters/Filters'
 import '../Filters/Filters.scss'
+import Paginate from './Paginate'
 
 const CardContainer: React.FC = () => {
   const [search, setSearch] = useState('')
   const [repositoryList, setRepositoryList] = useState([])
   const { username } = useParams<{ username: string }>()
+  const [page] = useState(1)
+  const [perPage] = useState(10)
 
   useEffect(() => {
     axios
@@ -41,21 +44,26 @@ const CardContainer: React.FC = () => {
     <div>
       <Filters value={search} onChange={handleChange} />
 
-      {repositories.map((repos: any, index: number) => {
-        return (
-          <RepositoryCard
-            description={repos.description}
-            fork={repos.fork}
-            forks={repos.forks}
-            forksUrl={repos.forks_url}
-            key={repos.id}
-            language={repos.language}
-            name={repos.name}
-            isPrivate={repos.private}
-            updatedAt={repos.updated_at}
-          />
-        )
-      })}
+      {repositories
+        .slice((page - 1) * perPage, (page - 1) * perPage + perPage)
+        .map((repos: any, index: number) => {
+          return (
+            <RepositoryCard
+              description={repos.description}
+              fork={repos.fork}
+              forks={repos.forks}
+              forksUrl={repos.forks_url}
+              key={repos.id}
+              language={repos.language}
+              name={repos.name}
+              isPrivate={repos.private}
+              updatedAt={repos.updated_at}
+            />
+          )
+        })}
+      <div>
+        <Paginate />
+      </div>
     </div>
   )
 }
