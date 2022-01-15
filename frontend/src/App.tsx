@@ -9,7 +9,9 @@ const App: React.FC = (): JSX.Element => {
     <>
       <header>
         <Navbar />
-        <Tabs />
+        <div className='tabs-desktop__container'>
+          <Tabs />
+        </div>
       </header>
       <AppRouter />
     </>

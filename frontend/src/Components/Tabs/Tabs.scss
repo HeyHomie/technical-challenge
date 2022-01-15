@@ -4,6 +4,16 @@ $lightGrey: #afb8c133;
 $primaryBlack: #24292f;
 $secondaryBlack: #57606a;
 
+.tabs-desktop__container {
+  @media screen and (max-width: 767px) {
+    display: none
+  }
+}
+.tabs-mobile__container {
+  @media screen and (min-width: 768px) {
+    display: none;
+  }
+}
 .tabs {
   border-bottom: 1px solid $borderColor;
   position: relative;

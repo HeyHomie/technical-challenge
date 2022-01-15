@@ -7,6 +7,7 @@ import RepositoryCard from './RepositoryCard'
 import Filters from '../Filters/Filters'
 import Pagination from './Pagination'
 import '../Filters/Filters.scss'
+import Tabs from '../Tabs/Tabs'
 
 const CardContainer: React.FC = () => {
   const [search, setSearch] = useState('')
@@ -43,6 +44,9 @@ const CardContainer: React.FC = () => {
 
   return (
     <div>
+      <div className='tabs-mobile__container'>
+        <Tabs />
+      </div>
       <Filters value={search} onChange={handleChange} />
 
       {repositories

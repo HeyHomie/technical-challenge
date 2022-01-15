@@ -7,10 +7,17 @@ $white: #fff;
 .main-content {
   padding: 0 16px;
   width: 100%;
+  @media screen and (max-width: 767px) {
+    padding: 0;
+  }
   .filters-container {
     display: flex;
     border-bottom: 1px solid $border;
     padding-bottom: 16px;
+    @media screen and (max-width: 1024px) {
+      flex-direction: column;
+      padding-top: 16px;
+    }
     &__input {
       width: 58%;
 
@@ -23,6 +30,12 @@ $white: #fff;
         outline: none;
         padding: 5px 12px;
         width: -webkit-fill-available;
+        @media screen and (max-width: 1024px) {
+          margin-right: 0;
+        }
+      }
+      @media screen and (max-width: 1024px) {
+        width: 100%;
       }
     }
     &__dropdown {
@@ -39,6 +52,12 @@ $white: #fff;
         font-weight: 500;
         line-height: 20px;
         padding: 5px ;
+      }
+
+      @media screen and (max-width: 1024px) {
+        justify-content: space-between;
+        margin-top: 16px;
+        width: 100%;
       }
     }
     &__button {
@@ -63,6 +82,42 @@ $white: #fff;
           fill: $lightgray;
           margin-right: 5px;
         }
+      }
+      @media screen and (max-width: 1024px) {
+        display: none;
+      }
+    }
+    &__button-responsive {
+      align-items: center;
+      display: flex;
+      justify-content: center;
+      width: 10%;
+
+      button{
+        align-items: center;
+        background-color: $green;
+        border: none;
+        border-radius: 6px;
+        color: $white;
+        display: inline-flex;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 20px;
+        padding: 5px 16px;
+
+        @media screen and (max-width: 1024px) {
+          justify-content: center;
+          width: 100%;
+        }
+
+        svg {
+          fill: $lightgray;
+          margin-right: 5px;
+        }
+      }
+      @media screen and (max-width: 1024px) {
+        margin-bottom: 24px;
+        width: 100%;
       }
     }
   }  
