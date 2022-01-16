@@ -19,7 +19,7 @@ const App: React.FC = (): JSX.Element => {
   }
 
   return (
-    <div data-theme={theme}>
+    <div data-theme={theme} className='components'>
       <header>
         <Navbar />
         <div className='tabs-desktop__container'>
@@ -27,7 +27,9 @@ const App: React.FC = (): JSX.Element => {
         </div>
       </header>
       <AppRouter />
-      <button onClick={switchTheme}>Dark/Light mode</button>
+      <button onClick={switchTheme} className='button-switch__theme'>
+        Dark/Light mode
+      </button>
       <Footer />
     </div>
   )

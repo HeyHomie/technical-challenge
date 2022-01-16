@@ -11,6 +11,7 @@
   --primary-muted: #8b949e;
   --green: #2da44e;
   --white: #fff;
+  --blue: #0969da;
 }
 
 [data-theme='dark'] {
@@ -20,12 +21,23 @@
   --primary: #c9d1d9;
   --primary-muted: #8b949e;
   --navbar: #161b22;
-  --icons: #fff;
+  --icons: #8b949e;
   --badges: #afb8c133;
   --purple: #8250df;
   --button: #21262d;
   --green: #2da44e;
   --white: #fff;
+  --blue: #58a6ff;
+}
+
+.components {
+  position: relative;
+
+  .button-switch__theme {
+    bottom: 5%;
+    left: 2.5%;
+    position: fixed;
+  }
 }
 
 .main-container {
