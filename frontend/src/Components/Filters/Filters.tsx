@@ -30,7 +30,11 @@ const Filters: React.FC<FilterProps> = ({ value, onChange }) => {
         </button>
       </div>
       <div className='filters-container__input'>
-        <input value={value} onChange={onChange} />
+        <input
+          value={value}
+          onChange={onChange}
+          placeholder='Find a repository...'
+        />
       </div>
       <div className='filters-container__dropdown'>
         <Dropdown />

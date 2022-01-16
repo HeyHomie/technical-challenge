@@ -1,13 +1,7 @@
-$borderColor: #57606a;
-$notificationBlue: hsl(212, 100%, 66%);
-$primaryBlack: #24292f;
-$secondaryBlack: #403f3f;
-$lightGrey: #afb8c1;
-$white: #fff;
-
 .navbar {
   align-items: center;
-  background-color: $primaryBlack;
+  background-color: var(--navbar);
+  color: var(--primary);
   display: flex;
   font-size: 14px;
   justify-content: space-between;
@@ -25,7 +19,7 @@ $white: #fff;
     display: flex;
 
     &__responsive-icon {
-      fill: $white;
+      fill: var(--white);
 
       summary {
         font-size: 0;
@@ -38,7 +32,7 @@ $white: #fff;
 
     &__logo {
       a {
-        fill: $white;
+        fill: var(--white);
         margin-right: 16px;
       }
     }
@@ -46,7 +40,7 @@ $white: #fff;
     &__notifications,
     &__summary {
       margin-left: 16px;
-      fill: $white;
+      fill: var(--white);
       @media screen and (max-width: 767px) {
         margin: 0;
       }
@@ -63,7 +57,7 @@ $white: #fff;
     }
 
     &__notifications-active {
-      background-color: $notificationBlue;
+      background-color: var(--blue);
       border-radius: 50%;
       height: 8px;
       position: absolute;
@@ -80,7 +74,7 @@ $white: #fff;
 
         input {
           background-color: transparent;
-          border: 1px solid $borderColor;
+          border: 1px solid #57606a;
           border-radius: 6px;
           font-size: inherit;
           min-height: 26px;
@@ -117,7 +111,7 @@ $white: #fff;
         list-style: none;
 
         a {
-          color: $white;
+          color: var(--white);
           font-size: 14px;
           font-weight: 600;
           text-decoration: none;

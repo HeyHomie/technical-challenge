@@ -1,27 +1,28 @@
-$blue: #0969da;
-$border: #d0d7de;
-$primary: #57606a;
-
 .footer {
-  border-top: 1px solid $border;
+  background-color: var(--background);
+  border-top: 1px solid var(--border);
   display: flex;
-  margin: 0 auto;
-  max-width: 1280px;
   overflow: hidden;
-  padding: 16px 0;
+  padding: 16px 80px;
 
   @media screen and (max-width: 767px) {
     flex-direction: column-reverse;
+    margin-top: -20px;
+    padding: 16px;
   }
 
   &-logo {
     align-items: center;
     display:flex;
+    justify-content: center;
 
     span {
-      color: $primary;
+      color: var(--primary-muted);
       font-size: 14px;
       margin-left: 16px;
+    }
+    svg {
+      fill: var(--icons);
     }
   }
 
@@ -36,7 +37,7 @@ $primary: #57606a;
       white-space: nowrap;
 
       a {
-        color: $blue;
+        color: var(--blue);
         font-size: 14px;
         font-weight: 300;
         margin-left: 16px;

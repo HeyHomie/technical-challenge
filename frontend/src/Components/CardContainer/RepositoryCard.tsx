@@ -66,10 +66,10 @@ const RepositoryCard: React.FC<RepositoriesInterface> = ({
           <button>
             <svg
               aria-hidden='true'
-              height='18'
+              height='16'
               viewBox='0 0 16 16'
               version='1.1'
-              width='18'
+              width='16'
               data-view-component='true'
               className='octicon octicon-star UnderlineNav-octicon hide-sm'
             >

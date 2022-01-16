@@ -1,10 +1,5 @@
-$borderColor: #d0d7de;
-$borderActive: #fd8c73;
-$lightGrey: #afb8c133;
-$primaryBlack: #24292f;
-$secondaryBlack: #57606a;
-
 .tabs-desktop__container {
+  background-color: var(--background);
   @media screen and (max-width: 767px) {
     display: none
   }
@@ -15,7 +10,7 @@ $secondaryBlack: #57606a;
   }
 }
 .tabs {
-  border-bottom: 1px solid $borderColor;
+  border-bottom: 1px solid var(--border);
   position: relative;
   @media screen and (max-width: 767px) {
     overflow: hidden;
@@ -39,7 +34,7 @@ $secondaryBlack: #57606a;
 
       .repositories-numbers,
       .stars-numbers {
-        background-color: $lightGrey;
+        background-color: var(--badges);
         border-radius: 2em;
         font-size: 12px;
         font-weight: 500;
@@ -50,7 +45,7 @@ $secondaryBlack: #57606a;
       }
 
       .item-active {
-        border-bottom: 2px solid $borderActive;
+        border-bottom: 2px solid var(--borderActive);
 
         a {
           font-weight: bold;
@@ -63,15 +58,14 @@ $secondaryBlack: #57606a;
         padding: 26px 12px 16px 12px;
 
         svg {
-          fill: $secondaryBlack;
+          fill: var(--icons);
           margin-right: 5px;
         }
         a {
-          color: $primaryBlack;
+          color: var(--primary);
           font-size: 14px;
           line-height: 30px;
           margin: 0 2.5px;
-          padding: 8 16px;
           text-decoration: none;
         }
       }
