@@ -1,3 +1,23 @@
+:root {
+  --background: #fff;
+  --navbar: #242424;
+  --primary: #24292f;
+  --icons: #57606a;
+  --borderActive: #fd8c73;
+  --border: #d0d7de;
+  --badges: #afb8c133;
+}
+
+[data-theme='dark'] {
+  --background: #0d1117;
+  --border: #d0d7de;
+  --borderActive: #fd8c73;
+  --primary: #fff;
+  --navbar: #161b22;
+  --icons: #fff;
+  --badges: #afb8c133;
+}
+
 .main-container {
   max-width: 1280px;
   margin: 24px auto 0 auto;
