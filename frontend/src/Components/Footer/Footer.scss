@@ -1,0 +1,47 @@
+$blue: #0969da;
+$border: #d0d7de;
+$primary: #57606a;
+
+.footer {
+  border-top: 1px solid $border;
+  display: flex;
+  margin: 0 auto;
+  max-width: 1280px;
+  overflow: hidden;
+  padding: 16px 0;
+
+  @media screen and (max-width: 767px) {
+    flex-direction: column-reverse;
+  }
+
+  &-logo {
+    align-items: center;
+    display:flex;
+
+    span {
+      color: $primary;
+      font-size: 14px;
+      margin-left: 16px;
+    }
+  }
+
+  &-links {    
+    ul {
+      align-items: center;
+      display: flex;
+      list-style: none;
+      justify-content: flex-start;
+      overflow-x: scroll;
+      padding: 0;
+      white-space: nowrap;
+
+      a {
+        color: $blue;
+        font-size: 14px;
+        font-weight: 300;
+        margin-left: 16px;
+        text-decoration: none;
+      }
+    }
+  }
+}

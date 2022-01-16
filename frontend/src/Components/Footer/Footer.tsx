@@ -1,9 +1,10 @@
 import * as React from 'react'
+import './Footer.scss'
 
 const Footer: React.FC = () => {
   return (
     <footer className='footer'>
-      <div>
+      <div className='footer-logo'>
         <a href='/'>
           <svg
             height='32'
@@ -22,7 +23,7 @@ const Footer: React.FC = () => {
         </a>
         <span>&copy; 2022 Github, Inc.</span>
       </div>
-      <div>
+      <div className='footer-links'>
         <ul>
           <li>
             <a href='/Terms'>Terms</a>
