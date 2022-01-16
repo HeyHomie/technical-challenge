@@ -5,7 +5,7 @@ import {
   Switch,
   Redirect
 } from 'react-router-dom'
-import CardContainer from './Components/CardContainer/CardContainer'
+import Repositories from './Components/Repositories/Repositories'
 import Profile from './Components/Profile/Profile'
 
 export const Main: React.FC = () => {
@@ -15,7 +15,7 @@ export const Main: React.FC = () => {
         <Profile />
       </aside>
       <section className='main-content'>
-        <CardContainer />
+        <Repositories />
       </section>
     </main>
   )
