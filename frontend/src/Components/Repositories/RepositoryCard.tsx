@@ -1,5 +1,5 @@
 import * as React from 'react'
-import './CardContainer.scss'
+import './Repositories.scss'
 
 interface RepositoriesInterface {
   description: string
