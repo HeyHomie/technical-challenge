@@ -12,6 +12,8 @@
   --green: #2da44e;
   --white: #fff;
   --blue: #0969da;
+  --background-switch: #0d1117;
+  --color-switch: #fff;
 }
 
 [data-theme='dark'] {
@@ -28,15 +30,26 @@
   --green: #2da44e;
   --white: #fff;
   --blue: #58a6ff;
+  --background-switch: #fff;
+  --color-switch: #0d1117;
 }
 
 .components {
   position: relative;
 
   .button-switch__theme {
+    background: var(--background-switch);
+    border-radius: 50%;
+    border: none;
+    box-shadow: 0px 1px 14px 0px rgba(0,0,0,0.75);
     bottom: 5%;
     left: 2.5%;
+    padding: 5px;
     position: fixed;
+
+    i {
+      color: var(--color-switch);
+    }
   }
 }
 

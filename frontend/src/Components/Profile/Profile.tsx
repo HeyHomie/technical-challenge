@@ -28,7 +28,7 @@ const Profile: React.FC = () => {
     <>
       {isLoading ? (
         <div className='profile__loading'>
-          <p>Loading...</p>
+          <p>Loading profile...</p>
         </div>
       ) : (
         <div className='container_aside'>

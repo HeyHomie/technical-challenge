@@ -28,7 +28,11 @@ const App: React.FC = (): JSX.Element => {
       </header>
       <AppRouter />
       <button onClick={switchTheme} className='button-switch__theme'>
-        Dark/Light mode
+        {theme === 'light' ? (
+          <i className='fas fa-2x fa-moon' />
+        ) : (
+          <i className='fas fa-2x fa-sun' />
+        )}
       </button>
       <Footer />
     </div>
