@@ -1,9 +1,3 @@
-$borderColor: #d0d7de;
-$black: #24292f;
-$darkGrey: #57606a;
-$lightGrey: #f8f8fa;
-$purple: #8250df;
-
 .profile__loading {
   align-items: center;
   display: flex;
@@ -189,7 +183,7 @@ $purple: #8250df;
     span {
       border-radius: 2em;
       border: 1px solid var(--purple);
-      color: $purple;
+      color: var(--purple);
       display: inline-block;
       font-size: 12px;
       font-weight: 500;

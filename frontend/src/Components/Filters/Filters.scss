@@ -1,9 +1,3 @@
-$border: #d0d7de;
-$borderDark: #1b1f2426;
-$green: #2da44e;
-$lightgray: #f6f8fa;
-$white: #fff;
-
 .main-content {
   padding: 0 16px;
   width: 100%;
@@ -12,7 +6,7 @@ $white: #fff;
   }
   .filters-container {
     display: flex;
-    border-bottom: 1px solid $border;
+    border-bottom: 1px solid var(--border);
     padding-bottom: 16px;
     @media screen and (max-width: 1024px) {
       flex-direction: column;
@@ -22,8 +16,9 @@ $white: #fff;
       width: 58%;
 
       input {
+        background: var(--background);
         border-radius: 6px;
-        border: 1px solid $border;
+        border: 1px solid var(--border);
         font-size: 14px;
         line-height: 20px;
         margin-right: 16px;
@@ -45,13 +40,14 @@ $white: #fff;
       width: 32%;
 
       select {
-        background-color: $lightgray;
+        background-color: var(--button);
         border-radius: 6px;
-        border: 1px solid $borderDark;
+        border: 1px solid var(--border);
+        color: var(--primary);
         font-size: 14px;
         font-weight: 500;
         line-height: 20px;
-        padding: 5px ;
+        padding: 5px 20px;
       }
 
       @media screen and (max-width: 1024px) {
@@ -68,10 +64,10 @@ $white: #fff;
 
       button{
         align-items: center;
-        background-color: $green;
+        background-color: var(--green);
         border: none;
         border-radius: 6px;
-        color: $white;
+        color: var(--white);
         display: inline-flex;
         font-size: 14px;
         font-weight: 500;
@@ -79,7 +75,7 @@ $white: #fff;
         padding: 5px 16px;
 
         svg {
-          fill: $lightgray;
+          fill: var(--icons);
           margin-right: 5px;
         }
       }
@@ -95,10 +91,10 @@ $white: #fff;
 
       button{
         align-items: center;
-        background-color: $green;
+        background-color: var(--green);
         border: none;
         border-radius: 6px;
-        color: $white;
+        color: var(--white);
         display: inline-flex;
         font-size: 14px;
         font-weight: 500;
@@ -111,7 +107,7 @@ $white: #fff;
         }
 
         svg {
-          fill: $lightgray;
+          fill: var(--icons);
           margin-right: 5px;
         }
       }
