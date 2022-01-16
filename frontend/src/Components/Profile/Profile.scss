@@ -11,7 +11,7 @@ $purple: #8250df;
   justify-content: center;
 
   p {
-    color: $darkGrey;
+    color: var(--primary);
     font-size: 18px;
     font-weight: bold;
   }
@@ -40,7 +40,7 @@ $purple: #8250df;
   &-names {
     margin: 16px 0;
     &__name {
-      color: $black;
+      color: var(--primary);
       font-size: 26px;
       font-weight: 600;
       line-height: 1.25;
@@ -48,7 +48,7 @@ $purple: #8250df;
       text-transform: capitalize;
     }
     &__username {
-      color: $darkGrey;
+      color: var(--primary-muted);
       font-size: 20px;
       font-weight: 300;
       line-height: 24px;
@@ -60,17 +60,17 @@ $purple: #8250df;
     &__description {
       margin-bottom: 16px;
       span {
-        color: $black;
+        color: var(--primary);
         font-size: 16px;
       }
     }
     &__button {
       margin-bottom: 16px;
       button {
-        background-color: $lightGrey;
-        border: 1px solid #1b1f2426;
+        background-color: var(--button);
+        border: 1px solid var(--border);
         border-radius: 6px;
-        color: $black;
+        color: var(--primary);
         cursor: pointer;
         font-size: 14px;
         font-weight: 600;
@@ -86,7 +86,7 @@ $purple: #8250df;
 
       &_followers {
         align-items: center;
-        color: $darkGrey;
+        color: var(--primary);
         display: flex;
         font-size: 14px;
         flex-direction: row;
@@ -104,13 +104,13 @@ $purple: #8250df;
         }
 
         svg {
-          fill: $darkGrey;
+          fill: var(--icons);
         }
       }
 
       &_following {
         align-items: center;
-        color: $darkGrey;
+        color: var(--primary);
         display: flex;
         flex-direction: row;
         font-size: 14px;
@@ -128,13 +128,13 @@ $purple: #8250df;
       margin-bottom: 16px;
 
       span {
-        color: $darkGrey;
+        color: var(--primary);
         font-size: 14px;
         margin-left: 5px;
       }
               
       svg {
-        fill: $darkGrey;
+        fill: var(--icons);
       }
     }
     &__blog {
@@ -143,11 +143,11 @@ $purple: #8250df;
       margin-bottom: 16px;
       
       svg {
-        fill: $darkGrey;
+        fill: var(--icons);
       }
 
       a {
-        color: $darkGrey;
+        color: var(--primary);
         font-size: 14px;
         margin-left: 5px;
         text-decoration: none;
@@ -158,11 +158,11 @@ $purple: #8250df;
       display: flex;
       
       svg {
-        fill: $darkGrey;
+        fill: var(--icons);
       }
 
       span {
-        color: $darkGrey;
+        color: var(--primary);
         font-size: 14px;
         margin-left: 5px;
       }
@@ -170,7 +170,8 @@ $purple: #8250df;
   }
   &-achievements,
   &-highlights {
-    border-top: 1px solid $borderColor;
+    border-top: 1px solid var(--border);
+    color: var(--primary);
     margin-top: 16px;
     padding-top: 16px;
 
@@ -187,7 +188,7 @@ $purple: #8250df;
 
     span {
       border-radius: 2em;
-      border: 1px solid $purple;
+      border: 1px solid var(--purple);
       color: $purple;
       display: inline-block;
       font-size: 12px;
@@ -198,7 +199,7 @@ $purple: #8250df;
     }
             
     svg {
-      fill: $darkGrey;
+      fill: var(--icons);
     }
   }
 }

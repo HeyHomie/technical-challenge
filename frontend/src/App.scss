@@ -6,21 +6,27 @@
   --borderActive: #fd8c73;
   --border: #d0d7de;
   --badges: #afb8c133;
+  --purple: #8250df;
+  --button: #f8f8fa;
+  --primary-muted: #8b949e;
 }
 
 [data-theme='dark'] {
   --background: #0d1117;
-  --border: #d0d7de;
+  --border: #21262d;
   --borderActive: #fd8c73;
-  --primary: #fff;
+  --primary: #c9d1d9;
+  --primary-muted: #8b949e;
   --navbar: #161b22;
   --icons: #fff;
   --badges: #afb8c133;
+  --purple: #8250df;
+  --button: #21262d;
 }
 
 .main-container {
-  max-width: 1280px;
-  margin: 24px auto 0 auto;
+  background: var(--background);
+
   @media screen and (max-width: 767px) {
     padding: 0 16px;
   }
@@ -35,7 +41,7 @@
   }
 
   @media screen and (min-width: 1024px){
-    padding: 0 32px;
+    padding: 24px 80px;
     aside {
       position: relative;
       top: -3rem;
