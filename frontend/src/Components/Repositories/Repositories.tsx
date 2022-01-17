@@ -61,6 +61,7 @@ const Repositories: React.FC = () => {
       {repositoriesIsLoading ? (
         <div className='repositories__loading'>
           <p>Loading repositories...</p>
+          <div className='loading-animation' />
         </div>
       ) : (
         <div>
