@@ -4,13 +4,16 @@ import { useParams } from 'react-router-dom'
 import axios from 'axios'
 import '../Tabs/Tabs.scss'
 
+interface ITabs {
+  public_repos: string
+}
 const Tabs: React.FC = () => {
-  const [profileTabs, setProfileTabs] = useState<any>({})
+  const [profileTabs, setProfileTabs] = useState<ITabs>({ public_repos: '' })
   const { username } = useParams<{ username: string }>()
 
   useEffect(() => {
     axios
-      .get(`https://api.github.com/users/${username}/repos`)
+      .get(`https://api.github.com/users/${username}`)
       .then(function (response) {
         if (response.status === 200) {
           setProfileTabs(response.data)
@@ -61,7 +64,7 @@ const Tabs: React.FC = () => {
               <a href='/'>
                 Repositories
                 <span className='repositories-numbers'>
-                  {profileTabs.length}
+                  {profileTabs.public_repos}
                 </span>
               </a>
             </li>
