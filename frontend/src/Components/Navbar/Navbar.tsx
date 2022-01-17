@@ -1,7 +1,31 @@
 import * as React from 'react'
+import { useState, useEffect } from 'react'
+import { useParams } from 'react-router-dom'
+import axios from 'axios'
 import '../Navbar/Navbar.scss'
 
+interface INavbar {
+  avatar_url: string
+}
+
 const Navbar: React.FC = () => {
+  const [navbarAvatar, setNavbarAvatar] = useState<INavbar>({
+    avatar_url: ''
+  })
+  const { username } = useParams<{ username: string }>()
+
+  useEffect(() => {
+    axios
+      .get(`https://api.github.com/users/${username}`)
+      .then(function (response) {
+        if (response.status === 200) {
+          setNavbarAvatar(response.data)
+        }
+      })
+      .catch(function (error) {
+        console.log(error)
+      })
+  }, [setNavbarAvatar])
   return (
     <>
       <nav className='navbar'>
@@ -115,6 +139,11 @@ const Navbar: React.FC = () => {
                 d='M7.75 2a.75.75 0 01.75.75V7h4.25a.75.75 0 110 1.5H8.5v4.25a.75.75 0 11-1.5 0V8.5H2.75a.75.75 0 010-1.5H7V2.75A.75.75 0 017.75 2z'
               />
             </svg>
+          </div>
+          <div className='navbar-container__avatar'>
+            <a>
+              <img src={navbarAvatar.avatar_url} alt='User' />
+            </a>
           </div>
         </div>
       </nav>

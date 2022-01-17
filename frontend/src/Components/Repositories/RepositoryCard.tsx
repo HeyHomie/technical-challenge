@@ -1,18 +1,8 @@
 import * as React from 'react'
+import { IRepositories } from './Repositories'
 import './Repositories.scss'
 
-interface RepositoriesInterface {
-  description: string
-  fork: boolean
-  forks: number
-  forksUrl: string
-  isPrivate: boolean
-  language: string
-  name: string
-  updatedAt: string
-}
-
-const RepositoryCard: React.FC<RepositoriesInterface> = ({
+const RepositoryCard: React.FC<IRepositories> = ({
   name,
   description,
   isPrivate,

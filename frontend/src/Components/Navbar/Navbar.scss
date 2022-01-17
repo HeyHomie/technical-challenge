@@ -14,9 +14,23 @@
     }
   }
 
+  
   &-container {
     align-items: center;
     display: flex;
+
+    &__avatar {
+      img {
+        border-radius: 50%;
+        height: 30px;
+        margin-left: 16px;
+        width: 30px;
+      }
+
+      @media screen and (max-width: 767px) {
+        display: none;
+      }
+    }
 
     &__responsive-icon {
       fill: var(--white);

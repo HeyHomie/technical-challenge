@@ -4,8 +4,35 @@ import { useParams } from 'react-router-dom'
 import axios from 'axios'
 import '../Profile/Profile.scss'
 
+interface IProfile {
+  html_url: string
+  avatar_url: string
+  name: string
+  login: string
+  bio: string
+  followers_url: string
+  following_url: string
+  followers: number
+  following: number
+  location: string
+  blog: string
+  company: string
+}
 const Profile: React.FC = () => {
-  const [profile, setProfile] = useState<any>({})
+  const [profile, setProfile] = useState<IProfile>({
+    html_url: '',
+    avatar_url: '',
+    name: '',
+    login: '',
+    bio: '',
+    followers_url: '',
+    following_url: '',
+    followers: 0,
+    following: 0,
+    location: '',
+    blog: '',
+    company: ''
+  })
   const [isLoading, setIsLoading] = useState(false)
   const { username } = useParams<{ username: string }>()
 
