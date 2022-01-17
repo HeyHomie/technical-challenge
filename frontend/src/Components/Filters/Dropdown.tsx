@@ -5,7 +5,7 @@ const Dropdown: React.FC = () => {
     <React.StrictMode>
       <select name='select' id='select' defaultValue='Filter'>
         <option value='type' selected>
-          Type
+          Filter
         </option>
       </select>
     </React.StrictMode>
