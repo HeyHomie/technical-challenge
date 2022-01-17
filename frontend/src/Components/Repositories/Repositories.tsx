@@ -9,9 +9,20 @@ import Pagination from './Pagination'
 import '../Filters/Filters.scss'
 import Tabs from '../Tabs/Tabs'
 
+export interface IRepositories {
+  description: string
+  fork: boolean
+  forks: number
+  forksUrl: string
+  isPrivate: boolean
+  language: string
+  name: string
+  updatedAt: string
+}
+
 const Repositories: React.FC = () => {
   const [search, setSearch] = useState('')
-  const [repositoryList, setRepositoryList] = useState([])
+  const [repositoryList, setRepositoryList] = useState<IRepositories[]>([])
   const [repositoriesIsLoading, setRepositoriesIsLoading] = useState(false)
   const { username } = useParams<{ username: string }>()
   const [page, setPage] = useState(1)
