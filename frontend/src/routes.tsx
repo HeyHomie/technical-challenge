@@ -8,10 +8,15 @@ import {
 import Repositories from './Components/Repositories/Repositories'
 import Profile from './Components/Profile/Profile'
 import Tabs from './Components/Tabs/Tabs'
+import Navbar from './Components/Navbar/Navbar'
+import Footer from './Components/Footer/Footer'
 
 export const Main: React.FC = () => {
   return (
     <>
+      <header>
+        <Navbar />
+      </header>
       <div className='tabs-desktop__container'>
         <Tabs />
       </div>
@@ -23,6 +28,7 @@ export const Main: React.FC = () => {
           <Repositories />
         </section>
       </main>
+      <Footer />
     </>
   )
 }

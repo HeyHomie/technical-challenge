@@ -41,7 +41,6 @@ const Profile: React.FC = () => {
     axios
       .get(`https://api.github.com/users/${username}`)
       .then(function (response) {
-        console.log(response.data)
         if (response.status === 200) {
           setProfile(response.data)
           setIsLoading(false)
