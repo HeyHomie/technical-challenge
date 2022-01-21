@@ -1,0 +1,226 @@
+.profile__loading {
+  align-items: center;
+  display: flex;
+  height: 50vh;
+  justify-content: center;
+  flex-direction: column;
+
+  p {
+    color: var(--primary);
+    font-size: 18px;
+    font-weight: bold;
+  }
+}
+
+.loading-animation {
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+}
+.loading-animation:after {
+  content: " ";
+  display: block;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border-radius: 50%;
+  border: 6px solid var(--primary);
+  border-color: var(--primary) transparent var(--primary) transparent;
+  animation: loadingAnimation .2s linear infinite;
+}
+
+@keyframes loadingAnimation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.container_aside {
+  &-avatar {
+    position: relative;
+    z-index: 99;
+    a,img {
+      border-radius: 50%;
+    }
+
+    @media screen and (max-width: 767px) {
+      align-items: center;
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 16px;
+
+      img {
+        height: 80px;
+        width: 80px;
+      }
+    }
+  }
+  &-names {
+    margin: 16px 0;
+    &__name {
+      color: var(--primary);
+      font-size: 26px;
+      font-weight: 600;
+      line-height: 1.25;
+      margin: 0;
+      text-transform: capitalize;
+    }
+    &__username {
+      color: var(--primary-muted);
+      font-size: 20px;
+      font-weight: 300;
+      line-height: 24px;
+      margin: 0;
+    }
+  }
+
+  &-information {
+    &__description {
+      margin-bottom: 16px;
+      span {
+        color: var(--primary);
+        font-size: 16px;
+      }
+    }
+    &__button {
+      margin-bottom: 16px;
+      button {
+        background-color: var(--button);
+        border: 1px solid var(--border);
+        border-radius: 6px;
+        color: var(--primary);
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 20px;
+        padding: 5px 16px;
+        width: 100%;
+      }
+    }
+
+    &__follow {
+      display: flex;
+      margin-bottom: 16px;
+
+      &_followers {
+        align-items: center;
+        color: var(--primary);
+        display: flex;
+        font-size: 14px;
+        flex-direction: row;
+        text-decoration: none;
+
+        span {
+          font-weight: 600;
+          margin: 0 5px;
+        }
+
+        &::after {
+          content: " · ";
+          font-size: 14px;
+          margin: 0 5px;
+        }
+
+        svg {
+          fill: var(--icons);
+        }
+      }
+
+      &_following {
+        align-items: center;
+        color: var(--primary);
+        display: flex;
+        flex-direction: row;
+        font-size: 14px;
+        text-decoration: none;
+
+        span {
+          font-weight: 600;
+          margin: 0 5px;
+        }
+      }
+    }
+    &__location {
+      align-items: center;
+      display: flex;
+      margin-bottom: 16px;
+
+      span {
+        color: var(--primary);
+        font-size: 14px;
+        margin-left: 5px;
+      }
+              
+      svg {
+        fill: var(--icons);
+      }
+    }
+    &__blog {
+      align-items: center;
+      display: flex;
+      margin-bottom: 16px;
+      
+      svg {
+        fill: var(--icons);
+      }
+
+      a {
+        color: var(--primary);
+        font-size: 14px;
+        margin-left: 5px;
+        text-decoration: none;
+      }
+    }
+    &__company {
+      align-items: center;
+      display: flex;
+      
+      svg {
+        fill: var(--icons);
+      }
+
+      span {
+        color: var(--primary);
+        font-size: 14px;
+        margin-left: 5px;
+      }
+    }
+  }
+  &-achievements,
+  &-highlights {
+    border-top: 1px solid var(--border);
+    color: var(--primary);
+    margin-top: 16px;
+    padding-top: 16px;
+
+    h3 {
+      font-size: 16px;
+      font-weight: 600;
+      margin: 0 0 8px 0;
+    }
+
+    div {
+      align-items: center;
+      display: flex;
+    }
+
+    span {
+      border-radius: 2em;
+      border: 1px solid var(--purple);
+      color: var(--purple);
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 18px;
+      margin-left: 5px;
+      padding: 0 7px;
+    }
+            
+    svg {
+      fill: var(--icons);
+    }
+  }
+}

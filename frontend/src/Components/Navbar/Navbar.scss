@@ -1,0 +1,141 @@
+.navbar {
+  align-items: center;
+  background-color: var(--navbar);
+  color: var(--primary);
+  display: flex;
+  font-size: 14px;
+  justify-content: space-between;
+  line-height: 1.5;
+  padding: 12px 32px;
+
+  &-responsive__container {
+    @media screen and (min-width: 768px) {
+      display: none !important;
+    }
+  }
+
+  
+  &-container {
+    align-items: center;
+    display: flex;
+
+    &__avatar {
+      img {
+        border-radius: 50%;
+        height: 30px;
+        margin-left: 16px;
+        width: 30px;
+      }
+
+      @media screen and (max-width: 767px) {
+        display: none;
+      }
+    }
+
+    &__responsive-icon {
+      fill: var(--white);
+
+      summary {
+        font-size: 0;
+      }
+
+      @media screen and (min-width: 768px) {
+        display: none;
+      }
+    }
+
+    &__logo {
+      a {
+        fill: var(--white);
+        margin-right: 16px;
+      }
+    }
+
+    &__notifications,
+    &__summary {
+      margin-left: 16px;
+      fill: var(--white);
+      @media screen and (max-width: 767px) {
+        margin: 0;
+      }
+    }
+
+    &__summary {
+      @media screen and (max-width:767px) {
+        display: none;
+      }
+    }
+
+    &__notifications {
+      position: relative
+    }
+
+    &__notifications-active {
+      background-color: var(--blue);
+      border-radius: 50%;
+      height: 8px;
+      position: absolute;
+      right: 0;
+      top: -5px;
+      width: 8px;
+    }
+
+    &__searchbar {
+      form {
+        align-items: center;
+        display: flex;
+        position: relative;
+
+        input {
+          background-color: transparent;
+          border: 1px solid #57606a;
+          border-radius: 6px;
+          font-size: inherit;
+          min-height: 26px;
+          outline: none;
+          padding: 5px 12px;
+          width: -webkit-fill-available;
+          &::-webkit-input-placeholder {
+            color: #c2c2c2e5;
+          }
+        }
+
+
+        svg {
+          position: absolute;
+          right: 4px;
+        }
+      }
+      @media screen and (max-width: 767px) {
+        display: none;
+      }
+      @media screen and (min-width: 768px) {
+        max-width: 272px;
+        overflow: hidden;
+        width: 272px
+      }
+    }
+    &__listItem {
+      align-items: center;
+      display: flex;
+      margin: 0;
+      padding: 0;
+
+      li {
+        list-style: none;
+
+        a {
+          color: var(--white);
+          font-size: 14px;
+          font-weight: 600;
+          text-decoration: none;
+          line-height: 1.5;
+          margin-left: 16px;
+        }
+      }
+      @media screen and (max-width: 767px) {
+        display: none;
+      }
+    }
+  }
+}

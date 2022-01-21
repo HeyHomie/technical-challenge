@@ -1,0 +1,74 @@
+.tabs-desktop__container {
+  background-color: var(--background);
+  @media screen and (max-width: 767px) {
+    display: none
+  }
+}
+.tabs-mobile__container {
+  @media screen and (min-width: 768px) {
+    display: none;
+  }
+}
+.tabs {
+  border-bottom: 1px solid var(--border);
+  position: relative;
+  @media screen and (max-width: 767px) {
+    overflow: hidden;
+    overflow-x: scroll;
+  }
+  &-container {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    @media screen and (max-width: 767px) {
+      justify-content: flex-start;
+    }
+
+    &__list {
+      align-items: center;
+      display: flex;
+      justify-content: space-evenly;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      .repositories-numbers,
+      .stars-numbers {
+        background-color: var(--badges);
+        border-radius: 2em;
+        font-size: 12px;
+        font-weight: 500;
+        min-width: 20px;
+        margin-left: 5px;
+        line-height: 18px;
+        padding: 0 6px;
+      }
+
+      .item-active {
+        border-bottom: 2px solid var(--borderActive);
+
+        a {
+          font-weight: bold;
+        }
+      }
+
+      li {
+        align-items: center;
+        display: flex;
+        padding: 26px 12px 16px 12px;
+
+        svg {
+          fill: var(--icons);
+          margin-right: 5px;
+        }
+        a {
+          color: var(--primary);
+          font-size: 14px;
+          line-height: 30px;
+          margin: 0 2.5px;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,48 @@
+.footer {
+  background-color: var(--background);
+  border-top: 1px solid var(--border);
+  display: flex;
+  overflow: hidden;
+  padding: 16px 80px;
+
+  @media screen and (max-width: 767px) {
+    flex-direction: column-reverse;
+    margin-top: -20px;
+    padding: 16px;
+  }
+
+  &-logo {
+    align-items: center;
+    display:flex;
+    justify-content: center;
+
+    span {
+      color: var(--primary-muted);
+      font-size: 14px;
+      margin-left: 16px;
+    }
+    svg {
+      fill: var(--icons);
+    }
+  }
+
+  &-links {    
+    ul {
+      align-items: center;
+      display: flex;
+      list-style: none;
+      justify-content: flex-start;
+      overflow-x: scroll;
+      padding: 0;
+      white-space: nowrap;
+
+      a {
+        color: var(--blue);
+        font-size: 14px;
+        font-weight: 300;
+        margin-left: 16px;
+        text-decoration: none;
+      }
+    }
+  }
+}
