@@ -1,4 +1,4 @@
-import { Profile } from './interface'
+import { Profile } from '../modules/Profile/interface'
 
 interface Props {
   profile: Profile
@@ -7,7 +7,7 @@ interface Props {
 export function SideBar({ profile }: Props) {
   return (
     <div>
-      <div className="mb-4 border border-[#444c56] rounded-full w-[296px] h-[296px] overflow-hidden">
+      <div className="mb-4 relative z-20 border border-[#d0d7de] dark:border-[#444c56] rounded-full w-[296px] h-[296px] overflow-hidden">
         <img src={profile.avatar_url} alt={profile.name} />
       </div>
 
