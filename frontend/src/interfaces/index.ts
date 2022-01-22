@@ -15,6 +15,7 @@ export interface Profile {
 }
 
 export interface Repository {
+  node_id: string
   id: number
   name: string
   fork: boolean

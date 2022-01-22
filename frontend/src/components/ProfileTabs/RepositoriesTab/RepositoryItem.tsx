@@ -35,7 +35,9 @@ export function RepositoryItem({ repository }: { repository: Repository }) {
         {repository.topics.length > 0 && (
           <div className="my-1 mb-2">
             {repository.topics.map((topic) => (
-              <div className="inline-block text-xs px-[10px] font-medium rounded-full leading-5 text-[#539bf5] bg-[#4184e426]">
+              <div
+                key={topic}
+                className="inline-block text-xs px-[10px] font-medium rounded-full leading-5 text-[#539bf5] bg-[#4184e426]">
                 {topic}
               </div>
             ))}

@@ -4,7 +4,7 @@ import { useQueryParam } from 'use-query-params'
 import { useDebouncyEffect } from 'use-debouncy'
 
 import { useRepositories } from '../../../hooks'
-import { Button, RepositoryItem, Select } from '../..'
+import { Button, RepositoryItem, RepositoryItemSkeleton, Select } from '../..'
 
 const DEFAULTS = {
   PER_PAGE: 30,
@@ -49,7 +49,7 @@ export function RepositoriesTab() {
     sort: sort || DEFAULTS.SORT
   }
 
-  const { data } = useRepositories(username, parameters)
+  const { data, isLoading } = useRepositories(username, parameters)
 
   const isFirstPage = parameters.page === 1
   const hasNextPage = data.length === DEFAULTS.PER_PAGE
@@ -60,8 +60,6 @@ export function RepositoriesTab() {
       behavior: 'smooth'
     })
   }, [JSON.stringify(parameters)])
-
-  if (!data) return <></>
 
   return (
     <div className="pl-[1px]">
@@ -158,29 +156,38 @@ export function RepositoriesTab() {
       </div>
 
       <div className="mb-4">
-        {data.map((repository) => (
-          <RepositoryItem key={repository.id} repository={repository} />
-        ))}
+        {isLoading
+          ? Array.from({ length: 30 }, (_number, index) => (
+              <RepositoryItemSkeleton key={index} />
+            ))
+          : data.map((repository) => (
+              <RepositoryItem
+                key={repository.node_id}
+                repository={repository}
+              />
+            ))}
       </div>
 
-      <div className="mb-4 w-full flex justify-center">
-        <div className="inline-flex">
-          <Button
-            type="outline"
-            noBorderRight
-            disabled={isFirstPage}
-            onClick={() => setPage(parameters.page - 1)}>
-            Previous
-          </Button>
-          <Button
-            type="outline"
-            noBorderLeft
-            disabled={!hasNextPage}
-            onClick={() => setPage(parameters.page + 1)}>
-            Next
-          </Button>
+      {!isLoading && (
+        <div className="mb-4 w-full flex justify-center">
+          <div className="inline-flex">
+            <Button
+              type="outline"
+              noBorderRight
+              disabled={isFirstPage}
+              onClick={() => setPage(parameters.page - 1)}>
+              Previous
+            </Button>
+            <Button
+              type="outline"
+              noBorderLeft
+              disabled={!hasNextPage}
+              onClick={() => setPage(parameters.page + 1)}>
+              Next
+            </Button>
+          </div>
         </div>
-      </div>
+      )}
     </div>
   )
 }
