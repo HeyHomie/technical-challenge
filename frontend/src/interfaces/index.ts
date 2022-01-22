@@ -10,6 +10,7 @@ export interface Profile {
   email: string
   blog: string
   twitter_username: string
+  public_repos: number
 }
 
 export interface Repository {

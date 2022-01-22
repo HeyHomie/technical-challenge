@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-.button {
-  @apply w-full relative text-sm py-[5px] px-[16px] text-center font-medium whitespace-nowrap cursor-pointer align-middle select-none rounded-md border border-[#cdd9e51a] text-[#adbac7] bg-[#373e47];
+.input {
+  @apply w-full py-[5px] px-[12px] text-sm align-middle rounded-md border outline-none placeholder:text-[#6e7781] dark:placeholder:text-[#545d68] text-[#24292f] dark:text-[#adbac7] bg-[#ffffff] dark:bg-[#22272e] border-[#d0d7de] dark:border-[#444c56] focus:border-[#0969da] focus:shadow-[0_0_0_3px_rgba(9,105,218,0.3)];
+}
+
+.icon {
+  @apply inline-block overflow-visible align-text-bottom;
 }

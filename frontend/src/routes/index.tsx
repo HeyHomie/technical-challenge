@@ -6,13 +6,13 @@ import {
   Redirect
 } from 'react-router-dom'
 import { QueryParamProvider } from 'use-query-params'
-import { ProfilePage } from '../modules'
+import { ProfileView } from '../views'
 
 export const AppRouter = () => (
   <Router>
     <QueryParamProvider ReactRouterRoute={Route}>
       <Switch>
-        <Route exact path="/:username" component={ProfilePage} />
+        <Route exact path="/:username" component={ProfileView} />
         <Route path="*">
           <Redirect to="/yknx4" />
         </Route>
