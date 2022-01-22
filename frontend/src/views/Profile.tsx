@@ -8,22 +8,22 @@ export function ProfileView() {
   const [tab] = useQueryParam('tab')
   const { username } = useParams<{ username: string }>()
 
-  const profileData = useGithub<Profile>(`users/${username}`)
+  const { data, isLoading } = useGithub<Profile>(`users/${username}`)
 
-  if (profileData.isLoading || !profileData.data) {
+  if (isLoading || !data) {
     return <div>isLoading</div>
   }
 
   return (
     <Layout>
       <Nav
-        repositoriesCount={profileData.data.public_repos}
-        startsCount={profileData.data.public_repos}
+        repositoriesCount={data.public_repos}
+        startsCount={data.public_repos}
       />
       <Container>
         <div className="grid gap-3 grid-cols-4">
           <div className="-mt-[32px]">
-            <SideBar profile={profileData.data} />
+            <SideBar profile={data} />
           </div>
           <div className="col-span-3 ml-3">
             {tab === 'repositories' && <RepositoriesTab />}

@@ -22,7 +22,7 @@ export function Button({
   disabled
 }: Props) {
   const buttonClassNames =
-    'w-full relative text-sm py-[5px] px-[16px] text-center font-medium whitespace-nowrap cursor-pointer align-middle select-none rounded-md border transition-all'
+    'w-full relative text-sm py-[5px] px-[16px] text-center font-medium whitespace-nowrap cursor-pointer align-middle select-none rounded-md border transition-all disabled:bg-[#f6f8fa] disabled:cursor-default disabled:border-[#1b1f2426]'
 
   if (type === 'green') {
     return (

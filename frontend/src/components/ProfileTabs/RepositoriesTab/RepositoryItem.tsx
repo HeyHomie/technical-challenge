@@ -1,9 +1,9 @@
 import moment from 'moment'
-import { Language, Repository } from '../../../interfaces'
+import { Repository } from '../../../interfaces'
 
 import { Button } from '../..'
 
-const languageColors = {
+const languageColors: any = {
   javascript: '#f1e05a',
   typescript: '#2b7489',
   html: '#e34c26',
@@ -15,14 +15,14 @@ const languageColors = {
 
 export function RepositoryItem({ repository }: { repository: Repository }) {
   const language = repository.language || ''
-  const languageBgColor = languageColors[language.toLowerCase() as Language]
+  const languageBgColor = languageColors[language.toLowerCase()]
 
   return (
     <div className="py-6 border-b border-[#d8dee4] dark:border-[#373e47] grid grid-cols-12">
       <div className="col-span-9">
         <h3 className="mb-1 text-xl break-all text-[#0969da] dark:text-[#539bf5] font-semibold">
           {repository.name}
-          <span className="ml-1 inline-block px-[7px] text-xs font-medium border border-[#444c56] text-[#768390] rounded-full">
+          <span className="ml-2 inline-block px-[7px] text-xs font-medium border border-[#d0d7de] text-[#57606a] dark:border-[#444c56] dark:text-[#768390] rounded-full">
             Public
           </span>
         </h3>
@@ -37,7 +37,7 @@ export function RepositoryItem({ repository }: { repository: Repository }) {
             {repository.topics.map((topic) => (
               <div
                 key={topic}
-                className="inline-block text-xs px-[10px] font-medium rounded-full leading-5 text-[#539bf5] bg-[#4184e426]">
+                className="inline-block text-xs px-[10px] font-medium rounded-full leading-5 bg-[#ddf4ff] text-[#0969da] dark:text-[#539bf5] dark:bg-[#4184e426] mr-1">
                 {topic}
               </div>
             ))}
