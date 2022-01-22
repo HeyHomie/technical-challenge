@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { useQueryParam } from 'use-query-params'
 import { useDebouncyEffect } from 'use-debouncy'
@@ -7,7 +7,8 @@ import { useRepositories } from '../../../hooks'
 import { Button, RepositoryItem, Select } from '../..'
 
 const DEFAULTS = {
-  PAGE: '1',
+  PER_PAGE: 30,
+  PAGE: 1,
   QUERY: undefined,
   TYPE: 'owner',
   LANGUAGE: 'all',
@@ -16,7 +17,7 @@ const DEFAULTS = {
 }
 
 export function RepositoriesTab() {
-  const [page] = useQueryParam<string>('page')
+  const [page, setPage] = useQueryParam<number>('page')
   const [query, setQuery] = useQueryParam<string | undefined>('query')
   const [type, setType] = useQueryParam<string | undefined>('type')
   const [language, setLanguage] = useQueryParam<string | undefined>('language')
@@ -24,9 +25,7 @@ export function RepositoriesTab() {
     'direction'
   )
   const [sort, setSort] = useQueryParam<string | undefined>('sort')
-
   const { username } = useParams<{ username: string }>()
-
   const [searchQuery, setSearchQuery] = useState<string>('')
 
   useDebouncyEffect(
@@ -41,14 +40,26 @@ export function RepositoriesTab() {
     [searchQuery]
   )
 
-  const { data } = useRepositories(username, {
-    page: page || DEFAULTS.PAGE,
+  const parameters = {
+    page: Number(page) || DEFAULTS.PAGE,
     query: query || DEFAULTS.QUERY,
     language: language || DEFAULTS.LANGUAGE,
     type: type || DEFAULTS.TYPE,
     direction: direction || DEFAULTS.DIRECTION,
     sort: sort || DEFAULTS.SORT
-  })
+  }
+
+  const { data } = useRepositories(username, parameters)
+
+  const isFirstPage = parameters.page === 1
+  const hasNextPage = data.length === DEFAULTS.PER_PAGE
+
+  useEffect(() => {
+    window.scroll({
+      top: 0,
+      behavior: 'smooth'
+    })
+  }, [JSON.stringify(parameters)])
 
   if (!data) return <></>
 
@@ -67,7 +78,7 @@ export function RepositoriesTab() {
             <Select
               name="type"
               className="mr-1"
-              defaultValue={type || DEFAULTS.TYPE}
+              defaultValue={parameters.type}
               onSelect={(value) => setType(value)}
               options={[
                 { label: 'All', value: 'all' },
@@ -79,7 +90,7 @@ export function RepositoriesTab() {
             <Select
               name="language"
               className="mr-1"
-              defaultValue={language || DEFAULTS.LANGUAGE}
+              defaultValue={parameters.language}
               onSelect={(value) => setLanguage(value)}
               options={[
                 { label: 'All', value: 'all' },
@@ -105,7 +116,7 @@ export function RepositoriesTab() {
             <Select
               name="sort"
               className="mr-1"
-              defaultValue={sort || DEFAULTS.SORT}
+              defaultValue={parameters.sort}
               onSelect={(value) => setSort(value)}
               options={[
                 { label: 'Full Name', value: 'full_name' },
@@ -117,7 +128,7 @@ export function RepositoriesTab() {
             </Select>
             <Select
               name="direction"
-              defaultValue={direction || DEFAULTS.DIRECTION}
+              defaultValue={parameters.direction}
               onSelect={(value) => setDirection(value)}
               options={[
                 { label: 'Asc', value: 'asc' },
@@ -146,9 +157,30 @@ export function RepositoriesTab() {
         </div>
       </div>
 
-      {data.map((repository) => (
-        <RepositoryItem repository={repository} />
-      ))}
+      <div className="mb-4">
+        {data.map((repository) => (
+          <RepositoryItem key={repository.id} repository={repository} />
+        ))}
+      </div>
+
+      <div className="mb-4 w-full flex justify-center">
+        <div className="inline-flex">
+          <Button
+            type="outline"
+            noBorderRight
+            disabled={isFirstPage}
+            onClick={() => setPage(parameters.page - 1)}>
+            Previous
+          </Button>
+          <Button
+            type="outline"
+            noBorderLeft
+            disabled={!hasNextPage}
+            onClick={() => setPage(parameters.page + 1)}>
+            Next
+          </Button>
+        </div>
+      </div>
     </div>
   )
 }

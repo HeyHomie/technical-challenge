@@ -3,7 +3,7 @@ import { Repository } from '../interfaces'
 import { githubApi } from '../services'
 
 interface Parameters {
-  page?: string
+  page?: number
   query?: string
   language?: string
   type?: string

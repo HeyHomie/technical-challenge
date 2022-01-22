@@ -9,6 +9,7 @@ export interface Profile {
   location: string
   email: string
   blog: string
+  company: string
   twitter_username: string
   public_repos: number
 }
