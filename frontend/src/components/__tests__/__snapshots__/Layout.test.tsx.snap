@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render layout should render layout 1`] = `
+<div
+  class="bg-white dark:bg-github-dark-bg text-sm dark:text-github-dark-text"
+>
+  <div
+    class="bg-github-header dark:bg-github-dark-header h-[62px]"
+  />
+  <div>
+    Im a children
+  </div>
+</div>
+`;

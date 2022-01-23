@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render Profile View should render Profile View 1`] = `
+<div>
+  isLoading
+</div>
+`;

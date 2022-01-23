@@ -1,0 +1,131 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render RepositoryItem should render RepositoryItem 1`] = `
+<div
+  class="py-6 border-b border-[#d8dee4] dark:border-[#373e47] grid grid-cols-12"
+>
+  <div
+    class="col-span-9"
+  >
+    <h3
+      class="mb-1 text-xl break-all text-[#0969da] dark:text-[#539bf5] font-semibold"
+    >
+      midu.dev
+      <span
+        class="ml-2 inline-block px-[7px] text-xs font-medium border border-[#d0d7de] text-[#57606a] dark:border-[#444c56] dark:text-[#768390] rounded-full"
+      >
+        Public
+      </span>
+    </h3>
+    <p
+      class="mb-2 text-[#768390]"
+    >
+      midu.dev blog 📝
+    </p>
+    <div
+      class="my-1 mb-2"
+    >
+      <div
+        class="inline-block text-xs px-[10px] font-medium rounded-full leading-5 bg-[#ddf4ff] text-[#0969da] dark:text-[#539bf5] dark:bg-[#4184e426] mr-1"
+      >
+        blog
+      </div>
+      <div
+        class="inline-block text-xs px-[10px] font-medium rounded-full leading-5 bg-[#ddf4ff] text-[#0969da] dark:text-[#539bf5] dark:bg-[#4184e426] mr-1"
+      >
+        frontend
+      </div>
+      <div
+        class="inline-block text-xs px-[10px] font-medium rounded-full leading-5 bg-[#ddf4ff] text-[#0969da] dark:text-[#539bf5] dark:bg-[#4184e426] mr-1"
+      >
+        frontend-articles
+      </div>
+      <div
+        class="inline-block text-xs px-[10px] font-medium rounded-full leading-5 bg-[#ddf4ff] text-[#0969da] dark:text-[#539bf5] dark:bg-[#4184e426] mr-1"
+      >
+        frontend-web
+      </div>
+      <div
+        class="inline-block text-xs px-[10px] font-medium rounded-full leading-5 bg-[#ddf4ff] text-[#0969da] dark:text-[#539bf5] dark:bg-[#4184e426] mr-1"
+      >
+        hacktoberfest
+      </div>
+    </div>
+    <div
+      class="text-[#768390] text-xs"
+    >
+      <span
+        class="mr-4"
+      >
+        <span
+          class="relative top-[1px] inline-block w-[12px] h-[12px] border border-[#cdd9e533] rounded-full"
+          style="background-color: rgb(227, 76, 38);"
+        />
+         
+        html
+      </span>
+      <span
+        class="mr-4"
+      >
+        <svg
+          aria-label="star"
+          class="inline-block overflow-visible align-text-bottom  fill-[#768390]"
+          data-view-component="true"
+          height="16"
+          role="img"
+          version="1.1"
+          viewBox="0 0 16 16"
+          width="16"
+        >
+          <path
+            d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25zm0 2.445L6.615 5.5a.75.75 0 01-.564.41l-3.097.45 2.24 2.184a.75.75 0 01.216.664l-.528 3.084 2.769-1.456a.75.75 0 01.698 0l2.77 1.456-.53-3.084a.75.75 0 01.216-.664l2.24-2.183-3.096-.45a.75.75 0 01-.564-.41L8 2.694v.001z"
+            fill-rule="evenodd"
+          />
+        </svg>
+         
+        93
+      </span>
+      <span
+        class="mr-4"
+      >
+        Updated 
+        18 hours ago
+      </span>
+    </div>
+  </div>
+  <div
+    class="col-span-3 text-right"
+  >
+    <div
+      class="inline-flex"
+    >
+      <button
+        class="rounded-r-none border-[#1b1f2426] hover:border-[#1b1f2426] dark:border-[#cdd9e51a] dark:hover:border-[#768390] text-[#24292f] dark:text-[#adbac7] bg-[#f6f8fa] hover:bg-[#f3f4f6] active:bg-[#ebecf0] dark:bg-[#373e47] dark:hover:bg-[#444c56] dark:active:bg-[#3d444d] w-full relative text-sm py-[5px] px-[16px] text-center font-medium whitespace-nowrap cursor-pointer align-middle select-none rounded-md border transition-all disabled:bg-[#f6f8fa] disabled:cursor-default disabled:border-[#1b1f2426]"
+      >
+        <svg
+          aria-hidden="true"
+          class="mr-2 icon fill-[#6e7781]"
+          data-view-component="true"
+          height="16"
+          version="1.1"
+          viewBox="0 0 16 16"
+          width="16"
+        >
+          <path
+            d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25zm0 2.445L6.615 5.5a.75.75 0 01-.564.41l-3.097.45 2.24 2.184a.75.75 0 01.216.664l-.528 3.084 2.769-1.456a.75.75 0 01.698 0l2.77 1.456-.53-3.084a.75.75 0 01.216-.664l2.24-2.183-3.096-.45a.75.75 0 01-.564-.41L8 2.694v.001z"
+            fill-rule="evenodd"
+          />
+        </svg>
+        Star
+      </button>
+      <button
+        class="rounded-l-none border-[#1b1f2426] hover:border-[#1b1f2426] dark:border-[#cdd9e51a] dark:hover:border-[#768390] text-[#24292f] dark:text-[#adbac7] bg-[#f6f8fa] hover:bg-[#f3f4f6] active:bg-[#ebecf0] dark:bg-[#373e47] dark:hover:bg-[#444c56] dark:active:bg-[#3d444d] w-full relative text-sm py-[5px] px-[16px] text-center font-medium whitespace-nowrap cursor-pointer align-middle select-none rounded-md border transition-all disabled:bg-[#f6f8fa] disabled:cursor-default disabled:border-[#1b1f2426]"
+      >
+        <span
+          class="inline-block align-middle content-[\\"\\"] border-4 border-b-0 border-r-transparent border-b-transparent border-l-transparent opacity-80"
+        />
+      </button>
+    </div>
+  </div>
+</div>
+`;

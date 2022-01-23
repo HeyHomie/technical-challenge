@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render RepositoryItemSkeleton should render RepositoryItem 1`] = `
+<div
+  class="py-6 border-b border-[#d8dee4] dark:border-[#373e47] grid grid-cols-12"
+>
+  <div
+    class="col-span-9"
+  >
+    <h3
+      class="mb-1 text-xl break-all"
+    >
+      <span
+        class="inline-block h-[22px] w-[200px] bg-[#f1f1f1]  dark:bg-[#768390] rounded-full"
+      />
+    </h3>
+    <div
+      class="mb-2"
+    >
+      <span
+        class="inline-block h-[12px] w-[280px] bg-[#f3f4f6] dark:bg-[#6e7781] rounded-full"
+      />
+    </div>
+    <div
+      class="text-[#768390] text-xs"
+    >
+      <span
+        class="mr-4"
+      >
+        <span
+          class="inline-block h-[8px] w-[100px] bg-[#f3f4f6] dark:bg-[#768390] rounded-full"
+        />
+      </span>
+    </div>
+  </div>
+  <div
+    class="col-span-3 text-right"
+  >
+    <div
+      class="inline-flex"
+    >
+      <button
+        class="rounded-r-none border-[#1b1f2426] hover:border-[#1b1f2426] dark:border-[#cdd9e51a] dark:hover:border-[#768390] text-[#24292f] dark:text-[#adbac7] bg-[#f6f8fa] hover:bg-[#f3f4f6] active:bg-[#ebecf0] dark:bg-[#373e47] dark:hover:bg-[#444c56] dark:active:bg-[#3d444d] w-full relative text-sm py-[5px] px-[16px] text-center font-medium whitespace-nowrap cursor-pointer align-middle select-none rounded-md border transition-all disabled:bg-[#f6f8fa] disabled:cursor-default disabled:border-[#1b1f2426]"
+      >
+        <span
+          class="inline-block h-[8px] w-[50px] bg-[#f3f4f6] dark:bg-[#768390] rounded-full"
+        />
+      </button>
+      <button
+        class="rounded-l-none border-[#1b1f2426] hover:border-[#1b1f2426] dark:border-[#cdd9e51a] dark:hover:border-[#768390] text-[#24292f] dark:text-[#adbac7] bg-[#f6f8fa] hover:bg-[#f3f4f6] active:bg-[#ebecf0] dark:bg-[#373e47] dark:hover:bg-[#444c56] dark:active:bg-[#3d444d] w-full relative text-sm py-[5px] px-[16px] text-center font-medium whitespace-nowrap cursor-pointer align-middle select-none rounded-md border transition-all disabled:bg-[#f6f8fa] disabled:cursor-default disabled:border-[#1b1f2426]"
+      >
+        <span
+          class="inline-block align-middle content-[\\"\\"] border-4 border-b-0 border-r-transparent border-b-transparent border-l-transparent opacity-80"
+        />
+      </button>
+    </div>
+  </div>
+</div>
+`;
