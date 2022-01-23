@@ -2,20 +2,23 @@ import querystring, { ParsedUrlQueryInput } from 'querystring'
 
 const cache: any = {}
 
-export async function githubApi(
+export async function githubApi<T = any>(
   path: string,
   parameters?: ParsedUrlQueryInput
-) {
+): Promise<{
+  data: T
+  isCached: boolean
+}> {
   const params = querystring.stringify(parameters)
-
   const hash = `${path}?${params}`
+
   if (cache[hash]) {
-    console.log('getting data from cache')
-    return cache[hash]
+    return { isCached: true, data: cache[hash] }
   }
 
   const response = await fetch(`https://api.github.com/${path}?${params}`)
-  const data = await response.json()
+  const data = (await response.json()) as T
   cache[hash] = data
-  return data
+
+  return { isCached: false, data }
 }

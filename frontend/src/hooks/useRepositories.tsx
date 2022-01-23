@@ -22,12 +22,15 @@ export function useRepositories(username: string, parameters: Parameters) {
         setIsLoading(true)
         const { page, query, language, type, direction, sort } = parameters
 
-        let data: Repository[] = await githubApi(`users/${username}/repos`, {
-          type,
-          sort,
-          direction,
-          page
-        })
+        let { data } = await githubApi<Repository[]>(
+          `users/${username}/repos`,
+          {
+            type,
+            sort,
+            direction,
+            page
+          }
+        )
 
         if (query) {
           data = data.filter((repo) => repo.name.includes(query.toLowerCase()))
@@ -45,6 +48,7 @@ export function useRepositories(username: string, parameters: Parameters) {
         setError(error)
       }
     }
+
     getData()
   }, [JSON.stringify(parameters)])
 

@@ -4,6 +4,8 @@ import { QueryParamProvider } from 'use-query-params'
 import { RepositoriesTab } from '../../..'
 
 describe('Render Repositories Nav', () => {
+  window.scroll = jest.fn()
+
   it('should render Nav', () => {
     const { container } = render(
       <Router>

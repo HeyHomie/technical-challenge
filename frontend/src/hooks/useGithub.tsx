@@ -10,7 +10,7 @@ export function useGithub<T>(path: string, parameters?: any) {
     async function getData() {
       try {
         setIsLoading(true)
-        const data = await githubApi(path, parameters)
+        const { data } = await githubApi(path, parameters)
         setData(data)
         setIsLoading(false)
       } catch (error) {
