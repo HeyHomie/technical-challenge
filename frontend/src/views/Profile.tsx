@@ -16,20 +16,22 @@ export function ProfileView() {
 
   return (
     <Layout>
-      <Nav
-        repositoriesCount={data.public_repos}
-        startsCount={data.public_repos}
-      />
-      <Container>
-        <div className="grid gap-3 grid-cols-4">
-          <div className="-mt-[32px]">
-            <SideBar profile={data} />
+      <div data-cy="profile-page">
+        <Nav
+          repositoriesCount={data.public_repos}
+          startsCount={data.public_repos}
+        />
+        <Container>
+          <div className="grid gap-3 grid-cols-4">
+            <div className="-mt-[32px]">
+              <SideBar profile={data} />
+            </div>
+            <div className="col-span-3 ml-3">
+              {tab === 'repositories' && <RepositoriesTab />}
+            </div>
           </div>
-          <div className="col-span-3 ml-3">
-            {tab === 'repositories' && <RepositoriesTab />}
-          </div>
-        </div>
-      </Container>
+        </Container>
+      </div>
     </Layout>
   )
 }

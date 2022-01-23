@@ -8,6 +8,7 @@ type Option = {
 }
 
 interface Props {
+  id?: string
   children: React.ReactNode
   className?: string
   options?: Option[]
@@ -17,6 +18,7 @@ interface Props {
 }
 
 export function Select({
+  id,
   children,
   className,
   options = [],
@@ -53,7 +55,7 @@ export function Select({
 
   return (
     <div className={clsx(className, 'mr-1 relative')}>
-      <Button onClick={toggleSelect}>
+      <Button id={id} onClick={toggleSelect}>
         {children}
         <span className='inline-block align-middle content-[""] border-4 border-b-0 border-r-transparent border-b-transparent border-l-transparent ml-2 opacity-80'></span>
       </Button>

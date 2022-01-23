@@ -1,6 +1,7 @@
 import clsx from 'clsx'
 
 interface Props {
+  id?: string
   children: React.ReactNode
   className?: string
   type?: 'primary' | 'outline' | 'green'
@@ -12,6 +13,7 @@ interface Props {
 }
 
 export function Button({
+  id,
   children,
   className,
   type,
@@ -27,6 +29,7 @@ export function Button({
   if (type === 'green') {
     return (
       <button
+        id={id}
         disabled={disabled}
         onClick={onClick}
         onBlur={onBlur}
@@ -45,6 +48,7 @@ export function Button({
   if (type === 'outline') {
     return (
       <button
+        id={id}
         disabled={disabled}
         onClick={onClick}
         onBlur={onBlur}
@@ -62,6 +66,7 @@ export function Button({
 
   return (
     <button
+      id={id}
       disabled={disabled}
       onClick={onClick}
       onBlur={onBlur}
