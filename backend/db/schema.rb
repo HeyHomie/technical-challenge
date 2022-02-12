@@ -10,10 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_03_161853) do
+ActiveRecord::Schema.define(version: 2022_02_12_042659) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "repositories", force: :cascade do |t|
+    t.integer "github_id"
+    t.string "name"
+    t.string "full_name"
+    t.integer "forks"
+    t.boolean "private"
+    t.integer "open_issues"
+    t.bigint "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_repositories_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "login"
@@ -22,9 +35,9 @@ ActiveRecord::Schema.define(version: 2021_09_03_161853) do
     t.string "name"
     t.string "email"
     t.string "avatar_url"
-    t.jsonb "repositories"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "repositories", "users"
 end

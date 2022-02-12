@@ -1,0 +1,33 @@
+version: v1.0
+name: PZMchallenge (CI/CD) pipeline
+agent:
+  machine:
+    type: e1-standard-2
+    os_image: ubuntu1804
+blocks:
+  - name: Install dependencies ⬇️
+    task:
+      prologue:
+        commands:
+          - sem-version ruby 3.0.1 -f
+      jobs:
+        - name: bundle install
+          commands:
+            - checkout
+            - cache restore
+            - cache store
+            - cd backend
+            - bundle install
+  - name: "Code analysis \U0001F50E"
+    task:
+      prologue:
+        commands:
+          - sem-version ruby 3.0.1 -f
+          - checkout
+          - cache restore
+      jobs:
+        - name: bundle exec rubocop
+          commands:
+            - cd backend
+            - bundle install
+            - bundle exec rubocop
