@@ -26,7 +26,14 @@ module Api
             db_repos.save
           end
         end
-        render json: Repository.where(user_id: db_user.id).as_json
+
+        # search repo ----> URL.- http://localhost:3000/api/v1/users/:user_id/repositories?&keyword=NameTheRepo
+        search = params[:keyword].present? ? params[:keyword] : nil
+        if search
+          render json: Repository.where("name LIKE ?", "%#{search}%").as_json
+        else
+          render json: Repository.where(user_id: db_user.id).as_json
+        end
       end
 
       private
