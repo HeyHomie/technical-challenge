@@ -3,29 +3,35 @@
 module Api
   module V1
     class RepositoriesController < ApplicationController
+      before_action :find_user
+      before_action :find_repository, only: :show
+
       def index
-        conn = Faraday.new do |f|
-          f.request :authorization, 'Bearer', Figaro.env.GITHUB_TOKEN
-          f.request :json # encode req bodies as JSON
-          f.request :retry # retry transient failures
-          f.response :follow_redirects # follow redirects
-          f.response :json # decode response bodies as JSON
-        end
-        user = conn.get("https://api.github.com/user?user=#{user_params}").body
-        repos = conn.get("https://api.github.com/user/repos?user=#{user_params}",
-                         { per_page: 100, sort: 'updated' }).body
-        db_user = User.all.find { |u| u.github_id == user['id'] }
-        if db_user.nil?
-          db_user = User.create({ github_id: user['id'], login: user['login'], url: user['html_url'], name: user['name'],
-                                  email: user['email'], avatar_url: user['avatar_url'], repositories: repos })
-        end
-        render json: db_user.repositories
+        render json: @user.repositories
+      end
+
+      def show
+        render json: @repository
       end
 
       private
 
+      def find_user
+        @user = User.find(user_params)
+        render json: 'data not found', status: :not_found unless @user
+      end
+
+      def find_repository
+        @repository = Repository.find_by(name: repository_params)
+        puts @repository
+      end
+
       def user_params
         params.require(:user_id)
+      end
+
+      def repository_params
+        params.require(:name)
       end
     end
   end
