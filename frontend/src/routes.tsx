@@ -7,24 +7,8 @@ import {
   Redirect,
   useParams
 } from 'react-router-dom'
+import { Main } from './views/Main'
 
-export const Main: FunctionComponent = () => {
-  const {username} = useParams<{username: string}>()
-  const [User, setUser] = useState<any>({})
-  const [Repos, setRepos] = useState<Array<any>>([])
-  useEffect(() => {
-    Promise.all([fetch(`/api/v1/users?username=${username}`), fetch(`/api/v1/users/${username}/repositories`)]).then(async ([user, repos]) => {
-      setUser(await user.json())
-      setRepos(await repos.json())
-    })
-  }, [username])
-  return (
-    <>
-    <h1>{User.login}</h1>
-    {Repos.map(r => <h2>{r.name}</h2>)}
-    </>
-  )
-}
 
 export const AppRouter = () => (
   <Router>
