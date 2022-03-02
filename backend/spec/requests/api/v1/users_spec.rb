@@ -10,7 +10,7 @@ RSpec.describe 'Api::V1::UsersController', type: :request do
   describe 'get /show' do
     context 'if the user dont exists' do
       it 'gets profile for fake user with id' do
-        get api_v1_user_path(id: Faker::Number.between(from: 1, to: 10))
+        get api_v1_user_path(id: 100_000)
         expect(response).to have_http_status(:not_found)
       end
     end
