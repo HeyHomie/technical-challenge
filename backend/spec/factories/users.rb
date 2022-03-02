@@ -15,6 +15,7 @@ FactoryBot.define do
     trait :fake_user do
       login { Faker::Internet.username }
       id { '' }
+      github_id { Faker::Number.between(from: 1, to: 10) }
       url { Faker::Internet.url }
       name { Faker::FunnyName.name }
       email { Faker::Internet.email }
