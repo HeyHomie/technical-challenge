@@ -28,5 +28,4 @@ RSpec.describe 'Api::V1::Repositories', type: :request do
       expect(body.count).to eq(10)
     end
   end
-
 end
