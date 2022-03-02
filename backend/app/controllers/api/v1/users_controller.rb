@@ -5,6 +5,10 @@ module Api
     class UsersController < ApplicationController
       before_action :find_user
 
+      def show
+        render json: 'user not found', status: :not_found
+      end
+
       def create
         @conn = Faraday.new do |f|
           f.request :authorization, 'Bearer', Figaro.env.GITHUB_TOKEN
