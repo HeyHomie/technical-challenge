@@ -23,7 +23,6 @@ module Api
 
       def find_repository
         @repository = Repository.find_by(name: repository_params)
-        puts @repository
       end
 
       def user_params
