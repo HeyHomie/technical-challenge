@@ -1,0 +1,36 @@
+footer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  max-width: 1080px;
+  margin: 0 auto;
+  border-top: 1px solid #d0d7de;
+  margin-top: 40px;
+}
+
+footer ol {
+  padding-top: 40px;
+}
+
+.icon-footer {
+  width: 150px;
+  display: flex;
+  align-items: center;
+  color: #57606a;
+}
+
+footer ol {
+  display: flex;
+  flex-direction: row;
+  font-size: 12px;
+}
+
+.footer-links {
+  width: 66%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.footer-links li a {
+  color: #0969da;
+}
