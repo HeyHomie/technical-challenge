@@ -17,14 +17,19 @@ module Api
           f.response :follow_redirects # follow redirects
           f.response :json # decode response bodies as JSON
         end
-        user = @conn.get("https://api.github.com/users/#{params[:login]}").body
-        @user = User.new(github_id: user['id'], login: user['login'], url: user['html_url'],
-                         name: user['name'], email: user['email'], avatar_url: user['avatar_url'])
-        if @user.save
-          create_repositories
-          render json: @user
+        response = @conn.get("https://api.github.com/users/#{params[:login]}")
+        if response.status == 200
+          user = response.body
+          @user = User.new(github_id: user['id'], login: user['login'], url: user['html_url'],
+                           name: user['name'], email: user['email'], avatar_url: user['avatar_url'])
+          if @user.save
+            create_repositories
+            render json: @user
+          else
+            render json: @user.errors.full_messages, status: :not_found
+          end
         else
-          render json: @user.errors.full_messages, status: :not_found
+          render json: 'user not found', status: :not_found
         end
       end
 
