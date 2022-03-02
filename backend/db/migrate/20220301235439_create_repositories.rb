@@ -3,7 +3,7 @@ class CreateRepositories < ActiveRecord::Migration[6.1]
     create_table :repositories do |t|
       t.string :name
       t.string :language
-      t.string :updated_github
+      t.string :github_updated
       t.integer :github_id
       t.string :description
       t.string :url
