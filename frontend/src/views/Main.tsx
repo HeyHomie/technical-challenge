@@ -2,7 +2,11 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { Header } from '../components/Header/Header'
 import { getUserInfo } from '../helpers/requests'
-import { menuHeader } from '../constants/constants'
+import { menuHeader, menuLayout } from '../constants/constants'
+import { LayoutMain } from '../components/LayoutMain/LayoutMain'
+
+// Styles
+import './Main.css';
 
 export const Main = () => {
   const { username } = useParams<{ username: string }>()
@@ -17,6 +21,8 @@ export const Main = () => {
   return (
     <>
       <Header menu={menuHeader} />
+      <LayoutMain menu={menuLayout} />
+      <div className="layout-divider"></div>
       <h1>{User.login}</h1>
       {Repos.map((r) => (
         <h2>{r.name}</h2>
