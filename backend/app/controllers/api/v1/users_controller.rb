@@ -3,8 +3,10 @@
 module Api
   module V1
     class UsersController < ApplicationController
-      def index
-        conn = Faraday.new do |f|
+      before_action :find_user
+
+      def create
+        @conn = Faraday.new do |f|
           f.request :authorization, 'Bearer', Figaro.env.GITHUB_TOKEN
           f.request :json # encode req bodies as JSON
           f.request :retry # retry transient failures
@@ -12,19 +14,33 @@ module Api
           f.response :json # decode response bodies as JSON
         end
         user = @conn.get("https://api.github.com/users/#{params[:login]}").body
-        repos = @conn.get("https://api.github.com/users/#{params[:login]}/repos",
-          db_user = User.all.find { |u| u.github_id == user['id'] }
-        if db_user.nil?
-          db_user = User.create({ github_id: user['id'], login: user['login'], url: user['html_url'], name: user['name'],
-                                  email: user['email'], avatar_url: user['avatar_url'], repositories: repos })
+        @user = User.new(github_id: user['id'], login: user['login'], url: user['html_url'],
+                         name: user['name'], email: user['email'], avatar_url: user['avatar_url'])
+        if @user.save
+          create_repositories
+          render json: @user
+        else
+          render json: @user.errors.full_messages, status: :not_found
         end
-        render json: db_user.as_json.except('repositories')
       end
 
       private
 
+      def find_user
+        @user = User.where(login: params[:login]).or(User.where(id: params[:id])).last
+        render json: @user if @user
+      end
+
+      def create_repositories
+        repos = @conn.get("https://api.github.com/users/#{params[:login]}/repos",
+                          { per_page: 100 }).body
+        repos.each do |a|
+          @user.repositories.create(name: a['name'])
+        end
+      end
+
       def user_params
-        params.require(:username)
+        params.permit(:login, :id)
       end
     end
   end
