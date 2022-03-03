@@ -1,0 +1,7 @@
+.dashboard{
+	max-width: 1080px;
+	min-height: 200px;
+	display: flex;
+	flex-direction: row;
+	margin: 0 auto;
+}
