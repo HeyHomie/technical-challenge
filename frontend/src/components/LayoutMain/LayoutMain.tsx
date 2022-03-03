@@ -22,7 +22,7 @@ export const LayoutMain = ({ menu }: Props) => {
                     width="16"
                     data-view-component="true"
                     className="octicon octicon-book UnderlineNav-octicon hide-sm">
-                    <path fill-rule="evenodd" d={item.d}></path>
+                    <path fillRule="evenodd" d={item.d}></path>
                   </svg>
                   {item.label}
                 </a>
