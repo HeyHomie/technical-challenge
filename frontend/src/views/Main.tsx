@@ -19,8 +19,9 @@ import { profileInterface } from '../interfaces/Profile'
 
 export const Main = () => {
   const { username } = useParams<{ username: string }>()
-  const [User, setUser] = useState<any>({})
+  const [User, setUser] = useState<profileInterface>()
   const [Repos, setRepos] = useState<Array<any>>([])
+  const [layoutmenu, setLayoutmenu] = useState<any>(menuLayout)
 
   useEffect(() => {
     getUserInfo(username).then((resp: profileInterface) => {
@@ -30,10 +31,16 @@ export const Main = () => {
 
   useEffect(() => {
     getRespositories(username).then((resp) => {
-        console.log('Repos: ',resp);
       setRepos(resp)
     })
+    configLayout()
   }, [User])
+
+  const configLayout = () => {
+    let aux = [...layoutmenu]
+    aux[1].counter = User?.public_repos
+    setLayoutmenu(aux)
+  }
 
   return (
     <>
@@ -41,7 +48,7 @@ export const Main = () => {
       <LayoutMain menu={menuLayout} />
       <div className="layout-divider"></div>
       <Dashboard>
-        <Profile {...User} />
+        {User ? <Profile {...User} /> : ''}
         <ListRepositories repos={Repos} />
       </Dashboard>
       <Footer options={footerOptions} />

@@ -2,7 +2,7 @@ import React from 'react'
 import './LayoutMain.css'
 
 interface Props {
-  menu: Array<{ label: string; d: string }>
+  menu: Array<{ label: string; d: string; active: boolean; counter: number }>
 }
 
 export const LayoutMain = ({ menu }: Props) => {
@@ -13,7 +13,7 @@ export const LayoutMain = ({ menu }: Props) => {
         <nav>
           {menu.length
             ? menu.map((item, index: number) => (
-                <a href="" key={index}>
+                <a href="" key={index} className={item.active ? 'current' : ''}>
                   <svg
                     aria-hidden="true"
                     height="16"
@@ -25,6 +25,9 @@ export const LayoutMain = ({ menu }: Props) => {
                     <path fillRule="evenodd" d={item.d}></path>
                   </svg>
                   {item.label}
+                  {item.counter !== 0 && (
+                    <span className="counter">{item.counter}</span>
+                  )}
                 </a>
               ))
             : ''}

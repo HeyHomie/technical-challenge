@@ -2,7 +2,7 @@ import React from 'react'
 import './FormSearch.css'
 
 interface Props {
-  value: string
+  value: string,
   handleChange(e: any): any
 }
 export const FormSearch = ({ handleChange, value }: Props) => {

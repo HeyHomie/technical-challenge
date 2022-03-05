@@ -3,12 +3,12 @@ import './ItemResult.css'
 import moment from 'moment'
 
 interface Props {
-  full_name: string
-  language: string
-  description: string
-  private: boolean
-  updated_at: string
-  html_url: string
+  full_name: string,
+  language: string,
+  description: string,
+  private: boolean,
+  updated_at: string,
+  html_url: string,
 }
 export const ItemResult = ({
   full_name,
@@ -18,7 +18,6 @@ export const ItemResult = ({
   updated_at,
   html_url
 }: Props) => {
-  console.log('is public ', ispublic)
   return (
     <li className="item-result">
       <h3>
