@@ -3,9 +3,10 @@ import './ListRepositories.css'
 import { FormSearch } from '../FormSearch/FormSearch'
 import { ItemResult } from '../ItemResult/ItemResult'
 import { filterSearch } from '../../helpers/filterSearch'
+import { reposInterface } from '../../interfaces/Repos'
 
 interface Props {
-  repos: Array<any>
+  repos: Array<reposInterface>
 }
 export const ListRepositories = ({ repos }: Props) => {
   const [Repos, setRepos] = useState<Array<any>>([])

@@ -16,11 +16,12 @@ import './Main.css'
 
 // interfaces
 import { profileInterface } from '../interfaces/Profile'
+import { reposInterface } from '../interfaces/Repos'
 
 export const Main = () => {
   const { username } = useParams<{ username: string }>()
   const [User, setUser] = useState<profileInterface>()
-  const [Repos, setRepos] = useState<Array<any>>([])
+  const [Repos, setRepos] = useState<Array<reposInterface>>([])
   const [layoutmenu, setLayoutmenu] = useState<any>(menuLayout)
 
   useEffect(() => {
