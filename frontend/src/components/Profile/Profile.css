@@ -70,3 +70,7 @@
   transition: 0.2s cubic-bezier(0.3, 0, 0.5, 1);
   transition-property: color, background-color, border-color;
 }
+
+.followers{
+  margin-bottom: 16px;
+}
