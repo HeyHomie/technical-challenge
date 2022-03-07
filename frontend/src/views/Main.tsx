@@ -40,6 +40,7 @@ export const Main = () => {
   const configLayout = () => {
     let aux = [...layoutmenu]
     aux[1].counter = User?.public_repos
+    aux[1].active = true
     setLayoutmenu(aux)
   }
 
