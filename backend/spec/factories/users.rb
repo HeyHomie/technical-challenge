@@ -2,12 +2,24 @@
 
 FactoryBot.define do
   factory :user do
-    login { 'MyString' }
-    id { '' }
-    url { 'MyString' }
-    name { 'MyString' }
-    email { 'MyString' }
-    avatar_url { 'MyString' }
-    repositories { '' }
+    trait :new_user do
+      login { 'MyString' }
+      id { '' }
+      url { 'MyString' }
+      name { 'MyString' }
+      email { 'MyString' }
+      avatar_url { 'MyString' }
+      repositories { '' }
+    end
+
+    trait :fake_user do
+      login { Faker::Name.first_name.gsub(/\W/, '') }
+      id { '' }
+      github_id { Faker::Number.between(from: 1, to: 10) }
+      url { Faker::Internet.url }
+      name { Faker::FunnyName.name }
+      email { Faker::Internet.email }
+      avatar_url { Faker::Avatar.image }
+    end
   end
 end
