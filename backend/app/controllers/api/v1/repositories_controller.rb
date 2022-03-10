@@ -17,7 +17,7 @@ module Api
       private
 
       def find_user
-        @user = User.find(user_params)
+        @user = User.find_by(login: user_params)
         render json: 'data not found', status: :not_found unless @user
       end
 
@@ -26,7 +26,7 @@ module Api
       end
 
       def user_params
-        params.require(:user_id)
+        params.require(:user_login)
       end
 
       def repository_params
