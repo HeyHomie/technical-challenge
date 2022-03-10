@@ -13,7 +13,7 @@ FactoryBot.define do
     end
 
     trait :fake_user do
-      login { Faker::Internet.username }
+      login { Faker::FunnyName.name }
       id { '' }
       github_id { Faker::Number.between(from: 1, to: 10) }
       url { Faker::Internet.url }
