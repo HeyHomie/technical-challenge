@@ -1,0 +1,66 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/api/v1/users/{user_login}/repositories/{name}":
+    get:
+      summary: show repository
+      tags:
+        - Repositories
+      parameters:
+      - name: user_login
+        in: path
+        description: user login
+        required: true
+        schema:
+          type: string
+      - name: name
+        in: path
+        description: repositories name
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful
+        '404':
+          description: not found
+  "/api/v1/users/{user_login}/repositories/":
+    get:
+      summary: show repositories
+      tags:
+        - Repositories
+      parameters:
+      - name: user_login
+        in: path
+        description: user login
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful
+  "/api/v1/users/{login}":
+    parameters:
+    - name: login
+      in: path
+      description: login
+      required: true
+      schema:
+        type: string
+    get:
+      tags:
+        - Users
+      summary: show user
+      responses:
+        '200':
+          description: successful
+        '404':
+          description: not found
+servers:
+- url: http://{defaultHost}
+  variables:
+    defaultHost:
+      default: localhost:3000
