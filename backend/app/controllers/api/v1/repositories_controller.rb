@@ -18,11 +18,12 @@ module Api
 
       def find_user
         @user = User.find_by(login: user_params)
-        render json: 'data not found', status: :not_found unless @user
+        render json: { message: 'user not found' }, status: :not_found unless @user
       end
 
       def find_repository
         @repository = Repository.find_by(name: repository_params)
+        render json: { message: 'repository not found' }, status: :not_found unless @repository
       end
 
       def user_params
