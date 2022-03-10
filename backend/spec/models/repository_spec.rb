@@ -23,12 +23,6 @@ RSpec.describe Repository, type: :model do
       expect(invalid_repository.name).to eq(nil)
     end
 
-    it 'is not valid whitout url' do
-      invalid_repository.language = nil
-      expect(invalid_repository).not_to be_valid
-      expect(invalid_repository.language).to eq(nil)
-    end
-
     it 'is not valid whitout github_id' do
       invalid_repository.github_id = nil
       expect(invalid_repository).not_to be_valid
