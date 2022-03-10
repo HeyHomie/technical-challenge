@@ -10,7 +10,7 @@ RSpec.describe 'Api::V1::Repositories', type: :request do
       @saved_repository = create(:repository, user_id: saved_user.id)
     end
     it 'gets specify repository' do
-      get api_v1_user_repository_path(saved_user.id, name: @saved_repository.name)
+      get api_v1_user_repository_path(saved_user.login, name: @saved_repository.name)
       body = JSON.parse(response.body)
       expect(response).to have_http_status(200)
       expect(body['name']).to eq(@saved_repository.name)
@@ -22,7 +22,7 @@ RSpec.describe 'Api::V1::Repositories', type: :request do
       @repos = create_list(:repository, 10, user_id: saved_user.id)
     end
     it 'gets repositories for random user' do
-      get api_v1_user_repositories_path(user_id: saved_user.id)
+      get api_v1_user_repositories_path(user_login: saved_user.login)
       body = JSON.parse(response.body)
       expect(response).to have_http_status(200)
       expect(body.count).to eq(10)
