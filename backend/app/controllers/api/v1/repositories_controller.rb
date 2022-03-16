@@ -12,13 +12,13 @@ module Api
         end
         user = conn.get("/users/#{user_params}").body
         repos = conn.get("/users/#{user_params}/repos", { per_page: 100, sort: 'updated' }).body
-
-        db_user = User.find_by(github_id: user['id'])
         repos.each do |repo|
-          return render json: "The user doesn't exist" if repos.include? "message"
+          db_user = User.find_by(github_id: user['id'])
+          return render json: "The user does not exist or a problem occurred" if repos.include? "message"
           db_repo = Repository.find_by(repo_id: repo['id'])
           Repository.save_data_base(db_user, db_repo, user, repo)
         end
+        db_user = User.find_by(github_id: user['id'])
         # search repo ----> URL.- http://localhost:3000/api/v1/users/NameTheUser/repositories?keyword=NameTheRepo
         search = params[:keyword].present? ? params[:keyword] : nil
         if search
@@ -27,7 +27,7 @@ module Api
           return render json: repo_found.as_json
         end
         # shows all repositories
-        return render json: "The user doesn't exist" if db_user.nil?
+        return render json: "The user does not exist or a problem occurred" if db_user.nil?
         return render json: db_user.repositories.as_json if db_user
       end
 

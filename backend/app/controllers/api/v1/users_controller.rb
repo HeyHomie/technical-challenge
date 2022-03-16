@@ -13,9 +13,12 @@ module Api
         end
         user = conn.get("/users/#{user_params}").body
         db_user = User.find_by(github_id: user['id'])
-        return render json: "The user doesn't exist" if user.values.include? "Not Found"
-        User.save_data_base(db_user)
-        # shows the searched public users.  URL.- http://localhost:3000/api/v1/users?user=serlle
+        return render json: "The user does not exist or a problem occurred" if user.values.include? "Not Found"
+        if db_user.nil?
+          db_user = User.create({ github_id: user['id'], login: user['login'], url: user['html_url'], name: user['name'],
+                                  email: user['email'], avatar_url: user['avatar_url'] })
+        end
+        # shows the searched public users.  URL.- http://localhost:3000/api/v1/users?user=NameTheUser
         render json: db_user.as_json
       end
 

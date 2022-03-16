@@ -13,11 +13,4 @@ class User < ApplicationRecord
                     # length: { maximum: 105 },
                     # format: { with: VALID_EMAIL_REGEX }
 
-  def self.save_data_base(db_user)
-    if db_user.nil?
-      db_user = User.create({ github_id: user['id'], login: user['login'], url: user['html_url'], name: user['name'],
-                              email: user['email'], avatar_url: user['avatar_url'] })
-    end
-  end
-
 end
