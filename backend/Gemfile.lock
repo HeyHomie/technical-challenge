@@ -256,6 +256,8 @@ GEM
       activemodel (>= 5)
       elasticsearch (>= 6, < 7.14)
       hashie
+    shoulda-matchers (5.1.0)
+      activesupport (>= 5.2.0)
     solargraph (0.43.0)
       backport (~> 1.2)
       benchmark
@@ -321,6 +323,7 @@ DEPENDENCIES
   rubocop-rspec (~> 2.4)
   rubocop-thread_safety (~> 0.4)
   searchkick (~> 4.4, >= 4.4.4)
+  shoulda-matchers (~> 5.0)
   solargraph (~> 0.43)
   spring (~> 2.1)
   tzinfo-data
