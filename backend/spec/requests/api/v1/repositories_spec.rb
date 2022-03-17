@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Api::V1::Repositories', type: :request do
-  describe 'GET /index' do
+  describe 'GET /index without pagination' do
     it 'gets all repositories the Serlle' do
       get api_v1_user_repositories_path(user_id: 'serlle')
       body = JSON.parse(response.body)
