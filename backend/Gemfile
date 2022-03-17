@@ -57,6 +57,7 @@ gem 'searchkick', '~> 4.4', '>= 4.4.4'
 
 # Pagination
 # gem 'pagy', '~> 3.11'
+gem 'kaminari'
 
 # Env Variables
 gem 'figaro', '~> 1.2'
