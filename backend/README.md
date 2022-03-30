@@ -26,7 +26,7 @@ You can read swagger yamls, look for it in backend/suagger/api/v1/swagger.yaml
 **Get repo the Git**
 
 ```bash
-git clone 
+git clone git@github.com:Serlle/technical-challenge.git
 ```
 
 ```bash
@@ -41,25 +41,15 @@ bundle install
 
 **Data Base**
 
-There are two option to download the database.
-
-1. If you want to get the data contained in the database, run...
-
-```bash
-bundle exec rails db:create db:migrate db:seed
-```
-
-2. If you want the database from 0, run...
+For create and migrate the db, run:
 
 ```bash
 bundle exec rails db:create db:migrate
 ```
 
-***Note: The tests were done for the first option, if you do the second option you will be forced to do your own tests.***
-
 ## Running the tests ⚙️
 
-If you took the information that is in the database, the tests are designed for 3 users: "Serlle", "HeyHomie" and "yknx4"
+The tests are designed for 3 users: "Serlle", "HeyHomie" and "yknx4", if you don't have these users, the test will fail
 
 ### Test end-to-end 🔩
 
