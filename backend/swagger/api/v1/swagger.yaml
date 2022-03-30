@@ -1,0 +1,142 @@
+swagger: "2.0"
+info:
+  description: "This repository is a challenge from the HeyHomie company called a technical challenge. This challenge consists of demonstrating your knowledge as a backend in the Ruby on Rails framework and its communication with the GitHub public API."
+  version: "1.0.0"
+  title: "Technical-Challenge"
+  contact: 
+    email: "serlle.rosales96@gmail.com"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: "localhost:3000"
+basePath: "/api/v1"
+tags:
+- name: "GitHub API"
+  externalDocs:
+    description: "Documents API"
+    url: "https://docs.github.com/es/rest"
+- name: "user"
+  externalDocs:
+    description: "Documents User"
+    url: "https://docs.github.com/en/rest/reference/users"
+- name: "repositories"
+  externalDocs:
+    description: "Documents Repos"
+    url: "https://docs.github.com/en/rest/guides/getting-started-with-the-rest-api#repositories"
+schemes:
+- "http"
+paths:
+  /user/{username}:
+    get:
+      tags:
+      - "user"
+      summary: "Show user by name"
+      operationId: "getUserByName"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "username"
+        in: "path"
+        description: "The name that needs to be fetched."
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/User"
+        "403":
+          description: "API rate limit exceeded. (But here's the good news: Authenticated requests get a higher rate limit. Check out the documentation for more details.)"
+        "404":
+          description: "Not found"
+  /user/{username}/repositories:
+    get:
+      tags:
+      - "repositories"
+      summary: "Index the repositories"
+      operationId: "getRepositoriesByUserName"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "username"
+        in: "path"
+        description: "The name you need to display your repositories."
+        required: true
+        type: "string"
+      - in: "query"
+        name: "search"
+        description: "Param to search repo. URL.- path/repositories?search={nametherepo}"
+        required: false
+        type: "string"
+      - in: "query"
+        name: "page"
+        description: "Param to pagination. URL.- path/repositories?page={number}"
+        required: false
+        type: "string"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Repositories"
+        "403":
+          description: "API rate limit exceeded. (But here's the good news: Authenticated requests get a higher rate limit. Check out the documentation for more details.)"
+        "404":
+          description: "Not found"
+definitions:
+  Repositories:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      repo_id:
+        type: "integer"
+        format: "int64"
+      name:
+        type: "string"
+        description: "Name the repo"
+      full_name:
+        type: "string"
+        description: "Name user with name repo"
+      private:
+        type: "boolean"
+        default: false
+      owner:
+        $ref: "#/definitions/User"
+      html_url:
+        type: "string"
+        description: "Repo URL"
+      visibility:
+        type: "string"
+        description: "Visibility"
+        enum:
+        - "public"
+        - "private"
+      user_id:
+        type: "integer"
+        format: "int64"
+        description: "Association with the user"
+  User:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      github_id:
+        type: "integer"
+        format: "int64"
+      login:
+        type: "string"
+        description: "Nick name"
+      url:
+        type: "string"
+      name:
+        type: "string"
+        description: "User name"
+      email:
+        type: "string"
+      avatar_url:
+        type: "string"
+externalDocs:
+  description: "Find out more about Technical-Challenge"
+  url: "https://github.com/HeyHomie/technical-challenge"
