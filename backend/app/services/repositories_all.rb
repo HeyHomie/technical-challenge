@@ -1,7 +1,6 @@
 class RepositoriesAll < ApplicationService
-  def initialize(username, get_user_db)
+  def initialize(username)
     @username = username
-    @get_user_db = get_user_db
   end
 
   def call
@@ -14,25 +13,24 @@ class RepositoriesAll < ApplicationService
   private
 
   def create_repos
-    if @get_user_db
-      @repos_body.each do |repo|
-        repo = @get_user_db.repositories.build(repos_params(repo))
-        repo.save
-      end
-      OpenStruct.new(status: @found_repos.status, body: @get_user_db.repositories)
-    else
-      @user = UserFinder.call(@username)
-      @repos_body.each do |repo|
-        repo = @user.body.repositories.build(repos_params(repo))
-        repo.save
-      end
-      @get_user_db = User.find_by(login: @username.downcase)
-      OpenStruct.new(status: @found_repos.status, body: @get_user_db.repositories)
+    @repos_body.each do |repo|
+      get_user.repositories.create(repos_params(repo))
     end
+    OpenStruct.new(status: @found_repos.status, body: get_user.repositories)
   end
 
   def nonexistent_user
     OpenStruct.new(status: @found_repos.status, body: @repos_body)
+  end
+
+  def get_user
+    @user = User.find_by(login: @username.downcase)
+    if @user
+      @user
+    else
+      user = UserFinder.call(@username)
+      return user.body
+    end
   end
 
   def repos_params(repo)
