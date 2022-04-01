@@ -5,28 +5,28 @@ module Api
       before_action :set_specific_repo, :set_repos
 
       def index
-        @db_repos = RepositoriesAll.call(user_params, @get_user_db)
+        repos = RepositoriesAll.call(user_params)
         set_specific_repo
-        render json: @db_repos.body.page(params[:page]).per(10).as_json unless @keyword
+        render json: repos.body.page(params[:page]).per(10).as_json unless @keyword
       end
 
       private
 
       def set_specific_repo
-        @get_user_db = User.find_by(login: user_params.downcase)
-        @get_repos_db = @get_user_db.repositories if @get_user_db
+        @user = User.find_by(login: user_params.downcase)
+        @repos = @user.repositories if @user
         @keyword = params[:search].present? ? params[:search] : nil
-        unless @get_repos_db.blank?
+        unless @repos.blank?
           if @keyword 
             Repository.reindex
-            found_repo = Repository.search @keyword, where: { user_id: @get_user_db.id }
+            found_repo = Repository.search @keyword, where: { user_id: @user.id }
             render json: found_repo.as_json
           end
         end
       end
 
       def set_repos
-        render json: @get_repos_db.page(params[:page]).per(10).as_json unless @get_repos_db.blank?
+        render json: @repos.page(params[:page]).per(10).as_json unless @repos.blank?
       end
 
       def user_params
