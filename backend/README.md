@@ -12,6 +12,7 @@ You can read swagger yamls, look for it in backend/suagger/api/v1/swagger.yaml
 * ruby 3.0.1
 * rails 6.1
 * postgres
+* elasticsearch
 
 **Nice to have:**
 * rbenv or rvm
@@ -33,13 +34,22 @@ git clone git@github.com:Serlle/technical-challenge.git
 cd path project
 ```
 
+**Elasticsearch**
+
+For Homebrew, use:
+
+```bash
+brew install elastic/tap/elasticsearch-full
+brew services start elasticsearch-full
+```
+
 **Run on backend directory**
 
 ```bash
 bundle install
 ```
 
-**Data Base**
+**Database**
 
 For create and migrate the db, run:
 
@@ -49,11 +59,11 @@ bundle exec rails db:create db:migrate
 
 ## Running the tests ⚙️
 
-The tests are designed for 3 users: "Serlle", "HeyHomie" and "yknx4", if you don't have these users, the test will fail
+The tests are designed for 3 users: "Serlle", "HeyHomie" and "yknx4".
 
 ### Test end-to-end 🔩
 
-There are 2 parts in which the tests are done, which you can run:
+There are 2 ways to run the tests. You can run one by one or all at the same time, check it out...
 
 **Models**
 
@@ -139,8 +149,9 @@ For more information 📌
 ## Built with 🛠️
 
 * [Ruby](https://www.ruby-lang.org/es/)
-* [Ruby on Rails](https://rubyonrails.org/)
 * [Postman](https://www.postman.com/)
+* [Ruby on Rails](https://rubyonrails.org/)
+* [Visual Studio Code](https://code.visualstudio.com/)
 
 ## More information about challenge 🖇️
 
