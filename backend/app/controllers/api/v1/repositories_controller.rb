@@ -1,28 +1,33 @@
 # frozen_string_literal: true
-
 module Api
   module V1
     class RepositoriesController < ApplicationController
+      before_action :set_specific_repo, :set_repos
+
       def index
-        conn = Faraday.new do |f|
-          f.request :authorization, 'Bearer', Figaro.env.GITHUB_TOKEN
-          f.request :json # encode req bodies as JSON
-          f.request :retry # retry transient failures
-          f.response :follow_redirects # follow redirects
-          f.response :json # decode response bodies as JSON
-        end
-        user = conn.get("https://api.github.com/user?user=#{user_params}").body
-        repos = conn.get("https://api.github.com/user/repos?user=#{user_params}",
-                         { per_page: 100, sort: 'updated' }).body
-        db_user = User.all.find { |u| u.github_id == user['id'] }
-        if db_user.nil?
-          db_user = User.create({ github_id: user['id'], login: user['login'], url: user['html_url'], name: user['name'],
-                                  email: user['email'], avatar_url: user['avatar_url'], repositories: repos })
-        end
-        render json: db_user.repositories
+        repos = RepositoriesAll.call(user_params)
+        set_specific_repo
+        render json: repos.body.page(params[:page]).per(10).as_json unless @keyword
       end
 
       private
+
+      def set_specific_repo
+        @user = User.find_by(login: user_params.downcase)
+        @repos = @user.repositories if @user
+        @keyword = params[:search].present? ? params[:search] : nil
+        unless @repos.blank?
+          if @keyword 
+            Repository.reindex
+            found_repo = Repository.search @keyword, where: { user_id: @user.id }
+            render json: found_repo.as_json
+          end
+        end
+      end
+
+      def set_repos
+        render json: @repos.page(params[:page]).per(10).as_json unless @repos.blank?
+      end
 
       def user_params
         params.require(:user_id)
