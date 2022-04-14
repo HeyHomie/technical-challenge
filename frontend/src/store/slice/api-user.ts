@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import axios from 'axios'
 import type { RootState } from '../store'
 
-export type UserState = {
+export interface UserState {
   data: { user: any }
   pending: boolean
   error: boolean

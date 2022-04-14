@@ -4,6 +4,10 @@
   "private": true,
   "prettier": "prettier-config-standard",
   "dependencies": {
+    "@emotion/react": "^11.9.0",
+    "@emotion/styled": "^11.8.1",
+    "@mui/material": "^5.6.1",
+    "@mui/styles": "^5.6.1",
     "@reduxjs/toolkit": "^1.8.1",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
@@ -50,7 +54,8 @@
   },
   "lint-staged": {
     "*.{ts,tsx}": [
-      "npx prettier --write"
+      "npx prettier --write",
+      "ts-standard --fix"
     ]
   },
   "devDependencies": {

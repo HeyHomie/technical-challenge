@@ -5,7 +5,7 @@ import {
   combineReducers
 } from '@reduxjs/toolkit'
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux'
-//import { createWrapper } from 'next-redux-wrapper';
+// import { createWrapper } from 'next-redux-wrapper';
 import {
   persistStore,
   persistReducer,
@@ -18,9 +18,11 @@ import {
 } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 import { userReducer } from './slice/api-user'
+import { reposReducer } from './slice/api-repos'
 
 export const rootReducer = combineReducers({
-  user: userReducer
+  user: userReducer,
+  repos: reposReducer
 })
 
 const persistConfig = {
@@ -43,12 +45,12 @@ export const store = configureStore({
 export const persistor = persistStore(store)
 export type AppDispatch = typeof store.dispatch
 export type RootState = ReturnType<typeof store.getState>
-export type AppThunk<ReturnType = void> = ThunkAction<
-  ReturnType,
-  RootState,
-  unknown,
-  Action<string>
+export type AppThunk = ThunkAction<
+ReturnType,
+RootState,
+unknown,
+Action<string>
 >
 
-export const useAppDispatch = () => useDispatch<AppDispatch>()
+export const useAppDispatch = (): any => useDispatch<AppDispatch>()
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector
