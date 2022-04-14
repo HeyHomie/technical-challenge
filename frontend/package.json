@@ -4,6 +4,7 @@
   "private": true,
   "prettier": "prettier-config-standard",
   "dependencies": {
+    "@reduxjs/toolkit": "^1.8.1",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
@@ -14,6 +15,7 @@
     "@types/react-dom": "^17.0.0",
     "@types/react-router-dom": "^5.1.8",
     "ahooks": "^2.10.5",
+    "axios": "^0.26.1",
     "commitizen": "^4.2.3",
     "prettier": "^2.2.1",
     "react": "^17.0.2",
@@ -48,8 +50,7 @@
   },
   "lint-staged": {
     "*.{ts,tsx}": [
-      "npx prettier --write",
-      "ts-standard --fix"
+      "npx prettier --write"
     ]
   },
   "devDependencies": {
