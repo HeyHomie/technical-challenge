@@ -4,12 +4,16 @@ import { AppRouter } from './routes'
 import { Provider } from 'react-redux'
 import { PersistGate } from 'redux-persist/integration/react'
 import { store, persistor } from './store/store'
+import { ThemeProvider } from '@mui/private-theming'
+import { theme } from './styles/theme'
 
-function App(): ReactElement {
+function App (): ReactElement {
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <AppRouter />
+        <ThemeProvider theme={theme}>
+          <AppRouter />
+        </ThemeProvider>
       </PersistGate>
     </Provider>
   )

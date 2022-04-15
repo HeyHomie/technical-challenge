@@ -8,7 +8,8 @@ import {
   Redirect,
   useParams
 } from 'react-router-dom'
-import { NavRepos } from './components/organisms/nav'
+import { NavFilters } from './components/organisms/nav-filters/index'
+import { NavRepos } from './components/organisms/nav/index'
 
 export const Main: FunctionComponent = () => {
   const { username } = useParams<{ username: string }>()
@@ -25,7 +26,10 @@ export const Main: FunctionComponent = () => {
   return (
     <>
       {/* <h1>data.user.login</h1> */}
-      <NavRepos />
+      <div style={{ display: 'flex', flexDirection: 'column' }}>
+        <NavRepos />
+        <NavFilters />
+      </div>
     </>
   )
 }
