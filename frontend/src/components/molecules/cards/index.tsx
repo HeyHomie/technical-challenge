@@ -27,7 +27,6 @@ export const CardInfoRepositor: any = ({
   const colorlanguage = ColorLabelanguage(langage)
 
   const classes = useStyles()
-
   return (
     <Box sx={{ display: 'flex', width: '100%' }}>
       <Box sx={{ display: 'flex', flexDirection: 'column', width: '70%' }}>
@@ -66,7 +65,7 @@ export const CardInfoRepositor: any = ({
             {langage}
           </Typography>
 
-          {licence !== null && (
+          {licence !== '' && (
             <>
               <Item sx={{ margin: '1% 0% 2% 0%' }}>
                 <IconsGit
