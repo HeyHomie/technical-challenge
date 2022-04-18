@@ -1,4 +1,5 @@
-import { render, fireEvent } from '../setupTests'
+import { render } from './config/test_utils'
+import { fireEvent } from '@testing-library/react'
 import { InputFilter } from '../components/atoms/input/index'
 
 describe('Input', () => {

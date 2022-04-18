@@ -1,4 +1,5 @@
-import { render, screen } from '../setupTests'
+import { render } from './config/test_utils'
+import { screen } from '@testing-library/react'
 import axios from 'axios'
 import MockAdapter from 'axios-mock-adapter'
 import { CardInfoRepositor } from '../components/molecules/cards/index'
