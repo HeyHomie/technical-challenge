@@ -12,7 +12,7 @@ export const ButtonIcon: any = ({ button, icons, margin }: PropsButtonIcon) => {
   return (
     <Box sx={{ display: 'flex', margin: { margin } }}>
       <ButtonGit
-        icons={<IconsGit path={icons?.path} />}
+        icons={<IconsGit path={icons?.path} whidth={icons?.width} />}
         variant='contained'
         text={button?.text}
       />

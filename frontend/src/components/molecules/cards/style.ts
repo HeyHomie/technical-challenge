@@ -14,7 +14,9 @@ export const useStyles = makeStyles(() => ({
   },
   labelLanguage: {
     position: 'relative',
-    top: '30%',
+    // top: '30%',
+    marginTop: '2%',
+    marginRight: '2%',
     display: 'inline-block',
     width: '12px',
     height: '12px',

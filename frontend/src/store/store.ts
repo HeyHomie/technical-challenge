@@ -5,7 +5,6 @@ import {
   combineReducers
 } from '@reduxjs/toolkit'
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux'
-// import { createWrapper } from 'next-redux-wrapper';
 import {
   persistStore,
   persistReducer,

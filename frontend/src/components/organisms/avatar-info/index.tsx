@@ -10,7 +10,6 @@ import { ContactUser } from '../../molecules/contact-user/contact'
 
 export const AvatarInfo: any = () => {
   const { data } = useAppSelector(selectUser)
-  console.log(data.user.followers)
   const avatar = data.user.avatar_url
 
   return (

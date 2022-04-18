@@ -4,27 +4,29 @@ import { ButtonIcon } from '../../molecules/button-icon/index'
 import { StyledBadge } from '../../atoms/badge/index'
 import { useAppSelector } from '../../../store/store'
 import { selectRepos } from '../../../store/slice/api-repos'
+import { Item } from '../../atoms/item/index'
 
 export const NavRepos: any = () => {
   const { data } = useAppSelector(selectRepos)
   const reposLength = data.repos.length
   return (
     <Box
+      display='flex'
+      flexDirection='row'
       sx={{
         width: '100%',
-        display: 'flex',
         position: 'fixed',
         backgroundColor: 'white',
         borderBottom: '1px solid #e0e0e0',
-        marginTop: '0%'
+        marginTop: '0%',
+        zIndex: '2'
       }}
     >
-      <Box sx={{ width: '30%' }}>{/* avatar y nombre miniatura */}</Box>
-      <Box sx={{ width: '70%' }}>
-        <Box
+      <Box sx={{ width: '40%' }}>{/* avatar y nombre miniatura */}</Box>
+      <Box display='flex' sx={{ width: '60%' }}>
+        <Item
           sx={{
             border: '3%',
-            borderColor: 'red',
             display: 'flex',
             flexDirection: 'row'
           }}
@@ -66,7 +68,7 @@ export const NavRepos: any = () => {
               path: 'M 8 0.25 a 0.75 0.75 0 0 1 0.673 0.418 l 1.882 3.815 l 4.21 0.612 a 0.75 0.75 0 0 1 0.416 1.279 l -3.046 2.97 l 0.719 4.192 a 0.75 0.75 0 0 1 -1.088 0.791 L 8 12.347 l -3.766 1.98 a 0.75 0.75 0 0 1 -1.088 -0.79 l 0.72 -4.194 L 0.818 6.374 a 0.75 0.75 0 0 1 0.416 -1.28 l 4.21 -0.611 L 7.327 0.668 A 0.75 0.75 0 0 1 8 0.25 Z m 0 2.445 L 6.615 5.5 a 0.75 0.75 0 0 1 -0.564 0.41 l -3.097 0.45 l 2.24 2.184 a 0.75 0.75 0 0 1 0.216 0.664 l -0.528 3.084 l 2.769 -1.456 a 0.75 0.75 0 0 1 0.698 0 l 2.77 1.456 l -0.53 -3.084 a 0.75 0.75 0 0 1 0.216 -0.664 l 2.24 -2.183 l -3.096 -0.45 a 0.75 0.75 0 0 1 -0.564 -0.41 L 8 2.694 v 0.001 Z'
             }}
           />
-        </Box>
+        </Item>
       </Box>
     </Box>
   )

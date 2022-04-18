@@ -6,6 +6,7 @@ import { SelectButton } from '../../molecules/button-select'
 import { InputFilter } from '../../atoms/input'
 import { Grid } from '@mui/material'
 import { Item } from '../../atoms/item/index'
+import { RepositoriesForUser } from '../list-respositories/index'
 
 export const NavFilters: any = () => {
   const [inputValue, setInoutValue] = React.useState<any>('')
@@ -17,7 +18,6 @@ export const NavFilters: any = () => {
   const handleEvent: any = (e: any) => {
     setInoutValue(e.target.value)
   }
-
   const repoFilterName = listRepos.filter(
     (repo: any) => repo.name === inputValue
   )
@@ -28,58 +28,37 @@ export const NavFilters: any = () => {
     }
   )
 
-  console.log('lenguage', optionsLenguageRepo)
-  console.log('filtro nombre', repoFilterName)
   return (
-    <Box sx={{ margin: '8% 0%' }}>
+    <Box sx={{ margin: '7% 1% ' }}>
       <Grid container spacing={2}>
-        <Grid item xs={6} md={7} display='flex' alignItems='center'>
-          <Item display='flex' alignItems='center' marginLeft='5%' width='90%'>
+        <Grid item xs={12} md={7} display='flex' alignItems='center'>
+          <Item display='flex' alignItems='center' marginLeft='5%' width='80%'>
             <InputFilter
               type='text'
               placeholder='Find a repository...'
               required={false}
-              width='100%'
+              width='80%'
               event={handleEvent}
             />
           </Item>
         </Grid>
-        <Grid item xs={6} md={5}>
-          <Item display='flex' flexDirection='row'>
+        <Grid item xs={12} md={5}>
+          <Box
+            display='flex'
+            flexDirection='row'
+            margin='8%'
+            justifyContent='end'
+          >
             <SelectButton text='Type' options={optionsTypeRepo} />
-            <SelectButton text='Language' options={optionsTypeRepo} />
+            <SelectButton text='Language' options={optionsLenguageRepo} />
             <SelectButton text='Sort' options={optionsSortRepo} />
-          </Item>
+          </Box>
         </Grid>
       </Grid>
+      <hr />
+      <Box margin='3%'>
+        <RepositoriesForUser option={repoFilterName} />
+      </Box>
     </Box>
   )
-
-  //   const reposLength = data.repos.length
-  //   return (
-  //     <Box
-  //       sx={{
-  //         width: '100%',
-  //         display: 'flex',
-  //         flexDirection:'row',
-  //         borderBottom: '1px solid #e0e0e0',
-  //         marginTop: '7%',
-  //         backgroundColor:'blue'
-  //       }}
-  //     >
-  //       <Box width='50%' display='flex' alignContent='center' sx={{backgroundColor:'red'}}>
-  //         <InputFilter type='text' placeholder='Find a repository...' required={false} width='80%'></InputFilter>
-  //         </Box>
-  //       <Box sx={{ width: '30%' }}>
-  //         <Box  sx={{ border: '3%', borderColor: 'red', display: 'flex', flexDirection:'row'}}>
-  //           <SelectButton />
-  //           <SelectButton/>
-  //           <SelectButton/>
-  //         </Box>
-  //       </Box>
-  //       <Box sx={{ width: '20%' }}>
-  //         <ButtonGit/>
-  //       </Box>
-  //     </Box>
-  //   )
 }

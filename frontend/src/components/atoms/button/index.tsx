@@ -17,6 +17,7 @@ export interface PropsButton {
   href?: string
   id: any
   key: any
+  border: string
 }
 
 export const ButtonGit: any = ({
@@ -32,7 +33,8 @@ export const ButtonGit: any = ({
   icons,
   href,
   id,
-  key
+  key,
+  border
 }: PropsButton) => {
   const classes = useStyles()
 
@@ -44,7 +46,7 @@ export const ButtonGit: any = ({
         width: width,
         color: color,
         background: background,
-        padding: '8px 0px'
+        border: border
       }}
       size={size}
       onClick={event}

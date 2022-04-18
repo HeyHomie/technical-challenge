@@ -5,31 +5,44 @@ export const theme = responsiveFontSizes(
     spacing: 4,
 
     typography: {
-      fontFamily: ['Roboto', 'Raleway', 'Open Sans'].join(','),
+      fontFamily: [
+        '-apple-system',
+        'BlinkMacSystemFont',
+        '"Segoe UI"',
+        'Roboto',
+        '"Helvetica Neue"',
+        'Arial',
+        'sans-serif',
+        '"Apple Color Emoji"',
+        '"Segoe UI Emoji"',
+        '"Segoe UI Symbol"'
+      ].join(','),
       h1: {
-        fontSize: '5rem',
-        ffontFamily: 'Poppins,sans-serif'
+        fontSize: '5rem'
       },
       h3: {
-        fontSize: '2rem',
-        fontFamily: 'Poppins,sans-serif'
-      },
-      h4: {
-        fontSize: '1.2rem',
-        fontFamily: 'Poppins,sans-serif',
-        fontWeight: 200
+        fontSize: '1.5rem',
+        fontWeight: 600
       },
       body1: {
+        fontSize: '1.2rem',
+        color: '#9e9e9e' // gray
+      },
+      body2: {
         fontSize: '1rem',
-        fontFamily: 'Poppins,sans-serif'
+        color: '#24292F' // BLACK
+      },
+      body3: {
+        fontSize: '.8rem',
+        color: '#24292F' // BLACK
       }
     },
     palette: {
       background: {
-        default: '#009900' // green
+        default: '#0969da' // green
       },
       primary: {
-        main: '#4e34e1', // purpure
+        main: '#0969da', // blue
         contrastText: '#212121'
       },
       secondary: {
@@ -37,7 +50,7 @@ export const theme = responsiveFontSizes(
       },
 
       text: {
-        primary: '#4e34e1', // purpure
+        primary: '#0969da', // blue
         secondary: '#9e9e9e' // gray
       }
     }

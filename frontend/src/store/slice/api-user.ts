@@ -19,7 +19,6 @@ export const getInfoUser = createAsyncThunk(
   async (username: string): Promise<void> => {
     const response = await axios.get(`https://api.github.com/users/${username}`)
     const data = await response.data
-    console.log(data)
     return data
   }
 )

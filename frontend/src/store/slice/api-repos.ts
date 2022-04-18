@@ -21,7 +21,6 @@ export const getInfoRepos = createAsyncThunk(
       `https://api.github.com/users/${username}/repos`
     )
     const data = await response.data
-    console.log(data)
     return data
   }
 )

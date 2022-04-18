@@ -43,7 +43,12 @@ export const InputFilter: any = ({
       sx={{
         borderRadius: '30px',
         width: { width },
-        input: { color: 'black', padding: '2%', borderRadius: '30px' },
+        input: {
+          color: 'black',
+          padding: '3%',
+          borderRadius: '30px',
+          fontSize: '.9rem'
+        },
         '.css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root': {
           borderRadius: '10px'
         }
