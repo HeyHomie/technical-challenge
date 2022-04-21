@@ -1,9 +1,8 @@
-# frozen_string_literal: true
-
 require 'rails_helper'
 
-RSpec.describe 'Api::V1::Repositories', type: :request do
-  describe 'GET /index' do
+RSpec.describe RepositoryStoreJob, type: :job do
+  describe '#perfom' do
+    let(:user) { create(:user, login: 'yknx4') }
     let(:repository) do
       [
         {
@@ -32,14 +31,16 @@ RSpec.describe 'Api::V1::Repositories', type: :request do
         }
       ].as_json
     end
-
+    let(:subject) { RepositoryStoreJob.perform_now(user: user, per_page: nil) }
     before(:each) do
-      allow(Repository).to receive(:search).and_return(repository)
+      allow_any_instance_of(RepositoryStoreJob).to receive(:repositories).and_return(repository)
     end
 
-    it 'gets repositories for yknx4' do
-      get '/api/v1/repositories', params: { search_param: 'yknx4' }
-      expect(response).to have_http_status(200)
+    context 'Given an user, save a repo' do
+      it do
+        subject
+        expect(user.repositories.find_by(repository.first[:id]).present?).to be true
+      end
     end
   end
 end
