@@ -32,7 +32,7 @@ gem 'faraday', '~> 1.0'
 gem 'faraday_middleware', '~> 1.0'
 
 # Background Jobs
-# gem 'sidekiq', '~> 6.2', '>= 6.2.1'
+gem 'sidekiq', '~> 6.2', '>= 6.2.1'
 # gem 'sidekiq_alive', '~> 2.1', '>= 2.0.6'
 # gem 'sidekiq-cron', '~> 1.2'
 # gem 'sidekiq-failures', '~> 1.0'
@@ -41,7 +41,8 @@ gem 'faraday_middleware', '~> 1.0'
 # gem 'sidekiq-unique-jobs', '~> 7.1', '>= 7.0.9'
 
 # ElasticSearch
-# gem 'searchkick', '~> 4.4', '>= 4.4.4'
+gem 'searchkick', '~> 4.4', '>= 4.4.4'
+gem 'opensearch-ruby'
 
 # Users
 # gem 'pundit', '~> 2.1'
@@ -88,11 +89,13 @@ group :development, :test do
   gem 'faker', '~> 2.18'
   gem 'pry-rails', '~> 0.3'
   gem 'rspec-rails', '~> 5.0'
-  # gem 'simplecov', '~> 0.21', require: false
+  gem 'shoulda-matchers'
+  gem 'simplecov', '~> 0.21', require: false
   # gem 'simplecov-lcov', '~> 0.8', require: false
 end
 
 group :development do
+  gem 'annotate'
   gem 'listen', '~> 3.6'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'rack-mini-profiler', '~> 2.3'
