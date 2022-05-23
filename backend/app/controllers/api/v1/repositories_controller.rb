@@ -25,7 +25,7 @@ module Api
       private
 
       def user_params
-        params.require(:user_id)
+        params.require(:username)
       end
     end
   end
