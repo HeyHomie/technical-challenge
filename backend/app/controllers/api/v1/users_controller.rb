@@ -4,7 +4,7 @@ include GithubAPI
 
 module Api
   module V1
-    class UsersController < ApplicationController
+    class UsersController < ApiController
       def index
         github_client = GithubAPI::Client.new(ENV['GITHUB_TOKEN'])
         user = github_client.get_user(user_params)

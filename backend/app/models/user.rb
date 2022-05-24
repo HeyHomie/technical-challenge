@@ -2,11 +2,30 @@
 
 class User < ApplicationRecord
   has_many :repositories, foreign_key: 'owner_id', class_name: 'Repository',  dependent: :destroy
-  validates :login, presence: true
-  validates :github_id, presence: true, uniqueness: true
+  validates :login, uniqueness: true, allow_nil: true
+  validates :github_id, uniqueness: true, allow_nil: true
+  validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }, uniqueness: true, allow_nil: true
+
+  has_secure_password
+
+  before_validation :validate_email_password_pair, on: :create
 
   def self.editable_columns
     [:login, :url, :name, :email, :avatar_url]
+  end
+
+  def validate_email_password_pair
+    # handle the case when create user with email and password, but email is empty
+    if password.present? and email.blank?
+      errors.add(:email, 'is required')
+      return
+    end
+
+    # handle the case when user is created as github user without password
+    if password.blank?
+      password = SecureRandom.hex(8) # generate random password
+      self.password = password
+    end
   end
 
   # Sync user's repositories from GitHub API and save to database
