@@ -31,7 +31,7 @@ class User < ApplicationRecord
   # Sync user's repositories from GitHub API and save to database
   def sync_repositories repos
     # Delete repositories that are not in the list anymore
-    self.repositories.where.not(id: repos.map{ |r| r['id'] }).destroy_all
+    self.repositories.where.not(github_id: repos.map{ |r| r['id'] }).destroy_all
 
     # Update or create repositories that are in the list
     repos.each do |repo|
