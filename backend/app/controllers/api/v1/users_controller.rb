@@ -14,11 +14,11 @@ module Api
 
         user = conn.get("/users/#{user_params}").body
         repos = conn.get("/users/#{user_params}/repos", { per_page: 100 }).body
-        db_user = User.all.find { |u| u.github_id == user['id'] }
-        if db_user.nil?
-          db_user = User.create({ github_id: user['id'], login: user['login'], url: user['html_url'], name: user['name'],
-                                  email: user['email'], avatar_url: user['avatar_url'], repositories: repos })
-        end
+
+        db_user = User.find_or_create_by(github_id: user['id'])
+        db_user.update(user.clone.keep_if { |k, _v| User.editable_columns.include? k.to_sym })
+        db_user.sync_repositories(repos)
+
         render json: db_user.as_json.except('repositories')
       end
 
