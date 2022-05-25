@@ -22,5 +22,13 @@ RSpec.describe 'Api::V1::Repositories', type: :request do
       expect(response).to have_http_status(200)
       expect(body.size).to eq(100)
     end
+
+    it 'gets repositories for HeyHomie and filter technical-challenge' do
+      get api_v1_repositories_path, params: {username: 'HeyHomie', filter: 'challenge'}, headers: @headers
+      body = JSON.parse(response.body)
+      expect(response).to have_http_status(200)
+      expect(body.size).to eq(1)
+      expect(body.first['name']).to eq('technical-challenge')
+    end
   end
 end
