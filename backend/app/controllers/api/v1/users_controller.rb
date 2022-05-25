@@ -13,8 +13,9 @@ module Api
         db_user = User.find_or_create_by(github_id: user['id'])
         db_user.update(user.clone.keep_if { |k, _v| User.editable_columns.include? k.to_sym })
         db_user.sync_repositories(repos)
+        Repository.reindex
 
-        render json: db_user.as_json.except('repositories')
+        render json: db_user
       end
 
       private

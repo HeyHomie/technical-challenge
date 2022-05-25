@@ -14,6 +14,15 @@ module Api
         db_user = User.find_or_create_by(github_id: user['id'])
         db_user.update(user.clone.keep_if { |k, _v| User.editable_columns.include? k.to_sym })
         db_user.sync_repositories(repos)
+        Repository.reindex
+
+        if params[:filter]
+          sanitized_filter = params[:filter].gsub(/[^a-zA-Z0-9\s]/, '')
+          result = Repository.search(sanitized_filter,  where: {owner_id: db_user.id})
+          result = result.map { |r| r.attributes.merge(owner: r.owner.attributes) }
+          render json: result
+          return
+        end
 
         render json: db_user.repositories
       end

@@ -41,7 +41,8 @@ gem 'faraday_middleware', '~> 1.0'
 # gem 'sidekiq-unique-jobs', '~> 7.1', '>= 7.0.9'
 
 # ElasticSearch
-# gem 'searchkick', '~> 4.4', '>= 4.4.4'
+gem 'searchkick', '~> 5.0.1'
+gem "opensearch-ruby"
 
 # Users
 # gem 'pundit', '~> 2.1'
