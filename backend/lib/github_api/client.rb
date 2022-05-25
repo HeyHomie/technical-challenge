@@ -44,17 +44,17 @@ module GithubAPI
     end
 
     def to_s
-      "#{status}: #{message}"
+      "GithubAPI::Error [#{status}]: #{message}"
     end
 
     def inspect
-      "#{status}: #{message}"
+      "GithubAPI::Error [#{status}]: #{message}"
     end
 
     def to_json
       {
         status: status,
-        body: body
+        message: body
       }.to_json
     end
   end
