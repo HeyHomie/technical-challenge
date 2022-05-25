@@ -36,7 +36,7 @@ class User < ApplicationRecord
     # Update or create repositories that are in the list
     repos.each do |repo|
       self.repositories.find_or_create_by(github_id: repo['id']) do |r|
-        r.update repo.keep_if { |k, _v| Repository.editable_columns.include? k.to_sym }
+        r.update repo.clone.keep_if { |k, _v| Repository.editable_columns.include? k.to_sym }
       end
     end
   end
