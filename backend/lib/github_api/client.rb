@@ -6,7 +6,7 @@ module GithubAPI
 
     def initialize(token = nil)
       @conn = Faraday.new(API_ENDPOINT) do |f|
-        f.headers[:Authorization] = "token=#{token}" if token # set auth header if token exists
+        f.headers[:Authorization] = "token #{token}" if token # set auth header if token exists
         f.request :json # encode req bodies as JSON
         f.request :retry # retry transient failures
         f.response :follow_redirects # follow redirects
