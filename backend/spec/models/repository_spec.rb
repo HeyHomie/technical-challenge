@@ -11,7 +11,6 @@ RSpec.describe Repository, type: :model do
 
       db_user = User.find_or_create_by(github_id: user['id'])
       db_user.sync_repositories(repos)
-      byebug
       expect(db_user.repositories.size).to eq(repos.size)
       expect(db_user.repositories.map(&:github_id).sort).to eq(repos.map { |r| r['id'] }.sort)
     end
