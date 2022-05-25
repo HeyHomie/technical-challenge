@@ -2,12 +2,13 @@
 
 FactoryBot.define do
   factory :user do
-    login { 'MyString' }
-    id { '' }
-    url { 'MyString' }
-    name { 'MyString' }
-    email { 'MyString' }
-    avatar_url { 'MyString' }
-    repositories { '' }
+    factory :registered_user do
+      email { Faker::Internet.email }
+      password { Faker::Internet.password }
+    end
+    factory :user_with_github_id do
+      github_id { Faker::Number.number(digits: 8) }
+    end
   end
 end
+

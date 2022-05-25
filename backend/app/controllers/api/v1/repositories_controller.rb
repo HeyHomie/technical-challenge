@@ -1,31 +1,44 @@
 # frozen_string_literal: true
+require "github_api/client"
+include GithubAPI
+
 
 module Api
   module V1
-    class RepositoriesController < ApplicationController
+    class RepositoriesController < ApiController
       def index
-        conn = Faraday.new do |f|
-          f.request :authorization, 'Bearer', Figaro.env.GITHUB_TOKEN
-          f.request :json # encode req bodies as JSON
-          f.request :retry # retry transient failures
-          f.response :follow_redirects # follow redirects
-          f.response :json # decode response bodies as JSON
+
+        github_client = GithubAPI::Client.new(ENV['GITHUB_TOKEN'])
+
+        begin
+          @user = github_client.get_user(user_params)
+          @repos = github_client.get_user_repos(user_params, { per_page: 100, sort: 'updated' })
+        rescue GithubAPI::Error => error
+          render json: error.to_json, status: error.status
+          return
         end
-        user = conn.get("https://api.github.com/user?user=#{user_params}").body
-        repos = conn.get("https://api.github.com/user/repos?user=#{user_params}",
-                         { per_page: 100, sort: 'updated' }).body
-        db_user = User.all.find { |u| u.github_id == user['id'] }
-        if db_user.nil?
-          db_user = User.create({ github_id: user['id'], login: user['login'], url: user['html_url'], name: user['name'],
-                                  email: user['email'], avatar_url: user['avatar_url'], repositories: repos })
+
+
+        db_user = User.find_or_create_by(github_id: @user['id'])
+        db_user.update(@user.clone.keep_if { |k, _v| User.editable_columns.include? k.to_sym })
+        db_user.sync_repositories(@repos)
+        Repository.reindex
+
+        if params[:filter]
+          sanitized_filter = params[:filter].gsub(/[^a-zA-Z0-9\s]/, '')
+          result = Repository.search(sanitized_filter,  where: {owner_id: db_user.id})
+          result = result.map { |r| r.attributes.merge(owner: r.owner.attributes) }
+          render json: result
+          return
         end
+
         render json: db_user.repositories
       end
 
       private
 
       def user_params
-        params.require(:user_id)
+        params.require(:username)
       end
     end
   end

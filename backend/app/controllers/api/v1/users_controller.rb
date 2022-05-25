@@ -1,24 +1,26 @@
 # frozen_string_literal: true
+require "github_api/client"
+include GithubAPI
 
 module Api
   module V1
-    class UsersController < ApplicationController
+    class UsersController < ApiController
       def index
-        conn = Faraday.new do |f|
-          f.request :authorization, 'Bearer', Figaro.env.GITHUB_TOKEN
-          f.request :json # encode req bodies as JSON
-          f.request :retry # retry transient failures
-          f.response :follow_redirects # follow redirects
-          f.response :json # decode response bodies as JSON
+        github_client = GithubAPI::Client.new(ENV['GITHUB_TOKEN'])
+        begin
+          user = github_client.get_user(user_params)
+          repos = github_client.get_user_repos(user_params, { per_page: 100, sort: 'updated' })
+        rescue GithubAPI::Error => error
+          render json: error.to_json, status: error.status
+          return
         end
-        user = conn.get("https://api.github.com/user?user=#{user_params}").body
-        repos = conn.get("https://api.github.com/user/repos?user=#{user_params}", { per_page: 100 }).body
-        db_user = User.all.find { |u| u.github_id == user['id'] }
-        if db_user.nil?
-          db_user = User.create({ github_id: user['id'], login: user['login'], url: user['html_url'], name: user['name'],
-                                  email: user['email'], avatar_url: user['avatar_url'], repositories: repos })
-        end
-        render json: db_user.as_json.except('repositories')
+
+        db_user = User.find_or_create_by(github_id: user['id'])
+        db_user.update(user.clone.keep_if { |k, _v| User.editable_columns.include? k.to_sym })
+        db_user.sync_repositories(repos)
+        Repository.reindex
+
+        render json: db_user
       end
 
       private
